@@ -1,7 +1,6 @@
 // src/Resume.js
 
 import React from 'react';
-import './css/resume.css';  // Import your main CSS
 
 function Resume() {
     return (

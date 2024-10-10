@@ -1,5 +1,4 @@
 import React from 'react';
-import './css/awards.css'; // Make sure to import your CSS if needed
 
 function Awards() {
     return (
