@@ -1,16 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 function Awards() {
+    useEffect(() => {
+        // Redirect to another website
+        window.location.href = 'https://jasurcv.blogspot.com/'; // Replace with your target URL
+    }, []); // Empty dependency array means this effect runs once when the component mounts
+
     return (
         <div>
-            <h1>Awards</h1>
-            <div className="container">
-                <img src="/img/ielts2019.png" alt="IELTS 2019" />
-                <img src="/img/ielts2022.png" alt="IELTS 2022" />
-                {/* Add more award images and content */}
-            </div>
+
         </div>
     );
+
 }
 
 export default Awards;
