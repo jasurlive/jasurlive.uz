@@ -1117,7 +1117,7 @@ footer {
 
 
     /* .menu li:first-child {
-      display: block; /
+      display: block; ss /
     } */
 }
 
@@ -1125,5 +1125,5 @@ footer {
 @media screen and (max-height: 425px) and (min-aspect-ratio: 7/4) {
 
 
-    /* Reset styles for MOBILE DEVICE LANDSCAPE */
+    /* Reset style for MOBILE DEVICE LANDSCAPE */
 }
