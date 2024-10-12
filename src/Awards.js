@@ -1,4 +1,5 @@
 import React from 'react';
+import './css/awards.css';
 
 function Awards() {
     return (
@@ -9,11 +10,13 @@ function Awards() {
                 </a>
             </div>
 
-            <header>
+            <div class='header-awards'>
                 <h1>
-                    My Awards 🎓🏆 | Pop <button id="confettiButton" className="social-icon">🎉</button> up!
+                    My Awards 🎓🏆 | Pop <button className="social-iconz" id="confettiButton">
+                        <img src="/jasurlive/img/party.png" alt="Party" />
+                    </button> up!
                 </h1>
-            </header>
+            </div>
 
             <main>
                 <div className="gallery">
@@ -89,7 +92,7 @@ function Awards() {
                     </div>
 
                     <div className="award">
-                        <img src="/jasurlive/img/awards/ielts2019.png" alt="" className="" />
+                        <img src="/jasurlive/img/awards/ielts2019.png" alt="" className="award-image" />
                         <div className="award-description">
                             <h2>IELTS Academic | 2019 | First attempt</h2>
                             <p>
@@ -110,9 +113,9 @@ function Awards() {
                 <li><a href="https://jasurgraduate.blogspot.com/">&#x1F334; BLOGS</a></li>
             </ul>
 
-            <div id="modal" className="modal">
+            <div id="modal" className="modal-awards">
                 <span className="close">&times;</span>
-                <img className="modal-content" id="modal-img" />
+                <img className="modal-content" id="modal-img" alt="" />
                 <div id="caption"></div>
             </div>
 

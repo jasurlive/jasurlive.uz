@@ -1,12 +1,13 @@
 // src/Resume.js
 
 import React from 'react';
+import './css/resume.css';
 
 function Resume() {
     return (
         <div>
-            <header>
-                <div className="container">
+            <div class='header-resume'>
+                <div className="container-resume">
                     <h1>👨🏻‍🔬 Resume (CV) | Jasur Anorkulov | Electronics Engineer</h1>
                     <div className="contact-info">
                         <p>Phone: +998 99 *********** | Email: <a href="mailto:jasur@graduate.org">jasur@graduate.org</a></p>
@@ -14,14 +15,14 @@ function Resume() {
                         <p>Date of Birth: ************</p>
                     </div>
                 </div>
-            </header>
+            </div>
             <main>
-                <div className="container">
+                <div className="container-resume">
                     <section>
                         <h2>A Bit About Me</h2>
                         <div className="image-container">
                             <div className="image-flipper">
-                                <img id="imageSwitcher" alt="@jasurjacob" width="350" height="350" className="flipping-image" />
+                                <img id="imageSwitcher" alt="" width="350" height="350" className="flipping-image" />
                             </div>
                         </div>
                         <div className="men">
@@ -47,16 +48,16 @@ function Resume() {
                         </section>
                     </section>
 
-                    <div className="container">
+                    <div className="container-resume">
                         <section>
                             <h2>Business Card</h2>
                             <div className="card-container">
                                 <div className="business-card" id="business-card">
                                     <div className="front">
-                                        <img src="jasurlive/img/front.png" alt="Business Card Front" />
+                                        <img src="jasurlive/img/front.png" alt="" />
                                     </div>
                                     <div className="back">
-                                        <img src="jasurlive/img/back.png" alt="Business Card Back" />
+                                        <img src="jasurlive/img/back.png" alt="" />
                                     </div>
                                 </div>
                             </div>
