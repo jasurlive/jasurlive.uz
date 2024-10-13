@@ -1,12 +1,12 @@
 import React from 'react';
 
-function Portfolio() {
+function Blogs() {
     return (
         <div style={{ position: 'relative', width: '100%', height: '100vh' }}>
             {/* Iframe that loads the external website */}
             <iframe
-                src="https://jasurcv.blogspot.com/" // Replace with your target URL
-                title="Portfolio"
+                src="https://jasurgraduate.blogspot.com/" // Replace with your target URL
+                title="Blogs"
                 style={{
                     width: '100%',
                     height: '100%',
@@ -24,9 +24,6 @@ function Portfolio() {
                 top: 0,
                 left: 0,
                 zIndex: 1,
-                backgroundColor: 'rgba(255, 255, 255, 0.8)',
-                padding: '10px',
-                boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)'
             }}>
                 <ul className="menu" style={{ listStyle: 'none', margin: 0, padding: 0 }}>
                     <li><a href="/">&#127969; HOME</a></li>
@@ -40,4 +37,4 @@ function Portfolio() {
     );
 }
 
-export default Portfolio;
+export default Blogs;

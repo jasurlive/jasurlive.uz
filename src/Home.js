@@ -106,7 +106,7 @@ function Home() {
                         </div></div>
 
                     {/* Profile Images Section */}
-                    <div className="container">
+                    <div className="container-profile-pic">
                         <img src="/jasurlive/img/pic.png" alt="" className="profile-pic" />
                         <img src="/jasurlive/img/pic4.png" alt="" className="profile-pic" />
                         <img src="/jasurlive/img/pic2.png" alt="" className="profile-pic" />
@@ -116,7 +116,7 @@ function Home() {
                     </div>
 
                     {/* Skills Section */}
-                    <div className="container2">
+                    <div className="container-skills">
                         <h5>The software I use:</h5>
                         <div className="column">
                             <h4>CAD (Creo, AutoCAD, Blender)</h4>
@@ -153,17 +153,17 @@ function Home() {
                             </div>
                         </div>
 
-                        <div className="container7">
-                            <iframe src="https://jasurgraduate.github.io/itravel/" title="My Journeys"></iframe>
+                        <div className="container-travel-map">
+                            <iframe src="https://jasurgraduate.github.io/itravel/" title="My Travel Map"></iframe>
                         </div>
 
                         <h5>Battle of DJs 🎧🖤:</h5>
-                        <div className="container8">
+                        <div className="container-DJ">
                             <iframe src="https://jasurgraduate.github.io/DJ" title="DJ Jasur"></iframe>
                         </div>
 
                         {/* Web Projects Section */}
-                        <div className="container4">
+                        <div className="container-web-projects">
                             <h5>Web Projects:</h5>
                             <a href="https://jasurgraduate.github.io/DJ" className="btn">
                                 &#10148; <div className="iconz">🎧</div>Become a DJ 🆕

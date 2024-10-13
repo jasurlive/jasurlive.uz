@@ -45,11 +45,15 @@ button:hover {
 
 
 a {
-    color: wheat;
     text-decoration: none;
-    cursor: pointer;
+    color: #1c4677;
+    padding: 5px;
     transition: border-color 0.3s ease;
+}
 
+a:hover {
+    border-color: #1c467767;
+    cursor: pointer;
 }
 
 
@@ -75,12 +79,14 @@ footer {
     box-shadow: inset 0px 8px 10px -10px rgba(0, 0, 0, 0.8), 0px -8px 10px -10px rgba(0, 0, 0, 0.8);
 }
 
+.menu li {
+    flex: 1;
+}
 
 
 
 
-
-@keyframes cool-effect {
+@keyframes icon-party-effect {
     0% {
         transform: scale(1) rotate(0deg);
         background-color: #ced7e182;
@@ -117,7 +123,7 @@ footer {
 }
 
 .icon-party {
-    animation: cool-effect 5s infinite;
+    animation: icon-party-effect 5s infinite;
     /* Apply the animation every 3 seconds */
 }
 
@@ -131,39 +137,6 @@ footer {
     transition: ease-in-out 0.4s;
 }
 
-@keyframes coolz-effect {
-    0% {
-        transform: scale(1) rotate(0deg);
-        background-color: #ced7e100;
-        /* Starting background color */
-    }
-
-    25% {
-        transform: scale(1) rotate(0deg);
-        /* Scale up and rotate */
-        background-color: #fff49296;
-        /* Change background color */
-    }
-
-    50% {
-        transform: scale(1) rotate(0deg);
-        /* Scale back and rotate more */
-        background-color: #22ff9f92;
-        /* Change background color */
-    }
-
-    100% {
-        transform: scale(1) rotate(0deg);
-        /* Return to original state */
-        background-color: #ced7e100;
-        /* Return to original background color */
-    }
-}
-
-.iconz {
-    animation: coolz-effect 3s infinite;
-    /* Apply the animation every 3 seconds */
-}
 
 .containerSMS {
     display: flex;
@@ -202,6 +175,14 @@ footer {
     border-width: 10px;
     border-style: solid;
     border-color: transparent transparent #00a1d6 transparent;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    margin-top: 0.2rem;
+    margin-bottom: 0;
+    width: 100%;
 }
 
 
@@ -294,44 +275,29 @@ footer {
         width: 100%;
         display: flex;
         justify-content: space-around;
-        padding: 0rem 0;
-        /* Adjusted padding in rems */
         margin: 0;
         box-shadow: 0px -0.125rem 0.625rem rgba(0, 0, 0, 0.1);
-        /* Optional: Add shadow for depth */
         z-index: 1;
-        /* Ensure the menu is above other content */
     }
 
-    .menu li {
-        flex: 1;
-        /* Distribute available space equally among li items */
-    }
+
 
     .menu li a {
         text-decoration: none;
         width: 100%;
-        /* Full width of parent (.menu) */
         font-size: 0.6rem;
         padding: 1.8rem 0;
-        /* Adjusted padding in rems */
         margin: 0;
-        border-radius: 0.3rem;
-        transition: background-color 0.3s ease, border-color 0.3s ease, backdrop-filter 0.3s ease;
-        background: rgba(255, 255, 255, 0.501);
-        /* Semi-transparent background */
-        color: #1c4777;
+        transition: background-color 0.3s ease-in, border-color 0.3s ease-in;
+        background: rgba(255, 255, 255, 0.5);
         display: flex;
         justify-content: center;
         align-items: center;
         border: 1px solid rgba(92, 92, 92, 0.5);
-        /* 5% opacity */
-        border-bottom-left-radius: 0.1rem;
-        border-bottom-right-radius: 0.1rem;
+        border-top-left-radius: 0.2rem;
+        border-top-right-radius: 0.2rem;
         backdrop-filter: blur(0.8rem);
-        /* 10px blur effect in rems */
         -webkit-backdrop-filter: blur(0.8rem);
-        /* For Safari */
     }
 
     .menu li a:hover {
@@ -347,29 +313,23 @@ footer {
         border-radius: 15px;
     }
 
-    .container7 {
+    .container-travel-map {
         list-style-type: none;
         display: flex;
         width: 100%;
         height: 100vh;
     }
 
-    .container8 {
+    .container-DJ {
         list-style-type: none;
         display: flex;
         width: 100%;
         height: 100vh;
     }
 
-    .logo {
-        display: flex;
-        justify-content: center;
-        margin-top: 0.2rem;
-        margin-bottom: 0;
-        width: 100%;
-    }
 
-    .container {
+
+    .container-profile-pic {
         display: flex;
         place-items: center;
         justify-content: center;
@@ -385,7 +345,7 @@ footer {
     }
 
 
-    .container2 {
+    .container-skills {
         list-style-type: none;
         margin-top: 3rem;
         display: grid;
@@ -587,21 +547,7 @@ footer {
         font-size: 0.8rem;
         margin: 1.2rem;
 
-        a {
-            color: #1c4677;
-            cursor: pointer;
-            border: 1px solid transparent;
-            /* Initially set border to transparent */
-            padding: 3px 25px;
-            /* Add padding for space around text */
-            transition: border-color 0.3s ease;
-            /* Add transition for smooth animation */
-        }
 
-        a:hover {
-            border-color: #1c4677;
-            /* Change border color on hover */
-        }
     }
 
     .btn {
@@ -628,7 +574,7 @@ footer {
         /* Optional: Add a shadow for depth */
     }
 
-    .container4 {
+    .container-web-projects {
         margin-top: -8rem;
         margin-bottom: 4rem;
     }
@@ -719,31 +665,22 @@ footer {
     .menu li {
         margin: 0;
         font-weight: bold;
-        flex-grow: 1;
     }
 
     .menu li a {
         text-decoration: none;
-        font-size: 1rem;
-        /* 16px */
-        padding: 1.7rem 0;
-        /* 25px */
-        border-radius: 0.5rem;
-        transition: background-color 0.3s ease, border-color 0.3s ease, backdrop-filter 0.3s ease;
-        background: rgba(255, 255, 255, 0.575);
-        /* Semi-transparent background */
+        font-size: 16px;
+        padding: 28px 0;
+        transition: background-color 0.3s ease-in, border-color 0.3s ease;
+        background: rgba(255, 255, 255, 0.5);
         color: #1c4777;
         display: flex;
         justify-content: center;
         align-items: center;
         border: 1px solid rgba(92, 92, 92, 0.5);
-        /* 5% opacity */
         border-bottom-left-radius: 0.1rem;
         border-bottom-right-radius: 0.1rem;
         backdrop-filter: blur(0.8rem);
-        /* 10px blur effect in rems */
-        -webkit-backdrop-filter: blur(0.8rem);
-        /* For Safari */
     }
 
     .menu li a:hover {
@@ -751,6 +688,7 @@ footer {
         color: white;
         transform: scale(1.0);
     }
+
 
     iframe {
         width: 100%;
@@ -761,7 +699,7 @@ footer {
     /* Styles for the social media icons */
     .social-icons {
         display: flex;
-        margin: 5px;
+        margin-left: 15px;
     }
 
     .social-icon {
@@ -777,11 +715,10 @@ footer {
     }
 
     .social-icon img:hover {
-        transform: scale(1.3);
+        transform: scale(1.2);
     }
 
-
-    .container7 {
+    .container-travel-map {
         list-style-type: none;
         display: flex;
         margin-top: 30px;
@@ -789,7 +726,7 @@ footer {
         height: 105vh;
     }
 
-    .container8 {
+    .container-DJ {
         list-style-type: none;
         display: flex;
         border-radius: 15px;
@@ -801,7 +738,7 @@ footer {
 
 
 
-    .container2 {
+    .container-skills {
         list-style-type: none;
         justify-content: center;
         display: grid;
@@ -814,13 +751,6 @@ footer {
         caret-color: rgb(181, 0, 160);
     }
 
-    .logo {
-        display: flex;
-        justify-content: center;
-        margin-top: 0.2rem;
-        margin-bottom: 0;
-        max-width: 100%;
-    }
 
     @keyframes glow {
         from {
@@ -1078,23 +1008,8 @@ footer {
         font-size: 2rem;
         margin: 1.2rem;
 
-        a {
-            color: #1c4677;
-            cursor: pointer;
-            border: 1px solid transparent;
-            /* Initially set border to transparent */
-            padding: 3rem 3rem;
-            /* Add padding for space around text */
-            transition: border-color 0.3s ease;
-            /* Add transition for smooth animation */
-        }
 
-        a:hover {
-            border-color: #1c4677;
-            /* Change border color on hover */
-        }
-
-        .container4 {
+        .container-web-projects {
             display: unset;
             list-style-type: none;
             margin-top: 0rem;
