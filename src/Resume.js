@@ -76,13 +76,7 @@ function Resume() {
                 </div>
             </main>
 
-            <ul className="menu">
-                <li><a href="/">&#127969; HOME</a></li>
-                <li><a href="/resume">&#128373; RESUME</a></li>
-                <li><a href="https://jasurcv.blogspot.com/">&#128092; PORTFOLIO</a></li>
-                <li><a href="/awards">&#127891; AWARDS</a></li>
-                <li><a href="https://jasurgraduate.blogspot.com/">&#x1F334; BLOGS</a></li>
-            </ul>
+
 
 
             <div id="password-modal" style={{ display: 'none' }}>

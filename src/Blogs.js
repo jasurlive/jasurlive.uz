@@ -25,13 +25,7 @@ function Blogs() {
                 left: 0,
                 zIndex: 1,
             }}>
-                <ul className="menu" style={{ listStyle: 'none', margin: 0, padding: 0 }}>
-                    <li><a href="/">&#127969; HOME</a></li>
-                    <li><a href="/resume">&#128373; RESUME</a></li>
-                    <li><a href="https://jasurcv.blogspot.com/">&#128092; PORTFOLIO</a></li>
-                    <li><a href="/awards">&#127891; AWARDS</a></li>
-                    <li><a href="https://jasurgraduate.blogspot.com/">&#x1F334; BLOGS</a></li>
-                </ul>
+
             </div>
         </div>
     );

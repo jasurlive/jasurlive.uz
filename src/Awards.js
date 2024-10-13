@@ -165,14 +165,7 @@ function Awards() {
                 </div>
             )}
 
-            {/* Hide the menu when modal is open */}
-            <ul className={`menu ${modalOpen ? 'hidden-awards' : ''}`}>
-                <li><a href="/">&#127969; HOME</a></li>
-                <li><a href="/resume">&#128373; RESUME</a></li>
-                <li><a href="/portfolio">&#128092; PORTFOLIO</a></li>
-                <li><a href="/awards">&#127891; AWARDS</a></li>
-                <li><a href="https://jasurgraduate.blogspot.com/">&#x1F334; BLOGS</a></li>
-            </ul>
+
         </div>
     );
 }
