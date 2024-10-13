@@ -19,7 +19,7 @@ const HomeHtml = ({ handleConfettiClick }) => {
                     <a href="https://t.me/jasurjacob_bot" className="social-icon">
                         <img src="/jasurlive/img/tg.png" alt="" />
                     </a>
-                    <button className="social-iconz" id="confettiButton" onClick={handleConfettiClick}>
+                    <button className="icon-party" id="confettiButton" onClick={handleConfettiClick}>
                         <img src="/jasurlive/img/party.png" alt="Party" />
                     </button>
                     <a href="https://wa.me/+447775180677" className="social-icon">

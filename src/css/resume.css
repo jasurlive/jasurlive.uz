@@ -261,7 +261,7 @@ main section ul li {
 }
 
 main section li:hover {
-    cursor: alias;
+    cursor: text;
     transition: ease-in-out 0.5s;
     transform: scale(1);
 }

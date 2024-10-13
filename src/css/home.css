@@ -116,17 +116,17 @@ footer {
     }
 }
 
-.social-iconz {
+.icon-party {
     animation: cool-effect 5s infinite;
     /* Apply the animation every 3 seconds */
 }
 
-.social-iconz:active {
+.icon-party:active {
     transform: scale(0.7);
 }
 
 
-.social-iconz:hover {
+.icon-party:hover {
     transform: scale(1.5);
     transition: ease-in-out 0.4s;
 }

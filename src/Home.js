@@ -86,7 +86,7 @@ function Home() {
                         <a href="https://t.me/jasurjacob_bot" className="social-icon">
                             <img src="/jasurlive/img/tg.png" alt="" />
                         </a>
-                        <button className="social-iconz" id="confettiButton" onClick={handleConfettiClick}>
+                        <button className="icon-party" id="confettiButton" onClick={handleConfettiClick}>
                             <img src="/jasurlive/img/party.png" alt="Party" />
                         </button>
                         <a href="https://wa.me/+447775180677" className="social-icon">
@@ -190,10 +190,10 @@ function Home() {
 
             {/* Navigation Menu */}
             <ul className="menu">
-                <li><a href="/jasurlive">&#127969; HOME</a></li>
-                <li><a href="jasurlive/resume">&#128373; RESUME</a></li>
+                <li><a href="/">&#127969; HOME</a></li>
+                <li><a href="/resume">&#128373; RESUME</a></li>
                 <li><a href="https://jasurcv.blogspot.com/">&#128092; PORTFOLIO</a></li>
-                <li><a href="jasurlive/awards">&#127891; AWARDS</a></li>
+                <li><a href="/awards">&#127891; AWARDS</a></li>
                 <li><a href="https://jasurgraduate.blogspot.com/">&#x1F334; BLOGS</a></li>
             </ul>
         </div>

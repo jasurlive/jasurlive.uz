@@ -134,7 +134,7 @@ function Awards() {
             <div className='header-awards'>
                 <h1>
                     My Awards 🎓🏆 | Pop
-                    <button className="social-iconz" id="confettiButton" onClick={handleConfettiClick}>
+                    <button className="icon-party" id="confettiButton" onClick={handleConfettiClick}>
                         <img src="/jasurlive/img/party.png" alt="Party" />
                     </button> up!
                 </h1>
