@@ -100,7 +100,7 @@ function Home() {
                 </header>
 
                 <main>
-                    <div className="container3">
+                    <div className="containerSMS">
                         <div className="SMS">
                             Hello. This is my new replica website
                         </div></div>
