@@ -165,6 +165,39 @@ footer {
     /* Apply the animation every 3 seconds */
 }
 
+.SMS {
+    background-color: #00a1d6;
+    /* Messenger blue */
+    color: #ffffff;
+    /* White text */
+    padding: 15px 20px;
+    /* Padding for spacing */
+    border-radius: 20px;
+    /* Curved corners */
+    max-width: 300px;
+    /* Maximum width of the message bubble */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Subtle shadow for depth */
+    position: relative;
+    /* Position for the arrow */
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+
+}
+
+/* Optional: Adding an arrow to the message bubble */
+.SMS::after {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    /* Position it above the bubble */
+    left: 200px;
+    /* Adjust left position */
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent #00a1d6 transparent;
+}
+
+
 /* || SMALL SCREEN --------------------------------------------------------------------------MOBILE*/
 @media screen and (min-width: 320px) {
 
@@ -354,13 +387,6 @@ footer {
         margin-bottom: 5rem;
     }
 
-    .container3 {
-        display: grid;
-        place-items: center;
-        height: 15vh;
-        padding: 1rem 2rem 1rem 2rem;
-        margin-bottom: 1rem;
-    }
 
     @keyframes glow {
         from {
@@ -767,9 +793,10 @@ footer {
     }
 
     .container3 {
-        display: block;
-        place-items: center;
-        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem;
     }
 
     .container2 {
@@ -959,46 +986,6 @@ footer {
     }
 
 
-    #typing-text {
-        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    }
-
-    .hello {
-        font-size: 1.5rem;
-        font-weight: bold;
-        color: #1e293bfa;
-    }
-
-    .welcome {
-        font-size: 1.5rem;
-        color: #1e293bfa;
-    }
-
-    .projects {
-        font-size: 1.5rem;
-        color: #1e293bfa;
-    }
-
-    .cursor {
-        border-left: 2px solid rgb(61, 203, 213);
-        animation: blink 0.7s step-end infinite;
-        width: 0.1em;
-        height: 1.2em;
-        margin-left: 0.1rem;
-        background-color: rgb(255, 4, 226);
-    }
-
-    @keyframes blink {
-
-        from,
-        to {
-            border-color: transparent
-        }
-
-        50% {
-            border-color: rgb(30, 88, 196)
-        }
-    }
 
 
 

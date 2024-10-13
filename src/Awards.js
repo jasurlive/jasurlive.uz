@@ -1,18 +1,140 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './css/awards.css';
+import confetti from 'canvas-confetti'; // Import the canvas-confetti library
 
 function Awards() {
+    // State to manage modal visibility and content
+    const [modalOpen, setModalOpen] = useState(false);
+    const [modalContent, setModalContent] = useState({ imgSrc: '', description: '' });
+
+    // Function to open the modal with specific content
+    const openModal = (imgSrc, description) => {
+        setModalContent({ imgSrc, description });
+        setModalOpen(true);
+    };
+
+    // Function to close the modal
+    const closeModal = () => {
+        setModalOpen(false);
+    };
+
+    // Confetti options and trigger function
+    let clickQueue = [];   // Queue to hold click events
+    let isConfettiRunning = false; // Flag to check if confetti is currently running
+
+    const handleConfettiClick = () => {
+        // Add a new click event to the queue
+        clickQueue.push(true);
+
+        // If confetti is already running, don't start a new cycle
+        if (!isConfettiRunning) {
+            triggerConfettiQueue();  // Process the queue
+        }
+    };
+
+    const triggerConfettiQueue = () => {
+        if (clickQueue.length > 0) {
+            // Set confetti running flag
+            isConfettiRunning = true;
+
+            // Remove the first item from the queue (simulate a click being handled)
+            clickQueue.shift();
+
+            const confettiCount = 10; // Increase confetti particles for more visual effect
+            const colors = [
+                '#bb0000', '#ffffff', '#00bb00', '#0000bb', '#ffdd00',
+                '#ff00ff', '#00ffff', '#ff6600', '#6600ff', '#33cc33'
+            ]; // Added more custom colors
+
+            // Use multiple bursts to cover the entire top width
+            const defaults = {
+                origin: { y: -3 },      // Start at the top of the page
+                gravity: 1.1,          // Slightly lower gravity for slower fall
+                spread: 200,            // Slightly wider spread for better coverage
+                scalar: 1.2,           // Increase scaling factor for larger particles
+                colors: colors,        // Use extended colors array
+                shapes: ['square', 'circle', 'triangle', 'star', 'polygon'] // New shapes for the confetti particles
+            };
+
+            // Emit particles across the top width of the page
+            for (let i = 0; i < confettiCount; i++) {
+                confetti({
+                    ...defaults,
+                    origin: {
+                        x: Math.random(),      // Randomize horizontal position (across the width of the screen)
+                        y: 0                   // Start from the top (y = 0)
+                    },          // Emit particles one by one
+                    ticks: 1000,                 // Increase particle lifespan to make them visible longer
+                    scalar: Math.random() * 1.5 + 0.5 // Randomize size between 0.5x to 2x for variety
+                });
+            }
+
+            // Set a timeout for 1 second before processing the next item in the queue
+            setTimeout(() => {
+                triggerConfettiQueue(); // Trigger the next confetti burst in queue
+            }, 1000);
+        } else {
+            // Reset the flag once the queue is empty
+            isConfettiRunning = false;
+        }
+    };
+
+
+
+
+
+
+    // Award data
+    const awards = [
+        {
+            imgSrc: "/jasurlive/img/awards/uzy.png",
+            title: "Ownership Certificate",
+            description: "Certificate for my UzY-Loco Application. Issued by the Ministry of Justice of Uzbekistan. \nFor full details, scan the QR Code in the bottom right corner. \nAugust 2024"
+        },
+        {
+            imgSrc: "/jasurlive/img/awards/uol.png",
+            title: "Master of Science (Engineering)",
+            description: "Award Certificate from the University of Liverpool. Passed with Distinction. December 2023."
+        },
+        {
+            imgSrc: "/jasurlive/img/awards/ielts2024.png",
+            title: "IELTS Academic | 2024",
+            description: "International English Language Testing System (IELTS) Certificate. Overall 7.5/9.0 \nJune 2024"
+        },
+        {
+            imgSrc: "/jasurlive/img/awards/transcriptuol.png",
+            title: "Transcript of Studies",
+            description: "The Academic Transcript provides studied modules, marks, and credits during the full year of study at UoL. Overall 72.5/100 \nNovember 2023."
+        },
+        {
+            imgSrc: "/jasurlive/img/awards/tuit.png",
+            title: "Bachelor's diploma",
+            description: "Award Certificate from the Tashkent Institute of Railway Engineering (From 2021 Tashkent State Transport University). With a specialty in Electrical Engineering, Electromechanics, and Electrotechnologies. \nOverall mark 82/100. \nJune 2019."
+        },
+        {
+            imgSrc: "/jasurlive/img/awards/ielts2022.png",
+            title: "IELTS Academic | 2022",
+            description: "International English Language Testing System (IELTS) Certificate. Overall 7.0/9.0 \nDecember 2021"
+        },
+        {
+            imgSrc: "/jasurlive/img/awards/ielts2019.png",
+            title: "IELTS Academic | 2019 | First attempt",
+            description: "International English Language Testing System (IELTS) Certificate. Overall 6.5/9.0 \nMay 2019"
+        }
+    ];
+
     return (
         <div>
             <div className="logo">
                 <a href="https://jasurlive.uz">
-                    <img src="/jasurlive/img/logo.png" alt="" width="260" height="50" />
+                    <img src="/jasurlive/img/logo.png" alt="Logo" width="260" height="50" />
                 </a>
             </div>
 
-            <div class='header-awards'>
+            <div className='header-awards'>
                 <h1>
-                    My Awards 🎓🏆 | Pop <button className="social-iconz" id="confettiButton">
+                    My Awards 🎓🏆 | Pop
+                    <button className="social-iconz" id="confettiButton" onClick={handleConfettiClick}>
                         <img src="/jasurlive/img/party.png" alt="Party" />
                     </button> up!
                 </h1>
@@ -20,108 +142,37 @@ function Awards() {
 
             <main>
                 <div className="gallery">
-                    <div className="award">
-                        <img src="/jasurlive/img/awards/uzy.png" alt="" className="award-image" />
-                        <div className="award-description">
-                            <h2>Ownership Certificate</h2>
-                            <p>
-                                Certificate for my UzY-Loco Application. Issued by the Ministry of Justice of Uzbekistan.
-                                For full details, scan the QR Code in the bottom right corner.
-                                <br />
-                                August 2024
-                            </p>
+                    {/* Generate award items dynamically */}
+                    {awards.map((award, index) => (
+                        <div className="award" key={index} onClick={() => openModal(award.imgSrc, award.description)}>
+                            <img src={award.imgSrc} alt={award.title} className="award-image" />
+                            <div className="award-description">
+                                <h2>{award.title}</h2>
+                                <p>{award.description.split('\n').map((line, i) => (
+                                    <span key={i}>{line}<br /></span>
+                                ))}</p>
+                            </div>
                         </div>
-                    </div>
-
-                    <div className="award">
-                        <img src="/jasurlive/img/awards/uol.png" alt="" className="award-image" />
-                        <div className="award-description">
-                            <h2>Master of Science (Engineering)</h2>
-                            <p>Award Certificate from the University of Liverpool. Passed with Distinction. December 2023.</p>
-                        </div>
-                    </div>
-
-                    <div className="award">
-                        <img src="/jasurlive/img/awards/ielts2024.png" alt="" className="award-image" />
-                        <div className="award-description">
-                            <h2>IELTS Academic | 2024</h2>
-                            <p>
-                                International English Language Testing System (IELTS) Certificate. Overall 7.5/9.0
-                                <br />
-                                June 2024
-                            </p>
-                        </div>
-                    </div>
-
-                    <div className="award">
-                        <img src="/jasurlive/img/awards/transcriptuol.png" alt="" className="award-image" />
-                        <div className="award-description">
-                            <h2>Transcript of Studies</h2>
-                            <p>
-                                The Academic Transcript provides studied modules, marks, and credits during the full year of study at UoL. Overall 72.5/100
-                                <br />
-                                November 2023.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div className="award">
-                        <img src="/jasurlive/img/awards/tuit.png" alt="" className="award-image" />
-                        <div className="award-description">
-                            <h2>Bachelor's diploma</h2>
-                            <p>
-                                Award Certificate from the Tashkent Institute of Railway Engineering (From 2021 Tashkent State Transport University). With a specialty in Electrical Engineering, Electromechanics, and Electrotechnologies.
-                                <br />
-                                Overall mark 82/100.
-                                <br />
-                                June 2019.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div className="award">
-                        <img src="/jasurlive/img/awards/ielts2022.png" alt="" className="award-image" />
-                        <div className="award-description">
-                            <h2>IELTS Academic | 2022</h2>
-                            <p>
-                                International English Language Testing System (IELTS) Certificate. Overall 7.0/9.0
-                                <br />
-                                December 2021
-                            </p>
-                        </div>
-                    </div>
-
-                    <div className="award">
-                        <img src="/jasurlive/img/awards/ielts2019.png" alt="" className="award-image" />
-                        <div className="award-description">
-                            <h2>IELTS Academic | 2019 | First attempt</h2>
-                            <p>
-                                International English Language Testing System (IELTS) Certificate. Overall 6.5/9.0
-                                <br />
-                                May 2019
-                            </p>
-                        </div>
-                    </div>
+                    ))}
                 </div>
             </main>
 
-            <ul className="menu">
+            {/* Modal for displaying award details */}
+            {modalOpen && (
+                <div id="modal-awards" className="modal-awards" onClick={closeModal}>
+                    <span className="close-awards" onClick={closeModal}>&times;</span>
+                    <img className="modal-content-awards" id="modal-img" src={modalContent.imgSrc} alt="Award" />
+                </div>
+            )}
+
+            {/* Hide the menu when modal is open */}
+            <ul className={`menu ${modalOpen ? 'hidden-awards' : ''}`}>
                 <li><a href="/">&#127969; HOME</a></li>
                 <li><a href="/resume">&#128373; RESUME</a></li>
                 <li><a href="/portfolio">&#128092; PORTFOLIO</a></li>
                 <li><a href="/awards">&#127891; AWARDS</a></li>
                 <li><a href="https://jasurgraduate.blogspot.com/">&#x1F334; BLOGS</a></li>
             </ul>
-
-            <div id="modal" className="modal-awards">
-                <span className="close">&times;</span>
-                <img className="modal-content" id="modal-img" alt="" />
-                <div id="caption"></div>
-            </div>
-
-            <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
-            <script src="js/party.js"></script>
-            <script src="js/main.js"></script>
         </div>
     );
 }

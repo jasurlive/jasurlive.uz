@@ -84,7 +84,6 @@ function Resume() {
                 <li><a href="https://jasurgraduate.blogspot.com/">&#x1F334; BLOGS</a></li>
             </ul>
 
-            <script src="scripts.js"></script>
 
             <div id="password-modal" style={{ display: 'none' }}>
                 <div className="modal-content">
@@ -97,6 +96,7 @@ function Resume() {
             </div>
         </div>
     );
+
 }
 
 export default Resume;

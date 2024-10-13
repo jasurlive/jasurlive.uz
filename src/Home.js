@@ -1,7 +1,73 @@
 import React from 'react';
-import './css/home.css';  // Your main CSS
+import './css/home.css';
+import confetti from 'canvas-confetti';
 
 function Home() {
+
+
+
+    // Confetti options and trigger function
+    let clickQueue = [];   // Queue to hold click events
+    let isConfettiRunning = false; // Flag to check if confetti is currently running
+
+    const handleConfettiClick = () => {
+        // Add a new click event to the queue
+        clickQueue.push(true);
+
+        // If confetti is already running, don't start a new cycle
+        if (!isConfettiRunning) {
+            triggerConfettiQueue();  // Process the queue
+        }
+    };
+
+    const triggerConfettiQueue = () => {
+        if (clickQueue.length > 0) {
+            // Set confetti running flag
+            isConfettiRunning = true;
+
+            // Remove the first item from the queue (simulate a click being handled)
+            clickQueue.shift();
+
+            const confettiCount = 10; // Increase confetti particles for more visual effect
+            const colors = [
+                '#bb0000', '#ffffff', '#00bb00', '#0000bb', '#ffdd00',
+                '#ff00ff', '#00ffff', '#ff6600', '#6600ff', '#33cc33'
+            ]; // Added more custom colors
+
+            // Use multiple bursts to cover the entire top width
+            const defaults = {
+                origin: { y: -3 },      // Start at the top of the page
+                gravity: 1.1,          // Slightly lower gravity for slower fall
+                spread: 200,            // Slightly wider spread for better coverage
+                scalar: 1.2,           // Increase scaling factor for larger particles
+                colors: colors,        // Use extended colors array
+                shapes: ['square', 'circle', 'triangle', 'star', 'polygon'] // New shapes for the confetti particles
+            };
+
+            // Emit particles across the top width of the page
+            for (let i = 0; i < confettiCount; i++) {
+                confetti({
+                    ...defaults,
+                    origin: {
+                        x: Math.random(),      // Randomize horizontal position (across the width of the screen)
+                        y: 0                   // Start from the top (y = 0)
+                    },          // Emit particles one by one
+                    ticks: 1000,                 // Increase particle lifespan to make them visible longer
+                    scalar: Math.random() * 1.5 + 0.5 // Randomize size between 0.5x to 2x for variety
+                });
+            }
+
+            // Set a timeout for 1 second before processing the next item in the queue
+            setTimeout(() => {
+                triggerConfettiQueue(); // Trigger the next confetti burst in queue
+            }, 1000);
+        } else {
+            // Reset the flag once the queue is empty
+            isConfettiRunning = false;
+        }
+    };
+
+
     return (
         <div>
             <div>
@@ -20,7 +86,7 @@ function Home() {
                         <a href="https://t.me/jasurjacob_bot" className="social-icon">
                             <img src="/jasurlive/img/tg.png" alt="" />
                         </a>
-                        <button className="social-iconz" id="confettiButton">
+                        <button className="social-iconz" id="confettiButton" onClick={handleConfettiClick}>
                             <img src="/jasurlive/img/party.png" alt="Party" />
                         </button>
                         <a href="https://wa.me/+447775180677" className="social-icon">
@@ -35,8 +101,9 @@ function Home() {
 
                 <main>
                     <div className="container3">
-                        <div id="typing-text"></div>
-                    </div>
+                        <div className="SMS">
+                            Hello. This is my new replica website
+                        </div></div>
 
                     {/* Profile Images Section */}
                     <div className="container">
