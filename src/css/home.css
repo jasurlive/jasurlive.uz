@@ -161,7 +161,8 @@ footer {
     position: relative;
     /* Position for the arrow */
     font-family: 'Comic Sans MS', cursive, sans-serif;
-
+    width: 300px;
+    /* Fixed width to prevent resizing */
 }
 
 /* Optional: Adding an arrow to the message bubble */
@@ -170,12 +171,17 @@ footer {
     position: absolute;
     bottom: 100%;
     /* Position it above the bubble */
-    left: 200px;
-    /* Adjust left position */
+    left: calc(50% - 10px);
+    /* Center the arrow */
+    transform: translateX(-50%);
+    /* Centering adjustment */
     border-width: 10px;
+    /* Size of the arrow */
     border-style: solid;
     border-color: transparent transparent #00a1d6 transparent;
+    /* Arrow color */
 }
+
 
 .logo {
     display: flex;
@@ -185,6 +191,31 @@ footer {
     width: 100%;
 }
 
+.blinking-cursor {
+    display: inline-block;
+    width: 10px;
+    /* Width of the cursor */
+    height: 20px;
+    /* Height of the cursor */
+    background-color: rgb(0, 162, 255);
+    /* Color of the cursor */
+    animation: blink 1s step-end infinite;
+    /* Blinking animation */
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        background-color: transparent;
+        /* Invisible at the start and end */
+    }
+
+    50% {
+        background-color: rgb(255, 0, 204);
+        /* Visible in the middle */
+    }
+}
 
 /* || SMALL SCREEN --------------------------------------------------------------------------MOBILE*/
 @media screen and (min-width: 320px) {
@@ -469,32 +500,8 @@ footer {
         color: #1e293bfa;
     }
 
-    .cursor {
-        border-left: 2px solid rgb(61, 203, 213);
-        animation: blink 0.7s step-end infinite;
-        width: 0.1em;
-        height: 1.2em;
-        margin-left: 0.1rem;
-        background-color: rgb(255, 4, 226);
-    }
-
-    @keyframes blink {
-
-        from,
-        to {
-            border-color: transparent
-        }
-
-        50% {
-            border-color: rgb(30, 88, 196)
-        }
-    }
 
 
-
-    .typing.text {
-        caret-color: rgb(181, 0, 160);
-    }
 
     h3 {
         font-size: 2rem;

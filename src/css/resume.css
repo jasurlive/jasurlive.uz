@@ -153,7 +153,7 @@ a {
 }
 
 a:hover {
-    border-color: wheat;
+    border-color: rgba(245, 222, 179, 0.212);
 }
 
 .container-resume {
@@ -192,6 +192,7 @@ main section ul li {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
     line-height: 1.2;
     font-size: 20px;
+    cursor: text;
 }
 
 .card-container {

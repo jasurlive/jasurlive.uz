@@ -1,6 +1,8 @@
 import React from 'react';
 import './css/home.css';
 import confetti from 'canvas-confetti';
+// eslint-disable-next-line
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 
 function Home() {
 
@@ -72,9 +74,8 @@ function Home() {
         <div>
             <div>
                 <div className="logo">
-                    <a href="https://jasurlive.uz">
-                        <img src="/jasurlive/img/logo.png" alt="@jasurjacob" width="260" height="50" />
-                    </a>
+                    <Link to="/"><img src="/jasurlive/img/logo.png" alt="@jasurjacob" width="260" height="50" />
+                    </Link>
                 </div>
 
                 <header>

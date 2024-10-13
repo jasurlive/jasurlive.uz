@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import './css/awards.css';
 import confetti from 'canvas-confetti'; // Import the canvas-confetti library
+// eslint-disable-next-line
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 
 function Awards() {
     // State to manage modal visibility and content
@@ -126,9 +128,8 @@ function Awards() {
     return (
         <div>
             <div className="logo">
-                <a href="https://jasurlive.uz">
-                    <img src="/jasurlive/img/logo.png" alt="Logo" width="260" height="50" />
-                </a>
+                <Link to="/"><img src="/jasurlive/img/logo.png" alt="@jasurjacob" width="260" height="50" />
+                </Link>
             </div>
 
             <div className='header-awards'>

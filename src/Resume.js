@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './css/resume.css';
+// eslint-disable-next-line
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 
 function Resume() {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -40,6 +42,10 @@ function Resume() {
 
     return (
         <div>
+            <div className="logo">
+                <Link to="/"><img src="/jasurlive/img/logo.png" alt="@jasurjacob" width="260" height="50" />
+                </Link>
+            </div>
             <div className="header-resume">
                 <div className="container-resume">
                     <h1>👨🏻‍🔬 Resume (CV) | Jasur Anorkulov | Electronics Engineer</h1>
