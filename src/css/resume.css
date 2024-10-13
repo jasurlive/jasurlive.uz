@@ -8,7 +8,6 @@
 body {
     background: linear-gradient(185deg, #eef8f4, #f1e9e0);
     color: #333;
-
 }
 
 .image-container {
@@ -16,10 +15,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* Perspective for the 3D effect */
 }
-
-
 
 .flipping-image {
     width: 100%;
@@ -27,77 +23,38 @@ body {
     backface-visibility: hidden;
     border: white solid 2px;
     border-radius: 10px;
-    /* Hide the back face when flipped */
 }
 
 .flipping-image:hover {
     cursor: pointer;
 }
 
-/* Flipped state */
 .image-flipper.flipped {
     transform: rotateY(180deg);
-    /* Rotate the flipper */
 }
-
-
-
 
 /* Modal Styles */
 #password-modal {
     display: none;
-    /* Hidden by default */
     position: fixed;
-    /* Stay in place */
     z-index: 1;
-    /* Sit on top */
     left: 0;
     top: 0;
     width: 100%;
-    /* Full width */
     height: 100%;
-    /* Full height */
     overflow: auto;
-    /* Enable scroll if needed */
     background-color: rgba(0, 0, 0, 0.4);
-    /* Black with opacity */
-}
-
-/* Modal fade-in animation */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
 }
 
 .modal-content {
     background-color: #fefefe;
     margin: 15% auto;
-    /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
-    /* Could be more or less, depending on screen size */
     max-width: 500px;
     border-radius: 10px;
     text-align: center;
-}
-
-/* Modal scale-in animation */
-@keyframes scaleIn {
-    from {
-        transform: scale(0.8);
-        opacity: 0;
-    }
-
-    to {
-        transform: scale(1);
-        opacity: 1;
-    }
 }
 
 .close {
@@ -113,19 +70,15 @@ body {
 .close:focus {
     color: #333;
     transform: scale(1.2);
-    /* Slightly enlarge on hover */
-    text-decoration: none;
 }
 
 #password-input {
     width: 100%;
-    /* Full width */
     padding: 12px;
     margin: 12px 0;
     border: 2px solid #ccc;
     border-radius: 8px;
     box-sizing: border-box;
-    /* Include padding and border in the element's total width and height */
     font-size: 16px;
 }
 
@@ -143,29 +96,22 @@ body {
 #submit-password:hover {
     background-color: #4566a0;
     transform: translateY(-4px);
-    /* More noticeable lift on hover */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    /* Add shadow on hover */
 }
 
 #submit-password:active {
     transform: scale(0.9);
-    /* Reset lift on click */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    /* Reduce shadow on click */
 }
 
-/* Error message styling */
 #error-message {
     margin-top: 15px;
     color: #d9534f;
     font-size: 16px;
     opacity: 0;
     animation: fadeInMessage 0.3s ease-out forwards;
-    /* Fade-in animation for error message */
 }
 
-/* Error message fade-in animation */
 @keyframes fadeInMessage {
     from {
         opacity: 0;
@@ -175,9 +121,6 @@ body {
         opacity: 1;
     }
 }
-
-
-
 
 .header-resume {
     background-color: #1e293b;
@@ -200,21 +143,24 @@ p {
     font-size: 18px;
 }
 
+a {
+    color: wheat;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1px solid transparent;
+    padding: 5px;
+    transition: border-color 0.3s ease;
+}
 
-
-
+a:hover {
+    border-color: wheat;
+}
 
 .container-resume {
     width: 80%;
     margin: auto;
     overflow: hidden;
     line-height: 1.6;
-}
-
-.logo {
-    display: flex;
-    justify-content: center;
-    width: 100%;
 }
 
 main {
@@ -246,71 +192,7 @@ main section ul li {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
     line-height: 1.2;
     font-size: 20px;
-
 }
-
-main section li:hover {
-    cursor: text;
-    transition: ease-in-out 0.5s;
-    transform: scale(1);
-}
-
-.download-section {
-    text-align: center;
-    margin-bottom: 3rem;
-}
-
-.download-btn {
-    display: inline-block;
-    padding: 15px 40px;
-    font-size: 18px;
-    width: 250px;
-    background-color: #1e293b;
-    color: #ffffff;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background 0.3s;
-
-}
-
-.download-btn:hover {
-    background: #ffffff;
-    color: #1e293b;
-    border-color: #333;
-    animation: ease-in-out;
-
-}
-
-.download-btn2 {
-    display: inline-block;
-    padding: 15px 40px;
-    font-size: 18px;
-    width: 250px;
-    background-color: #1e293b;
-    color: #ffffff;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background 0.3s;
-
-}
-
-.download-btn2:hover {
-    background: #ffffff;
-    color: #1e293b;
-    border-color: #333;
-    animation: ease-in-out;
-
-}
-
-footer {
-    background-color: #1e293b;
-    color: #fff;
-    text-align: center;
-    padding: 1.5rem 0;
-}
-
-/* Updated Main container styling */
-
 
 .card-container {
     display: flex;
@@ -341,24 +223,18 @@ footer {
     transform: rotateY(180deg);
 }
 
-/* Flip the card when the 'flipped' class is added */
 .flipped {
     transform: rotateY(180deg);
 }
 
 .business-card .front {
     filter: blur(2.5px);
-    /* Add subtle blur to the front */
     transition: filter 0.6s ease-in-out;
-    /* Smooth transition for the blur */
 }
 
 .flipped .front {
     filter: none;
-    /* Remove blur when the card is flipped */
 }
-
-
 
 @media (max-width: 768px) {
     .container-resume {
@@ -366,15 +242,7 @@ footer {
     }
 }
 
-/* SMALL SCREEN --------------------------------------------------------------------------------- MOBILE */
 @media screen and (min-width: 320px) {
-
-    .header-resume {
-        background-color: #1e293b;
-        color: #fff;
-        padding: 10px;
-        line-height: 1.6;
-    }
 
     .header-resume h1,
     .header-resume h2 {
@@ -385,13 +253,9 @@ footer {
     .image-flipper {
         position: relative;
         width: 300px;
-        /* Set the width of the image */
         height: 300px;
-        /* Set the height of the image */
         transition: transform 0.6s ease-in-out;
-        /* Smooth transition */
         transform-style: preserve-3d;
-        /* Preserve the 3D effect */
     }
 
     .business-card {
@@ -401,68 +265,21 @@ footer {
         transition: transform 0.6s;
         transform-style: preserve-3d;
         cursor: pointer;
+        margin-bottom: 7rem;
     }
 
-
-
-    .contact-info {
-        text-align: center;
-        margin-top: 10px;
-    }
-
-
-
-    .myimg {
-        margin: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-    }
-
-    .myimg img {
-        display: block;
-        border: 5px solid #ffffff;
-        /* Adjust color as needed */
-        width: 90%;
-        height: auto;
-        margin: 0;
-        padding: 0;
-    }
-
-    .myimg img:hover {
-        transition: ease-in-out 0.5s;
-        transform: scale(1.2);
-        cursor: grab;
-    }
-
-    .myimg img:active {
-
-        cursor: grabbing;
-    }
-
-    .men {
-        padding: 5px 10px 5px 10px;
+    .aboutme-resume {
+        padding: 5px 10px;
         font-size: 20px;
         text-align: center;
     }
-
-
 
     section {
         font-size: 12px;
     }
 }
 
-/* XL SCREEN ---------------------------------------------------------------------------------- LAPTOP */
 @media screen and (min-width: 1200px) {
-
-    .header-resume {
-        background-color: #1e293b;
-        color: #fff;
-        padding: 10px;
-        line-height: 1.6;
-    }
 
     .header-resume h1,
     .header-resume h2 {
@@ -473,13 +290,9 @@ footer {
     .image-flipper {
         position: relative;
         width: 350px;
-        /* Set the width of the image */
         height: 350px;
-        /* Set the height of the image */
         transition: transform 0.6s ease-in-out;
-        /* Smooth transition */
         transform-style: preserve-3d;
-        /* Preserve the 3D effect */
     }
 
     .business-card {
@@ -491,38 +304,9 @@ footer {
         cursor: pointer;
     }
 
-    .myimg {
-        margin: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-    }
-
-    .myimg img {
-        display: block;
-        border: 5px solid #ffffff;
-        /* Adjust color as needed */
-        margin: 0;
-        padding: 0;
-        width: 30%;
-    }
-
-    .myimg img:hover {
-        transition: ease-in-out 0.5s;
-        transform: scale(1.2);
-        cursor: grab;
-    }
-
-    .myimg img:active {
-
-        cursor: grabbing;
-    }
-
-    .men {
-        padding: 5px 100px 5px 100px;
+    .aboutme-resume {
+        padding: 5px 100px;
         font-size: 25px;
         text-align: center;
     }
-
 }

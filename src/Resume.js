@@ -1,12 +1,46 @@
-// src/Resume.js
-
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './css/resume.css';
 
 function Resume() {
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
+    const [isFlipped, setIsFlipped] = useState(false);
+    const [isCardFlipped, setIsCardFlipped] = useState(false); // State for business card flip
+
+    const images = [
+        'img/istanbul.jpg',
+        'img/pic.png',
+        'img/pic1.png',
+        'img/pic2.png',
+        'img/pic3.png',
+        'img/pic4.png',
+        'img/pic5.png',
+        'img/pic7.png'
+    ];
+
+    useEffect(() => {
+        const savedIndex = localStorage.getItem('currentImageIndex');
+        if (savedIndex) {
+            setCurrentImageIndex(parseInt(savedIndex));
+        }
+    }, []);
+
+    const handleFlipperClick = () => {
+        setIsFlipped(true);
+        setTimeout(() => {
+            const newIndex = (currentImageIndex + 1) % images.length;
+            setCurrentImageIndex(newIndex);
+            localStorage.setItem('currentImageIndex', newIndex);
+            setIsFlipped(false);
+        }, 300);
+    };
+
+    const handleCardClick = () => {
+        setIsCardFlipped(!isCardFlipped);
+    };
+
     return (
         <div>
-            <div class='header-resume'>
+            <div className="header-resume">
                 <div className="container-resume">
                     <h1>👨🏻‍🔬 Resume (CV) | Jasur Anorkulov | Electronics Engineer</h1>
                     <div className="contact-info">
@@ -16,16 +50,17 @@ function Resume() {
                     </div>
                 </div>
             </div>
+
             <main>
                 <div className="container-resume">
                     <section>
                         <h2>A Bit About Me</h2>
                         <div className="image-container">
-                            <div className="image-flipper">
-                                <img id="imageSwitcher" alt="" width="350" height="350" className="flipping-image" />
+                            <div className={`image-flipper ${isFlipped ? 'flipped' : ''}`} onClick={handleFlipperClick}>
+                                <img id="imageSwitcher" src={images[currentImageIndex]} alt="" width="350" height="350" className="flipping-image" />
                             </div>
                         </div>
-                        <div className="men">
+                        <div className="aboutme-resume">
                             <b>Hello!</b> I'm <b>Jasur</b>, the electronics nerd keeping trains running 🚄. When I'm not busy with circuits, you'll find me coding, photoshopping, video editing, clowning 🤡, eating like there's no tomorrow 🍕🍝, podcasting, teaching, and of course, playing chess ♟️. I'm all about traveling ✈️, picking up new languages 🏌🏻‍♂️📚, and enjoying life 🍹🏖️. Wanna know more? Check the website and play around :)
                         </div>
                     </section>
@@ -41,56 +76,29 @@ function Resume() {
                         </ul>
                     </section>
 
-                    <section>
-                        <h2>Download my CV</h2>
-                        <section className="download-section">
-                            <a href="Jasur_Anorkulov_CV_2024.pdf" className="download-btn">🔽 Download CV</a>
-                        </section>
-                    </section>
+                    {/* Removed Download CV Section */}
 
-                    <div className="container-resume">
-                        <section>
-                            <h2>Business Card</h2>
-                            <div className="card-container">
-                                <div className="business-card" id="business-card">
-                                    <div className="front">
-                                        <img src="jasurlive/img/front.png" alt="" />
-                                    </div>
-                                    <div className="back">
-                                        <img src="jasurlive/img/back.png" alt="" />
-                                    </div>
+
+                    <section>
+                        <h2>Business Card</h2>
+                        <div className="card-container">
+                            <div className={`business-card ${isCardFlipped ? 'flipped' : ''}`} id="business-card" onClick={handleCardClick}>
+                                <div className="front">
+                                    <img src="img/front.png" alt="" />
+                                </div>
+                                <div className="back">
+                                    <img src="img/back.png" alt="" />
                                 </div>
                             </div>
-                        </section>
+                        </div>
+                    </section>
 
-                        <section>
-                            <h2>Download my Business Card</h2>
-                            <section className="download-section">
-                                <a href="business_card.pdf" className="download-btn2">🔽 Download BC</a>
-                            </section>
-                        </section>
-                    </div>
-                    <section className="download-section"></section>
-                    <section className="download-section"></section>
-                    <section className="download-section"></section>
+                    {/* Removed Download BC Section */}
+
                 </div>
             </main>
-
-
-
-
-            <div id="password-modal" style={{ display: 'none' }}>
-                <div className="modal-content">
-                    <span className="close">&times;</span>
-                    <h2>Enter Password</h2>
-                    <input type="password" id="password-input" placeholder="Enter password" />
-                    <button id="submit-password">Submit</button>
-                    <div id="error-message" style={{ color: 'red', display: 'none' }}></div> {/* Error message container */}
-                </div>
-            </div>
         </div>
     );
-
 }
 
 export default Resume;
