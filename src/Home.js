@@ -130,7 +130,7 @@ function Home() {
                             </div>
                             <h4>Visual Studio Code (JS,HTML,CSS,PHP,Python 🆕)</h4>
                             <div className="progress-bar">
-                                <div className="progress" style={{ width: '70%' }}>70%</div>
+                                <div className="progress" style={{ width: '75%' }}>75%</div>
                             </div>
                             <h4>Filmora, Premier Pro</h4>
                             <div className="progress-bar">
