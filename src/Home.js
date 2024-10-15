@@ -172,7 +172,7 @@ function Home() {
                             <a href="https://jasurgraduate.github.io/itravel" className="btn">
                                 &#10148; <div className="iconz">🗺️</div>Travel Map 🆕
                             </a>
-                            <a href="IELTS/" className="btn">
+                            <a href="https://jasurgraduate.github.io/IELTS/" className="btn">
                                 &#10148; <div className="iconz">💻</div> CD IELTS Preparation
                             </a>
                             <a href="https://jasurgraduate.github.io/LATIN_TO_CYRILLIC/" className="btn">
@@ -181,7 +181,7 @@ function Home() {
                             <a href="https://jasurgraduate.github.io/chess" className="btn">
                                 &#10148; <div className="iconz">♟️</div> Play Chess
                             </a>
-                            <a href="https://jasurlive.uz/list/" className="btn">
+                            <a href="https://jasurgraduate.github.io/to-do-list" className="btn">
                                 &#10148; <div className="iconz">✅</div> Grocery List
                             </a>
                         </div>

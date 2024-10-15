@@ -5,8 +5,8 @@ function Portfolio() {
         <div style={{ position: 'relative', width: '100%', height: '100vh' }}>
             {/* Iframe that loads the external website */}
             <iframe
-                src="https://jasurcv.blogspot.com/" // Replace with your target URL
-                title="Portfolio"
+                src="https://jasurgraduate.github.io/IELTS/" // Replace with your target URL
+                title="IELTS"
                 style={{
                     width: '100%',
                     height: 'calc(100% - 60px)', // Reduce height to leave space for the bottom menu (adjust 60px as needed)
