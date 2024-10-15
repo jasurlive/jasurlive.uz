@@ -9,7 +9,7 @@ function Blogs() {
                 title="Blogs"
                 style={{
                     width: '100%',
-                    height: '100%',
+                    height: 'calc(100% - 60px)', // Reduce height to leave space for the bottom menu (adjust 60px as needed)
                     border: 'none',
                     position: 'absolute',
                     top: 0,
@@ -21,9 +21,16 @@ function Blogs() {
             {/* Navigation menu */}
             <div style={{
                 position: 'absolute',
-                top: 0,
+                bottom: 0,
                 left: 0,
+                width: '100%',
+                height: '60px', // Adjust height as needed
+                backgroundColor: '#fff', // Adjust color as needed
                 zIndex: 1,
+                boxShadow: '0 -2px 5px rgba(0,0,0,0.1)', // Optional: Add a shadow for better separation
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
             }}>
 
             </div>

@@ -9,7 +9,7 @@ function Portfolio() {
                 title="Portfolio"
                 style={{
                     width: '100%',
-                    height: '100%',
+                    height: 'calc(100% - 60px)', // Reduce height to leave space for the bottom menu (adjust 60px as needed)
                     border: 'none',
                     position: 'absolute',
                     top: 0,
@@ -18,17 +18,21 @@ function Portfolio() {
                 loading="lazy"
             ></iframe>
 
-            {/* Navigation menu */}
+            {/* Bottom navigation menu */}
             <div style={{
                 position: 'absolute',
-                top: 0,
+                bottom: 0,
                 left: 0,
+                width: '100%',
+                height: '60px', // Adjust height as needed
+                backgroundColor: '#fff', // Adjust color as needed
                 zIndex: 1,
-                backgroundColor: 'rgba(255, 255, 255, 0.8)',
-                padding: '10px',
-                boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)'
+                boxShadow: '0 -2px 5px rgba(0,0,0,0.1)', // Optional: Add a shadow for better separation
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
             }}>
-
+                <p>Your navigation menu here</p>
             </div>
         </div>
     );
