@@ -46,17 +46,18 @@
 
 .modal-content-awards {
     max-width: 100%;
-    height: 100%;
+    max-height: 100%;
     margin: auto;
     display: block;
+    background-color: #2677f9;
 }
 
 .close-awards {
     position: absolute;
     top: 20px;
-    right: 30px;
-    color: white;
-    font-size: 70px;
+    right: 15px;
+    color: rgb(255, 0, 85);
+    font-size: 35px;
     font-weight: bold;
     cursor: pointer;
 }
@@ -64,6 +65,8 @@
 .close-awards:hover {
     color: rgb(241, 84, 255);
     transition: ease-out 0.3s;
+    border: #3dff8e 1px solid;
+    padding: 2px;
 }
 
 .hidden-awards {
@@ -169,13 +172,18 @@
     }
 
 
-    /* Gallery Styles */
     .gallery {
         width: 90%;
+        /* Ensure the container is not too wide */
         display: flex;
         flex-direction: column;
         align-items: center;
+        /* Centers content horizontally within the flex container */
         margin-bottom: 6rem;
+        margin-left: auto;
+        /* Ensure container is centered */
+        margin-right: auto;
+        /* Ensure container is centered */
     }
 
 

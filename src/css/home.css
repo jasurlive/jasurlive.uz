@@ -360,6 +360,8 @@ footer {
 
 
 
+
+
     .container-profile-pic {
         display: flex;
         place-items: center;
@@ -383,6 +385,19 @@ footer {
         place-items: center;
         justify-content: center;
         margin-bottom: 5rem;
+    }
+
+    .container-skills::before {
+        content: '';
+        /* No text, just the line */
+        display: block;
+        /* Make it a block element to place it above the text */
+        width: 100%;
+        /* Line takes up full width of the container */
+        height: 1px;
+        /* Thickness of the line */
+        background-color: #00000013;
+        margin-bottom: 1rem;
     }
 
 
@@ -582,8 +597,25 @@ footer {
     }
 
     .container-web-projects {
-        margin-top: -8rem;
-        margin-bottom: 4rem;
+        width: 100%;
+        display: grid;
+        place-items: center;
+        margin-bottom: 2rem;
+    }
+
+    .container-web-projects::before {
+        content: '';
+        /* No text, just the line */
+        display: block;
+        /* Make it a block element to place it above the text */
+        width: 100%;
+        /* Line takes up full width of the container */
+        height: 1px;
+        /* Thickness of the line */
+        background-color: #00000018;
+        /* Color of the line (change as needed) */
+        margin-bottom: 1rem;
+        /* Space between the line and the text */
     }
 
 
@@ -745,11 +777,20 @@ footer {
 
 
 
+
     .container-skills {
         list-style-type: none;
         justify-content: center;
         display: grid;
         place-items: center;
+    }
+
+    .container-web-projects {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 5rem;
     }
 
 
@@ -1014,17 +1055,9 @@ footer {
     h6 {
         font-size: 2rem;
         margin: 1.2rem;
-
-
-        .container-web-projects {
-            display: unset;
-            list-style-type: none;
-            margin-top: 0rem;
-            margin-bottom: 4rem;
-        }
-
-
     }
+
+
 
 
     /* .menu li:first-child {
