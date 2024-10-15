@@ -210,11 +210,13 @@
     .gallery {
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-between;
+        justify-content: space-evenly;
+        /* Distributes items with equal space around them */
         margin-top: -1rem;
         margin-bottom: 5rem;
         padding: 5rem;
     }
+
 
     .award {
         display: flex;

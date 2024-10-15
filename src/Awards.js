@@ -81,13 +81,13 @@ function Awards() {
         }
     };
 
-
-
-
-
-
     // Award data
     const awards = [
+        {
+            imgSrc: "img/awards/kr-hangul.png",
+            title: "Quiz Completion Certificate",
+            description: `A certificate from one of my ReactJS projects. You can also get your own certificate, scan the QR Code in the bottom right corner or <a href="https://jasurgraduate.github.io/Hangul/" target="_blank">click here</a>. \nOctober 2024`
+        },
         {
             imgSrc: "img/awards/uzy.png",
             title: "Ownership Certificate",
@@ -148,10 +148,8 @@ function Awards() {
                         <div className="award" key={index} onClick={() => openModal(award.imgSrc, award.description)}>
                             <img src={award.imgSrc} alt={award.title} className="award-image" />
                             <div className="award-description">
-                                <h2>{award.title}</h2>
-                                <p>{award.description.split('\n').map((line, i) => (
-                                    <span key={i}>{line}<br /></span>
-                                ))}</p>
+                                <h2><strong>{award.title}</strong></h2>  {/* Wrap the title with <strong> to make it bold */}
+                                <p dangerouslySetInnerHTML={{ __html: award.description.split('\n').join('<br />') }} />
                             </div>
                         </div>
                     ))}
@@ -165,8 +163,6 @@ function Awards() {
                     <img className="modal-content-awards" id="modal-img" src={modalContent.imgSrc} alt="Award" />
                 </div>
             )}
-
-
         </div>
     );
 }
