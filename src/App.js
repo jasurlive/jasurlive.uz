@@ -8,7 +8,7 @@ import Blogs from './Blogs';
 
 function App() {
   return (
-    <Router basename="/jasurlive">
+    <Router>
       {/* Routes */}
       <Routes>
         <Route path="/" element={<Home />} />
