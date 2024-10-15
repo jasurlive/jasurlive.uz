@@ -43,7 +43,7 @@ function Resume() {
     return (
         <div>
             <div className="logo">
-                <Link to="/"><img src="/jasurlive/img/logo.png" alt="@jasurjacob" width="260" height="50" />
+                <Link to="/"><img src="img/logo.png" alt="@jasurjacob" width="260" height="50" />
                 </Link>
             </div>
             <div className="header-resume">

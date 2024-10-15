@@ -74,7 +74,7 @@ function Home() {
         <div>
             <div>
                 <div className="logo">
-                    <Link to="/"><img src="/jasurlive/img/logo.png" alt="@jasurjacob" width="260" height="50" />
+                    <Link to="/"><img src="img/logo.png" alt="@jasurjacob" width="260" height="50" />
                     </Link>
                 </div>
 
@@ -82,19 +82,19 @@ function Home() {
                     <h1>Official website | Anorkulov Jasur (자수르)</h1>
                     <div className="social-icons">
                         <a href="https://github.com/jasurgraduate" className="social-icon">
-                            <img src="/jasurlive/img/gth.png" alt="" />
+                            <img src="img/gth.png" alt="" />
                         </a>
                         <a href="https://t.me/jasurjacob_bot" className="social-icon">
-                            <img src="/jasurlive/img/tg.png" alt="" />
+                            <img src="img/tg.png" alt="" />
                         </a>
                         <button className="icon-party" id="confettiButton" onClick={handleConfettiClick}>
-                            <img src="/jasurlive/img/party.png" alt="Party" />
+                            <img src="img/party.png" alt="Party" />
                         </button>
                         <a href="https://wa.me/+447775180677" className="social-icon">
-                            <img src="/jasurlive/img/wts.png" alt="" />
+                            <img src="img/wts.png" alt="" />
                         </a>
                         <a href="https://jasurgraduate.github.io/DJ/" className="social-icon">
-                            <img src="/jasurlive/img/dj.png" alt="" />
+                            <img src="img/dj.png" alt="" />
                         </a>
 
                     </div>
@@ -108,12 +108,12 @@ function Home() {
 
                     {/* Profile Images Section */}
                     <div className="container-profile-pic">
-                        <img src="/jasurlive/img/pic.png" alt="" className="profile-pic" />
-                        <img src="/jasurlive/img/pic4.png" alt="" className="profile-pic" />
-                        <img src="/jasurlive/img/pic2.png" alt="" className="profile-pic" />
-                        <img src="/jasurlive/img/pic3.png" alt="" className="profile-pic" />
-                        <img src="/jasurlive/img/pic7.png" alt="" className="profile-pic" />
-                        <img src="/jasurlive/img/pic6.jpg" alt="" className="profile-pic" />
+                        <img src="img/pic.png" alt="" className="profile-pic" />
+                        <img src="img/pic4.png" alt="" className="profile-pic" />
+                        <img src="img/pic2.png" alt="" className="profile-pic" />
+                        <img src="img/pic3.png" alt="" className="profile-pic" />
+                        <img src="img/pic7.png" alt="" className="profile-pic" />
+                        <img src="img/pic6.jpg" alt="" className="profile-pic" />
                     </div>
 
                     {/* Skills Section */}

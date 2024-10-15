@@ -89,37 +89,37 @@ function Awards() {
     // Award data
     const awards = [
         {
-            imgSrc: "/jasurlive/img/awards/uzy.png",
+            imgSrc: "img/awards/uzy.png",
             title: "Ownership Certificate",
             description: "Certificate for my UzY-Loco Application. Issued by the Ministry of Justice of Uzbekistan. \nFor full details, scan the QR Code in the bottom right corner. \nAugust 2024"
         },
         {
-            imgSrc: "/jasurlive/img/awards/uol.png",
+            imgSrc: "img/awards/uol.png",
             title: "Master of Science (Engineering)",
             description: "Award Certificate from the University of Liverpool. Passed with Distinction. December 2023."
         },
         {
-            imgSrc: "/jasurlive/img/awards/ielts2024.png",
+            imgSrc: "img/awards/ielts2024.png",
             title: "IELTS Academic | 2024",
             description: "International English Language Testing System (IELTS) Certificate. Overall 7.5/9.0 \nJune 2024"
         },
         {
-            imgSrc: "/jasurlive/img/awards/transcriptuol.png",
+            imgSrc: "img/awards/transcriptuol.png",
             title: "Transcript of Studies",
             description: "The Academic Transcript provides studied modules, marks, and credits during the full year of study at UoL. Overall 72.5/100 \nNovember 2023."
         },
         {
-            imgSrc: "/jasurlive/img/awards/tuit.png",
+            imgSrc: "img/awards/tuit.png",
             title: "Bachelor's diploma",
             description: "Award Certificate from the Tashkent Institute of Railway Engineering (From 2021 Tashkent State Transport University). With a specialty in Electrical Engineering, Electromechanics, and Electrotechnologies. \nOverall mark 82/100. \nJune 2019."
         },
         {
-            imgSrc: "/jasurlive/img/awards/ielts2022.png",
+            imgSrc: "img/awards/ielts2022.png",
             title: "IELTS Academic | 2022",
             description: "International English Language Testing System (IELTS) Certificate. Overall 7.0/9.0 \nDecember 2021"
         },
         {
-            imgSrc: "/jasurlive/img/awards/ielts2019.png",
+            imgSrc: "img/awards/ielts2019.png",
             title: "IELTS Academic | 2019 | First attempt",
             description: "International English Language Testing System (IELTS) Certificate. Overall 6.5/9.0 \nMay 2019"
         }
@@ -128,7 +128,7 @@ function Awards() {
     return (
         <div>
             <div className="logo">
-                <Link to="/"><img src="/jasurlive/img/logo.png" alt="@jasurjacob" width="260" height="50" />
+                <Link to="/"><img src="img/logo.png" alt="@jasurjacob" width="260" height="50" />
                 </Link>
             </div>
 
@@ -136,7 +136,7 @@ function Awards() {
                 <h1>
                     My Awards 🎓🏆 | Pop
                     <button className="icon-party" id="confettiButton" onClick={handleConfettiClick}>
-                        <img src="/jasurlive/img/party.png" alt="Party" />
+                        <img src="img/party.png" alt="Party" />
                     </button> up!
                 </h1>
             </div>
