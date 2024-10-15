@@ -166,6 +166,9 @@ function Home() {
                         {/* Web Projects Section */}
                         <div className="container-web-projects">
                             <h5>Web Projects:</h5>
+                            <a href="https://jasurgraduate.github.io/Hangul/" className="btn">
+                                &#10148; <div className="iconz">📄</div>Get a Hangul Certificate 🆕
+                            </a>
                             <a href="https://jasurgraduate.github.io/DJ" className="btn">
                                 &#10148; <div className="iconz">🎧</div>Become a DJ 🆕
                             </a>
