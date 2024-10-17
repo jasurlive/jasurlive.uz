@@ -128,14 +128,6 @@ function Home() {
                             <div className="progress-bar">
                                 <div className="progress" style={{ width: '90%' }}>90%</div>
                             </div>
-                            <h4>Visual Studio Code (JS,HTML,CSS,PHP,Python 🆕)</h4>
-                            <div className="progress-bar">
-                                <div className="progress" style={{ width: '75%' }}>75%</div>
-                            </div>
-                            <h4>Filmora, Premier Pro</h4>
-                            <div className="progress-bar">
-                                <div className="progress" style={{ width: '75%' }}>75%</div>
-                            </div>
                             <h4>Microsoft Office</h4>
                             <div className="progress-bar">
                                 <div className="progress" style={{ width: '90%' }}>90%</div>
@@ -144,10 +136,23 @@ function Home() {
                             <div className="progress-bar">
                                 <div className="progress" style={{ width: '65%' }}>65%</div>
                             </div>
+
+
+
+                            <h4>Visual Studio Code (JS,HTML,CSS,PHP,Python 🆕)</h4>
+                            <div className="progress-bar">
+                                <div className="progress" style={{ width: '75%' }}>75%</div>
+                            </div>
                             <h4>Photoshop</h4>
                             <div className="progress-bar">
                                 <div className="progress" style={{ width: '70%' }}>70%</div>
                             </div>
+
+                            <h4>Filmora, Premier Pro</h4>
+                            <div className="progress-bar">
+                                <div className="progress" style={{ width: '75%' }}>75%</div>
+                            </div>
+
                             <h4>Audacity</h4>
                             <div className="progress-bar">
                                 <div className="progress" style={{ width: '60%' }}>60%</div>
