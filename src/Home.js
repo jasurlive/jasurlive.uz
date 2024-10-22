@@ -103,7 +103,7 @@ function Home() {
                 <main>
                     <div className="containerSMS">
                         <div className="SMS">
-                            Hello. Welcome to my personal website! 🐼
+                            Hello. Welcome to my personal website! ♻️
                         </div></div>
 
                     {/* Profile Images Section */}
@@ -172,28 +172,28 @@ function Home() {
                         <div className="container-web-projects">
                             <h5>Web Projects:</h5>
                             <a href="https://jasurgraduate.github.io/photo-frame/" className="btn">
-                                &#10148; <div className="iconz">🖼️</div>Make Framed Pictures 🆕
+                                &#10148; <div className="iconz">🖼️ </div> Make Framed Pictures 🆕
                             </a>
                             <a href="https://jasurgraduate.github.io/Hangul/" className="btn">
-                                &#10148; <div className="iconz">📄</div>Get a Hangul Certificate 🆕
+                                &#10148; <div className="iconz">📄 </div> Get a Hangul Certificate 🆕
                             </a>
                             <a href="https://jasurgraduate.github.io/DJ" className="btn">
-                                &#10148; <div className="iconz">🎧</div>Become a DJ 🆕
+                                &#10148; <div className="iconz">🎧 </div> Become a DJ 🆕
                             </a>
                             <a href="https://jasurgraduate.github.io/itravel" className="btn">
-                                &#10148; <div className="iconz">🗺️</div>Travel Map 🆕
+                                &#10148; <div className="iconz">🗺️ </div> Travel Map 🆕
                             </a>
                             <a href="https://jasurgraduate.github.io/IELTS/" className="btn">
-                                &#10148; <div className="iconz">💻</div> CD IELTS Preparation
+                                &#10148; <div className="iconz">💻 </div> CD IELTS Preparation
                             </a>
                             <a href="https://jasurgraduate.github.io/LATIN_TO_CYRILLIC/" className="btn">
-                                &#10148; <div className="iconz">🔁</div> Latin-Cyrillic Converter
+                                &#10148; <div className="iconz">🔁 </div> Latin-Cyrillic Converter
                             </a>
                             <a href="https://jasurgraduate.github.io/chess" className="btn">
-                                &#10148; <div className="iconz">♟️</div> Play Chess
+                                &#10148; <div className="iconz">♟️ </div> Play Chess
                             </a>
                             <a href="https://jasurgraduate.github.io/to-do-list" className="btn">
-                                &#10148; <div className="iconz">✅</div> Grocery List
+                                &#10148; <div className="iconz">✅ </div> Grocery List
                             </a>
                         </div>
                     </div>
