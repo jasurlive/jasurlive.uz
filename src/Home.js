@@ -103,7 +103,7 @@ function Home() {
                 <main>
                     <div className="containerSMS">
                         <div className="SMS">
-                            Hello. This is my new replica website
+                            Hello. Welcome to my personal website! 🐼
                         </div></div>
 
                     {/* Profile Images Section */}
