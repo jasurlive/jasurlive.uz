@@ -163,10 +163,7 @@ function Home() {
                             <iframe src="https://jasurgraduate.github.io/itravel/" title="My Travel Map"></iframe>
                         </div>
 
-                        <h5>Battle of DJs 🎧🖤:</h5>
-                        <div className="container-DJ">
-                            <iframe src="https://jasurgraduate.github.io/DJ" title="DJ Jasur"></iframe>
-                        </div>
+
 
                         {/* Web Projects Section */}
                         <div className="container-web-projects">
@@ -196,6 +193,12 @@ function Home() {
                                 &#10148; <div className="iconz">✅ </div> Grocery List
                             </a>
                         </div>
+
+                        <h5>Battle of DJs 🎧🖤:</h5>
+                        <div className="container-DJ">
+                            <iframe src="https://jasurgraduate.github.io/DJ" title="DJ Jasur"></iframe>
+                        </div>
+
                     </div>
                 </main>
             </div>
