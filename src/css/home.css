@@ -219,6 +219,21 @@ footer {
     }
 }
 
+.container-line-home {
+    content: '';
+    /* No text, just the line */
+    display: block;
+    /* Make it a block element to place it above the text */
+    width: 100%;
+    /* Line takes up full width of the container */
+    height: 1px;
+    /* Thickness of the line */
+    background-color: #00000018;
+    /* Color of the line (change as needed) */
+    margin: 1rem 0 1rem 0;
+    /* Space between the line and the text */
+}
+
 /* || SMALL SCREEN --------------------------------------------------------------------------MOBILE*/
 @media screen and (min-width: 320px) {
 

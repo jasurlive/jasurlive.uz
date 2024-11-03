@@ -159,6 +159,8 @@ function Home() {
                             </div>
                         </div>
 
+
+
                         <div className="container-travel-map">
                             <iframe src="https://jasurgraduate.github.io/itravel/" title="My Travel Map"></iframe>
                         </div>
@@ -168,14 +170,16 @@ function Home() {
                         {/* Web Projects Section */}
                         <div className="container-web-projects">
                             <h5>Web Projects:</h5>
-                            <a href="https://jasurgraduate.github.io/photo-frame/" className="btn">
-                                &#10148; <div className="iconz">🖼️ </div> Make Framed Pictures 🆕
+
+
+                            <a href="https://jasurgraduate.github.io/DJ" className="btn">
+                                &#10148; <div className="iconz">🎧 </div> Music Playlist (DJ) 🆕
                             </a>
                             <a href="https://jasurgraduate.github.io/Hangul/" className="btn">
                                 &#10148; <div className="iconz">📄 </div> Get a Hangul Certificate 🆕
                             </a>
-                            <a href="https://jasurgraduate.github.io/DJ" className="btn">
-                                &#10148; <div className="iconz">🎧 </div> Become a DJ 🆕
+                            <a href="https://jasurgraduate.github.io/photo-frame/" className="btn">
+                                &#10148; <div className="iconz">🖼️ </div> Make Framed Pictures 🆕
                             </a>
                             <a href="https://jasurgraduate.github.io/itravel" className="btn">
                                 &#10148; <div className="iconz">🗺️ </div> Travel Map 🆕
@@ -190,11 +194,11 @@ function Home() {
                                 &#10148; <div className="iconz">♟️ </div> Play Chess
                             </a>
                             <a href="https://jasurgraduate.github.io/to-do-list" className="btn">
-                                &#10148; <div className="iconz">✅ </div> Grocery List
+                                &#10148; <div className="iconz">✅ </div> To-Do List
                             </a>
                         </div>
-
-                        <h5>Battle of DJs 🎧🖤:</h5>
+                        <div className="container-line-home"></div>
+                        <h5>Make a Playlist ツ 🎧🖤:</h5>
                         <div className="container-DJ">
                             <iframe src="https://jasurgraduate.github.io/DJ" title="DJ Jasur"></iframe>
                         </div>
