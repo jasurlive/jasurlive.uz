@@ -21,7 +21,7 @@ function App() {
 
       <Snowfall
         color="white"       // Snowflake color
-        snowflakeCount={300} // Number of snowflakes
+        snowflakeCount={100} // Number of snowflakes
         radius={[0, 6]}      // Radius (size range) of snowflakes (ensure this is an array)
         style={{
           position: "fixed",
