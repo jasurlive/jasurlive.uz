@@ -128,7 +128,7 @@ function Home() {
                             <div className="progress-bar">
                                 <div className="progress" style={{ width: '90%' }}>90%</div>
                             </div>
-                            <h4>Microsoft Office</h4>
+                            <h4>Microsoft 365</h4>
                             <div className="progress-bar">
                                 <div className="progress" style={{ width: '90%' }}>90%</div>
                             </div>
@@ -197,11 +197,27 @@ function Home() {
                                 &#10148; <div className="iconz">✅ </div> To-Do List
                             </a>
                         </div>
+
+
                         <div className="container-line-home"></div>
-                        <h5>Make a Playlist ツ 🎧🖤:</h5>
+                        <h5>Podcasts ツ 🎧:</h5>
+                        <div className="container-DJ">
+                            <iframe
+                                src="https://open.spotify.com/embed/playlist/0cb8IPbusLJGBKzSZmuMN3"
+                                title="DJ Jasur"
+                                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+                            </iframe>
+                        </div>
+
+
+                        <div className="container-line-home"></div>
+                        <h5>Music Mode: ON! ツ 🎧🖤:</h5>
                         <div className="container-DJ">
                             <iframe src="https://jasurgraduate.github.io/DJ" title="DJ Jasur"></iframe>
                         </div>
+
+
+
 
                     </div>
                 </main>
