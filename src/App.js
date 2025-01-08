@@ -1,11 +1,11 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-import Home from './Home'; // Main page
+import Home from './Home';
 import Resume from './Resume';
 import Portfolio from './Portfolio';
 import Awards from './Awards';
 import Blogs from './Blogs';
-import Snowfall from "react-snowfall";
+import SnowFall from './add/SnowFall';
 
 function App() {
   return (
@@ -19,19 +19,7 @@ function App() {
         <Route path="/blogs" element={<Blogs />} />
       </Routes>
 
-      <Snowfall
-        color="white"       // Snowflake color
-        snowflakeCount={100} // Number of snowflakes
-        radius={[0, 6]}      // Radius (size range) of snowflakes (ensure this is an array)
-        style={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%",
-          zIndex: 1000,        // Ensure snowfall stays behind content
-        }}
-      />
+      <SnowFall />
 
       {/* Navigation Menu */}
       <ul className="menu">
