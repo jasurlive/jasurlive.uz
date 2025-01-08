@@ -3,6 +3,7 @@ import './css/home.css';
 import confetti from 'canvas-confetti';
 // eslint-disable-next-line
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import Online from './Online'; // Import the Online component
 
 function Home() {
 
@@ -157,69 +158,60 @@ function Home() {
                             <div className="progress-bar">
                                 <div className="progress" style={{ width: '60%' }}>60%</div>
                             </div>
-                        </div>
+                        </div></div>
 
 
 
-                        <div className="container-travel-map">
-                            <iframe src="https://jasurgraduate.github.io/itravel/" title="My Travel Map"></iframe>
-                        </div>
-
-
-
-                        {/* Web Projects Section */}
-                        <div className="container-web-projects">
-                            <h5>Web Projects:</h5>
-
-
-                            <a href="https://jasurgraduate.github.io/DJ" className="btn">
-                                &#10148; <div className="iconz">🎧 </div> Music Playlist (DJ) 🆕
-                            </a>
-                            <a href="https://jasurgraduate.github.io/Hangul/" className="btn">
-                                &#10148; <div className="iconz">📄 </div> Get a Hangul Certificate 🆕
-                            </a>
-                            <a href="https://jasurgraduate.github.io/photo-frame/" className="btn">
-                                &#10148; <div className="iconz">🖼️ </div> Make Framed Pictures 🆕
-                            </a>
-                            <a href="https://jasurgraduate.github.io/itravel" className="btn">
-                                &#10148; <div className="iconz">🗺️ </div> Travel Map 🆕
-                            </a>
-                            <a href="https://jasurgraduate.github.io/IELTS/" className="btn">
-                                &#10148; <div className="iconz">💻 </div> CD IELTS Preparation
-                            </a>
-                            <a href="https://jasurgraduate.github.io/LATIN_TO_CYRILLIC/" className="btn">
-                                &#10148; <div className="iconz">🔁 </div> Latin-Cyrillic Converter
-                            </a>
-                            <a href="https://jasurgraduate.github.io/chess" className="btn">
-                                &#10148; <div className="iconz">♟️ </div> Play Chess
-                            </a>
-                            <a href="https://jasurgraduate.github.io/to-do-list" className="btn">
-                                &#10148; <div className="iconz">✅ </div> To-Do List
-                            </a>
-                        </div>
-
-
-                        <div className="container-line-home"></div>
-                        <h5>Podcasts ツ 🎧:</h5>
-                        <div className="container-DJ">
-                            <iframe
-                                src="https://open.spotify.com/embed/playlist/0cb8IPbusLJGBKzSZmuMN3"
-                                title="DJ Jasur"
-                                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
-                            </iframe>
-                        </div>
-
-
-                        <div className="container-line-home"></div>
-                        <h5>Music Mode: ON! ツ 🎧🖤:</h5>
-                        <div className="container-DJ">
-                            <iframe src="https://jasurgraduate.github.io/DJ" title="DJ Jasur"></iframe>
-                        </div>
-
-
-
-
+                    <div className="container-travel-map">
+                        <iframe src="https://jasurgraduate.github.io/itravel/" title="My Travel Map"></iframe>
                     </div>
+
+
+
+                    {/* Web Projects Section */}
+                    <div className="container-web-projects">
+                        <h5>Web Projects:</h5>
+
+
+                        <a href="https://jasurgraduate.github.io/DJ" className="btn">
+                            &#10148; <div className="iconz">🎧 </div> Music Playlist (DJ) 🆕
+                        </a>
+                        <a href="https://jasurgraduate.github.io/Hangul/" className="btn">
+                            &#10148; <div className="iconz">📄 </div> Get a Hangul Certificate 🆕
+                        </a>
+                        <a href="https://jasurgraduate.github.io/photo-frame/" className="btn">
+                            &#10148; <div className="iconz">🖼️ </div> Make Framed Pictures 🆕
+                        </a>
+                        <a href="https://jasurgraduate.github.io/itravel" className="btn">
+                            &#10148; <div className="iconz">🗺️ </div> Travel Map 🆕
+                        </a>
+                        <a href="https://jasurgraduate.github.io/IELTS/" className="btn">
+                            &#10148; <div className="iconz">💻 </div> CD IELTS Preparation
+                        </a>
+                        <a href="https://jasurgraduate.github.io/LATIN_TO_CYRILLIC/" className="btn">
+                            &#10148; <div className="iconz">🔁 </div> Latin-Cyrillic Converter
+                        </a>
+                        <a href="https://jasurgraduate.github.io/chess" className="btn">
+                            &#10148; <div className="iconz">♟️ </div> Play Chess
+                        </a>
+                        <a href="https://jasurgraduate.github.io/to-do-list" className="btn">
+                            &#10148; <div className="iconz">✅ </div> To-Do List
+                        </a>
+                    </div>
+
+
+
+                    <div className="container-line-home"></div>
+                    <h5>Music Mode: ON! ツ 🎧🖤:</h5>
+                    <div className="container-DJ">
+                        <iframe src="https://jasurgraduate.github.io/DJ" title="DJ Jasur"></iframe>
+                    </div>
+
+                    {/* Online Users Section */}
+                    <div className="container-online-users">
+                        <Online />
+                    </div>
+
                 </main>
             </div>
 
