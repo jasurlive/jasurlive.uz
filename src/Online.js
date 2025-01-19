@@ -104,7 +104,7 @@ function Online() {
 
     return (
         <div>
-            <h1>On: {onlineUsers.length}</h1>
+            <h1>{onlineUsers.length}</h1>
             <ul>
                 {onlineUsers.map((user, index) => (
                     <li key={index}>

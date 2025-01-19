@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Snowfall from "react-snowfall";
-import snowflakeImage from '../img/snow.png'; // Adjust the path if necessary
+import snowflakeImage from '../img/icons/snow.png';
 
 const SnowFall = () => {
     const [images, setImages] = useState([]);
@@ -17,15 +17,15 @@ const SnowFall = () => {
 
     return (
         <Snowfall
-            snowflakeCount={70} // Number of snowflakes
-            radius={[0, 30]}      // Radius (size range) of snowflakes (ensure this is an array)
+            snowflakeCount={70}
+            radius={[0, 30]}
             style={{
                 position: "fixed",
                 top: 0,
                 left: 0,
                 width: "100%",
                 height: "100%",
-                zIndex: 1000,        // Ensure snowfall stays behind content
+                zIndex: 1000,
             }}
             images={images}
         />
