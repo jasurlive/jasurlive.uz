@@ -17,6 +17,15 @@ import pic7 from '../img/profile/jasur7.png';
 import pic8 from '../img/profile/seoulconfer.jpg';
 import pic9 from '../img/profile/speechuz.jpg';
 import pic10 from '../img/profile/solbridge.jpg';
+import pic11 from '../img/profile/bernab2.jpg';
+import pic12 from '../img/profile/istanbul.jpg';
+import pic13 from '../img/profile/krculture.jpg';
+import pic14 from '../img/profile/soldier.jpg';
+import pic15 from '../img/profile/suwon.jpg';
+import pic16 from '../img/profile/travel.jpg';
+import pic17 from '../img/profile/uam.jpg';
+
+
 
 const CustomSlider = () => {
     return (
@@ -47,6 +56,34 @@ const CustomSlider = () => {
 
                 <SwiperSlide>
                     <img src={pic9} alt="" className="my-slider-img" />
+                </SwiperSlide>
+
+                <SwiperSlide>
+                    <img src={pic11} alt="" className="my-slider-img" />
+                </SwiperSlide>
+
+                <SwiperSlide>
+                    <img src={pic12} alt="" className="my-slider-img" />
+                </SwiperSlide>
+
+                <SwiperSlide>
+                    <img src={pic13} alt="" className="my-slider-img" />
+                </SwiperSlide>
+
+                <SwiperSlide>
+                    <img src={pic14} alt="" className="my-slider-img" />
+                </SwiperSlide>
+
+                <SwiperSlide>
+                    <img src={pic15} alt="" className="my-slider-img" />
+                </SwiperSlide>
+
+                <SwiperSlide>
+                    <img src={pic16} alt="" className="my-slider-img" />
+                </SwiperSlide>
+
+                <SwiperSlide>
+                    <img src={pic17} alt="" className="my-slider-img" />
                 </SwiperSlide>
 
                 <SwiperSlide>

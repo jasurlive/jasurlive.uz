@@ -1,40 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './css/resume.css';
 // eslint-disable-next-line
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 
+import CustomSlider from './add/Slider';
+
 function Resume() {
-    const [currentImageIndex, setCurrentImageIndex] = useState(0);
-    const [isFlipped, setIsFlipped] = useState(false);
-    const [isCardFlipped, setIsCardFlipped] = useState(false); // State for business card flip
 
-    const images = [
-        'img/istanbul.jpg',
-        'img/pic.png',
-        'img/pic1.png',
-        'img/pic2.png',
-        'img/pic3.png',
-        'img/pic4.png',
-        'img/pic5.png',
-        'img/pic7.png'
-    ];
+    const [isCardFlipped, setIsCardFlipped] = useState(false);
 
-    useEffect(() => {
-        const savedIndex = localStorage.getItem('currentImageIndex');
-        if (savedIndex) {
-            setCurrentImageIndex(parseInt(savedIndex));
-        }
-    }, []);
 
-    const handleFlipperClick = () => {
-        setIsFlipped(true);
-        setTimeout(() => {
-            const newIndex = (currentImageIndex + 1) % images.length;
-            setCurrentImageIndex(newIndex);
-            localStorage.setItem('currentImageIndex', newIndex);
-            setIsFlipped(false);
-        }, 300);
-    };
+
 
     const handleCardClick = () => {
         setIsCardFlipped(!isCardFlipped);
@@ -61,11 +37,8 @@ function Resume() {
                 <div className="container-resume">
                     <section>
                         <h2>A Bit About Me</h2>
-                        <div className="image-container">
-                            <div className={`image-flipper ${isFlipped ? 'flipped' : ''}`} onClick={handleFlipperClick}>
-                                <img id="imageSwitcher" src={images[currentImageIndex]} alt="" width="350" height="350" className="flipping-image" />
-                            </div>
-                        </div>
+                        {/* Profile Images Section */}
+                        <CustomSlider />
                         <div className="aboutme-resume">
                             <b>Hello!</b> I'm <b>Jasur</b>, the electronics nerd keeping trains running 🚄. When I'm not busy with circuits, you'll find me coding, photoshopping, video editing, clowning 🤡, eating like there's no tomorrow 🍕🍝, podcasting, teaching, and of course, playing chess ♟️. I'm all about traveling ✈️, picking up new languages 🏌🏻‍♂️📚, and enjoying life 🍹🏖️. Wanna know more? Check the website and play around :)
                         </div>
