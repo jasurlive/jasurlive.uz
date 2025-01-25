@@ -12,129 +12,78 @@ function Online() {
     const [isDetailVisible, setIsDetailVisible] = useState(false);
 
     useEffect(() => {
-        let userId = localStorage.getItem('userId');
-
-        if (!userId) {
-            userId = `user-${Math.random().toString(36).substr(2, 9)}`;
-            localStorage.setItem('userId', userId);
-        }
+        const parser = new UAParser();
+        const uaResult = parser.getResult();
+        const userId = localStorage.getItem('userId') || crypto.randomUUID();
+        localStorage.setItem('userId', userId);
 
         const userStatusDocRef = doc(firestore, 'status', userId);
 
-        const parser = new UAParser();
-        const uaResult = parser.getResult();
-
-        const isOfflineForFirestore = {
-            state: 'offline',
-            last_changed: serverTimestamp(),
-        };
-
+        const isOfflineForFirestore = { state: 'offline', last_changed: serverTimestamp() };
         const isOnlineForFirestore = {
             state: 'online',
             last_changed: serverTimestamp(),
             browser: uaResult.browser.name,
             os: uaResult.os.name,
             device: uaResult.device.model || 'Desktop',
-            ip: '',
+            ip: localStorage.getItem('userIP') || '',
         };
 
-        setDoc(userStatusDocRef, isOnlineForFirestore, { merge: true });
-
-        const fetchIp = async () => {
-            try {
+        const fetchIpOnce = async () => {
+            if (!localStorage.getItem('userIP')) {
                 const response = await fetch('https://api.ipify.org?format=json');
                 const data = await response.json();
-                const ipAddress = data.ip;
-
-                setDoc(userStatusDocRef, {
-                    ...isOnlineForFirestore,
-                    ip: ipAddress,
-                }, { merge: true });
-            } catch (error) {
-                console.error('Error fetching IP address:', error);
+                localStorage.setItem('userIP', data.ip);
+                isOnlineForFirestore.ip = data.ip;
             }
         };
 
-        fetchIp();
+        fetchIpOnce();
 
-        let activityTimeout;
-        let inactivityTimeout;
-
-        const startActivityTimeout = () => {
-            if (activityTimeout) clearTimeout(activityTimeout);
-
-            inactivityTimeout = setTimeout(() => {
-                setDoc(userStatusDocRef, isOfflineForFirestore, { merge: true });
-            }, 600000);
+        const updateStatus = async (isOnline) => {
+            const status = isOnline ? isOnlineForFirestore : isOfflineForFirestore;
+            await setDoc(userStatusDocRef, status, { merge: true });
         };
 
-        const handleUserActivity = () => {
-            startActivityTimeout();
-            setDoc(userStatusDocRef, isOnlineForFirestore, { merge: true });
-        };
-
-        window.addEventListener('mousemove', handleUserActivity);
-        window.addEventListener('keydown', handleUserActivity);
-        window.addEventListener('scroll', handleUserActivity);
-
-        startActivityTimeout();
+        updateStatus(true);
 
         const userStatusCollectionRef = collection(firestore, 'status');
         const onlineUsersQuery = query(userStatusCollectionRef, where('state', '==', 'online'));
-
-        const handleOnlineStatus = (snapshot) => {
-            const users = snapshot.docs.map(doc => doc.data());
-            const onlineUsersList = users.filter(user => user.state === 'online');
-            setOnlineUsers(onlineUsersList);
+        const unsubscribe = onSnapshot(onlineUsersQuery, (snapshot) => {
+            setOnlineUsers(snapshot.docs.map((doc) => doc.data()));
             setLoading(false);
-        };
-
-        const unsubscribe = onSnapshot(onlineUsersQuery, handleOnlineStatus);
+        });
 
         const handleVisibilityChange = () => {
             if (document.visibilityState === 'hidden') {
-                setDoc(userStatusDocRef, isOfflineForFirestore, { merge: true });
+                updateStatus(false);
             } else {
-                setDoc(userStatusDocRef, isOnlineForFirestore, { merge: true });
+                updateStatus(true);
             }
         };
 
         document.addEventListener('visibilitychange', handleVisibilityChange);
 
-        window.addEventListener('beforeunload', () => {
-            setDoc(userStatusDocRef, isOfflineForFirestore, { merge: true });
-        });
-
         return () => {
-            clearTimeout(inactivityTimeout);
-            document.removeEventListener('visibilitychange', handleVisibilityChange);
+            updateStatus(false);
             unsubscribe();
-            setDoc(userStatusDocRef, isOfflineForFirestore, { merge: true });
-            window.removeEventListener('mousemove', handleUserActivity);
-            window.removeEventListener('keydown', handleUserActivity);
-            window.removeEventListener('scroll', handleUserActivity);
+            document.removeEventListener('visibilitychange', handleVisibilityChange);
         };
     }, []);
 
-    const toggleDetails = () => {
-        setIsDetailVisible(!isDetailVisible);
-    };
+    const toggleDetails = () => setIsDetailVisible(!isDetailVisible);
 
-    if (loading) {
-        return <div>Loading...</div>;
-    }
+    if (loading) return <div>Loading...</div>;
 
     return (
-        <div className=".container-online-users">
+        <div className="container-online-users">
             <h1>👥🟢 Online: {onlineUsers.length}</h1>
-            <h5><button onClick={toggleDetails}>
-                {isDetailVisible ? (
-                    <FontAwesomeIcon icon={faChevronUp} />
-                ) : (
-                    <FontAwesomeIcon icon={faChevronDown} />
-                )}
-                {isDetailVisible ? ' Hide' : ' Show'}
-            </button></h5>
+            <h5>
+                <button onClick={toggleDetails}>
+                    <FontAwesomeIcon icon={isDetailVisible ? faChevronUp : faChevronDown} />
+                    {isDetailVisible ? ' Hide' : ' Show'}
+                </button>
+            </h5>
 
             {isDetailVisible && (
                 <ul>
@@ -154,3 +103,4 @@ function Online() {
 }
 
 export default Online;
+

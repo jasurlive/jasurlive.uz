@@ -40,7 +40,7 @@ function Home() {
             <main>
                 <div className="containerSMS">
                     <div className="SMS">
-                        Hello. Welcome to my personal website! ♻️
+                        I tried my best, but my best wasn`t enough...
                     </div>
                 </div>
 

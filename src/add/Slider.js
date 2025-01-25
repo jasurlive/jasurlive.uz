@@ -24,7 +24,8 @@ import pic14 from '../img/profile/soldier.jpg';
 import pic15 from '../img/profile/suwon.jpg';
 import pic16 from '../img/profile/travel.jpg';
 import pic17 from '../img/profile/uam.jpg';
-
+import pic18 from '../img/profile/clone.jpg';
+import pic19 from '../img/profile/wood.jpg';
 
 
 const CustomSlider = () => {
@@ -60,6 +61,15 @@ const CustomSlider = () => {
 
                 <SwiperSlide>
                     <img src={pic11} alt="" className="my-slider-img" />
+                </SwiperSlide>
+
+
+                <SwiperSlide>
+                    <img src={pic18} alt="" className="my-slider-img" />
+                </SwiperSlide>
+
+                <SwiperSlide>
+                    <img src={pic19} alt="" className="my-slider-img" />
                 </SwiperSlide>
 
                 <SwiperSlide>
