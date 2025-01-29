@@ -4,11 +4,11 @@ import './css/home.css';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import Online from './Online';
 import CustomSlider from './add/Slider';
-import { handleConfettiClick } from './add/Confetti';
 import Skills from './add/Skills';
 import Projects from './add/Projects';
 import UpDown from './add/UpDown';
 import SMS from './add/SMS';
+import Header from './add/Header';
 
 function Home() {
     return (
@@ -18,26 +18,9 @@ function Home() {
                 <Link to="/"><img src="img/logo.png" alt="@jasurjacob" width="260" height="50" /></Link>
             </div>
 
-            <header>
-                <h1>Official website | Anorkulov Jasur (자수르)</h1>
-                <div className="social-icons">
-                    <a href="https://github.com/jasurgraduate" className="social-icon">
-                        <img src="img/gth.png" alt="" />
-                    </a>
-                    <a href="https://t.me/jasurjacob_bot" className="social-icon">
-                        <img src="img/tg.png" alt="" />
-                    </a>
-                    <button className="icon-party" id="confettiButton" onClick={handleConfettiClick}>
-                        <img src="img/party.png" alt="Party" />
-                    </button>
-                    <a href="https://wa.me/+447775180677" className="social-icon">
-                        <img src="img/wts.png" alt="" />
-                    </a>
-                    <a href="https://jasurgraduate.github.io/DJ/" className="social-icon">
-                        <img src="img/dj.png" alt="" />
-                    </a>
-                </div>
-            </header>
+
+            <Header />
+
 
             <main>
                 <SMS />

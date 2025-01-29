@@ -1,87 +1,72 @@
 import React, { useState } from 'react';
 import './css/awards.css';
-import confetti from 'canvas-confetti'; // Import the canvas-confetti library
+import confetti from 'canvas-confetti';
 // eslint-disable-next-line
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 
 function Awards() {
-    // State to manage modal visibility and content
     const [modalOpen, setModalOpen] = useState(false);
     const [modalContent, setModalContent] = useState({ imgSrc: '', description: '' });
 
-    // Function to open the modal with specific content
     const openModal = (imgSrc, description) => {
         setModalContent({ imgSrc, description });
         setModalOpen(true);
     };
 
-    // Function to close the modal
     const closeModal = () => {
         setModalOpen(false);
     };
 
-    // Confetti options and trigger function
-    let clickQueue = [];   // Queue to hold click events
-    let isConfettiRunning = false; // Flag to check if confetti is currently running
+    let clickQueue = [];
+    let isConfettiRunning = false;
 
     const handleConfettiClick = () => {
-        // Add a new click event to the queue
         clickQueue.push(true);
-
-        // If confetti is already running, don't start a new cycle
         if (!isConfettiRunning) {
-            triggerConfettiQueue();  // Process the queue
+            triggerConfettiQueue();
         }
     };
 
     const triggerConfettiQueue = () => {
         if (clickQueue.length > 0) {
-            // Set confetti running flag
             isConfettiRunning = true;
-
-            // Remove the first item from the queue (simulate a click being handled)
             clickQueue.shift();
 
-            const confettiCount = 10; // Increase confetti particles for more visual effect
+            const confettiCount = 10;
             const colors = [
                 '#bb0000', '#ffffff', '#00bb00', '#0000bb', '#ffdd00',
                 '#ff00ff', '#00ffff', '#ff6600', '#6600ff', '#33cc33'
-            ]; // Added more custom colors
+            ];
 
-            // Use multiple bursts to cover the entire top width
             const defaults = {
-                origin: { y: -3 },      // Start at the top of the page
-                gravity: 1.1,          // Slightly lower gravity for slower fall
-                spread: 200,            // Slightly wider spread for better coverage
-                scalar: 1.2,           // Increase scaling factor for larger particles
-                colors: colors,        // Use extended colors array
-                shapes: ['square', 'circle', 'triangle', 'star', 'polygon'] // New shapes for the confetti particles
+                origin: { y: -3 },
+                gravity: 1.1,
+                spread: 200,
+                scalar: 1.2,
+                colors: colors,
+                shapes: ['square', 'circle', 'triangle', 'star', 'polygon']
             };
 
-            // Emit particles across the top width of the page
             for (let i = 0; i < confettiCount; i++) {
                 confetti({
                     ...defaults,
                     origin: {
-                        x: Math.random(),      // Randomize horizontal position (across the width of the screen)
-                        y: 0                   // Start from the top (y = 0)
-                    },          // Emit particles one by one
-                    ticks: 1000,                 // Increase particle lifespan to make them visible longer
-                    scalar: Math.random() * 1.5 + 0.5 // Randomize size between 0.5x to 2x for variety
+                        x: Math.random(),
+                        y: 0
+                    },
+                    ticks: 1000,
+                    scalar: Math.random() * 1.5 + 0.5
                 });
             }
 
-            // Set a timeout for 1 second before processing the next item in the queue
             setTimeout(() => {
-                triggerConfettiQueue(); // Trigger the next confetti burst in queue
+                triggerConfettiQueue();
             }, 1000);
         } else {
-            // Reset the flag once the queue is empty
             isConfettiRunning = false;
         }
     };
 
-    // Award data
     const awards = [
         {
             imgSrc: "img/awards/kr-hangul.png",
@@ -143,12 +128,11 @@ function Awards() {
 
             <main>
                 <div className="gallery">
-                    {/* Generate award items dynamically */}
                     {awards.map((award, index) => (
                         <div className="award" key={index} onClick={() => openModal(award.imgSrc, award.description)}>
                             <img src={award.imgSrc} alt={award.title} className="award-image" />
                             <div className="award-description">
-                                <h2><strong>{award.title}</strong></h2>  {/* Wrap the title with <strong> to make it bold */}
+                                <h2><strong>{award.title}</strong></h2>
                                 <p dangerouslySetInnerHTML={{ __html: award.description.split('\n').join('<br />') }} />
                             </div>
                         </div>
@@ -156,7 +140,6 @@ function Awards() {
                 </div>
             </main>
 
-            {/* Modal for displaying award details */}
             {modalOpen && (
                 <div id="modal-awards" className="modal-awards" onClick={closeModal}>
                     <span className="close-awards" onClick={closeModal}>❎</span>
@@ -168,3 +151,4 @@ function Awards() {
 }
 
 export default Awards;
+

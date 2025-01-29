@@ -17,7 +17,7 @@ const SnowFall = () => {
 
     return (
         <Snowfall
-            snowflakeCount={70}
+            snowflakeCount={20}
             radius={[0, 30]}
             style={{
                 position: "fixed",

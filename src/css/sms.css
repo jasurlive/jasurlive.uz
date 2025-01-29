@@ -1,4 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+
+
+
 .containerSMS {
+
+    font-family: 'Comic Neue', cursive;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -17,11 +24,7 @@
     max-width: 500px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     position: relative;
-    font-family: 'Comic Sans MS', cursive, sans-serif;
     width: 100%;
-    word-wrap: break-word;
-    white-space: normal;
-    overflow-wrap: break-word;
 }
 
 .SMS::after {

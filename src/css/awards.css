@@ -25,7 +25,45 @@
     left: 0;
 }
 
-/* Add this to your awards.css */
+@keyframes icon-party-effect {
+    0% {
+        transform: scale(1) rotate(0deg);
+        background-color: #ced7e182;
+    }
+
+    25% {
+        transform: scale(1.2) rotate(0deg);
+        background-color: #fef28996;
+    }
+
+    50% {
+        transform: scale(1) rotate(0deg);
+        background-color: #62f5ff92;
+    }
+
+    75% {
+        transform: scale(1.2) rotate(0deg);
+        background-color: #4caf4fa5;
+    }
+
+    100% {
+        transform: scale(1) rotate(0deg);
+        background-color: #ced7e100;
+    }
+}
+
+.icon-party {
+    animation: icon-party-effect 5s infinite;
+}
+
+.icon-party:active {
+    transform: scale(0.7);
+}
+
+.icon-party:hover {
+    transform: scale(1.5);
+    transition: ease-in-out 0.4s;
+}
 
 .modal-awards {
     display: flex;
