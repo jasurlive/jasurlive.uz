@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { firestore } from './add/firebase';
+import { firestore } from './add/Firebase';
 import { doc, setDoc, collection, onSnapshot, serverTimestamp, query, where } from 'firebase/firestore';
 import { UAParser } from 'ua-parser-js';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

@@ -108,37 +108,6 @@ footer {
     transition: ease-in-out 0.4s;
 }
 
-.containerSMS {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
-}
-
-.SMS {
-    background-color: #00a1d6;
-    color: #ffffff;
-    padding: 15px 20px;
-    border-radius: 20px;
-    max-width: 300px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    position: relative;
-    font-family: 'Comic Sans MS', cursive, sans-serif;
-    width: 300px;
-}
-
-.SMS::after {
-    content: '';
-    position: absolute;
-    bottom: 100%;
-    left: calc(50% - 10px);
-    transform: translateX(-50%);
-    border-width: 10px;
-    border-style: solid;
-    border-color: transparent transparent #00a1d6 transparent;
-}
 
 .logo {
     display: flex;
@@ -174,8 +143,9 @@ footer {
     border-radius: 12px;
     border: 2px solid #ffffff;
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-    user-select: none;
+
     -webkit-user-select: none;
+    user-select: none;
 }
 
 .my-slider-img:hover {
@@ -331,6 +301,7 @@ footer {
         border: 1px solid rgba(92, 92, 92, 0.5);
         border-top-left-radius: 0.2rem;
         border-top-right-radius: 0.2rem;
+        -webkit-backdrop-filter: blur(0.8rem);
         backdrop-filter: blur(0.8rem);
     }
 
@@ -379,21 +350,6 @@ footer {
         column-count: 1;
     }
 
-    .progress-bar {
-        background-color: #f9c0c0;
-        border-radius: 1rem;
-        margin-bottom: 1rem;
-        width: 20rem;
-    }
-
-    .progress {
-        background-color: #1c4677e8;
-        color: white;
-        text-align: center;
-        padding: 0.3rem;
-        border-radius: 1rem;
-        font-size: 0.7rem;
-    }
 
     h4 {
         padding: 0.5rem;
@@ -545,6 +501,8 @@ footer {
         border: 1px solid rgba(92, 92, 92, 0.5);
         border-bottom-left-radius: 0.1rem;
         border-bottom-right-radius: 0.1rem;
+
+        -webkit-backdrop-filter: blur(0.8rem);
         backdrop-filter: blur(0.8rem);
     }
 
@@ -641,21 +599,6 @@ footer {
         column-count: 2;
     }
 
-    .progress-bar {
-        background-color: #f9c0c0;
-        border-radius: 1rem;
-        margin-bottom: 1rem;
-        width: 35rem;
-    }
-
-    .progress {
-        background-color: #1c4677e8;
-        color: white;
-        text-align: center;
-        padding: 0.3rem;
-        border-radius: 1rem;
-        font-size: 1.3rem;
-    }
 
     h4 {
         padding: 0.5rem;

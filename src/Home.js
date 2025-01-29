@@ -7,6 +7,8 @@ import CustomSlider from './add/Slider';
 import { handleConfettiClick } from './add/Confetti';
 import Skills from './add/Skills';
 import Projects from './add/Projects';
+import UpDown from './add/UpDown';
+import SMS from './add/SMS';
 
 function Home() {
     return (
@@ -38,18 +40,12 @@ function Home() {
             </header>
 
             <main>
-                <div className="containerSMS">
-                    <div className="SMS">
-                        I tried my best, but my best wasn`t enough...
-                    </div>
-                </div>
+                <SMS />
 
-                {/* Profile Images Section */}
+                {/* Important Sections */}
                 <CustomSlider />
-
-
-                {/* Skills Section */}
                 <Skills />
+                <UpDown />
 
                 <div className="container-travel-map">
                     <iframe src="https://jasurgraduate.github.io/itravel/" title="My Travel Map"></iframe>

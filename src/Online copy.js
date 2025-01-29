@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { firestore } from './add/firebase';
+import { firestore } from './add/Firebase';
 import { doc, setDoc, collection, onSnapshot, serverTimestamp, query, where } from 'firebase/firestore';
 import { UAParser } from 'ua-parser-js';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -14,87 +14,73 @@ function Online() {
     useEffect(() => {
         const parser = new UAParser();
         const uaResult = parser.getResult();
-        const userStatusDocRef = doc(firestore, 'status', 'unique_user_id'); // Replace 'unique_user_id' with appropriate logic for your use case
+        const userId = localStorage.getItem('userId') || crypto.randomUUID();
+        localStorage.setItem('userId', userId);
 
-        const isOfflineForFirestore = {
-            state: 'offline',
-            last_changed: serverTimestamp(),
-        };
+        const userStatusDocRef = doc(firestore, 'status', userId);
 
+        const isOfflineForFirestore = { state: 'offline', last_changed: serverTimestamp() };
         const isOnlineForFirestore = {
             state: 'online',
             last_changed: serverTimestamp(),
             browser: uaResult.browser.name,
             os: uaResult.os.name,
             device: uaResult.device.model || 'Desktop',
-            ip: '',
+            ip: localStorage.getItem('userIP') || '',
         };
 
-        setDoc(userStatusDocRef, isOnlineForFirestore, { merge: true });
-
-        const fetchIp = async () => {
-            try {
+        const fetchIpOnce = async () => {
+            if (!localStorage.getItem('userIP')) {
                 const response = await fetch('https://api.ipify.org?format=json');
                 const data = await response.json();
-                const ipAddress = data.ip;
-
-                setDoc(userStatusDocRef, {
-                    ...isOnlineForFirestore,
-                    ip: ipAddress,
-                }, { merge: true });
-            } catch (error) {
-                console.error('Error fetching IP address:', error);
+                localStorage.setItem('userIP', data.ip);
+                isOnlineForFirestore.ip = data.ip;
             }
         };
 
-        fetchIp();
+        fetchIpOnce();
+
+        const updateStatus = async (isOnline) => {
+            const status = isOnline ? isOnlineForFirestore : isOfflineForFirestore;
+            await setDoc(userStatusDocRef, status, { merge: true });
+        };
+
+        updateStatus(true);
 
         const userStatusCollectionRef = collection(firestore, 'status');
         const onlineUsersQuery = query(userStatusCollectionRef, where('state', '==', 'online'));
-
-        const handleOnlineStatus = (snapshot) => {
-            const users = snapshot.docs.map(doc => doc.data());
-            setOnlineUsers(users);
+        const unsubscribe = onSnapshot(onlineUsersQuery, (snapshot) => {
+            setOnlineUsers(snapshot.docs.map((doc) => doc.data()));
             setLoading(false);
-        };
-
-        const unsubscribe = onSnapshot(onlineUsersQuery, handleOnlineStatus);
+        });
 
         const handleVisibilityChange = () => {
             if (document.visibilityState === 'hidden') {
-                setDoc(userStatusDocRef, isOfflineForFirestore, { merge: true });
+                updateStatus(false);
             } else {
-                setDoc(userStatusDocRef, isOnlineForFirestore, { merge: true });
+                updateStatus(true);
             }
         };
 
         document.addEventListener('visibilitychange', handleVisibilityChange);
 
         return () => {
+            updateStatus(false);
             unsubscribe();
-            setDoc(userStatusDocRef, isOfflineForFirestore, { merge: true });
             document.removeEventListener('visibilitychange', handleVisibilityChange);
         };
     }, []);
 
-    const toggleDetails = () => {
-        setIsDetailVisible(!isDetailVisible);
-    };
+    const toggleDetails = () => setIsDetailVisible(!isDetailVisible);
 
-    if (loading) {
-        return <div>Loading...</div>;
-    }
+    if (loading) return <div>Loading...</div>;
 
     return (
         <div className="container-online-users">
             <h1>👥🟢 Online: {onlineUsers.length}</h1>
             <h5>
                 <button onClick={toggleDetails}>
-                    {isDetailVisible ? (
-                        <FontAwesomeIcon icon={faChevronUp} />
-                    ) : (
-                        <FontAwesomeIcon icon={faChevronDown} />
-                    )}
+                    <FontAwesomeIcon icon={isDetailVisible ? faChevronUp : faChevronDown} />
                     {isDetailVisible ? ' Hide' : ' Show'}
                 </button>
             </h5>
@@ -117,3 +103,4 @@ function Online() {
 }
 
 export default Online;
+

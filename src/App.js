@@ -21,6 +21,7 @@ function App() {
 
       <SnowFall />
 
+
       {/* Navigation Menu */}
       <ul className="menu">
         <li><Link to="/">&#127969; HOME</Link></li>
