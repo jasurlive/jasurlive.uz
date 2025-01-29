@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import TypingEffect from 'react-typing-effect';
+import { Typewriter } from 'react-simple-typewriter';
 import '../css/sms.css';
 
-// Original list of messages
 const messages = [
     "I tried my best, but my best wasn't enough...",
     "I wish I could go back and do it all differently",
@@ -11,7 +10,7 @@ const messages = [
     "I need six months of vacation, twice a year",
     "Life is short. Smile while you still have teeth",
     "I`m like a cloud. When I disappear, it`s a beautiful day",
-    "I`m not arguing, I`m just explaining why I`m right",
+    "I don`t argue, I just explain why I`m right",
     "I`m on a seafood diet. I see food and I eat it",
     "I`m so good at sleeping, I can do it with my eyes closed",
 ];
@@ -35,14 +34,16 @@ const SMS = () => {
 
     return (
         <div className="containerSMS">
+
             <div className="SMS">
-                <TypingEffect
-                    text={shuffledMessages}
-                    speed={100}
-                    eraseDelay={5000}
-                    eraseSpeed={20}
-                    cursor="|"
-                    typingDelay={500}
+                <Typewriter
+                    words={shuffledMessages}
+                    loop={true}
+                    cursor
+                    cursorStyle="|"
+                    typeSpeed={90}
+                    deleteSpeed={20}
+                    delaySpeed={5000}
                 />
             </div>
         </div>

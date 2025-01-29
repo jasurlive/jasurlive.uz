@@ -210,6 +210,8 @@ footer {
 
     header h1 {
         display: flex;
+        font-size: 17px;
+        font-weight: normal;
     }
 
     .social-icons {

@@ -1,8 +1,8 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGithub } from '@fortawesome/free-brands-svg-icons';  // GitHub icon from free-brands-svg-icons
-import { faTelegram, faWhatsapp } from '@fortawesome/free-brands-svg-icons'; // Telegram and WhatsApp from free-brands-svg-icons
-import { faHeadphones, faChess, } from '@fortawesome/free-solid-svg-icons';  // Smile or Star as celebration icon and Language icon
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import { faTelegram, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
+import { faHeadphones, faChess } from '@fortawesome/free-solid-svg-icons';
 
 const Header = () => {
     return (
@@ -15,11 +15,9 @@ const Header = () => {
                 <a href="https://github.com/jasurgraduate" className="social-icon" target="_blank" rel="noopener noreferrer">
                     <FontAwesomeIcon icon={faGithub} />
                 </a>
-
                 <a href="https://t.me/jasurjacob_bot" className="social-icon" target="_blank" rel="noopener noreferrer">
                     <FontAwesomeIcon icon={faTelegram} />
                 </a>
-
                 <a href="https://wa.me/+447775180677" className="social-icon" target="_blank" rel="noopener noreferrer">
                     <FontAwesomeIcon icon={faWhatsapp} />
                 </a>

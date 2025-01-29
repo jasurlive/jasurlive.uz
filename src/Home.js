@@ -22,10 +22,12 @@ function Home() {
             <Header />
 
 
+
             <main>
-                <SMS />
+
 
                 {/* Important Sections */}
+                <SMS />
                 <CustomSlider />
                 <Skills />
                 <UpDown />
