@@ -1,7 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGithub } from '@fortawesome/free-brands-svg-icons';
-import { faTelegram, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
+import { faTelegram, faWhatsapp, faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faHeadphones, faChess } from '@fortawesome/free-solid-svg-icons';
 
 const Header = () => {

@@ -9,6 +9,7 @@ import Projects from './add/Projects';
 import UpDown from './add/UpDown';
 import SMS from './add/SMS';
 import Header from './add/Header';
+import FramedMap from './add/iframe/TravelMap';
 
 function Home() {
     return (
@@ -31,10 +32,8 @@ function Home() {
                 <CustomSlider />
                 <Skills />
                 <UpDown />
+                <FramedMap />
 
-                <div className="container-travel-map">
-                    <iframe src="https://jasurgraduate.github.io/itravel/" title="My Travel Map"></iframe>
-                </div>
 
                 {/* Web Projects Section */}
                 <Projects />

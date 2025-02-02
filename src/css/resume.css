@@ -10,117 +10,16 @@ body {
     color: #333;
 }
 
-.image-container {
-    perspective: 1000px;
+main {
+    height: 100%;
+    width: 100%;
     display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
-.flipping-image {
+.my-slider-container {
     width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    border: white solid 2px;
-    border-radius: 10px;
 }
 
-.flipping-image:hover {
-    cursor: pointer;
-}
-
-.image-flipper.flipped {
-    transform: rotateY(180deg);
-}
-
-/* Modal Styles */
-#password-modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4);
-}
-
-.modal-content {
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    max-width: 500px;
-    border-radius: 10px;
-    text-align: center;
-}
-
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: color 0.3s ease, transform 0.3s ease;
-}
-
-.close:hover,
-.close:focus {
-    color: #333;
-    transform: scale(1.2);
-}
-
-#password-input {
-    width: 100%;
-    padding: 12px;
-    margin: 12px 0;
-    border: 2px solid #ccc;
-    border-radius: 8px;
-    box-sizing: border-box;
-    font-size: 16px;
-}
-
-#submit-password {
-    padding: 12px 24px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-    font-size: 16px;
-}
-
-#submit-password:hover {
-    background-color: #4566a0;
-    transform: translateY(-4px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-#submit-password:active {
-    transform: scale(0.9);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-#error-message {
-    margin-top: 15px;
-    color: #d9534f;
-    font-size: 16px;
-    opacity: 0;
-    animation: fadeInMessage 0.3s ease-out forwards;
-}
-
-@keyframes fadeInMessage {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
-}
 
 .header-resume {
     background-color: #1e293b;
@@ -143,54 +42,63 @@ p {
     font-size: 18px;
 }
 
-
-
 .container-resume {
-    width: 80%;
-    margin: auto;
+    width: 100%;
     overflow: hidden;
-    line-height: 1.6;
+    line-height: 1.5;
 }
 
-main {
-    padding: 20px 0;
-}
 
 main section {
-    margin: 20px;
+    margin: 5px;
 }
 
 main section h2 {
-    border-bottom: 2px solid #333;
+    border-bottom: 0.5px solid #3333333c;
     padding-bottom: 5px;
     margin-bottom: 10px;
 }
 
-main section ul {
-    list-style: none;
-}
-
-main section ul li {
+.timeline {
     display: flex;
     flex-direction: column;
-    align-items: start;
-    background: #fff;
+    align-items: center;
+    justify-content: center;
     padding: 10px;
     margin-bottom: 10px;
     border-radius: 10px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
     line-height: 1.2;
     font-size: 20px;
     cursor: text;
+    width: 100%;
+}
+
+.timeline li {
+    list-style-type: none;
+    background: #fff;
+    padding: 30px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    font-size: 20px;
+    cursor: text;
+    width: 80%;
 }
 
 .card-container {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 1rem;
 }
 
-/* Front and back styling */
+.gallery-container-resume {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 5rem;
+}
+
 .front,
 .back {
     position: absolute;
@@ -226,13 +134,17 @@ main section ul li {
     filter: none;
 }
 
-@media (max-width: 768px) {
-    .container-resume {
-        width: 90%;
-    }
-}
 
-@media screen and (min-width: 320px) {
+@media screen and (max-width: 768px) {
+
+    .container-resume {
+        width: 100%;
+    }
+
+    .timeline li {
+        width: 100%;
+        text-align: start;
+    }
 
     .header-resume h1,
     .header-resume h2 {
@@ -255,13 +167,13 @@ main section ul li {
         transition: transform 0.6s;
         transform-style: preserve-3d;
         cursor: pointer;
-        margin-bottom: 7rem;
     }
 
     .aboutme-resume {
         padding: 5px 10px;
         font-size: 20px;
-        text-align: center;
+        text-align: justify;
+        width: 100%;
     }
 
     section {

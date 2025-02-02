@@ -7,11 +7,11 @@ const messages = [
     "I wish I could go back and do it all differently",
     "No one ever really sees the pain behind the smile",
     "The saddest thing in life is wasted talent",
-    "I need six months of vacation, twice a year",
-    "Life is short. Smile while you still have teeth",
+    "I need six months of vacation, twice a year 🙃",
+    "Life is short. Smile while you still have teeth 🦷",
     "I`m like a cloud. When I disappear, it`s a beautiful day",
     "I don`t argue, I just explain why I`m right",
-    "I`m on a seafood diet. I see food and I eat it",
+    "I`m on a seafood diet. I see food and I eat it 🍕",
     "I`m so good at sleeping, I can do it with my eyes closed",
 ];
 
@@ -25,26 +25,26 @@ const shuffleArray = (array) => {
 };
 
 const SMS = () => {
-    const [shuffledMessages, setShuffledMessages] = useState([]);
+    const [shuffledMessages, setShuffledMessages] = useState(messages);
 
-    // Shuffle the messages when the component is mounted
     useEffect(() => {
         setShuffledMessages(shuffleArray(messages));
     }, []);
 
     return (
         <div className="containerSMS">
-
             <div className="SMS">
-                <Typewriter
-                    words={shuffledMessages}
-                    loop={true}
-                    cursor
-                    cursorStyle="|"
-                    typeSpeed={90}
-                    deleteSpeed={20}
-                    delaySpeed={5000}
-                />
+                {shuffledMessages.length > 0 && (
+                    <Typewriter
+                        words={shuffledMessages}
+                        loop={true}
+                        cursor
+                        cursorStyle="|"
+                        typeSpeed={90}
+                        deleteSpeed={20}
+                        delaySpeed={5000}
+                    />
+                )}
             </div>
         </div>
     );
