@@ -3,6 +3,7 @@ import './css/awards.css';
 import confetti from 'canvas-confetti';
 // eslint-disable-next-line
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import Logo from './add/Logo';
 
 function Awards() {
     const [modalOpen, setModalOpen] = useState(false);
@@ -112,10 +113,7 @@ function Awards() {
 
     return (
         <div>
-            <div className="logo">
-                <Link to="/"><img src="img/logo.png" alt="@jasurjacob" width="260" height="50" />
-                </Link>
-            </div>
+            <Logo />
 
             <div className='header-awards'>
                 <h1>

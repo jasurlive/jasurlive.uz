@@ -10,23 +10,19 @@ import UpDown from './add/UpDown';
 import SMS from './add/SMS';
 import Header from './add/Header';
 import FramedMap from './add/iframe/TravelMap';
+import './css/logo.css';
+import Logo from './add/Logo';
 
 function Home() {
     return (
 
         <div>
-            <div className="logo">
-                <Link to="/"><img src="img/logo.png" alt="@jasurjacob" width="260" height="50" /></Link>
-            </div>
 
-
-            <Header />
-
-
+            <Logo />
 
             <main>
 
-
+                <Header />
                 {/* Important Sections */}
                 <SMS />
                 <CustomSlider />
@@ -50,7 +46,7 @@ function Home() {
                 </div>
             </main>
 
-        </div>
+        </div >
     );
 }
 

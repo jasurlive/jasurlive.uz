@@ -4,6 +4,7 @@ import './css/resume.css';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 
 import CustomSlider from './add/Slider';
+import Logo from './add/Logo';
 
 function Resume() {
 
@@ -18,10 +19,7 @@ function Resume() {
 
     return (
         <div>
-            <div className="logo">
-                <Link to="/"><img src="img/logo.png" alt="@jasurjacob" width="260" height="50" />
-                </Link>
-            </div>
+            <Logo />
             <div className="header-resume">
                 <div className="container-resume">
                     <h1>👨🏻‍🔬 Resume (CV) | Jasur Anorkulov | Electronics Engineer</h1>

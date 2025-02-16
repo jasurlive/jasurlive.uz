@@ -3,8 +3,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Scrollbar, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import '../css/home.css';
+import '../css/slider.css';
 
 import pic from '../img/profile/brtower.png';
 import pic1 from '../img/profile/wanda.png';
@@ -26,6 +25,13 @@ import pic16 from '../img/profile/travel.jpg';
 import pic17 from '../img/profile/uam.jpg';
 import pic18 from '../img/profile/clone.jpg';
 import pic19 from '../img/profile/wood.jpg';
+import pic20 from '../img/profile/boracay1.png';
+import pic21 from '../img/profile/scuba1.png';
+import pic22 from '../img/profile/atv1.png';
+import pic23 from '../img/profile/coconut.png';
+import pic24 from '../img/profile/manila1.png';
+import pic25 from '../img/profile/boracay2.png';
+import pic26 from '../img/profile/boracay3.png';
 
 
 const CustomSlider = () => {
@@ -41,7 +47,7 @@ const CustomSlider = () => {
                     disableOnInteraction: false,
                 }}
                 navigation={true}
-                pagination={{ clickable: true }}
+                pagination={{ clickable: true, el: '.swiper-pagination', type: 'progressbar' }}
                 scrollbar={{ draggable: true }}
                 grabCursor={true}
                 speed={700}
@@ -50,6 +56,34 @@ const CustomSlider = () => {
                     1024: { slidesPerView: 3, spaceBetween: 10 },
                 }}
             >
+
+                <SwiperSlide>
+                    <img src={pic25} alt="" className="my-slider-img" />
+                </SwiperSlide>
+
+                <SwiperSlide>
+                    <img src={pic26} alt="" className="my-slider-img" />
+                </SwiperSlide>
+
+                <SwiperSlide>
+                    <img src={pic24} alt="" className="my-slider-img" />
+                </SwiperSlide>
+
+                <SwiperSlide>
+                    <img src={pic23} alt="" className="my-slider-img" />
+                </SwiperSlide>
+
+                <SwiperSlide>
+                    <img src={pic22} alt="" className="my-slider-img" />
+                </SwiperSlide>
+
+                <SwiperSlide>
+                    <img src={pic21} alt="" className="my-slider-img" />
+                </SwiperSlide>
+
+                <SwiperSlide>
+                    <img src={pic20} alt="" className="my-slider-img" />
+                </SwiperSlide>
 
                 <SwiperSlide>
                     <img src={pic10} alt="" className="my-slider-img" />
@@ -138,3 +172,4 @@ const CustomSlider = () => {
 };
 
 export default CustomSlider;
+
