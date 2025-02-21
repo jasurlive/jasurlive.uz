@@ -24,7 +24,7 @@ const skillsData = [
         { name: 'PHP', logo: 'https://img.shields.io/badge/-PHP-777BB4?logo=php&logoColor=white&style=flat' },
         { name: 'C#', logo: 'https://img.shields.io/badge/-C%23-9b4dca?logo=dotnet&logoColor=white&style=flat' },
 
-        { name: 'React', logo: 'https://img.shields.io/badge/-React-61DAFB?logo=react&logoColor=black&style=flat' },
+        { name: 'React', logo: 'https://img.shields.io/badge/-React%20JS-61DAFB?logo=react&logoColor=black&style=flat' },
         { name: 'Node.js', logo: 'https://img.shields.io/badge/-Node.js-339933?logo=nodedotjs&logoColor=white&style=flat' },
         { name: 'Firebase', logo: 'https://img.shields.io/badge/-Firebase-FFCA28?logo=firebase&logoColor=black&style=flat' },
         { name: 'MySQL', logo: 'https://img.shields.io/badge/-MySQL-4479A1?logo=mysql&logoColor=white&style=flat' },
@@ -33,6 +33,11 @@ const skillsData = [
 
         { name: 'Git', logo: 'https://img.shields.io/badge/-Git-F05032?logo=git&logoColor=white&style=flat' },
         { name: 'GitHub', logo: 'https://img.shields.io/badge/-GitHub-181717?logo=github&logoColor=white&style=flat' },
+        { name: 'Vercel', logo: 'https://img.shields.io/badge/-Vercel-000000?logo=vercel&logoColor=white&style=flat' },
+        { name: 'Netlify', logo: 'https://img.shields.io/badge/-Netlify-00C7B7?logo=netlify&logoColor=white&style=flat' },
+        { name: 'Vite', logo: 'https://img.shields.io/badge/-Vite-646CFF?logo=vite&logoColor=white&style=flat' },
+        { name: 'TypeScript', logo: 'https://img.shields.io/badge/-TypeScript-3178C6?logo=typescript&logoColor=white&style=flat' },
+        { name: 'React TypeScript', logo: 'https://img.shields.io/badge/-React%20TS-61DAFB?logo=react&logoColor=black&style=flat' },
         { name: 'More coming...', logo: 'https://img.shields.io/badge/-More%20coming...-E0E0E0?logo=hourglass&logoColor=black&style=flat' }
 
     ],

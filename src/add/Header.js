@@ -2,6 +2,8 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTelegram, faWhatsapp, faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faHeadphones, faChess } from '@fortawesome/free-solid-svg-icons';
+import ielts from '../img/icons/ielts.png';
+import '../css/header.css';
 
 const Header = () => {
     return (
@@ -21,6 +23,10 @@ const Header = () => {
                 </a>
                 <a href="https://jasurgraduate.github.io/DJ/" className="social-icon">
                     <FontAwesomeIcon icon={faHeadphones} />
+                </a>
+
+                <a href="https://jasurgraduate.github.io/IELTS/" className="social-icon-ielts">
+                    <img src={ielts} alt="IELTS" />
                 </a>
 
             </div>
