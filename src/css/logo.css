@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
+/* 
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Bhaina+2&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jersey+25+Charted&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap'); */
+
+.logo-jasurlive {
+    background-color: #f0f8ffb9;
+    color: #333;
+    border-radius: 12px;
+    border: 1px solid #08001933;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: max-content;
+    margin: 5px auto 0;
+    margin-bottom: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex-direction: row;
+}
+
+.logo-jasurlive:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+.logo-text {
+    font-family: 'Courgette', cursive, sans-serif;
+    background: linear-gradient(45deg, #ffd700, #ff9900, #ff69b4, #ff34b3, #ff008e, #c300ff, #8e00ff, #4a00ff, #0091ff, #009fff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient 6s ease infinite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.logo-text:hover {
+    animation: hover-gradient 1.5s ease infinite;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+@keyframes hover-gradient {
+    0% {
+        background-position: 0% 50%;
+        text-shadow: 0 0 3px rgba(255, 255, 255, 0.5);
+        transform: scale(1);
+    }
+
+    50% {
+        background-position: 100% 50%;
+        transform: scale(1.1);
+    }
+
+    100% {
+        background-position: 0% 50%;
+        text-shadow: 0 0 3px rgba(255, 255, 255, 0.5);
+        transform: scale(1);
+    }
+}
+
+.deadpool {
+    display: inline-flex;
+    vertical-align: middle;
+    margin-right: 0.5rem;
+}
+
+/*------------------------------------------------------------------------ Mobile view */
+@media screen and (max-width: 768px) {
+    .logo-jasurlive {
+        padding: 0.7rem 2rem;
+    }
+
+    .deadpool {
+        width: 1.2rem;
+        height: auto;
+    }
+
+    .logo-text {
+        font-size: 1.2rem;
+        font-weight: 550;
+    }
+}
+
+/*----------------------------------------------------------------------------- Laptop view */
+@media screen and (min-width: 1024px) {
+    .logo-jasurlive {
+        padding: 0.8rem 2rem;
+    }
+
+    .deadpool {
+        width: 1.5rem;
+        height: auto;
+    }
+
+    .logo-text {
+        font-size: 1.5rem;
+        font-weight: 550;
+    }
+}

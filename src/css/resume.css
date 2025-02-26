@@ -1,0 +1,214 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+body {
+    background: linear-gradient(185deg, #eef8f4, #f1e9e0);
+    color: #333;
+}
+
+main {
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+
+.my-slider-container {
+    width: 100%;
+}
+
+
+.header-resume {
+    background-color: #1e293b;
+    color: #fff;
+    padding: 10px;
+    line-height: 1.6;
+}
+
+.header-resume h1,
+.header-resume h2 {
+    text-align: center;
+}
+
+.contact-info {
+    text-align: center;
+    margin-top: 10px;
+}
+
+p {
+    font-size: 18px;
+}
+
+.container-resume {
+    width: 100%;
+    overflow: hidden;
+    line-height: 1.5;
+}
+
+
+main section {
+    margin: 5px;
+}
+
+main section h2 {
+    border-bottom: 0.5px solid #3333333c;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+.timeline {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    line-height: 1.2;
+    font-size: 20px;
+    cursor: text;
+    width: 100%;
+}
+
+.timeline li {
+    list-style-type: none;
+    background: #fff;
+    padding: 30px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    font-size: 20px;
+    cursor: text;
+    width: 80%;
+}
+
+.card-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.gallery-container-resume {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 5rem;
+}
+
+.front,
+.back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 8px;
+    border: #ffffff solid 2px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.front img,
+.back img {
+    width: 100%;
+    height: 100%;
+}
+
+.back {
+    transform: rotateY(180deg);
+}
+
+.flipped {
+    transform: rotateY(180deg);
+}
+
+.business-card .front {
+    filter: blur(2.5px);
+    transition: filter 0.6s ease-in-out;
+}
+
+.flipped .front {
+    filter: none;
+}
+
+
+@media screen and (max-width: 768px) {
+
+    .container-resume {
+        width: 100%;
+    }
+
+    .timeline li {
+        width: 100%;
+        text-align: start;
+    }
+
+    .header-resume h1,
+    .header-resume h2 {
+        text-align: center;
+        font-size: 19px;
+    }
+
+    .image-flipper {
+        position: relative;
+        width: 300px;
+        height: 300px;
+        transition: transform 0.6s ease-in-out;
+        transform-style: preserve-3d;
+    }
+
+    .business-card {
+        width: 300px;
+        height: 170px;
+        position: relative;
+        transition: transform 0.6s;
+        transform-style: preserve-3d;
+        cursor: pointer;
+    }
+
+    .aboutme-resume {
+        padding: 5px 10px;
+        font-size: 20px;
+        text-align: justify;
+        width: 100%;
+    }
+
+    section {
+        font-size: 12px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+
+    .header-resume h1,
+    .header-resume h2 {
+        text-align: center;
+        font-size: 32px;
+    }
+
+    .image-flipper {
+        position: relative;
+        width: 350px;
+        height: 350px;
+        transition: transform 0.6s ease-in-out;
+        transform-style: preserve-3d;
+    }
+
+    .business-card {
+        width: 700px;
+        height: 400px;
+        position: relative;
+        transition: transform 0.6s;
+        transform-style: preserve-3d;
+        cursor: pointer;
+    }
+
+    .aboutme-resume {
+        padding: 5px 100px;
+        font-size: 25px;
+        text-align: center;
+    }
+}

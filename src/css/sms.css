@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+
+
+.containerSMS {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    width: 95%;
+    margin: 1rem;
+}
+
+.SMS {
+    background-color: #00a1d6;
+    color: #ffffff;
+    padding: 15px 20px;
+    border-radius: 20px;
+    max-width: 800px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+    width: 100%;
+}
+
+.SMS span {
+    font-family: 'Courier Prime', monospace;
+    line-height: 1.7;
+
+
+}
+
+.SMS::after {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent #00a1d6 transparent;
+}
+
+
+@media screen and (max-width: 768px) {
+    .SMS span {
+        font-size: 1rem;
+    }
+
+    .containerSMS {
+        height: 100px;
+        margin-top: 1.5rem;
+    }
+}
+
+@media screen and (min-width: 769px) {
+    .SMS span {
+        font-size: 1.2rem;
+    }
+
+
+    .containerSMS {
+        height: 130px;
+    }
+}

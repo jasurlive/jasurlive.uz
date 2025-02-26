@@ -1,0 +1,55 @@
+.social-icon-ielts img {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: bottom;
+    width: 2.8rem;
+    height: auto;
+}
+
+/* SMALL SCREEN --------------------------------------------------------- MOBILE */
+@media screen and (min-width: 320px) {
+
+    .social-icons {
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+        margin: 2px;
+    }
+
+    .social-icons a {
+        color: rgb(255, 249, 255);
+        font-size: 2.4rem;
+        margin: 0.1rem;
+    }
+
+    .social-icons a:hover {
+        color: rgb(52, 243, 201);
+        transform: scale(1.1);
+        transition: ease-out 0.3s;
+    }
+}
+
+/* MEDIUM SCREEN --------------------------------------------------------- TABLET */
+@media screen and (min-width: 1200px) {
+
+    .social-icons {
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+        margin-left: 15px;
+    }
+
+    .social-icons a {
+        color: rgb(255, 249, 255);
+    }
+
+    .social-icons a:hover {
+        color: rgb(52, 243, 201);
+        transform: scale(1.1);
+        transition: ease-out 0.3s;
+    }
+
+}
