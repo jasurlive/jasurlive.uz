@@ -1,6 +1,6 @@
 import React from 'react';
 import Iframe from 'react-iframe';
-import '../../css/home.css';
+import '../css/home.css';
 
 const FramedMap = () => {
     return (
