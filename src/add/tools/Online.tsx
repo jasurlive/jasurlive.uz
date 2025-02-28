@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { firestore } from "../api/Firebase";
+import { FaPeopleGroup } from "react-icons/fa6";
+import { SiPolkadot } from "react-icons/si";
 import {
     doc,
     setDoc,
@@ -105,7 +107,7 @@ function Online() {
 
     return (
         <div className="container-online-users">
-            <h1>👥🟢 Online: {onlineUsers.length}</h1>
+            <h1><SiPolkadot /> Online: {onlineUsers.length}</h1>
             {/* <h5>
                 <button onClick={toggleDetails}>
                     <FontAwesomeIcon icon={isDetailVisible ? faChevronUp : faChevronDown} />

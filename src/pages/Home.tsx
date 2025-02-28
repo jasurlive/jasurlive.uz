@@ -6,6 +6,7 @@ import UpDown from '../add/tools/UpDown';
 import SMS from '../add/tools/SMS';
 import Header from '../add/tools/Header';
 import FramedMap from '../add/iframe/TravelMap';
+import DJ from '../add/iframe/DJ';
 import Logo from '../add/tools/Logo';
 
 import '../add/css/logo.css';
@@ -17,22 +18,14 @@ const Home: React.FC = () => {
             <Logo />
             <main>
                 <Header />
-                {/* Important Sections */}
                 <SMS />
                 <CustomSlider />
                 <Skills />
                 <UpDown />
                 <FramedMap />
-                {/* Web Projects Section */}
                 <Projects />
-                <div className="container-line-home"></div>
-                <div className="container-DJ">
-                    <iframe src="https://jasurgraduate.github.io/DJ" title="DJ Jasur"></iframe>
-                </div>
-                {/* Online Users Section */}
-                <div className="container-online-users">
-                    <Online />
-                </div>
+                <DJ />
+                <Online />
             </main>
         </div>
     );

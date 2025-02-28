@@ -14,7 +14,7 @@ const SnowFall: React.FC = () => {
         const getSeasonImages = () => {
             const month = new Date().getMonth();
             if (month >= 2 && month <= 4) { // Spring
-                return [sakura, leaf, leaf2];
+                return [sakura];
             } else if (month >= 5 && month <= 7) { // Summer
                 return [leaf, leaf2];
             } else if (month >= 8 && month <= 10) { // Fall

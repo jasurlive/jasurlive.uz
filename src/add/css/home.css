@@ -268,9 +268,9 @@ button:active {
     .container-travel-map,
     .container-DJ {
         display: flex;
-        width: 100%;
+        width: 85%;
         margin: 0 auto;
-        height: 100vh;
+        height: 70vh;
     }
 
     h2 {
@@ -368,6 +368,7 @@ button:active {
 .container-online-users h1 {
     font-size: 1.5rem;
     margin-bottom: 1rem;
+    gap: 0.5rem;
 }
 
 .container-online-users ul {
@@ -471,7 +472,8 @@ button:active {
         display: flex;
         margin: 0 auto;
         margin-top: 30px;
-        width: 95%;
+        width: 85%;
+        height: 80vh;
     }
 
     .container-web-projects {

@@ -1,6 +1,7 @@
 // src/components/UpDown.js
 import { useState, useEffect } from 'react';
-import { FaChevronUp, FaChevronDown } from 'react-icons/fa';
+import { FaAnglesUp, FaAnglesDown } from "react-icons/fa6";
+import { FaJetFighterUp } from "react-icons/fa6";
 import '../css/updown.css';
 
 const UpDown = () => {
@@ -48,9 +49,9 @@ const UpDown = () => {
     return (
         <div className="updown-button" onClick={scrollTo}>
             {isTop || (!isBottom && scrollDirection === 'down') ? (
-                <FaChevronDown className="updown-icon" />
+                <FaAnglesDown className="updown-icon" />
             ) : (
-                <FaChevronUp className="updown-icon" />
+                <FaJetFighterUp className="updown-icon" />
             )}
         </div>
     );
