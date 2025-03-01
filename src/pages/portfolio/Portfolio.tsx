@@ -12,7 +12,7 @@ const Portfolio = () => {
     const [portfolioIsFullscreen, setPortfolioIsFullscreen] = useState(false);
 
     useEffect(() => {
-        fetch('./src/pages/portfolio/portfolio.xlsx')
+        fetch('data/portfolio/portfolio.xlsx')
             .then(response => response.arrayBuffer())
             .then(data => {
                 const workbook = XLSX.read(data, { type: 'array' });
