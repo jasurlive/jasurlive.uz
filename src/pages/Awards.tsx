@@ -99,7 +99,7 @@ function Awards() {
             {modalOpen && (
                 <div id="modal-awards" className="modal-awards" onClick={closeModal}>
                     <span className="close-awards" onClick={closeModal}>❎</span>
-                    <img className="modal-content-awards" id="modal-img" src={modalContent.imgSrc} alt="Award" />
+                    <img className="modal-content-awards" src={modalContent.imgSrc} alt="Award" />
                 </div>
             )}
         </div>

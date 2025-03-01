@@ -13,7 +13,6 @@ function Blogs() {
                     top: 0,
                     left: 0,
                 }}
-                loading="lazy"
             ></iframe>
             <div style={{
                 position: 'absolute',

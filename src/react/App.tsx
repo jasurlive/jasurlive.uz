@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
 import '../add/css/App.css';
 import Home from '../pages/Home';
 import Resume from '../pages/Resume';
-import Portfolio from '../pages/Portfolio';
+import Portfolio from '../pages/portfolio/Portfolio';
 import Awards from '../pages/Awards';
 import Blogs from '../pages/Blogs';
 import SnowFall from '../add/tools/SnowFall';

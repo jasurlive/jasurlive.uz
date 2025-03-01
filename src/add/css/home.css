@@ -123,13 +123,6 @@ h1 {
         column-count: 1;
     }
 
-    .web-project-link {
-        width: 20rem;
-        font-size: 1.1rem;
-        padding: 1.5rem 1.5rem;
-        margin: 0.1rem;
-    }
-
     .web-project-link:hover {
         background: linear-gradient(to right, #598dc7, #7fb0e1);
         color: white;
@@ -142,7 +135,7 @@ h1 {
         flex-wrap: wrap;
         justify-content: space-evenly;
         width: 100%;
-        padding: 0 1rem;
+        padding: 0 0.5rem;
         margin-bottom: 1.5rem;
     }
 
@@ -153,10 +146,12 @@ h1 {
     }
 
     .web-project-link {
+
+        width: 20rem;
         flex: 1 1 calc(50% - 1rem);
-        margin: 0.2rem;
-        font-size: 10px;
-        padding: 1.2rem 0.1rem;
+        margin: 0.1rem;
+        font-size: 12px;
+        padding: 1rem 0rem;
         border-radius: 0.5rem;
     }
 }

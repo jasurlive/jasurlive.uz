@@ -28,6 +28,10 @@
     cursor: pointer;
 }
 
+a.logo-jasurlive {
+    text-decoration: none;
+}
+
 .logo-text {
     font-family: 'Courgette', cursive, sans-serif;
     background: linear-gradient(45deg, #ffd700, #ff9900, #ff69b4, #ff34b3, #ff008e, #c300ff, #8e00ff, #4a00ff, #0091ff, #009fff);
