@@ -110,10 +110,17 @@ h1 {
 
 
 
-    .container-travel-map,
-    .container-DJ {
+    .container-travel-map {
         display: flex;
         width: 100%;
+        margin: 0 auto;
+        height: 70vh;
+    }
+
+
+    .container-DJ {
+        display: flex;
+        width: 85%;
         margin: 0 auto;
         height: 70vh;
     }

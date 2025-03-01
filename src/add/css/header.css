@@ -34,7 +34,9 @@ header {
 /* SMALL SCREEN --------------------------------------------------------- MOBILE */
 @media screen and (max-width: 600px) {
 
-
+    header {
+        padding: 15px;
+    }
 
 
     .social-icons a {
