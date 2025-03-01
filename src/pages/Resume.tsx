@@ -4,8 +4,12 @@ import '../add/css/resume.css';
 import BCfront from '../add/media/img/bc/front.png';
 import BCback from '../add/media/img/bc/back.png';
 
-import CustomSlider from '../add/tools/Slider';
+import Swiper from '../add/tools/Swiper';
 import Logo from '../add/tools/Logo';
+
+import { FaPhoneSquareAlt } from "react-icons/fa";
+import { TfiEmail } from "react-icons/tfi";
+import { FaRegAddressCard } from "react-icons/fa";
 
 function Resume() {
 
@@ -25,9 +29,8 @@ function Resume() {
                 <div className="container-resume">
                     <h1>👨🏻‍🔬 Resume (CV) | Jasur Anorkulov | Electronics Engineer</h1>
                     <div className="contact-info">
-                        <p>Phone: +998 99 *********** | Email: <a href="mailto:jasur@graduate.org">jasur@graduate.org</a></p>
-                        <p>Address: Uzbekistan, Samarkand, ************************</p>
-                        <p>Date of Birth: ************</p>
+                        <p><FaPhoneSquareAlt />: +998 99 *********** | <TfiEmail />: <a href="mailto:jasur@graduate.org">jasur@graduate.org</a></p>
+                        <p><FaRegAddressCard />: ***************, **************</p>
                     </div>
                 </div>
             </div>
@@ -80,7 +83,7 @@ function Resume() {
                     <section>
                         <h2>Photo Gallery</h2></section>
                     <div className="gallery-container-resume">
-                        <CustomSlider /></div>
+                        <Swiper /></div>
 
 
                 </div>

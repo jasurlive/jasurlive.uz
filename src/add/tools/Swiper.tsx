@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Scrollbar, Autoplay } from 'swiper/modules';
-import '../css/slider.css';
+import '../css/swiper.css';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import 'swiper/css/pagination';
 
 const importAll = async (): Promise<string[]> => {
     const images = import.meta.glob('../media/img/profile/*.{png,jpg,jpeg}', { eager: true }) as Record<string, { default: string }>;
@@ -19,7 +18,7 @@ const shuffleArray = <T,>(array: T[]): T[] => {
     return array;
 };
 
-const CustomSlider: React.FC = () => {
+const CustomSwiper: React.FC = () => {
     const [images, setImages] = useState<string[]>([]);
 
     useEffect(() => {
@@ -29,12 +28,12 @@ const CustomSlider: React.FC = () => {
     }, []);
 
     return (
-        <div className="my-slider-container">
+        <div className="my-swiper-container">
             <Swiper
                 modules={[Navigation, Pagination, Scrollbar, Autoplay]}
                 slidesPerView={3}
                 centeredSlides={true}
-                loop={images.length > 3} // Ensure there are enough slides for loop mode
+                loop={true}
                 autoplay={{
                     delay: 2000,
                     disableOnInteraction: false,
@@ -51,7 +50,7 @@ const CustomSlider: React.FC = () => {
             >
                 {images.map((image, index) => (
                     <SwiperSlide key={index}>
-                        <img src={image} alt="" className="my-slider-img" />
+                        <img src={image} alt="" className="my-swiper-img" />
                     </SwiperSlide>
                 ))}
             </Swiper>
@@ -59,4 +58,4 @@ const CustomSlider: React.FC = () => {
     );
 };
 
-export default CustomSlider;
+export default CustomSwiper;

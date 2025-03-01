@@ -13,19 +13,30 @@ body {
 main {
     height: 100%;
     width: 100%;
-    display: flex;
 }
 
-.my-slider-container {
-    width: 100%;
+h2 {
+    padding: 2rem;
 }
-
 
 .header-resume {
     background-color: #1e293b;
     color: #fff;
     padding: 10px;
-    line-height: 1.6;
+    line-height: 1.2;
+}
+
+
+.header-resume a {
+    text-decoration: none;
+    color: #8affd6;
+    padding: 5px;
+    transition: border-color 0.3s ease;
+}
+
+.header-resume a:hover {
+    color: #55a4ffcc;
+    cursor: pointer;
 }
 
 .header-resume h1,
@@ -34,12 +45,19 @@ main {
 }
 
 .contact-info {
-    text-align: center;
-    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact-info svg {
+    vertical-align: middle;
+    margin-right: 2px;
 }
 
 p {
-    font-size: 18px;
+    font-size: 15px;
 }
 
 .container-resume {
@@ -134,8 +152,8 @@ main section h2 {
     filter: none;
 }
 
-
-@media screen and (max-width: 768px) {
+/* --------------------------------------------------------------------------------- MOBILE */
+@media screen and (max-width: 600px) {
 
     .container-resume {
         width: 100%;
@@ -146,19 +164,11 @@ main section h2 {
         text-align: start;
     }
 
-    .header-resume h1,
-    .header-resume h2 {
+    .header-resume h1 {
         text-align: center;
-        font-size: 19px;
+        font-size: 15px;
     }
 
-    .image-flipper {
-        position: relative;
-        width: 300px;
-        height: 300px;
-        transition: transform 0.6s ease-in-out;
-        transform-style: preserve-3d;
-    }
 
     .business-card {
         width: 300px;
@@ -181,12 +191,16 @@ main section h2 {
     }
 }
 
-@media screen and (min-width: 1200px) {
+/* --------------------------------------------------------------------------------- LAPTOP */
+@media screen and (min-width: 601px) {
 
-    .header-resume h1,
-    .header-resume h2 {
+    .header-resume h1 {
         text-align: center;
         font-size: 32px;
+    }
+
+    p {
+        font-size: 20px;
     }
 
     .image-flipper {

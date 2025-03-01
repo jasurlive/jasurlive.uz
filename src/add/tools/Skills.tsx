@@ -45,7 +45,7 @@ const skillsData = [
 function Skills() {
     return (
         <div>
-            <h5>Software/Languages/Tools/Libraries I use:</h5>
+            <h1>Software/Languages/Tools/Libraries I use:</h1>
             <div className="container-skills">
                 {skillsData.flat().map((skill, index) => (
                     <div key={index} className="logo-skills-container">
