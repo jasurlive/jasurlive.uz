@@ -21,11 +21,11 @@ const Header = () => {
                 <a href="https://wa.me/+447775180677" className="social-icon">
                     <FontAwesomeIcon icon={faWhatsapp} />
                 </a>
-                <a href="https://jasurgraduate.github.io/DJ/" className="social-icon">
+                <a href="https://playlistgo.vercel.app/" className="social-icon">
                     <FontAwesomeIcon icon={faHeadphones} />
                 </a>
 
-                <a href="https://jasurgraduate.github.io/IELTS/" className="social-icon-ielts">
+                <a href="https://ieltslive.vercel.app/" className="social-icon-ielts">
                     <img src={ielts} alt="IELTS" />
                 </a>
 

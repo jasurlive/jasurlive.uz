@@ -5,13 +5,13 @@ const webProjectsData = [
 
     {
         name: 'CD IELTS Preparation',
-        url: 'https://jasurgraduate.github.io/IELTS/',
+        url: 'https://ieltslive.vercel.app/',
         icon: '💻',
         description: 'CD IELTS Prep 🆕',
     },
     {
         name: 'Music Playlist (DJ)',
-        url: 'https://jasurgraduate.github.io/DJ',
+        url: 'https://playlistgo.vercel.app/',
         icon: '🎧',
         description: 'DJ`s YouTube 🆕',
     },

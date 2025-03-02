@@ -5,7 +5,7 @@ const FramedMap = () => {
     return (
         <div className="container-DJ">
             <Iframe
-                url="https://jasurgraduate.github.io/DJ/"
+                url="https://playlistgo.vercel.app/"
                 width="100%"
                 height="100vh"
                 styles={{ border: "none" }}
