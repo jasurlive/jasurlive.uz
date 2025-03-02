@@ -25,7 +25,6 @@
     "ua-parser-js": "^2.0.2",
     "uuid": "^11.0.3",
     "vite-tsconfig-paths": "^5.1.4",
-    "web-vitals": "^2.1.4",
     "xlsx": "^0.18.5"
   },
   "scripts": {
