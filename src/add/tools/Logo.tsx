@@ -1,12 +1,12 @@
 import '../css/logo.css';
-import deadpool from '../media/img/icons/deadpool-mini.png';
+import deadpool from '../media/img/icons/deadpool-side.png';
 import { Link } from 'react-router-dom';
 
 
 const Logo = () => {
     return (
-        <div><Link to="/" className="logo-jasurlive">
-            <div className="logo-text"><img src={deadpool} alt="Jasur's logo" className='deadpool' /> jasurlive.uz | Jasur's attic</div></Link >
+        <div><img src={deadpool} alt="Jasur's logo" className='deadpool' /><Link to="/" className="logo-jasurlive">
+            <div className="logo-text">Jasur's attic | jasurlive.uz</div></Link >
         </div>
     );
 };

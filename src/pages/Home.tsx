@@ -15,7 +15,6 @@ const Home: React.FC = () => {
         <div>
             <Logo />
             <main>
-                <Header />
                 <SMS />
                 <Swiper />
                 <Skills />

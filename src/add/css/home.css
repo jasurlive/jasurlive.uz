@@ -26,7 +26,6 @@ main {
 iframe {
     width: 100%;
     height: 100%;
-    border: dashed rgba(128, 128, 128, 0.059) 0.1px;
     border-radius: 10px;
 }
 
@@ -106,15 +105,14 @@ h1 {
 }
 
 /* SMALL SCREEN --------------------------------------------------------- MOBILE */
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 600px) {
 
 
 
     .container-travel-map {
         display: flex;
-        width: 100%;
-        margin: 0 auto;
-        height: 70vh;
+        width: 85%;
+        height: 100vh;
     }
 
 
@@ -139,11 +137,12 @@ h1 {
 
     .container-web-projects {
         display: flex;
-        flex-wrap: wrap;
-        justify-content: space-evenly;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         width: 100%;
-        padding: 0 0.5rem;
-        margin-bottom: 1.5rem;
+        margin-top: -5rem;
+        margin-bottom: 2rem;
     }
 
     .container-web-projects h1 {
@@ -153,9 +152,10 @@ h1 {
     }
 
     .web-project-link {
-
+        display: flex;
+        justify-content: center;
+        align-items: center;
         width: 20rem;
-        flex: 1 1 calc(50% - 1rem);
         margin: 0.1rem;
         font-size: 12px;
         padding: 1rem 0rem;
@@ -164,7 +164,7 @@ h1 {
 }
 
 /* XL SCREEN ----------------------------------------------------------------- LAPTOP*/
-@media screen and (min-width: 481px) {
+@media screen and (min-width: 601px) {
 
 
 
@@ -174,7 +174,7 @@ h1 {
         margin: 0 auto;
         margin-top: 30px;
         width: 85%;
-        height: 80vh;
+        height: 100vh;
     }
 
 
@@ -187,7 +187,7 @@ h1 {
         flex-wrap: wrap;
         justify-content: space-evenly;
         width: 100%;
-        padding: 0 20rem;
+        padding: 0 15rem;
     }
 
     .container-web-projects h1 {

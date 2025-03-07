@@ -7,13 +7,19 @@ const webProjectsData = [
         name: 'CD IELTS Preparation',
         url: 'https://ieltslive.vercel.app/',
         icon: '💻',
-        description: 'CD IELTS Prep 🆕',
+        description: 'CD IELTS Prep (IELTSLive) 🆕',
     },
     {
         name: 'Music Playlist (DJ)',
         url: 'https://playlistgo.vercel.app/',
         icon: '🎧',
-        description: 'DJ`s YouTube 🆕',
+        description: 'DJ YouTube (PlaylistGo) 🆕',
+    },
+    {
+        name: 'Travel Map',
+        url: 'https://destinero.vercel.app/',
+        icon: '🗺️',
+        description: 'Travel Map (Destinero) 🆕',
     },
     {
         name: 'Get a Hangul Certificate',
@@ -21,18 +27,7 @@ const webProjectsData = [
         icon: '📄',
         description: 'Get a Hangul Certificate',
     },
-    {
-        name: 'Make Framed Pictures',
-        url: 'https://jasurgraduate.github.io/photo-frame/',
-        icon: '🖼️',
-        description: 'Make Framed Pictures',
-    },
-    {
-        name: 'Travel Map',
-        url: 'https://jasurgraduate.github.io/itravel',
-        icon: '🗺️',
-        description: 'Travel Map',
-    },
+    
     {
         name: 'Latin-Cyrillic Converter',
         url: 'https://jasurgraduate.github.io/LATIN_TO_CYRILLIC/',
@@ -51,6 +46,13 @@ const webProjectsData = [
         icon: '✅',
         description: 'To-Do List',
     },
+    
+    {
+        name: 'Make Framed Pictures',
+        url: 'https://jasurgraduate.github.io/photo-frame/',
+        icon: '🖼️',
+        description: 'Make Framed Pictures',
+    },
 ];
 
 function Projects() {
@@ -59,7 +61,7 @@ function Projects() {
             <h1>Web Projects:</h1>
             {webProjectsData.map((project, index) => (
                 <a href={project.url} className="web-project-link" key={index}>
-                    &#10148; <div className="iconz">{project.icon} </div> {project.description}
+                    <div className="iconz">{project.icon} </div> {project.description}
                 </a>
             ))}
         </div>

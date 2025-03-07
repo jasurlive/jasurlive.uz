@@ -8,23 +8,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap'); */
 
 .logo-jasurlive {
-    background-color: #f0f8ffb9;
-    color: #333;
     border-radius: 12px;
-    border: 1px solid #08001933;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     width: max-content;
     margin: 5px auto 0;
-    margin-bottom: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    flex-direction: row;
 }
 
 .logo-jasurlive:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     cursor: pointer;
 }
 
@@ -34,7 +27,7 @@ a.logo-jasurlive {
 
 .logo-text {
     font-family: 'Courgette', cursive, sans-serif;
-    background: linear-gradient(45deg, #ffd700, #ff9900, #ff69b4, #ff34b3, #ff008e, #c300ff, #8e00ff, #4a00ff, #0091ff, #009fff);
+    background: linear-gradient(45deg, #8e00ff, #ff69b4, #ff34b3, #ff008e, #c300ff, #8e00ff, #4a00ff, #0091ff, #009fff);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -45,6 +38,7 @@ a.logo-jasurlive {
     flex-direction: row;
     text-align: center;
     vertical-align: middle;
+    padding: 0rem 1rem;
 }
 
 .logo-text:hover {
@@ -81,20 +75,22 @@ a.logo-jasurlive {
 }
 
 .deadpool {
-    display: inline-flex;
+    position: absolute;
+    top: 0;
+    rotate: 180deg;
     vertical-align: middle;
-    margin-right: 0.5rem;
 }
 
 /*------------------------------------------------------------------------ Mobile view */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 600px) {
     .logo-jasurlive {
         padding: 0.7rem 2rem;
     }
 
     .deadpool {
-        width: 1.2rem;
+        width: 4.5rem;
         height: auto;
+        right: 0;
     }
 
     .logo-text {
@@ -104,14 +100,16 @@ a.logo-jasurlive {
 }
 
 /*----------------------------------------------------------------------------- Laptop view */
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 601px) {
     .logo-jasurlive {
-        padding: 0.8rem 2rem;
+        padding: 0.8rem 4rem;
     }
 
     .deadpool {
-        width: 1.5rem;
+        width: 8.5rem;
         height: auto;
+
+        right: 20%;
     }
 
     .logo-text {

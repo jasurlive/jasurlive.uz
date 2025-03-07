@@ -10,7 +10,6 @@
     align-items: center;
     justify-content: center;
     width: 95%;
-    margin: 1rem;
 }
 
 .SMS {
@@ -34,27 +33,26 @@
 .SMS::after {
     content: '';
     position: absolute;
-    top: 100%;
-    left: 65%;
-    transform: translateX(-50%) rotate(180deg);
-    border-width: 12px;
+    top: -30px;
+    right: 10%;
+    transform: translateX(50%) rotate(360deg);
+    border-width: 20px;
     border-style: solid;
     border-color: transparent transparent #00a1d6 transparent;
 }
 
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 600px) {
     .SMS span {
         font-size: 1rem;
     }
 
     .containerSMS {
         height: 120px;
-        margin-top: 1.5rem;
     }
 }
 
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 601px) {
     .SMS span {
         font-size: 1.2rem;
     }
@@ -62,5 +60,6 @@
 
     .containerSMS {
         height: 130px;
+        margin: 1rem;
     }
 }

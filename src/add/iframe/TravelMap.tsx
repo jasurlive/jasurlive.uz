@@ -1,4 +1,3 @@
-import React from 'react';
 import Iframe from 'react-iframe';
 import '../css/home.css';
 
@@ -6,14 +5,16 @@ const FramedMap = () => {
     return (
         <div className="container-travel-map">
             <Iframe
-                url="https://jasurgraduate.github.io/itravel/"
+                url="https://destinero.vercel.app/"
                 width="100%"
-                height="100vh"
+                height="100%"
                 styles={{ border: "none" }}
-                allow="geolocation"
+                allow="geolocation; clipboard-write"
+                overflow='hidden'
             />
         </div>
     );
 };
 
 export default FramedMap;
+
