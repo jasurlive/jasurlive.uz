@@ -1,5 +1,5 @@
 import '../css/logo.css';
-import deadpool from '../media/img/icons/deadpool-side.png';
+import deadpool from '../media/img/icons/panda.png';
 import { Link } from 'react-router-dom';
 
 

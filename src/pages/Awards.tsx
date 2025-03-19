@@ -13,6 +13,10 @@ import ielts2019 from '../add/media/img/awards/ielts2019.png';
 import krhangul from '../add/media/img/awards/kr-hangul.png';
 import uzy from '../add/media/img/awards/uzy.png';
 
+
+import Social from '../add/tools/Social';
+import UpDown from '../add/tools/UpDown';
+
 function Awards() {
     const [modalOpen, setModalOpen] = useState(false);
     const [modalContent, setModalContent] = useState({ imgSrc: '', description: '' });
@@ -102,6 +106,9 @@ function Awards() {
                     <img className="modal-content-awards" src={modalContent.imgSrc} alt="Award" />
                 </div>
             )}
+
+            <Social />
+            <UpDown />
         </div>
     );
 }

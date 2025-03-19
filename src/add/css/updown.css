@@ -13,7 +13,11 @@
 }
 
 .updown-button:hover {
-    transform: scale(1.1);
+    background-color: #1c4777;
+}
+
+.updown-button:active {
+    transform: scale(0.8);
 }
 
 .updown-icon {

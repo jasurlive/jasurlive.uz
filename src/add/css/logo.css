@@ -15,6 +15,7 @@
     text-align: center;
     width: max-content;
     margin: 5px auto 0;
+    outline: none;
 }
 
 .logo-jasurlive:hover {
@@ -106,7 +107,7 @@ a.logo-jasurlive {
     }
 
     .deadpool {
-        width: 8.5rem;
+        width: 9rem;
         height: auto;
 
         right: 20%;

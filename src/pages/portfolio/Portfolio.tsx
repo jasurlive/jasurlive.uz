@@ -1,10 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import{ useEffect, useState } from 'react';
 import * as XLSX from 'xlsx';
 import '../../add/css/portfolio.css';
 import Logo from '../../add/tools/Logo';
 import { GiPartyPopper } from "react-icons/gi";
 import { handleConfettiClick } from '../../add/tools/Confetti';
 import { SlSizeFullscreen } from "react-icons/sl";
+
+
+import Social from '../../add/tools/Social';
+import UpDown from '../../add/tools/UpDown';
 
 const Portfolio = () => {
     const [portfolioPosts, setPortfolioPosts] = useState<any[]>([]);
@@ -103,7 +107,10 @@ const Portfolio = () => {
                         <img src={portfolioSelectedPost['Image Link']} alt={portfolioSelectedPost.Title} className="portfolio-fullscreen-image" />
                     </div>
                 )}
-            </div></div>
+            </div>
+            <Social />
+            <UpDown />
+            </div>
     );
 };
 

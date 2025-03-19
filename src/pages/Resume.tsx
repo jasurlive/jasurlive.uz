@@ -11,6 +11,9 @@ import { FaPhoneSquareAlt } from "react-icons/fa";
 import { TfiEmail } from "react-icons/tfi";
 import { FaRegAddressCard } from "react-icons/fa";
 
+import Social from '../add/tools/Social';
+import UpDown from '../add/tools/UpDown';
+
 function Resume() {
 
     const [isCardFlipped, setIsCardFlipped] = useState(false);
@@ -88,6 +91,8 @@ function Resume() {
 
                 </div>
             </main>
+            <Social />
+            <UpDown />
         </div>
     );
 }
