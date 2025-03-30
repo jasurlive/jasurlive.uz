@@ -2,12 +2,12 @@ import * as Popover from "@radix-ui/react-popover";
 import { motion } from "framer-motion";
 import {
   FaUserAstronaut,
-  FaChess,
   FaGithub,
   FaTelegram,
   FaWhatsapp,
   FaLinkedinIn,
 } from "react-icons/fa";
+import { SiChessdotcom } from "react-icons/si";
 import { MdHeadset } from "react-icons/md";
 import "../css/social.css";
 
@@ -18,7 +18,7 @@ const socialLinks = [
     className: "social-icon",
   },
   {
-    href: "https://github.com/jasurgraduate",
+    href: "https://github.com/jasurlive",
     icon: FaGithub,
     className: "social-icon",
   },
@@ -29,7 +29,7 @@ const socialLinks = [
   },
   {
     href: "https://www.chess.com/member/jasurgraduate",
-    icon: FaChess,
+    icon: SiChessdotcom,
     className: "social-icon",
   },
 
