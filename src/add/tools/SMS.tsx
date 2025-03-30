@@ -6,7 +6,7 @@ const messages = [
   "I tried my best, but my best wasn't enough...",
   "I wish I could go back and do it all differently",
   "No one ever really sees the pain behind the smile",
-  "The saddest thing in life is wasted talent",
+  "If coding was a drug, I would've died from an overdose",
   "I need six months of vacation, twice a year...",
   "Life is short. Smile while you still have teeth",
   "I`m like a cloud. When I disappear, it`s a beautiful day 🌞",
