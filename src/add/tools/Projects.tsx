@@ -34,8 +34,8 @@ const webProjectsData = [
   },
 
   {
-    name: "Latin-Cyrillic Converter",
-    url: "https://jasurlive.github.io/LATIN_TO_CYRILLIC/",
+    name: "Latin-Cyrillic Converter (uzConvert)",
+    url: "https://uzconvert.vercel.app",
     icon: "🔁",
     description: "Latin-Cyrillic Converter",
   },
