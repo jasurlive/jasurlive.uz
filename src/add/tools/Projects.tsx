@@ -19,6 +19,13 @@ const webProjectsData = [
     icon: "🗺️",
     description: "Travel Map (Destinero) 🆕",
   },
+
+  {
+    name: "uzChess.vercel.app",
+    url: "https://uzchess.vercel.app",
+    icon: "♟️",
+    description: "Play Chess (uzChess) 🆕",
+  },
   {
     name: "Get a Hangul Certificate",
     url: "https://jasurlive.github.io/Hangul/",
@@ -31,12 +38,6 @@ const webProjectsData = [
     url: "https://jasurlive.github.io/LATIN_TO_CYRILLIC/",
     icon: "🔁",
     description: "Latin-Cyrillic Converter",
-  },
-  {
-    name: "Play Chess",
-    url: "https://jasurlive.github.io/chess",
-    icon: "♟️",
-    description: "Play Chess",
   },
   {
     name: "To-Do List",
