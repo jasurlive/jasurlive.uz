@@ -7,11 +7,11 @@ import { GiPartyPopper } from "react-icons/gi";
 import uol from "../add/media/img/awards/uol.png";
 import tuit from "../add/media/img/awards/tuit.png";
 import ielts2024 from "../add/media/img/awards/ielts2024.png";
-import transcriptuol from "../add/media/img/awards/transcriptuol.png";
-import ielts2022 from "../add/media/img/awards/ielts2022.png";
-import ielts2019 from "../add/media/img/awards/ielts2019.png";
+import transcriptuol from "../add/media/img/awards/transcriptuol.jpg";
+import ielts2022 from "../add/media/img/awards/ielts2022.jpg";
+import ielts2019 from "../add/media/img/awards/ielts2019.jpg";
 import krhangul from "../add/media/img/awards/kr-hangul.png";
-import uzy from "../add/media/img/awards/uzy.png";
+import uzy from "../add/media/img/awards/uzy.jpg";
 import mimoTS from "../add/media/img/awards/mimo-TS.png";
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -98,7 +98,7 @@ function Awards() {
 
       <div className="header-awards">
         <h1>
-          Meh types of Awards 🎓🏆 | Pop
+          "Meh" types of Awards 🎓🏆 | Pop
           <button
             className="icon-party"
             id="confettiButton"
