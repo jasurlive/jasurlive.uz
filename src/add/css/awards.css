@@ -5,8 +5,6 @@
     box-sizing: border-box;
 }
 
-
-
 .header-awards {
     display: flex;
     justify-content: center;
@@ -15,27 +13,24 @@
     height: 4.5rem;
     background: linear-gradient(135deg, #2c3e50, #34495e);
     color: whitesmoke;
-    box-shadow: 0px 5px 5px rgba(86, 85, 85, 0.378);
-
+    box-shadow: 0 5px 5px rgba(86, 85, 85, 0.378);
 }
 
 .header-awards button {
-    background-color: #007bff;
+    background-color: #c8e3ff5e;
     border: none;
     cursor: pointer;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     padding: 10px 14px;
     color: white;
     border-radius: 5px;
-    font-size: 2rem;
+    font-size: 1.5rem;
     transition: background 0.5s, transform 0.3s;
 }
-
 
 .icon-party {
     animation: icon-party-effect 5s infinite;
     transition: transform 0.4s ease-in-out;
-
 }
 
 .icon-party svg {
@@ -48,17 +43,11 @@
     50%,
     100% {
         transform: scale(1);
-        background-color: #ced7e182;
     }
 
-    25% {
-        transform: scale(1.2);
-        background-color: #fef28996;
-    }
-
+    25%,
     75% {
         transform: scale(1.2);
-        background-color: #4caf4fa5;
     }
 }
 
@@ -84,14 +73,7 @@
     border-radius: 10px;
 }
 
-.modal-awards p {
-    color: whitesmoke;
-    text-align: center;
-    margin-top: 1rem;
-    padding: 0 1rem;
-    line-height: 1.5;
-}
-
+.modal-awards p,
 .modal-description {
     color: whitesmoke;
     text-align: center;
@@ -105,17 +87,16 @@
     top: 20px;
     right: 15px;
     color: rgb(255, 0, 85);
-    font-size: 35px;
+    font-size: 30px;
     font-weight: bold;
     cursor: pointer;
+    transition: transform 0.3s ease-out;
 }
 
 .close-awards:hover {
     color: rgb(241, 84, 255);
     transform: scale(1.2);
-    transition: transform 0.3s ease-out;
 }
-
 
 .award {
     display: flex;
@@ -124,7 +105,6 @@
     cursor: pointer;
     width: 90%;
     padding: 1rem;
-    height: calc(100% - 4rem);
     height: 29rem;
     border-radius: 1rem;
     box-shadow: 0.1rem 0.1rem 0.1rem rgba(0, 0, 0, 0.2);
@@ -132,7 +112,6 @@
     overflow: hidden;
     transition: transform 0.3s ease;
     user-select: none;
-    -webkit-user-select: none;
 }
 
 .award:hover {
@@ -144,7 +123,6 @@
     max-height: 250px;
     object-fit: contain;
     margin: 0 auto;
-    display: block;
 }
 
 .award-description {
@@ -164,9 +142,7 @@
     margin: 1rem 0;
     line-height: 1.5;
     text-align: center;
-    text-justify: inter-word;
 }
-
 
 @keyframes zoom {
     from {
@@ -181,24 +157,21 @@
 /*------------------------------------------------------------------------ MOBILE */
 @media screen and (max-width: 600px) {
     .header-awards h1 {
-        display: flex;
-        align-items: center;
-        justify-content: center;
         font-size: 0.8rem;
         font-weight: normal;
     }
 
     .award-description h2 {
         font-size: 1.2rem;
-        margin: 1rem 0;
     }
 
     .award-description p {
         font-size: 0.8rem;
-        display: block;
-        text-overflow: ellipsis;
     }
 
+    .swiper-slide {
+        height: 100%;
+    }
 }
 
 /*---------------------------------------------------------------- LAPTOP */
@@ -207,20 +180,15 @@
         display: flex;
     }
 
-
     .header-awards h1 {
-        display: flex;
-        align-items: center;
-        justify-content: center;
         font-weight: 200;
         font-size: 1.2rem;
     }
-
 }
 
 .swiper {
     width: 100%;
-    padding: 20px 0;
+    padding: 1rem 0;
 }
 
 .swiper-slide {
