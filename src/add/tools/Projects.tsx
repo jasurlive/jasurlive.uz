@@ -32,20 +32,18 @@ const webProjectsData = [
     icon: "📄",
     description: "Get a Hangul Certificate",
   },
-
+  {
+    name: "To-Do List",
+    url: "https://checklistgo.vercel.app/",
+    icon: "✅",
+    description: "To-Do List (ChecklistGo) 🆕",
+  },
   {
     name: "Latin-Cyrillic Converter (uzConvert)",
     url: "https://uzconvert.vercel.app",
     icon: "🔁",
     description: "Latin-Cyrillic Converter",
   },
-  {
-    name: "To-Do List",
-    url: "https://jasurlive.github.io/to-do-list",
-    icon: "✅",
-    description: "To-Do List",
-  },
-
   {
     name: "Make Framed Pictures",
     url: "https://jasurlive.github.io/photo-frame/",
