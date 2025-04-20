@@ -5,7 +5,7 @@ const webProjectsData = [
     name: "CD IELTS Preparation",
     url: "https://ieltslive.vercel.app/",
     icon: "💻",
-    description: "CD IELTS Prep (IELTSLive) 🆕",
+    description: "CD IELTS Prep (IELTSLive)",
   },
   {
     name: "Music Playlist (DJ)",
@@ -17,7 +17,7 @@ const webProjectsData = [
     name: "Travel Map",
     url: "https://destinero.vercel.app/",
     icon: "🗺️",
-    description: "Travel Map (Destinero) 🆕",
+    description: "Travel Map (Destinero)",
   },
 
   {
@@ -39,10 +39,10 @@ const webProjectsData = [
     description: "To-Do List (ChecklistGo) 🆕",
   },
   {
-    name: "Latin-Cyrillic Converter (uzConvert)",
+    name: "Latin-Cyrillic Converter",
     url: "https://uzconvert.vercel.app",
     icon: "🔁",
-    description: "Latin-Cyrillic Converter",
+    description: "Latin-Cyrillic Converter (uzConvert)",
   },
   {
     name: "Make Framed Pictures",
