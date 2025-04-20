@@ -131,6 +131,14 @@ const skillsData = [
       logo: "https://img.shields.io/badge/-React%20TS-61DAFB?logo=react&logoColor=black&style=flat",
     },
     {
+      name: "Django",
+      logo: "https://img.shields.io/badge/-Django-092E20?logo=django&logoColor=white&style=flat",
+    },
+    {
+      name: "Vue",
+      logo: "https://img.shields.io/badge/-Vue-4FC08D?logo=vue.js&logoColor=white&style=flat",
+    },
+    {
       name: "More coming...",
       logo: "https://img.shields.io/badge/-More%20coming...-E0E0E0?logo=hourglass&logoColor=black&style=flat",
     },
