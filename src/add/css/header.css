@@ -1,0 +1,67 @@
+header {
+    display: flex;
+    justify-content: center;
+    align-items: space-around;
+    padding: 2rem;
+    width: 100%;
+    background: linear-gradient(135deg, #2c3e50, #34495e);
+    color: whitesmoke;
+    box-shadow: 0px 5px 5px 0px rgba(86, 85, 85, 0.378);
+}
+
+
+.social-icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+
+.social-icons a {
+    font-size: 2.4rem;
+}
+
+.social-icon-ielts img {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: bottom;
+    width: 2.8rem;
+    height: auto;
+}
+
+/* SMALL SCREEN --------------------------------------------------------- MOBILE */
+@media screen and (max-width: 600px) {
+
+    header {
+        padding: 15px;
+    }
+
+
+    .social-icons a {
+        color: rgb(255, 249, 255);
+    }
+
+    .social-icons a:hover {
+        color: rgb(52, 243, 201);
+        transform: scale(1.1);
+        transition: ease-out 0.3s;
+    }
+}
+
+/* MEDIUM SCREEN --------------------------------------------------------- LAPTOP */
+@media screen and (min-width: 601px) {
+
+
+    .social-icons a {
+        color: rgb(255, 249, 255);
+    }
+
+    .social-icons a:hover {
+        color: rgb(52, 243, 201);
+        transform: scale(1.1);
+        transition: ease-out 0.3s;
+    }
+
+}
