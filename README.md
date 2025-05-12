@@ -2,4 +2,4 @@
 
 LIVE: https://jasurlive.uz
 
-![Screenshot 2025-04-04 144732](https://github.com/user-attachments/assets/572c01fc-ae7a-4897-8e80-465ccb76a264)
+![image](https://github.com/user-attachments/assets/07bc68e8-247a-494f-bed7-64859fab2f53)
