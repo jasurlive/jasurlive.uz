@@ -171,11 +171,6 @@
 }
 
 .portfolio-modal-content img {
-    width: 20rem;
-    height: 20rem;
-    border-radius: 15px;
-    margin-bottom: 16px;
-    object-fit: cover;
     user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;
@@ -196,7 +191,7 @@
     position: absolute;
     top: 0;
     right: 0;
-    font-size: 40px;
+    font-size: 50px;
     font-weight: bold;
     cursor: pointer;
     color: rgb(255, 0, 0);
@@ -245,6 +240,13 @@
         width: 100%;
     }
 
+    .portfolio-modal-image-container img {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        max-width: 100%;
+    }
+
     .portfolio-modal-content img {
         width: 15rem;
         height: 15rem;
@@ -254,7 +256,7 @@
         position: absolute;
         top: 0;
         right: 5px;
-        font-size: 30px;
+        font-size: 40px;
     }
 
     .header-portfolio h1 {
@@ -281,11 +283,16 @@
     position: relative;
 }
 
+.portfolio-modal-image-container img {
+    width: 40rem;
+    height: auto;
+}
+
 .portfolio-fullscreen-icon {
     position: absolute;
     bottom: 0;
     right: 0;
-    font-size: 20px;
+    font-size: 30px;
     background: rgb(10, 7, 86);
     border: none;
     color: white;

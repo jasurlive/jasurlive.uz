@@ -89,7 +89,7 @@ function Awards() {
     {
       imgSrc: krhangul,
       title: "Quiz Completion Certificate",
-      description: `A certificate from one of my ReactJS projects. You can also get your own certificate, scan the QR Code in the bottom right corner or <a href="https://jasurgraduate.github.io/Hangul/">click here</a>. \nOctober 2024`,
+      description: `A certificate from one of my ReactJS projects. You can also get your own certificate, scan the QR Code in the bottom right corner or <a href="https://jasurlive.github.io/Hangul/">click here</a>. \nOctober 2024`,
     },
     {
       imgSrc: uol,
