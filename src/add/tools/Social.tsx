@@ -6,8 +6,9 @@ import {
   FaTelegram,
   FaWhatsapp,
   FaLinkedinIn,
+  FaEarlybirds,
 } from "react-icons/fa";
-import { SiChessdotcom } from "react-icons/si";
+import { SiChessdotcom, SiDuolingo } from "react-icons/si";
 import { MdHeadset } from "react-icons/md";
 import "../css/social.css";
 
@@ -25,6 +26,11 @@ const socialLinks = [
   {
     href: "https://www.linkedin.com/in/jasurlive/",
     icon: FaLinkedinIn,
+    className: "social-icon",
+  },
+  {
+    href: "https://www.duolingo.com/profile/jasurlive.uz",
+    icon: SiDuolingo,
     className: "social-icon",
   },
   {
