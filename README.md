@@ -103,7 +103,9 @@ New to GitHub? You can also just fork the repo and make it your own
 
 This site started as a personal corner of the internet. Now it's yours, too. Customize it freely and make it your own:
 
-"An attic full of memories, now reborn through pixels."
+```
+console.log("The secret to success: Start, then give up, then blame the universe.");|
+```
 
 ---
 
