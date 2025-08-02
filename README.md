@@ -18,16 +18,18 @@ This is a **public template**, open to **anyone** who wants to build a classic-s
 
 ## 📂 Project Structure
 
+```
 jasurlive.uz/
-├── public/ # Static files (favicon, etc.)
+├── public/              # Static files (favicon, etc.)
 ├── src/
-│ ├── add/ # All the minor components and files
-│ ├── pages/ # page components
-│ ├── react/ # App.tsx
+│   ├── add/             # All the minor components and files
+│   ├── pages/           # Page components
+│   ├── react/           # App.tsx
 ├── index.html
 ├── vite.config.ts
 ├── tsconfig.json
 └── package.json
+```
 
 ---
 
