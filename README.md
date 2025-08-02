@@ -39,8 +39,8 @@ To use this template:
 
 ```bash
 # Clone the repo
-git clone https://github.com/YOUR_USERNAME/jasurs-attic.git
-cd jasurs-attic
+git clone https://github.com/jasurlive/jasurlive.uz.git
+cd jasurlive.uz
 
 # Install dependencies
 npm install
@@ -104,7 +104,7 @@ New to GitHub? You can also just fork the repo and make it your own
 This site started as a personal corner of the internet. Now it's yours, too. Customize it freely and make it your own:
 
 ```
-console.log("The secret to success: Start, then give up, then blame the universe.");|
+console.log("The secret to success: Start, then give up, then blame the universe.");
 ```
 
 ---
