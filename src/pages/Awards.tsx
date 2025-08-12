@@ -14,6 +14,8 @@ import krhangul from "../add/media/img/awards/kr-hangul.png";
 import uzy from "../add/media/img/awards/uzy.jpg";
 import mimoTS from "../add/media/img/awards/mimo-TS.png";
 import sololearnPY from "../add/media/img/awards/sololearn-PY.jpg";
+import achievement from "../add/media/img/awards/achievementWoosong.jpg";
+import commendation from "../add/media/img/awards/commendationWoosong.jpg";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Scrollbar, Autoplay } from "swiper/modules";
@@ -37,6 +39,19 @@ function Awards() {
   };
 
   const awards = [
+    {
+      imgSrc: commendation,
+      title: "Certificate of Commendation (KGSP)",
+      description:
+        "Awarded for outstanding academic performance at Woosong University in 2024-25. \nAugust 2025.",
+    },
+
+    {
+      imgSrc: achievement,
+      title: "Certificate of Achievement (KGSP)",
+      description:
+        "Recognition of the diligent completion of the Korean Government Scholarship Program Master's Course \nAugust 2025.",
+    },
     {
       imgSrc: sololearnPY,
       title: "Course Completion Certificate",
