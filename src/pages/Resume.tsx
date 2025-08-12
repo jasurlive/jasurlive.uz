@@ -58,8 +58,11 @@ function Resume() {
             <h2>Work/Education Experience</h2>
             <div className="timeline">
               <li>
+                <b>6️⃣ Loading...</b>
+              </li>
+              <li>
                 <b>5️⃣ Masters (Postgraduate) Student at Woosong University</b> |
-                September 2024 - Current
+                September 2024 - February 2026
               </li>
               <li>
                 <b>
