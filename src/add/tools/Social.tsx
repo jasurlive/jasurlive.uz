@@ -7,6 +7,7 @@ import {
   FaWhatsapp,
   FaLinkedinIn,
   FaEarlybirds,
+  FaPlay,
 } from "react-icons/fa";
 import { SiChessdotcom, SiDuolingo } from "react-icons/si";
 import { MdHeadset } from "react-icons/md";
@@ -15,7 +16,7 @@ import "../css/social.css";
 const socialLinks = [
   {
     href: "https://playlistgo.vercel.app/",
-    icon: MdHeadset,
+    icon: FaPlay,
     className: "social-icon",
   },
   {
