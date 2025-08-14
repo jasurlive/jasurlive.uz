@@ -39,7 +39,7 @@ function App() {
   }
 
   if (blocked) {
-    return <div style={{ color: "red", fontWeight: "bold" }}>🚫</div>;
+    return <div>Website is under maintenance...</div>;
   }
 
   return (
