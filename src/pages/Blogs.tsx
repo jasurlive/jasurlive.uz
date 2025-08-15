@@ -2,7 +2,7 @@ function Blogs() {
   return (
     <div style={{ position: "relative", width: "100%", height: "100vh" }}>
       <iframe
-        src="https://jasurgraduate.blogspot.com/"
+        src="https://jasurlive.blogspot.com/"
         title="Blogs"
         style={{
           width: "100%",
