@@ -39,7 +39,7 @@ function App() {
   }
 
   if (blocked) {
-    return <div>Website is under maintenance...</div>;
+    return <div></div>;
   }
 
   return (
