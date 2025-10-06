@@ -58,7 +58,11 @@ function Resume() {
             <h2>Work/Education Experience</h2>
             <div className="timeline">
               <li>
-                <b>6️⃣ Board Engineer at "Railwayexpress" JSC</b>
+                <b>
+                  6️⃣ Board Engineer of high-speed Talgo 250 trains at
+                  "Railwayexpress" JSC
+                </b>{" "}
+                | September 2025 - Current
               </li>
               <li>
                 <b>5️⃣ Masters (Postgraduate) Student at Woosong University</b> |
