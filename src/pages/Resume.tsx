@@ -59,7 +59,7 @@ function Resume() {
             <div className="timeline">
               <li>
                 <b>
-                  6️⃣ Board Engineer of high-speed Talgo 250 trains at
+                  6️⃣ On-board Engineer of high-speed Talgo-250 trains at
                   "Railwayexpress" JSC
                 </b>{" "}
                 | September 2025 - Current
