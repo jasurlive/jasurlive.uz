@@ -58,8 +58,11 @@ function Resume() {
             <h2>Work/Education Experience</h2>
             <div className="timeline">
               <li>
+                <b>7️⃣ Loading...</b>{" "}
+              </li>
+              <li>
                 <b>
-                  6️⃣ Board Engineer of high-speed Talgo 250 trains at
+                  6️⃣ On-board Engineer of high-speed Talgo-250 trains at
                   "Railwayexpress" JSC
                 </b>{" "}
                 | September 2025 - Current
