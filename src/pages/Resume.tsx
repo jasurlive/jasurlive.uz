@@ -68,21 +68,19 @@ function Resume() {
                 | September 2025 - Current
               </li>
               <li>
-                <b>5️⃣ Masters (Postgraduate) Student at Woosong University</b> |
-                September 2024 - February 2026
+                <b>5️⃣ MTech Student at Woosong University</b> | September 2024 -
+                February 2026
               </li>
               <li>
                 <b>
-                  4️⃣ Electronics Engineer at Locomotive Depot Uzbekistan
-                  (Samarkand branch)
+                  4️⃣ Electronics Engineer at "Railwayinfrastructure" JSC
+                  (Samarkand)
                 </b>{" "}
                 | November 2023 - September 2024
               </li>
               <li>
-                <b>
-                  3️⃣ Masters (Postgraduate) Student at University of Liverpool
-                </b>{" "}
-                | September 2022 - November 2023
+                <b>3️⃣ MSc Student at University of Liverpool</b> | September
+                2022 - November 2023
               </li>
               <li>
                 <b>
@@ -93,8 +91,7 @@ function Resume() {
               </li>
               <li>
                 <b>
-                  1️⃣ Undergraduate Student at Tashkent Institute of Railway
-                  Engineers
+                  1️⃣ BEng Student at Tashkent Institute of Railway Engineers
                 </b>{" "}
                 | September 2015 - June 2019
               </li>
