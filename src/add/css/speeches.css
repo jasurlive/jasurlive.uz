@@ -1,0 +1,112 @@
+/* ============================================================
+   🎨 Speeches Page Styles
+   Includes thumbnail styling and play button overlay
+   To revert to old look: remove the .thumbnail-wrapper & .play-button sections
+   ============================================================ */
+
+.speeches-container {
+    width: 100%;
+    padding: 2rem;
+    text-align: center;
+}
+
+.page-title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #222;
+    font-weight: 600;
+}
+
+.speech-card {
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.speech-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    /* Full width */
+    height: 300px;
+    /* Fixed height for all video containers */
+    overflow: hidden;
+    border-bottom: 1px solid #eee;
+}
+
+/* ================================
+   🎞️ Thumbnail and Play Button
+   ================================ */
+
+.speeches-container h1 {
+    padding: 1rem;
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-align: center;
+    text-justify: inter-word;
+}
+
+.thumbnail-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #000;
+}
+
+.video-thumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.thumbnail-wrapper:hover .video-thumbnail {
+    transform: scale(1.05);
+    opacity: 0.85;
+}
+
+/* ================================
+   📝 Text info below each video
+   ================================ */
+.speech-info {
+    padding: 1rem;
+}
+
+.speech-info h3 {
+    font-size: 1.1rem;
+    margin: 0.5rem 0;
+    color: #222;
+}
+
+.speech-info p {
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 0.5rem;
+}
+
+.speech-info .date {
+    font-size: 0.85rem;
+    color: #888;
+}
+
+/* ================================
+   💻 Responsive Design
+   ================================ */
+@media (max-width: 768px) {
+    .speeches-container {
+        padding: 1rem;
+    }
+
+    .speech-card {
+        margin-bottom: 1.5rem;
+    }
+}

@@ -6,6 +6,7 @@ import UpDown from "../add/tools/UpDown";
 import SMS from "../add/tools/SMS";
 import FramedMap from "../add/iframe/TravelMap";
 import DJ from "../add/iframe/DJ";
+import Speeches from "../pages/videos/Speeches";
 import Logo from "../add/tools/Logo";
 import "../add/css/home.css";
 import Social from "../add/tools/Social";
@@ -18,6 +19,7 @@ const Home: React.FC = () => {
       <main>
         <SMS />
         <Swiper />
+        <Speeches />
 
         <Skills />
         <Code />
