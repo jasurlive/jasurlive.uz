@@ -1,5 +1,5 @@
 import Online from "../add/tools/Online";
-import Swiper from "../add/tools/Swiper";
+import HomeSwiper from "../add/tools/SwiperHome";
 import Skills from "../add/tools/Skills";
 import Projects from "../add/tools/Projects";
 import UpDown from "../add/tools/UpDown";
@@ -18,7 +18,7 @@ const Home: React.FC = () => {
       <Logo />
       <main>
         <SMS />
-        <Swiper />
+        <HomeSwiper />
         <Speeches />
 
         <Skills />

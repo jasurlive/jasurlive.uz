@@ -9,6 +9,8 @@ import { SlSizeFullscreen } from "react-icons/sl";
 import Social from "../../add/tools/Social";
 import UpDown from "../../add/tools/UpDown";
 
+import Speeches from "../videos/Speeches";
+
 const Portfolio = () => {
   const [portfolioPosts, setPortfolioPosts] = useState<any[]>([]);
   const [portfolioSelectedPost, setPortfolioSelectedPost] = useState<
@@ -161,6 +163,8 @@ const Portfolio = () => {
             />
           </div>
         )}
+
+        <Speeches />
       </div>
       <Social />
       <UpDown />
