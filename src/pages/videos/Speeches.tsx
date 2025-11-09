@@ -22,18 +22,19 @@ const Speeches: React.FC = () => {
         "Highlighting the impact of the KGSP program on global railway systems.",
       date: "August 2025",
     },
+
+    {
+      title: "👨🏻‍🎓 Graduation Speech Shorts",
+      videoId: "https://youtube.com/shorts/qUKU_80dIwY",
+      description: "Just a mumble of my graduation speech highlights 😆",
+      date: "August 2025",
+    },
     {
       title: "Speech at a Conference in Seoul",
       videoId: "https://youtube.com/shorts/DAOv3IKZz4w",
       description:
         "Presenting insights on technology and innovation in Uzbekistan Railways.",
       date: "November 2024",
-    },
-    {
-      title: "👨🏻‍🎓 Graduation Speech Shorts",
-      videoId: "https://youtube.com/shorts/qUKU_80dIwY",
-      description: "Just a mumble of my graduation speech highlights 😆",
-      date: "August 2025",
     },
     {
       title: "Resonse Speech as a representative",
@@ -49,11 +50,15 @@ const Speeches: React.FC = () => {
         "Honored to receive the Representative Award at Woosong University.",
       date: "August 2025",
     },
+    {
+      title: "Highlights of my presentation speech",
+      videoId: "https://youtube.com/shorts/0tBfhfbKlRM?feature=share",
+      description:
+        "Presenting key moments from my recent speech at the conference.",
+      date: "December 2024",
+    },
   ];
 
-  // ==============================================================
-  // 🖼️ Preload YouTube thumbnails
-  // ==============================================================
   return (
     <div className="speeches-container">
       <h1>🌟 Talks & Speeches</h1>
@@ -83,7 +88,15 @@ const Speeches: React.FC = () => {
               <div className="speech-card">
                 <div className="video-container">
                   <iframe
-                    src={video.videoId.replace("watch?v=", "embed/")} // Convert YouTube URL to embed URL
+                    src={(() => {
+                      // Extract VIDEO_ID from various YouTube URL formats
+                      const url = video.videoId;
+                      const match = url.match(
+                        /(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([^?&/]+)/
+                      );
+                      const videoId = match ? match[1] : "";
+                      return `https://www.youtube.com/embed/${videoId}`;
+                    })()}
                     title={video.title}
                     frameBorder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
