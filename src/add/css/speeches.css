@@ -1,14 +1,10 @@
-/* ============================================================
-   🎨 Speeches Page Styles
-   Includes thumbnail styling and play button overlay
-   To revert to old look: remove the .thumbnail-wrapper & .play-button sections
-   ============================================================ */
-
 .speeches-container {
-    width: 100%;
-    padding: 2rem;
+    width: 90%;
     text-align: center;
+    display: flex;
+    flex-direction: column;
 }
+
 
 .page-title {
     font-size: 2rem;
@@ -33,16 +29,11 @@
 .video-container {
     position: relative;
     width: 100%;
-    /* Full width */
     height: 300px;
-    /* Fixed height for all video containers */
     overflow: hidden;
     border-bottom: 1px solid #eee;
 }
 
-/* ================================
-   🎞️ Thumbnail and Play Button
-   ================================ */
 
 .speeches-container h1 {
     padding: 1rem;
@@ -74,9 +65,6 @@
     opacity: 0.85;
 }
 
-/* ================================
-   📝 Text info below each video
-   ================================ */
 .speech-info {
     padding: 1rem;
 }
