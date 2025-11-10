@@ -69,7 +69,7 @@ const Speeches: React.FC = () => {
 
   return (
     <div className="speeches-container">
-      <h1>🌟 Talks | Speeches | Interviews 🎤</h1>
+      <h1>🌟 Talks & Interviews 🎤</h1>
 
       <main>
         <Swiper
