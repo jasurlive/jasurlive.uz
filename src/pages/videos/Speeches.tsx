@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../../add/css/speeches.css"; // ✅ external CSS for styles
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Scrollbar } from "swiper/modules";
+import { Autoplay, Navigation, Pagination, Scrollbar } from "swiper/modules";
 
 interface VideoLink {
   title: string;
@@ -24,11 +24,19 @@ const Speeches: React.FC = () => {
     },
 
     {
+      title: "Farewell Speech at Solbridge International Business School",
+      videoId: "https://youtu.be/ql98k916P38",
+      description: "Highlighting the key moments of our life in South Korea",
+      date: "June 2025",
+    },
+
+    {
       title: "👨🏻‍🎓 Graduation Speech Shorts",
       videoId: "https://youtube.com/shorts/qUKU_80dIwY",
       description: "Just a mumble of my graduation speech highlights 😆",
       date: "August 2025",
     },
+
     {
       title: "Speech at a Conference in Seoul",
       videoId: "https://youtube.com/shorts/DAOv3IKZz4w",
@@ -61,15 +69,19 @@ const Speeches: React.FC = () => {
 
   return (
     <div className="speeches-container">
-      <h1>🌟 Talks & Speeches</h1>
+      <h1>🌟 Talks | Speeches | Interviews 🎤</h1>
 
       <main>
         <Swiper
-          modules={[Navigation, Pagination, Scrollbar]}
+          modules={[Navigation, Pagination, Scrollbar, Autoplay]}
           slidesPerView={3}
           centeredSlides={true}
           loop={true}
           navigation={true}
+          autoplay={{
+            delay: 12000,
+            disableOnInteraction: false,
+          }}
           pagination={{
             clickable: true,
             el: ".swiper-pagination",
