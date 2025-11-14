@@ -4,7 +4,6 @@ import "../../add/css/portfolio.css";
 import Logo from "../../add/tools/Logo";
 import { GiPartyPopper } from "react-icons/gi";
 import { handleConfettiClick } from "../../add/tools/Confetti";
-import { SlSizeFullscreen } from "react-icons/sl";
 
 import Social from "../../add/tools/Social";
 import UpDown from "../../add/tools/UpDown";
@@ -30,27 +29,19 @@ const Portfolio = () => {
           (post: any) => post.Title && post.Description && post["Image Link"]
         );
 
-        setPortfolioPosts(validPosts); // keep the exact order from Excel
+        setPortfolioPosts(validPosts);
       })
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
 
-  const handlePortfolioPostClick = (post: any) => {
+  // Handlers
+  const handlePortfolioPostClick = (post: any) =>
     setPortfolioSelectedPost(post);
-  };
+  const handlePortfolioCloseModal = () => setPortfolioSelectedPost(null);
+  const handlePortfolioImageClick = () => setPortfolioIsFullscreen(true);
+  const handlePortfolioFullscreenClose = () => setPortfolioIsFullscreen(false);
 
-  const handlePortfolioCloseModal = () => {
-    setPortfolioSelectedPost(null);
-  };
-
-  const handlePortfolioFullscreenClick = () => {
-    setPortfolioIsFullscreen(true);
-  };
-
-  const handlePortfolioFullscreenClose = () => {
-    setPortfolioIsFullscreen(false);
-  };
-
+  // Helpers
   const makePortfolioLinksClickable = (text: string) => {
     const urlRegex = /(https?:\/\/[^\s]+)/g;
     return text.split(urlRegex).map((part, index) =>
@@ -70,10 +61,15 @@ const Portfolio = () => {
       .split(urlRegex)
       .filter((part) => !urlRegex.test(part))
       .join("");
-
     return truncatedText.length <= length
       ? truncatedText
       : truncatedText.substring(0, length) + "...";
+  };
+
+  const getYoutubeEmbedUrl = (text: string) => {
+    const youtubeRegex = /(?:youtube\.com\/watch\?v=|youtu\.be\/)([\w-]{11})/;
+    const match = text.match(youtubeRegex);
+    return match ? `https://www.youtube.com/embed/${match[1]}` : null;
   };
 
   return (
@@ -124,20 +120,26 @@ const Portfolio = () => {
               </span>
 
               <div className="portfolio-modal-image-container">
-                <img
-                  src={portfolioSelectedPost["Image Link"]}
-                  alt={portfolioSelectedPost.Title}
-                />
-                <button
-                  className="portfolio-fullscreen-icon"
-                  onClick={handlePortfolioFullscreenClick}
-                >
-                  <SlSizeFullscreen />
-                </button>
+                {getYoutubeEmbedUrl(portfolioSelectedPost.Description) ? (
+                  <iframe
+                    width="100%"
+                    height="100%"
+                    src={getYoutubeEmbedUrl(portfolioSelectedPost.Description)!}
+                    title={portfolioSelectedPost.Title}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  ></iframe>
+                ) : (
+                  <img
+                    src={portfolioSelectedPost["Image Link"]}
+                    alt={portfolioSelectedPost.Title}
+                    onClick={handlePortfolioImageClick} // click image to fullscreen
+                    style={{ cursor: "pointer" }}
+                  />
+                )}
               </div>
 
               <h3>Topic: {portfolioSelectedPost.Title}</h3>
-
               <p className="portfolio-item-description">
                 {makePortfolioLinksClickable(portfolioSelectedPost.Description)}
               </p>
@@ -145,18 +147,20 @@ const Portfolio = () => {
           </div>
         )}
 
-        {portfolioIsFullscreen && (
-          <div
-            className="portfolio-fullscreen-modal"
-            onClick={handlePortfolioFullscreenClose}
-          >
-            <img
-              src={portfolioSelectedPost["Image Link"]}
-              alt={portfolioSelectedPost.Title}
-              className="portfolio-fullscreen-image"
-            />
-          </div>
-        )}
+        {portfolioIsFullscreen &&
+          portfolioSelectedPost &&
+          !getYoutubeEmbedUrl(portfolioSelectedPost.Description) && (
+            <div
+              className="portfolio-fullscreen-modal"
+              onClick={handlePortfolioFullscreenClose}
+            >
+              <img
+                src={portfolioSelectedPost["Image Link"]}
+                alt={portfolioSelectedPost.Title}
+                className="portfolio-fullscreen-image"
+              />
+            </div>
+          )}
 
         <Speeches />
       </div>
