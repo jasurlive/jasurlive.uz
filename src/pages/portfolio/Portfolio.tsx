@@ -25,26 +25,14 @@ const Portfolio = () => {
         const workbook = XLSX.read(data, { type: "array" });
         const sheetName = workbook.SheetNames[0];
         const worksheet = XLSX.utils.sheet_to_json(workbook.Sheets[sheetName]);
-        if (worksheet.length === 0) {
-          throw new Error("Invalid HTML: could not find <table>");
-        }
+
         const validPosts = worksheet.filter(
-          (post: any) =>
-            post.Title &&
-            post.Description &&
-            post["Image Link"] &&
-            post["Date & Time"]
+          (post: any) => post.Title && post.Description && post["Image Link"]
         );
-        const sortedPosts = validPosts.sort(
-          (a: any, b: any) =>
-            new Date(b["Date & Time"]).getTime() -
-            new Date(a["Date & Time"]).getTime()
-        );
-        setPortfolioPosts(sortedPosts);
+
+        setPortfolioPosts(validPosts); // keep the exact order from Excel
       })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
+      .catch((error) => console.error("Error fetching data:", error));
   }, []);
 
   const handlePortfolioPostClick = (post: any) => {
@@ -82,8 +70,10 @@ const Portfolio = () => {
       .split(urlRegex)
       .filter((part) => !urlRegex.test(part))
       .join("");
-    if (truncatedText.length <= length) return truncatedText;
-    return truncatedText.substring(0, length) + "...";
+
+    return truncatedText.length <= length
+      ? truncatedText
+      : truncatedText.substring(0, length) + "...";
   };
 
   return (
@@ -91,7 +81,7 @@ const Portfolio = () => {
       <Logo />
       <div className="header-portfolio">
         <h1>
-          Trash Portfolio 🚮💼🗑️ | Shall we
+          Portfolio 🚮💼🗑️ | Shall we
           <button
             className="icon-party-portfolio"
             id="confettiButton"
@@ -102,6 +92,7 @@ const Portfolio = () => {
           ?
         </h1>
       </div>
+
       <div className="portfolio-container">
         {portfolioPosts.map((post, index) => (
           <div
@@ -118,6 +109,7 @@ const Portfolio = () => {
             </div>
           </div>
         ))}
+
         {portfolioSelectedPost && (
           <div className="portfolio-modal" onClick={handlePortfolioCloseModal}>
             <div
@@ -130,6 +122,7 @@ const Portfolio = () => {
               >
                 ❎
               </span>
+
               <div className="portfolio-modal-image-container">
                 <img
                   src={portfolioSelectedPost["Image Link"]}
@@ -142,15 +135,16 @@ const Portfolio = () => {
                   <SlSizeFullscreen />
                 </button>
               </div>
+
               <h3>Topic: {portfolioSelectedPost.Title}</h3>
-              <strong>📢:</strong> {portfolioSelectedPost["Date & Time"]}
+
               <p className="portfolio-item-description">
                 {makePortfolioLinksClickable(portfolioSelectedPost.Description)}
               </p>
-              <p></p>
             </div>
           </div>
         )}
+
         {portfolioIsFullscreen && (
           <div
             className="portfolio-fullscreen-modal"
@@ -166,6 +160,7 @@ const Portfolio = () => {
 
         <Speeches />
       </div>
+
       <Social />
       <UpDown />
     </div>

@@ -15,10 +15,12 @@
 
 .speech-card {
     background: #fff;
-    border-radius: 10px;
+    border-radius: 15px;
+    margin: 0.5rem;
     overflow: hidden;
     transition: all 0.3s ease;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
 }
 
 .speech-card:hover {
@@ -84,17 +86,4 @@
 .speech-info .date {
     font-size: 0.85rem;
     color: #888;
-}
-
-/* ================================
-   💻 Responsive Design
-   ================================ */
-@media (max-width: 768px) {
-    .speeches-container {
-        padding: 1rem;
-    }
-
-    .speech-card {
-        margin-bottom: 1.5rem;
-    }
 }

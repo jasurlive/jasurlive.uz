@@ -92,7 +92,7 @@ const Speeches: React.FC = () => {
           speed={800}
           breakpoints={{
             320: { slidesPerView: 1, spaceBetween: 0 },
-            1024: { slidesPerView: 3, spaceBetween: 20 },
+            1024: { slidesPerView: 3, spaceBetween: 0 },
           }}
         >
           {videoLinks.map((video, index) => (
@@ -113,7 +113,6 @@ const Speeches: React.FC = () => {
                     frameBorder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
-                    style={{ width: "100%", height: "100%" }} // Ensure it takes full width and height
                   />
                 </div>
 
