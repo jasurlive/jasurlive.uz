@@ -43,7 +43,7 @@ function App() {
   }
 
   return (
-    <div>
+    <>
       {/* Access allowed, render app */}
       <BrowserRouter basename="/">
         <Routes>
@@ -82,7 +82,7 @@ function App() {
           </li>
         </ul>
       </BrowserRouter>
-    </div>
+    </>
   );
 }
 

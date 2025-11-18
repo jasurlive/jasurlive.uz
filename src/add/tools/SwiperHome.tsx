@@ -11,7 +11,6 @@ const selectedImageNames = [
   "seoulconfer",
   "krculture",
   "woosong1",
-  "brtower",
   "woosong12",
   "kgsp",
   "sustainable",

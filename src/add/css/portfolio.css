@@ -1,3 +1,4 @@
+/* ---------------- GLOBAL ---------------- */
 * {
     margin: 0;
     padding: 0;
@@ -88,14 +89,12 @@ body {
     border-radius: 0.5rem;
     overflow: hidden;
     flex: 1 1 18rem;
-    /* responsive width */
     max-width: 20rem;
 }
 
 .portfolio-item-image {
     width: 100%;
     padding-top: 100%;
-    /* square aspect */
     position: relative;
     border-radius: 0.5rem;
 }
@@ -121,15 +120,13 @@ body {
 .portfolio-item-details {
     display: none;
     position: absolute;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     background: rgba(0, 0, 0, 0.8);
     color: #fff;
     padding: 1rem;
     justify-content: center;
     align-items: center;
     text-align: center;
-    overflow: hidden;
 }
 
 .portfolio-item:hover .portfolio-item-details {
@@ -145,14 +142,14 @@ body {
 }
 
 /* ---------------- MODAL ---------------- */
-.portfolio-modal {
+.portfolio-modal,
+.portfolio-fullscreen-modal {
     display: flex;
     justify-content: center;
     align-items: center;
     position: fixed;
     inset: 0;
     background: rgba(0, 0, 0, 0.8);
-    animation: fadeIn 0.3s ease-in-out;
     z-index: 10;
 }
 
@@ -179,14 +176,10 @@ body {
     border-radius: 0.3rem;
 }
 
-.portfolio-modal-content h3 {
-    margin: 1rem 0;
-    font-size: 1rem;
-    text-align: center;
-}
-
+.portfolio-modal-content h3,
 .portfolio-modal-content p {
     text-align: center;
+    margin: 1rem 0 0;
 }
 
 .portfolio-close {
@@ -198,14 +191,35 @@ body {
     cursor: pointer;
     color: red;
     z-index: 5;
+    transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .portfolio-close:hover {
     transform: scale(1.1);
     color: #ff0066;
-    transition: transform 0.3s ease;
 }
 
+.portfolio-fullscreen-image {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    border-radius: 0.3rem;
+}
+
+.portfolio-fullscreen-icon {
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0.5rem;
+    font-size: 1.8rem;
+    background: #0a0756;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    padding: 0.3rem 0.5rem;
+    border-radius: 0.2rem;
+}
+
+/* ---------------- ANIMATIONS ---------------- */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -226,40 +240,17 @@ body {
     }
 }
 
-/* ---------------- FULLSCREEN ---------------- */
-.portfolio-fullscreen-icon {
-    position: absolute;
-    bottom: 0.5rem;
-    right: 0.5rem;
-    font-size: 1.8rem;
-    background: #0a0756;
-    border: none;
-    color: #fff;
-    cursor: pointer;
-    padding: 0.3rem 0.5rem;
-    border-radius: 0.2rem;
-}
-
-.portfolio-fullscreen-modal {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.8);
-    z-index: 10;
-}
-
-.portfolio-fullscreen-image {
-    max-width: 90%;
-    height: auto;
-    max-height: 90%;
-    object-fit: contain;
-    border-radius: 0.3rem;
-}
-
 /* ---------------- MEDIA QUERIES ---------------- */
 @media (max-width: 600px) {
+
+    .portfolio-modal-content img,
+    .portfolio-modal-content iframe {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+        border-radius: 0.3rem;
+    }
+
     .header-portfolio h1 {
         font-size: 0.9rem;
     }
@@ -278,12 +269,5 @@ body {
         font-size: 2.5rem;
         top: 0.3rem;
         right: 0.3rem;
-    }
-}
-
-@media (min-width: 601px) {
-    .portfolio-item {
-        flex: 1 1 18rem;
-        max-width: 20rem;
     }
 }

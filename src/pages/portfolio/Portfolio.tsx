@@ -161,8 +161,6 @@ const Portfolio = () => {
               />
             </div>
           )}
-
-        <Speeches />
       </div>
 
       <Social />

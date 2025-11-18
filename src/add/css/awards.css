@@ -5,6 +5,7 @@
     box-sizing: border-box;
 }
 
+/* Header */
 .header-awards {
     display: flex;
     justify-content: center;
@@ -13,11 +14,11 @@
     height: 4.5rem;
     background: linear-gradient(135deg, #2c3e50, #34495e);
     color: whitesmoke;
-    box-shadow: 0 5px 5px rgba(86, 85, 85, 0.378);
+    box-shadow: 0 5px 5px rgba(86, 85, 85, 0.38);
 }
 
 .header-awards button {
-    background-color: #c8e3ff5e;
+    background-color: rgba(200, 227, 255, 0.37);
     border: none;
     cursor: pointer;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
@@ -51,6 +52,7 @@
     }
 }
 
+/* Modal */
 .modal-awards {
     display: flex;
     flex-direction: column;
@@ -60,7 +62,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 100vh;
+    height: 90vh;
     background-color: rgba(0, 0, 0, 0.9);
     z-index: 5;
 }
@@ -69,8 +71,8 @@
     max-width: 90%;
     max-height: 80%;
     background-color: #2677f9;
-    animation: zoom 0.6s ease-in-out;
     border-radius: 10px;
+    animation: zoom 0.6s ease-in-out;
 }
 
 .modal-awards p,
@@ -98,17 +100,17 @@
     transform: scale(1.2);
 }
 
+/* Awards */
 .award {
     display: flex;
     flex-direction: column;
     align-items: center;
-    cursor: pointer;
     width: 90%;
-    padding: 1rem;
     height: 29rem;
+    padding: 1rem;
     border-radius: 1rem;
-    box-shadow: 0.1rem 0.1rem 0.1rem rgba(0, 0, 0, 0.2);
     background: rgb(250, 255, 253);
+    box-shadow: 0.1rem 0.1rem 0.1rem rgba(0, 0, 0, 0.2);
     overflow: hidden;
     transition: transform 0.3s ease;
     user-select: none;
@@ -126,8 +128,8 @@
 }
 
 .award-description {
-    text-align: center;
     flex: 1;
+    text-align: center;
     padding: 0 2rem;
 }
 
@@ -141,9 +143,9 @@
     color: #1e293b;
     margin: 1rem 0;
     line-height: 1.5;
-    text-align: center;
 }
 
+/* Animations */
 @keyframes zoom {
     from {
         transform: scale(0);
@@ -154,7 +156,20 @@
     }
 }
 
-/*------------------------------------------------------------------------ MOBILE */
+/* Swiper */
+.swiper {
+    width: 100%;
+    padding: 1rem 0;
+}
+
+.swiper-slide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Responsive */
 @media screen and (max-width: 600px) {
     .header-awards h1 {
         font-size: 0.8rem;
@@ -168,13 +183,8 @@
     .award-description p {
         font-size: 0.8rem;
     }
-
-    .swiper-slide {
-        height: 100%;
-    }
 }
 
-/*---------------------------------------------------------------- LAPTOP */
 @media screen and (min-width: 601px) {
     .gallery {
         display: flex;
@@ -184,16 +194,4 @@
         font-weight: 200;
         font-size: 1.2rem;
     }
-}
-
-.swiper {
-    width: 100%;
-    padding: 1rem 0;
-}
-
-.swiper-slide {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
 }
