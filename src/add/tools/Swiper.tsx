@@ -56,7 +56,9 @@ const CustomSwiper: React.FC = () => {
       >
         {images.map((image, index) => (
           <SwiperSlide key={index}>
-            <img src={image} alt="" className="my-swiper-img" />
+            <div className="my-swiper-img">
+              <img src={image} alt="" />
+            </div>
           </SwiperSlide>
         ))}
       </Swiper>

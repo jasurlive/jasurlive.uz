@@ -1,69 +1,73 @@
 html {
   height: 100%;
   width: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
 }
 
 .menu {
-  list-style-type: none;
+  list-style: none;
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
   display: flex;
-  justify-content: space-around;
   margin: 0;
   padding: 0;
-  z-index: 1;
+  z-index: 10;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  background: rgba(255, 255, 255, 0.2);
 }
 
 .menu li {
   flex: 1;
   margin: 0;
-  font-weight: 450;
 }
 
 .menu li a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem 0;
+  font-weight: 500;
+  font-size: 14px;
   text-decoration: none;
   color: #1c4777;
-  transition: background-color 0.3s ease-in, border-color 0.3s ease;
-  background: rgba(255, 255, 255, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid rgba(92, 92, 92, 0.5);
-  border-top-left-radius: 0.2rem;
-  border-top-right-radius: 0.2rem;
-  -webkit-backdrop-filter: blur(0.8rem);
-  backdrop-filter: blur(0.8rem);
+  background: rgba(255, 255, 255, 0.3);
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.menu li:first-child a {
+  border-left: none;
+}
+
+.menu li:last-child a {
+  border-right: none;
 }
 
 .menu li a:hover {
   background: linear-gradient(to right, #598dc7, #7fb0e1);
-  color: white;
+  color: #ffffff;
+  backdrop-filter: blur(20px);
+}
+
+.menu li a svg {
+  margin-bottom: 0.3rem;
+  font-size: 1.3rem;
 }
 
 @media screen and (max-width: 600px) {
   .menu li a {
-    width: 100%;
-    font-size: 0.6rem;
-    padding: 1.3rem 0;
-    flex-direction: column;
+    font-size: 0.7rem;
+    padding: 1rem 0;
   }
 
   .menu li a svg {
     font-size: 1rem;
     margin-bottom: 0.2rem;
-  }
-}
-
-@media screen and (min-width: 601px) {
-  .menu li a {
-    font-size: 13px;
-    padding: 1.2rem 0;
-    flex-direction: column;
-  }
-
-  .menu li a svg {
-    font-size: 1.3rem;
   }
 }

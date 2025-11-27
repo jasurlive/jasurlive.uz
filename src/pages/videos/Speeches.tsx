@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "../../add/css/speeches.css"; // ✅ external CSS for styles
+import "../../add/css/speeches.css";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation, Pagination, Scrollbar } from "swiper/modules";
@@ -9,7 +9,6 @@ interface VideoLink {
   videoId: string; // full YouTube URL
   description: string;
   date: string;
-
   url?: string;
 }
 
@@ -33,7 +32,8 @@ const Speeches: React.FC = () => {
     {
       title: "👨🏻‍🎓 Graduation Speech Shorts",
       videoId: "https://youtube.com/shorts/qUKU_80dIwY",
-      description: "Just a mumble of my graduation speech highlights 😆",
+      description:
+        "Just mumbling about something in my graduation speech. Woosong University.",
       date: "August 2025",
     },
 
@@ -48,7 +48,7 @@ const Speeches: React.FC = () => {
       title: "Resonse Speech as a representative",
       videoId: "https://youtube.com/shorts/36-68832ogA",
       description:
-        "Inspiring (kinda 😅) speech delivered at the welcome ceremony.",
+        "Inspiring (kinda =D) speech delivered at the welcome ceremony.",
       date: "October 2024",
     },
     {
@@ -67,9 +67,36 @@ const Speeches: React.FC = () => {
     },
   ];
 
+  const [cachedEmbeds, setCachedEmbeds] = useState<{ [key: string]: string }>(
+    {}
+  );
+
+  useEffect(() => {
+    const stored = localStorage.getItem("speech_iframe_cache");
+
+    if (stored) {
+      setCachedEmbeds(JSON.parse(stored));
+      return;
+    }
+
+    const newCache: { [key: string]: string } = {};
+
+    videoLinks.forEach((video) => {
+      const url = video.videoId;
+      const match = url.match(
+        /(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([^?&/]+)/
+      );
+      const videoId = match ? match[1] : "";
+      newCache[video.videoId] = `https://www.youtube.com/embed/${videoId}`;
+    });
+
+    setCachedEmbeds(newCache);
+    localStorage.setItem("speech_iframe_cache", JSON.stringify(newCache));
+  }, []);
+
   return (
     <div className="speeches-container">
-      <h1>🌟 Talks & Interviews 🎤</h1>
+      <h1 className="talks">Talks & Interviews 🎤</h1>
 
       <main>
         <Swiper
@@ -100,15 +127,7 @@ const Speeches: React.FC = () => {
               <div className="speech-card">
                 <div className="video-container">
                   <iframe
-                    src={(() => {
-                      // Extract VIDEO_ID from various YouTube URL formats
-                      const url = video.videoId;
-                      const match = url.match(
-                        /(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([^?&/]+)/
-                      );
-                      const videoId = match ? match[1] : "";
-                      return `https://www.youtube.com/embed/${videoId}`;
-                    })()}
+                    src={cachedEmbeds[video.videoId] || ""}
                     title={video.title}
                     frameBorder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
