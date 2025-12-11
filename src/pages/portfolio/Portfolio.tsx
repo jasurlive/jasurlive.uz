@@ -9,6 +9,7 @@ import Social from "../../add/tools/Social";
 import UpDown from "../../add/tools/UpDown";
 
 import Speeches from "../videos/Speeches";
+import { FaSpinner } from "react-icons/fa";
 
 const Portfolio = () => {
   const [portfolioPosts, setPortfolioPosts] = useState<any[]>([]);
@@ -16,9 +17,13 @@ const Portfolio = () => {
     any | null
   >(null);
   const [portfolioIsFullscreen, setPortfolioIsFullscreen] = useState(false);
+  const [isLoadingData, setIsLoadingData] = useState(true);
+  const [imageLoaded, setImageLoaded] = useState<Record<string, boolean>>({});
 
   useEffect(() => {
-    fetch("data/portfolio/portfolio.xlsx")
+    setIsLoadingData(true);
+
+    fetch("data/portfolio/portfolio.xlsx", { cache: "no-store" })
       .then((response) => response.arrayBuffer())
       .then((data) => {
         const workbook = XLSX.read(data, { type: "array" });
@@ -29,19 +34,26 @@ const Portfolio = () => {
           (post: any) => post.Title && post.Description && post["Image Link"]
         );
 
+        const initialLoadStatus: Record<string, boolean> = {};
+        validPosts.forEach((post: any) => {
+          initialLoadStatus[post["Image Link"]] = false;
+        });
+        setImageLoaded(initialLoadStatus);
+
         setPortfolioPosts(validPosts);
+        setIsLoadingData(false);
       })
-      .catch((error) => console.error("Error fetching data:", error));
+      .catch(() => {
+        setIsLoadingData(false);
+      });
   }, []);
 
-  // Handlers
   const handlePortfolioPostClick = (post: any) =>
     setPortfolioSelectedPost(post);
   const handlePortfolioCloseModal = () => setPortfolioSelectedPost(null);
   const handlePortfolioImageClick = () => setPortfolioIsFullscreen(true);
   const handlePortfolioFullscreenClose = () => setPortfolioIsFullscreen(false);
 
-  // Helpers
   const makePortfolioLinksClickable = (text: string) => {
     const urlRegex = /(https?:\/\/[^\s]+)/g;
     return text.split(urlRegex).map((part, index) =>
@@ -75,96 +87,142 @@ const Portfolio = () => {
   return (
     <div>
       <Logo />
-      <div className="header-portfolio">
-        <h1>
-          Portfolio 🚮💼🗑️ | Shall we
-          <button
-            className="icon-party-portfolio"
-            id="confettiButton"
-            onClick={handleConfettiClick}
-          >
-            <GiPartyPopper />
-          </button>
-          ?
-        </h1>
-      </div>
 
-      <div className="portfolio-container">
-        {portfolioPosts.map((post, index) => (
-          <div
-            key={index}
-            className="portfolio-item"
-            onClick={() => handlePortfolioPostClick(post)}
-          >
-            <div className="portfolio-item-image">
-              <img src={post["Image Link"]} alt={post.Title} />
-            </div>
-            <h3>{post.Title}</h3>
-            <div className="portfolio-item-details">
-              <p>{truncatePortfolioText(post.Description, 70)}</p>
-            </div>
+      {isLoadingData && (
+        <div className="portfolio-global-loading">
+          <FaSpinner className="portfolio-loading-spinner" />
+          <p>Loading portfolio data...</p>
+        </div>
+      )}
+
+      {!isLoadingData && (
+        <>
+          <div className="header-portfolio">
+            <h1>
+              Portfolio 🚮💼🗑️ | Shall we
+              <button
+                className="icon-party-portfolio"
+                id="confettiButton"
+                onClick={handleConfettiClick}
+              >
+                <GiPartyPopper />
+              </button>
+              ?
+            </h1>
           </div>
-        ))}
 
-        {portfolioSelectedPost && (
-          <div className="portfolio-modal" onClick={handlePortfolioCloseModal}>
-            <div
-              className="portfolio-modal-content"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <span
-                className="portfolio-close"
+          <div className="portfolio-container">
+            {portfolioPosts.map((post, index) => (
+              <div
+                key={index}
+                className="portfolio-item"
+                onClick={() => handlePortfolioPostClick(post)}
+              >
+                <div className="portfolio-item-image">
+                  {!imageLoaded[post["Image Link"]] && (
+                    <div className="portfolio-image-loading">
+                      <FaSpinner className="portfolio-loading-spinner" />
+                    </div>
+                  )}
+
+                  <img
+                    src={post["Image Link"]}
+                    alt={post.Title}
+                    style={{
+                      display: imageLoaded[post["Image Link"]]
+                        ? "block"
+                        : "none",
+                    }}
+                    onLoad={() =>
+                      setImageLoaded((prev) => ({
+                        ...prev,
+                        [post["Image Link"]]: true,
+                      }))
+                    }
+                    onError={() =>
+                      setImageLoaded((prev) => ({
+                        ...prev,
+                        [post["Image Link"]]: true,
+                      }))
+                    }
+                  />
+                </div>
+
+                <h3>{post.Title}</h3>
+                <div className="portfolio-item-details">
+                  <p>{truncatePortfolioText(post.Description, 70)}</p>
+                </div>
+              </div>
+            ))}
+
+            {portfolioSelectedPost && (
+              <div
+                className="portfolio-modal"
                 onClick={handlePortfolioCloseModal}
               >
-                ❎
-              </span>
+                <div
+                  className="portfolio-modal-content"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <span
+                    className="portfolio-close"
+                    onClick={handlePortfolioCloseModal}
+                  >
+                    ❎
+                  </span>
 
-              <div className="portfolio-modal-image-container">
-                {getYoutubeEmbedUrl(portfolioSelectedPost.Description) ? (
-                  <iframe
-                    width="100%"
-                    height="100%"
-                    src={getYoutubeEmbedUrl(portfolioSelectedPost.Description)!}
-                    title={portfolioSelectedPost.Title}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  ></iframe>
-                ) : (
+                  <div className="portfolio-modal-image-container">
+                    {getYoutubeEmbedUrl(portfolioSelectedPost.Description) ? (
+                      <iframe
+                        width="100%"
+                        height="100%"
+                        src={
+                          getYoutubeEmbedUrl(portfolioSelectedPost.Description)!
+                        }
+                        title={portfolioSelectedPost.Title}
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                      ></iframe>
+                    ) : (
+                      <img
+                        src={portfolioSelectedPost["Image Link"]}
+                        alt={portfolioSelectedPost.Title}
+                        onClick={handlePortfolioImageClick}
+                        style={{ cursor: "pointer" }}
+                      />
+                    )}
+                  </div>
+
+                  <h3>Topic: {portfolioSelectedPost.Title}</h3>
+                  <p className="portfolio-item-description">
+                    {makePortfolioLinksClickable(
+                      portfolioSelectedPost.Description
+                    )}
+                  </p>
+                </div>
+              </div>
+            )}
+
+            {portfolioIsFullscreen &&
+              portfolioSelectedPost &&
+              !getYoutubeEmbedUrl(portfolioSelectedPost.Description) && (
+                <div
+                  className="portfolio-fullscreen-modal"
+                  onClick={handlePortfolioFullscreenClose}
+                >
                   <img
                     src={portfolioSelectedPost["Image Link"]}
                     alt={portfolioSelectedPost.Title}
-                    onClick={handlePortfolioImageClick} // click image to fullscreen
-                    style={{ cursor: "pointer" }}
+                    className="portfolio-fullscreen-image"
                   />
-                )}
-              </div>
-
-              <h3>Topic: {portfolioSelectedPost.Title}</h3>
-              <p className="portfolio-item-description">
-                {makePortfolioLinksClickable(portfolioSelectedPost.Description)}
-              </p>
-            </div>
+                </div>
+              )}
           </div>
-        )}
 
-        {portfolioIsFullscreen &&
-          portfolioSelectedPost &&
-          !getYoutubeEmbedUrl(portfolioSelectedPost.Description) && (
-            <div
-              className="portfolio-fullscreen-modal"
-              onClick={handlePortfolioFullscreenClose}
-            >
-              <img
-                src={portfolioSelectedPost["Image Link"]}
-                alt={portfolioSelectedPost.Title}
-                className="portfolio-fullscreen-image"
-              />
-            </div>
-          )}
-      </div>
-
-      <Social />
-      <UpDown />
+          <Social />
+          <UpDown />
+        </>
+      )}
     </div>
   );
 };

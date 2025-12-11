@@ -43,6 +43,37 @@ body {
     transition: background 0.3s, transform 0.3s;
 }
 
+.portfolio-loading-spinner {
+    font-size: 28px;
+    animation: spin 1s linear infinite;
+}
+
+.portfolio-global-loading {
+    text-align: center;
+    padding: 40px;
+    opacity: 0.8;
+}
+
+.portfolio-image-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 160px;
+    width: 100%;
+    background: #f0f0f0;
+    border-radius: 6px;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 /* ---------------- ICON ANIMATION ---------------- */
 @keyframes icon-party-portfolio-effect {
 
