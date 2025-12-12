@@ -3,6 +3,7 @@ import "../add/css/awards.css";
 import { handleConfettiClick } from "../add/tools/Confetti";
 import Logo from "../add/tools/Logo";
 import { GiPartyPopper } from "react-icons/gi";
+import { ImSpinner2 } from "react-icons/im";
 
 import uol from "../add/media/img/awards/uol.png";
 import tuit from "../add/media/img/awards/tuit.png";
@@ -29,14 +30,15 @@ function Awards() {
     description: "",
   });
 
+  // New state to track image loading
+  const [imageLoaded, setImageLoaded] = useState<Record<string, boolean>>({});
+
   const openModal = (imgSrc: string, description: string) => {
     setModalContent({ imgSrc, description });
     setModalOpen(true);
   };
 
-  const closeModal = () => {
-    setModalOpen(false);
-  };
+  const closeModal = () => setModalOpen(false);
 
   const awards = [
     {
@@ -45,7 +47,6 @@ function Awards() {
       description:
         "Awarded for outstanding academic performance at Woosong University in 2024-25. \nAugust 2025.",
     },
-
     {
       imgSrc: achievement,
       title: "Certificate of Achievement (KGSP)",
@@ -57,14 +58,12 @@ function Awards() {
       title: "Course Completion Certificate",
       description: `A simple certificate awarded for successfully completing Python Developer course on Sololearn.\nApril 2025.`,
     },
-
     {
       imgSrc: uzy,
       title: "Ownership Certificate",
       description:
         "Certificate for my UzY-Loco Application. Issued by the Ministry of Justice of Uzbekistan. \nFor full details, scan the QR Code in the bottom right corner. \nAugust 2024",
     },
-
     {
       imgSrc: transcriptuol,
       title: "Transcript of Studies",
@@ -77,7 +76,6 @@ function Awards() {
       description:
         "Award Certificate from the Tashkent Institute of Railway Engineering (From 2021 Tashkent State Transport University). 82/100. \nJune 2019.",
     },
-
     {
       imgSrc: ielts2024,
       title: "IELTS Academic | 2024",
@@ -138,10 +136,7 @@ function Awards() {
           slidesPerView={3}
           centeredSlides={true}
           loop={true}
-          autoplay={{
-            delay: 5000,
-            disableOnInteraction: false,
-          }}
+          autoplay={{ delay: 5000, disableOnInteraction: false }}
           navigation={true}
           pagination={{
             clickable: true,
@@ -162,11 +157,33 @@ function Awards() {
                 className="award"
                 onClick={() => openModal(award.imgSrc, award.description)}
               >
-                <img
-                  src={award.imgSrc}
-                  alt={award.title}
-                  className="award-image"
-                />
+                <div className="award-image-container">
+                  {!imageLoaded[award.imgSrc] && (
+                    <div className="award-image-loading">
+                      <ImSpinner2 className="spinner-awards" />
+                    </div>
+                  )}
+                  <img
+                    src={award.imgSrc}
+                    alt={award.title}
+                    className="award-image"
+                    style={{
+                      display: imageLoaded[award.imgSrc] ? "block" : "none",
+                    }}
+                    onLoad={() =>
+                      setImageLoaded((prev) => ({
+                        ...prev,
+                        [award.imgSrc]: true,
+                      }))
+                    }
+                    onError={() =>
+                      setImageLoaded((prev) => ({
+                        ...prev,
+                        [award.imgSrc]: true,
+                      }))
+                    }
+                  />
+                </div>
                 <div className="award-description">
                   <h2>
                     <strong>{award.title}</strong>

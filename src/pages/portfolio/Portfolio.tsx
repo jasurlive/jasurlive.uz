@@ -9,7 +9,7 @@ import Social from "../../add/tools/Social";
 import UpDown from "../../add/tools/UpDown";
 
 import Speeches from "../videos/Speeches";
-import { FaSpinner } from "react-icons/fa";
+import { ImSpinner2 } from "react-icons/im";
 
 const Portfolio = () => {
   const [portfolioPosts, setPortfolioPosts] = useState<any[]>([]);
@@ -90,7 +90,7 @@ const Portfolio = () => {
 
       {isLoadingData && (
         <div className="portfolio-global-loading">
-          <FaSpinner className="portfolio-loading-spinner" />
+          <ImSpinner2 className="portfolio-loading-spinner" />
           <p>Loading portfolio data...</p>
         </div>
       )}
@@ -121,7 +121,7 @@ const Portfolio = () => {
                 <div className="portfolio-item-image">
                   {!imageLoaded[post["Image Link"]] && (
                     <div className="portfolio-image-loading">
-                      <FaSpinner className="portfolio-loading-spinner" />
+                      <ImSpinner2 className="portfolio-loading-spinner" />
                     </div>
                   )}
 
