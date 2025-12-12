@@ -4,8 +4,8 @@ import { Navigation, Pagination, Scrollbar, Autoplay } from "swiper/modules";
 import "../css/swiper.css";
 import "swiper/css";
 import "swiper/css/navigation";
+import { ImSpinner2 } from "react-icons/im";
 
-// List only the base names of images (no extension needed)
 const selectedImageNames = [
   "octconfer",
   "seoulconfer",
@@ -24,17 +24,14 @@ const importSelectedImages = async (): Promise<string[]> => {
   const images = import.meta.glob("../media/img/profile/*.{png,jpg,jpeg}", {
     eager: true,
   }) as Record<string, { default: string }>;
-
-  const filteredImages = Object.entries(images)
+  return Object.entries(images)
     .filter(([path]) => {
-      const fileName = path.split("/").pop(); // get the file name with extension
+      const fileName = path.split("/").pop();
       if (!fileName) return false;
-      const baseName = fileName.replace(/\.(png|jpg|jpeg)$/i, ""); // remove extension
+      const baseName = fileName.replace(/\.(png|jpg|jpeg)$/i, "");
       return selectedImageNames.includes(baseName);
     })
     .map(([_, img]) => img.default);
-
-  return filteredImages;
 };
 
 const shuffleArray = <T,>(array: T[]): T[] => {
@@ -47,12 +44,20 @@ const shuffleArray = <T,>(array: T[]): T[] => {
 
 const HomeSwiper: React.FC = () => {
   const [images, setImages] = useState<string[]>([]);
+  const [loadedMap, setLoadedMap] = useState<Record<string, boolean>>({});
 
   useEffect(() => {
     importSelectedImages().then((imgs) => {
       setImages(shuffleArray(imgs));
+      const initialLoad: Record<string, boolean> = {};
+      imgs.forEach((img) => (initialLoad[img] = false));
+      setLoadedMap(initialLoad);
     });
   }, []);
+
+  const handleImageLoad = (src: string) => {
+    setLoadedMap((prev) => ({ ...prev, [src]: true }));
+  };
 
   return (
     <div className="my-swiper-container">
@@ -61,10 +66,7 @@ const HomeSwiper: React.FC = () => {
         slidesPerView={3}
         centeredSlides={true}
         loop={true}
-        autoplay={{
-          delay: 2000,
-          disableOnInteraction: false,
-        }}
+        autoplay={{ delay: 2000, disableOnInteraction: false }}
         navigation={true}
         pagination={{
           clickable: true,
@@ -81,7 +83,20 @@ const HomeSwiper: React.FC = () => {
       >
         {images.map((image, index) => (
           <SwiperSlide key={index}>
-            <img src={image} alt="" className="my-swiper-img" />
+            <div className="swiper-image-wrapper">
+              {!loadedMap[image] && (
+                <div className="swiper-image-spinner">
+                  <ImSpinner2 className="spinner-icon" />
+                </div>
+              )}
+              <img
+                src={image}
+                alt=""
+                className="my-swiper-img"
+                onLoad={() => handleImageLoad(image)}
+                style={{ display: loadedMap[image] ? "block" : "none" }}
+              />
+            </div>
           </SwiperSlide>
         ))}
       </Swiper>
