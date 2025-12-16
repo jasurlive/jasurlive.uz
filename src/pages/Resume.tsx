@@ -14,6 +14,9 @@ import { FaRegAddressCard } from "react-icons/fa";
 import Social from "../add/tools/Social";
 import UpDown from "../add/tools/UpDown";
 
+import Skills from "../add/tools/Skills";
+import Code from "../add/tools/Code";
+
 function Resume() {
   const [isCardFlipped, setIsCardFlipped] = useState(false);
 
@@ -117,11 +120,19 @@ function Resume() {
           </section>
 
           <section>
-            <h2>Photo Gallery 🔽</h2>
+            <Skills />
           </section>
-          <div className="gallery-container-resume">
-            <Swiper />
-          </div>
+
+          <section>
+            <Code />
+          </section>
+
+          <section>
+            <h2>Photo Gallery 🔽</h2>
+            <div className="gallery-container-resume">
+              <Swiper />
+            </div>
+          </section>
         </div>
       </main>
       <Social />

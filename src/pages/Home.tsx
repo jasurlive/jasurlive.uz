@@ -21,9 +21,6 @@ const Home: React.FC = () => {
         <HomeSwiper />
         <Speeches />
 
-        <Skills />
-        <Code />
-
         <FramedMap />
         <Projects />
         <Online />
