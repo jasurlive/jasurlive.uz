@@ -42,7 +42,7 @@ function Resume() {
       <main>
         <div className="container-resume">
           <section>
-            <h2>A Bit About Me</h2>
+            <h2>About Me 🔽</h2>
             <div className="aboutme-resume">
               <b>Hola!</b> I'm <b>Jasur</b>, the electronics nerd keeping trains
               running 🚄. When I'm not busy with circuits, you'll find me
@@ -55,7 +55,25 @@ function Resume() {
           </section>
 
           <section>
-            <h2>Work/Education Experience</h2>
+            <h2>Business Card 🔽</h2>
+            <div className="card-container">
+              <div
+                className={`business-card ${isCardFlipped ? "flipped" : ""}`}
+                id="business-card"
+                onClick={handleCardClick}
+              >
+                <div className="front">
+                  <img src={BCfront} alt="Business Card Front" />
+                </div>
+                <div className="back">
+                  <img src={BCback} alt="Business Card Back" />
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <h2>Work/Education Experience 🔽</h2>
             <div className="timeline">
               <li>
                 <b>7️⃣ Loading...</b>{" "}
@@ -98,28 +116,8 @@ function Resume() {
             </div>
           </section>
 
-          {/* Removed Download CV Section */}
-
           <section>
-            <h2>Business Card</h2>
-            <div className="card-container">
-              <div
-                className={`business-card ${isCardFlipped ? "flipped" : ""}`}
-                id="business-card"
-                onClick={handleCardClick}
-              >
-                <div className="front">
-                  <img src={BCfront} alt="Business Card Front" />
-                </div>
-                <div className="back">
-                  <img src={BCback} alt="Business Card Back" />
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <section>
-            <h2>Photo Gallery</h2>
+            <h2>Photo Gallery 🔽</h2>
           </section>
           <div className="gallery-container-resume">
             <Swiper />
