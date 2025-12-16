@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "../../add/css/speeches.css";
-
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation, Pagination, Scrollbar } from "swiper/modules";
 
 interface VideoLink {
   title: string;
-  videoId: string; // full YouTube URL
+  videoId: string;
   description: string;
   date: string;
   url?: string;
@@ -21,14 +20,12 @@ const Speeches: React.FC = () => {
         "Highlighting the impact of the KGSP program on global railway systems.",
       date: "August 2025",
     },
-
     {
       title: "Farewell Speech at Solbridge International Business School",
       videoId: "https://youtu.be/ql98k916P38",
       description: "Highlighting the key moments of our life in South Korea",
       date: "June 2025",
     },
-
     {
       title: "👨🏻‍🎓 Graduation Speech Shorts",
       videoId: "https://youtube.com/shorts/qUKU_80dIwY",
@@ -36,7 +33,6 @@ const Speeches: React.FC = () => {
         "Just mumbling about something in my graduation speech. Woosong University.",
       date: "August 2025",
     },
-
     {
       title: "Speech at a Conference in Seoul",
       videoId: "https://youtube.com/shorts/DAOv3IKZz4w",
@@ -73,23 +69,21 @@ const Speeches: React.FC = () => {
 
   useEffect(() => {
     const stored = localStorage.getItem("speech_iframe_cache");
-
     if (stored) {
       setCachedEmbeds(JSON.parse(stored));
       return;
     }
-
     const newCache: { [key: string]: string } = {};
-
     videoLinks.forEach((video) => {
       const url = video.videoId;
       const match = url.match(
         /(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([^?&/]+)/
       );
       const videoId = match ? match[1] : "";
-      newCache[video.videoId] = `https://www.youtube.com/embed/${videoId}`;
+      if (videoId) {
+        newCache[video.videoId] = `https://www.youtube.com/embed/${videoId}`;
+      }
     });
-
     setCachedEmbeds(newCache);
     localStorage.setItem("speech_iframe_cache", JSON.stringify(newCache));
   }, []);
@@ -97,7 +91,6 @@ const Speeches: React.FC = () => {
   return (
     <div className="speeches-container">
       <h1 className="talks">Talks & Interviews 🎤</h1>
-
       <main>
         <Swiper
           modules={[Navigation, Pagination, Scrollbar, Autoplay]}
@@ -126,15 +119,18 @@ const Speeches: React.FC = () => {
             <SwiperSlide key={index}>
               <div className="speech-card">
                 <div className="video-container">
-                  <iframe
-                    src={cachedEmbeds[video.videoId] || ""}
-                    title={video.title}
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  />
+                  {cachedEmbeds[video.videoId] ? (
+                    <iframe
+                      src={cachedEmbeds[video.videoId]}
+                      title={video.title}
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    />
+                  ) : (
+                    <div className="video-placeholder">Loading...</div>
+                  )}
                 </div>
-
                 <div className="speech-info">
                   <h3>{video.title}</h3>
                   <p>{video.description}</p>

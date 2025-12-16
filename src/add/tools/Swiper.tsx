@@ -22,24 +22,22 @@ const shuffleArray = <T,>(array: T[]): T[] => {
 
 const CustomSwiper: React.FC = () => {
   const [images, setImages] = useState<string[]>([]);
+  const slidesPerView = 3;
 
   useEffect(() => {
-    importAll().then((imgs) => {
-      setImages(shuffleArray(imgs));
-    });
+    importAll().then((imgs) => setImages(shuffleArray(imgs)));
   }, []);
+
+  const loopEnabled = images.length > slidesPerView;
 
   return (
     <div className="my-swiper-container">
       <Swiper
         modules={[Navigation, Pagination, Scrollbar, Autoplay]}
-        slidesPerView={3}
+        slidesPerView={slidesPerView}
         centeredSlides={true}
-        loop={true}
-        autoplay={{
-          delay: 2000,
-          disableOnInteraction: false,
-        }}
+        loop={loopEnabled}
+        autoplay={{ delay: 2000, disableOnInteraction: false }}
         navigation={true}
         pagination={{
           clickable: true,
@@ -51,7 +49,7 @@ const CustomSwiper: React.FC = () => {
         speed={800}
         breakpoints={{
           320: { slidesPerView: 1, spaceBetween: 0 },
-          1024: { slidesPerView: 3, spaceBetween: 10 },
+          1024: { slidesPerView: slidesPerView, spaceBetween: 10 },
         }}
       >
         {images.map((image, index) => (
