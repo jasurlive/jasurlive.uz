@@ -48,9 +48,10 @@ const HomeSwiper: React.FC = () => {
 
   useEffect(() => {
     importSelectedImages().then((imgs) => {
-      setImages(shuffleArray(imgs));
+      const shuffled = shuffleArray(imgs);
+      setImages(shuffled);
       const initialLoad: Record<string, boolean> = {};
-      imgs.forEach((img) => (initialLoad[img] = false));
+      shuffled.forEach((img) => (initialLoad[img] = false));
       setLoadedMap(initialLoad);
     });
   }, []);
@@ -59,13 +60,16 @@ const HomeSwiper: React.FC = () => {
     setLoadedMap((prev) => ({ ...prev, [src]: true }));
   };
 
+  const slidesPerView = 3;
+  const loopEnabled = images.length > slidesPerView;
+
   return (
     <div className="my-swiper-container">
       <Swiper
         modules={[Navigation, Pagination, Scrollbar, Autoplay]}
-        slidesPerView={3}
+        slidesPerView={slidesPerView}
         centeredSlides={true}
-        loop={true}
+        loop={loopEnabled}
         autoplay={{ delay: 2000, disableOnInteraction: false }}
         navigation={true}
         pagination={{
@@ -78,7 +82,7 @@ const HomeSwiper: React.FC = () => {
         speed={800}
         breakpoints={{
           320: { slidesPerView: 1, spaceBetween: 0 },
-          1024: { slidesPerView: 3, spaceBetween: 10 },
+          1024: { slidesPerView: slidesPerView, spaceBetween: 10 },
         }}
       >
         {images.map((image, index) => (

@@ -145,7 +145,9 @@ function Online() {
   if (loading) {
     return (
       <div className="container-online-users">
-        <TfiStatsUp />
+        <h1>
+          <TfiStatsUp />
+        </h1>
         <h1>
           <FaUserSecret />
           Total visitors: <RiLoader2Fill className="loading-icon" />
@@ -160,7 +162,9 @@ function Online() {
 
   return (
     <div className="container-online-users">
-      <TfiStatsUp />
+      <h1>
+        <TfiStatsUp />
+      </h1>
       <h1>
         <FaUserSecret />
         Total visitors: {allTimeVisitors}
