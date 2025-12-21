@@ -123,8 +123,7 @@ iframe {
     justify-content: center;
     align-items: center;
     width: 100%;
-    margin-top: -5rem;
-    margin-bottom: 2rem;
+    margin: 2rem 0;
   }
 
   .container-web-projects h1 {
