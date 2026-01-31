@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', Arial, sans-serif;
 }
 
 body {
@@ -11,14 +11,10 @@ body {
 }
 
 main {
-    height: 100%;
     width: 100%;
 }
 
-.container-resume h2 {
-    padding: 2rem;
-    font-size: 1.2rem;
-}
+/* ------------------------------------------------ HEADER */
 
 .header-resume {
     background-color: #1e293b;
@@ -27,28 +23,23 @@ main {
     line-height: 1.2;
 }
 
+.header-resume h1 {
+    text-align: center;
+}
 
 .header-resume a {
     text-decoration: none;
     color: #8affd6;
     padding: 5px;
-    transition: border-color 0.3s ease;
 }
 
 .header-resume a:hover {
     color: #55a4ffcc;
-    cursor: pointer;
-}
-
-.header-resume h1,
-.header-resume h2 {
-    text-align: center;
 }
 
 .contact-info {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
 }
 
@@ -57,61 +48,94 @@ main {
     margin-right: 2px;
 }
 
+/* ------------------------------------------------ LAYOUT */
+
 .container-resume {
     width: 100%;
     overflow: hidden;
     line-height: 1.5;
 }
 
-
 main section {
     margin: 5px;
 }
 
 main section h2 {
+    padding: 1.5rem;
     border-bottom: 0.5px solid #3333333c;
-    padding-bottom: 5px;
-    margin-bottom: 10px;
 }
+
+/* ------------------------------------------------ ABOUT */
+
+.aboutme-resume {
+    padding: 5px 10px;
+    font-size: 20px;
+    text-align: justify;
+    width: 100%;
+}
+
+/* ------------------------------------------------ TIMELINE */
 
 .timeline {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     padding: 10px;
     margin-bottom: 10px;
-    border-radius: 10px;
-    line-height: 1.2;
-    font-size: 20px;
-    cursor: text;
     width: 100%;
 }
 
 .timeline li {
-    list-style-type: none;
+    list-style: none;
     background: #fff;
     padding: 30px;
     margin-bottom: 10px;
     border-radius: 10px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    font-size: 20px;
-    cursor: text;
     width: 80%;
+    font-size: 20px;
 }
+
+.timeline-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.timeline-left {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.timeline-left span {
+    font-size: 14px;
+    color: #555;
+}
+
+.timeline-right {
+    font-size: 28px;
+    margin-left: 20px;
+}
+
+/* ------------------------------------------------ CARD */
 
 .card-container {
     display: flex;
-    flex-direction: column;
     align-items: center;
+    justify-content: center;
     margin-bottom: 1rem;
 }
 
-.gallery-container-resume {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 5rem;
+.business-card {
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+    cursor: pointer;
+}
+
+.business-card.flipped {
+    transform: rotateY(180deg);
 }
 
 .front,
@@ -121,7 +145,7 @@ main section h2 {
     height: 100%;
     backface-visibility: hidden;
     border-radius: 8px;
-    border: #ffffff solid 2px;
+    border: 2px solid #fff;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -136,52 +160,46 @@ main section h2 {
     transform: rotateY(180deg);
 }
 
-.flipped {
-    transform: rotateY(180deg);
-}
-
 .business-card .front {
     filter: blur(2.5px);
     transition: filter 0.6s ease-in-out;
 }
 
-.flipped .front {
+.business-card.flipped .front {
     filter: none;
 }
 
-/* --------------------------------------------------------------------------------- MOBILE */
-@media screen and (max-width: 600px) {
+/* ------------------------------------------------ GALLERY */
 
-    .container-resume {
-        width: 100%;
-    }
+.gallery-container-resume {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 5rem;
+}
+
+/* ------------------------------------------------ MOBILE */
+
+@media screen and (max-width: 600px) {
 
     .timeline li {
         width: 100%;
         text-align: start;
     }
 
-    .header-resume h1,
-    .header-resume p {
-        text-align: center;
-        font-size: 15px;
+    .timeline-right {
+        font-size: 24px;
     }
 
+    .header-resume h1,
+    .header-resume p {
+        font-size: 15px;
+        text-align: center;
+    }
 
     .business-card {
         width: 300px;
         height: 170px;
-        position: relative;
-        transition: transform 0.6s;
-        transform-style: preserve-3d;
-        cursor: pointer;
-    }
-
-    .aboutme-resume {
-        padding: 5px 10px;
-        font-size: 20px;
-        text-align: justify;
-        width: 100%;
     }
 
     section {
@@ -189,29 +207,17 @@ main section h2 {
     }
 }
 
-/* --------------------------------------------------------------------------------- LAPTOP */
+/* ------------------------------------------------ DESKTOP */
+
 @media screen and (min-width: 601px) {
 
     .header-resume h1 {
-        text-align: center;
         font-size: 32px;
-    }
-
-    .image-flipper {
-        position: relative;
-        width: 350px;
-        height: 350px;
-        transition: transform 0.6s ease-in-out;
-        transform-style: preserve-3d;
     }
 
     .business-card {
         width: 700px;
         height: 400px;
-        position: relative;
-        transition: transform 0.6s;
-        transform-style: preserve-3d;
-        cursor: pointer;
     }
 
     .aboutme-resume {

@@ -6,41 +6,42 @@ import BCback from "../add/media/img/bc/back.png";
 
 import Swiper from "../add/tools/Swiper";
 import Logo from "../add/tools/Logo";
-
-import { FaPhoneSquareAlt } from "react-icons/fa";
-import { TfiEmail } from "react-icons/tfi";
-import { FaRegAddressCard } from "react-icons/fa";
-
 import Social from "../add/tools/Social";
 import UpDown from "../add/tools/UpDown";
-
 import Skills from "../add/tools/Skills";
 import Code from "../add/tools/Code";
+
+import {
+  FaPhoneSquareAlt,
+  FaTrain,
+  FaUniversity,
+  FaTools,
+} from "react-icons/fa";
+import { TfiEmail } from "react-icons/tfi";
+import { FaRegAddressCard } from "react-icons/fa";
 
 function Resume() {
   const [isCardFlipped, setIsCardFlipped] = useState(false);
 
-  const handleCardClick = () => {
-    setIsCardFlipped(!isCardFlipped);
-  };
-
   return (
     <div>
       <Logo />
-      <div className="header-resume">
+
+      <header className="header-resume">
         <div className="container-resume">
-          <h1>👨🏻‍🔬 Resume (CV) | Jasur Anorkulov | Electronics Engineer</h1>
+          <h1>Resume (CV) | Jasur Anorkulov | Electronics Engineer</h1>
+
           <div className="contact-info">
             <p>
-              <FaPhoneSquareAlt />: +998 99 *********** | <TfiEmail />:{" "}
+              <FaPhoneSquareAlt /> +998 99 *********** | <TfiEmail />{" "}
               <a href="mailto:jasur@graduate.org">jasur@graduate.org</a>
             </p>
             <p>
-              <FaRegAddressCard />: ***************, **************
+              <FaRegAddressCard /> ***************, **************
             </p>
           </div>
         </div>
-      </div>
+      </header>
 
       <main>
         <div className="container-resume">
@@ -62,8 +63,7 @@ function Resume() {
             <div className="card-container">
               <div
                 className={`business-card ${isCardFlipped ? "flipped" : ""}`}
-                id="business-card"
-                onClick={handleCardClick}
+                onClick={() => setIsCardFlipped(!isCardFlipped)}
               >
                 <div className="front">
                   <img src={BCfront} alt="Business Card Front" />
@@ -76,47 +76,81 @@ function Resume() {
           </section>
 
           <section>
-            <h2>Work/Education Experience 🔽</h2>
-            <div className="timeline">
-              <li>
-                <b>7️⃣ Loading...</b>{" "}
+            <h2>Work / Education Experience 🔽</h2>
+
+            <ul className="timeline">
+              <li className="timeline-item">
+                <div className="timeline-left">
+                  <b>8️⃣ PhD Candidate, Tashkent State Transport University</b>
+                  <span>January 2026 – Current</span>
+                </div>
+                <div className="timeline-right">🎓</div>
               </li>
-              <li>
-                <b>
-                  6️⃣ On-board Engineer of high-speed Talgo-250 trains at
-                  "Railwayexpress" JSC
-                </b>{" "}
-                | September 2025 - Current
+
+              <li className="timeline-item">
+                <div className="timeline-left">
+                  <b>
+                    7️⃣ Lead Specialist, Technical Services for Talgo trains,
+                    "Railwayexpress" JSC
+                  </b>
+                  <span>January 2026 – Current</span>
+                </div>
+                <div className="timeline-right">🚄</div>
               </li>
-              <li>
-                <b>5️⃣ MSc Student at Woosong University</b> | September 2024 -
-                February 2026
+
+              <li className="timeline-item">
+                <div className="timeline-left">
+                  <b>
+                    6️⃣ On-board Engineer, Talgo-250 high-speed trains,
+                    "Railwayexpress" JSC
+                  </b>
+                  <span>September 2025 – January 2026</span>
+                </div>
+                <div className="timeline-right">🚄</div>
               </li>
-              <li>
-                <b>
-                  4️⃣ Electronics Engineer at "Railwayinfrastructure" JSC
-                  (Samarkand)
-                </b>{" "}
-                | November 2023 - September 2024
+
+              <li className="timeline-item">
+                <div className="timeline-left">
+                  <b>5️⃣ MSc Student, Woosong University</b>
+                  <span>September 2024 – February 2026</span>
+                </div>
+                <div className="timeline-right">🎓</div>
               </li>
-              <li>
-                <b>3️⃣ MSc Student at University of Liverpool</b> | September
-                2022 - November 2023
+
+              <li className="timeline-item">
+                <div className="timeline-left">
+                  <b> 4️⃣ Electronics Engineer, "Railwayinfrastructure" JSC</b>
+                  <span>November 2023 – September 2024</span>
+                </div>
+                <div className="timeline-right">🚄</div>
               </li>
-              <li>
-                <b>
-                  2️⃣ Electronics Engineer at Locomotive Depot Uzbekistan
-                  (Tashkent)
-                </b>{" "}
-                | June 2019 - September 2022
+
+              <li className="timeline-item">
+                <div className="timeline-left">
+                  <b>3️⃣ MSc Student, University of Liverpool</b>
+                  <span>September 2022 – November 2023</span>
+                </div>
+                <div className="timeline-right">🎓</div>
               </li>
-              <li>
-                <b>
-                  1️⃣ BEng Student at Tashkent Institute of Railway Engineers
-                </b>{" "}
-                | September 2015 - June 2019
+
+              <li className="timeline-item">
+                <div className="timeline-left">
+                  <b>2️⃣ Electronics Engineer, Locomotive Depot Uzbekistan</b>
+                  <span>June 2019 – September 2022</span>
+                </div>
+                <div className="timeline-right">🚄</div>
               </li>
-            </div>
+
+              <li className="timeline-item">
+                <div className="timeline-left">
+                  <b>
+                    1️⃣ BEng Student, Tashkent Institute of Railway Engineers
+                  </b>
+                  <span>September 2015 – June 2019</span>
+                </div>
+                <div className="timeline-right">🎓</div>
+              </li>
+            </ul>
           </section>
 
           <section>
@@ -128,13 +162,14 @@ function Resume() {
           </section>
 
           <section>
-            <h2>Photo Gallery 🔽</h2>
+            <h2>Gallery 🔽</h2>
             <div className="gallery-container-resume">
               <Swiper />
             </div>
           </section>
         </div>
       </main>
+
       <Social />
       <UpDown />
     </div>
