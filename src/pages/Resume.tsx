@@ -7,7 +7,7 @@ import BCback from "../add/media/img/bc/back.png";
 import Swiper from "../add/tools/Swiper";
 import Logo from "../add/tools/Logo";
 import Social from "../add/tools/Social";
-import UpDown from "../add/tools/UpDown";
+import UpDown from "../add/tools/FullScreen";
 import Skills from "../add/tools/Skills";
 import Code from "../add/tools/Code";
 

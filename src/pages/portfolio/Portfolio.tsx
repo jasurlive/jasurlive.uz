@@ -6,7 +6,7 @@ import { GiPartyPopper } from "react-icons/gi";
 import { handleConfettiClick } from "../../add/tools/Confetti";
 
 import Social from "../../add/tools/Social";
-import UpDown from "../../add/tools/UpDown";
+import UpDown from "../../add/tools/FullScreen";
 
 import Speeches from "../videos/Speeches";
 import { ImSpinner2 } from "react-icons/im";
@@ -31,7 +31,7 @@ const Portfolio = () => {
         const worksheet = XLSX.utils.sheet_to_json(workbook.Sheets[sheetName]);
 
         const validPosts = worksheet.filter(
-          (post: any) => post.Title && post.Description && post["Image Link"]
+          (post: any) => post.Title && post.Description && post["Image Link"],
         );
 
         const initialLoadStatus: Record<string, boolean> = {};
@@ -63,7 +63,7 @@ const Portfolio = () => {
         </a>
       ) : (
         part
-      )
+      ),
     );
   };
 
@@ -196,7 +196,7 @@ const Portfolio = () => {
                   <h3>Topic: {portfolioSelectedPost.Title}</h3>
                   <p className="portfolio-item-description">
                     {makePortfolioLinksClickable(
-                      portfolioSelectedPost.Description
+                      portfolioSelectedPost.Description,
                     )}
                   </p>
                 </div>
