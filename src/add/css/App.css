@@ -1,13 +1,10 @@
 html {
   height: 100%;
-  width: 100%;
   margin: 0;
-  padding: 0;
   font-family: Arial, sans-serif;
 }
 
 .menu {
-  list-style: none;
   position: fixed;
   bottom: 0;
   left: 0;
@@ -15,59 +12,86 @@ html {
   display: flex;
   margin: 0;
   padding: 0;
+  list-style: none;
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.15);
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
   z-index: 10;
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  background: rgba(255, 255, 255, 0.2);
 }
 
 .menu li {
   flex: 1;
-  margin: 0;
+  text-align: center;
+  position: relative;
 }
 
 .menu li a {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 0.8rem 0;
+  font-size: 12px;
   font-weight: 500;
-  font-size: 14px;
   text-decoration: none;
   color: #1c4777;
-  background: rgba(255, 255, 255, 0.3);
-  border-left: 1px solid rgba(255, 255, 255, 0.2);
-  border-right: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.menu li:first-child a {
-  border-left: none;
-}
-
-.menu li:last-child a {
-  border-right: none;
-}
-
-.menu li a:hover {
-  background: linear-gradient(to right, #598dc7, #7fb0e1);
-  color: #ffffff;
-  backdrop-filter: blur(20px);
+  transition: all 0.3s ease;
 }
 
 .menu li a svg {
-  margin-bottom: 0.3rem;
   font-size: 1.3rem;
+  margin-bottom: 0.25rem;
+  transition: transform 0.3s ease;
 }
 
-@media screen and (max-width: 600px) {
+.menu li a::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 0;
+  background: linear-gradient(to top,
+      rgba(255, 255, 255, 0.3),
+      rgba(255, 255, 255, 0.1));
+  pointer-events: none;
+}
+
+.menu li a:hover,
+.menu li a.active {
+  color: #ffffff;
+  background: linear-gradient(to top,
+      rgba(60, 130, 240, 0.9),
+      rgba(70, 150, 255, 0.9));
+}
+
+.menu li a:hover svg,
+.menu li a.active svg {
+  transform: translateY(-3px) scale(1.1);
+}
+
+.menu li a:hover::after,
+.menu li a.active::after {
+  content: "";
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30%;
+  height: 4px;
+  border-radius: 20px;
+  background: linear-gradient(90deg, #598dc7, #7fb0e1);
+}
+
+@media (max-width: 600px) {
   .menu li a {
-    font-size: 0.7rem;
-    padding: 1rem 0;
+    font-size: 10px;
+    padding: 0.7rem 0;
   }
 
   .menu li a svg {
-    font-size: 1rem;
+    font-size: 1.1rem;
     margin-bottom: 0.2rem;
   }
 }
