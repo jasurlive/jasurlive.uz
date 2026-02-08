@@ -2,7 +2,7 @@ import Online from "../add/tools/Online";
 import HomeSwiper from "../add/tools/SwiperHome";
 import Skills from "../add/tools/Skills";
 import Projects from "../add/tools/Projects";
-import UpDown from "../add/tools/UpDown";
+import FullScreenToggle from "../add/tools/FullScreen";
 import SMS from "../add/tools/SMS";
 import FramedMap from "../add/iframe/TravelMap";
 import DJ from "../add/iframe/DJ";
@@ -25,7 +25,7 @@ const Home: React.FC = () => {
         <Projects />
         <Online />
         <Social />
-        <UpDown />
+        <FullScreenToggle />
       </main>
     </div>
   );
