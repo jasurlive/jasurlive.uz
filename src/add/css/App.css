@@ -2,22 +2,26 @@ html {
   height: 100%;
   margin: 0;
   font-family: Arial, sans-serif;
+  background: #e0e5ec;
 }
 
 .menu {
   position: fixed;
   bottom: 0;
-  left: 0;
-  width: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 500px;
   display: flex;
   margin: 0;
   padding: 0;
   list-style: none;
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  background: rgba(255, 255, 255, 0.15);
-  box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(25px) saturate(200%);
+  -webkit-backdrop-filter: blur(25px) saturate(200%);
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.2);
   border-top: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px 20px 0 0;
   z-index: 10;
 }
 
@@ -33,64 +37,75 @@ html {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 0.8rem 0;
+  padding: 1rem 0;
   font-size: 12px;
   font-weight: 500;
   text-decoration: none;
   color: #1c4777;
-  transition: all 0.3s ease;
-}
-
-.menu li a svg {
-  font-size: 1.3rem;
-  margin-bottom: 0.25rem;
-  transition: transform 0.3s ease;
+  border: #1c477710 solid 1px;
+  transition: all 0.4s ease;
+  border-radius: 15px;
+  overflow: hidden;
 }
 
 .menu li a::before {
   content: "";
   position: absolute;
   inset: 0;
-  border-radius: 0;
-  background: linear-gradient(to top,
-      rgba(255, 255, 255, 0.3),
-      rgba(255, 255, 255, 0.1));
+  border-radius: 15px;
+  background: linear-gradient(to top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
   pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.menu li a svg {
+  font-size: 1.5rem;
+  margin-bottom: 0.25rem;
+  transition: transform 0.4s ease, filter 0.4s ease;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.2));
 }
 
 .menu li a:hover,
 .menu li a.active {
   color: #ffffff;
-  background: linear-gradient(to top,
-      rgba(60, 130, 240, 0.9),
-      rgba(70, 150, 255, 0.9));
+  background: linear-gradient(145deg, #3c82f0cc, #46a0ffcc);
+  box-shadow: 0 0 20px rgba(60, 130, 240, 0.5);
 }
 
 .menu li a:hover svg,
 .menu li a.active svg {
-  transform: translateY(-3px) scale(1.1);
+  transform: translateY(-5px) scale(1.2);
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.3));
 }
 
 .menu li a:hover::after,
 .menu li a.active::after {
   content: "";
   position: absolute;
-  bottom: 5px;
+  bottom: 8px;
   left: 50%;
   transform: translateX(-50%);
-  width: 30%;
-  height: 4px;
+  width: 40%;
+  height: 5px;
   border-radius: 20px;
   background: linear-gradient(90deg, #598dc7, #7fb0e1);
+  box-shadow: 0 0 8px rgba(95, 140, 200, 0.7);
 }
 
 @media (max-width: 600px) {
+  .menu {
+    width: 100%;
+    left: 0;
+    transform: none;
+    border-radius: 0;
+  }
+
   .menu li a {
     font-size: 0;
-    padding: 1.3rem 0;
+    padding: 1.5rem 0;
   }
 
   .menu li a svg {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
 }
