@@ -12,11 +12,11 @@ import SnowFall from "../add/tools/SnowFall";
 import CountryBlacklist from "../add/tools/BlackList";
 
 import {
-  IoHome,
-  IoPerson,
-  IoBriefcase,
-  IoSchool,
-  IoChatbox,
+  IoHomeOutline,
+  IoPersonOutline,
+  IoBagHandleOutline,
+  IoSchoolOutline,
+  IoChatboxOutline,
 } from "react-icons/io5";
 
 function App() {
@@ -47,27 +47,27 @@ function App() {
       <ul className="menu">
         <li>
           <Link to="/">
-            <IoHome /> HOME
+            <IoHomeOutline /> HOME
           </Link>
         </li>
         <li>
           <Link to="/resume">
-            <IoPerson /> RESUME
+            <IoPersonOutline /> RESUME
           </Link>
         </li>
         <li>
           <Link to="/portfolio">
-            <IoBriefcase /> PORTFOLIO
+            <IoBagHandleOutline /> PORTFOLIO
           </Link>
         </li>
         <li>
           <Link to="/awards">
-            <IoSchool /> AWARDS
+            <IoSchoolOutline /> AWARDS
           </Link>
         </li>
         <li>
           <Link to="/blogs">
-            <IoChatbox /> BLOGS
+            <IoChatboxOutline /> BLOGS
           </Link>
         </li>
       </ul>
