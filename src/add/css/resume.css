@@ -1,0 +1,228 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', Arial, sans-serif;
+}
+
+body {
+    background: linear-gradient(185deg, #eef8f4, #f1e9e0);
+    color: #333;
+}
+
+main {
+    width: 100%;
+}
+
+/* ------------------------------------------------ HEADER */
+
+.header-resume {
+    background-color: #1e293b;
+    color: #fff;
+    padding: 10px;
+    line-height: 1.2;
+}
+
+.header-resume h1 {
+    text-align: center;
+}
+
+.header-resume a {
+    text-decoration: none;
+    color: #8affd6;
+    padding: 5px;
+}
+
+.header-resume a:hover {
+    color: #55a4ffcc;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contact-info svg {
+    vertical-align: middle;
+    margin-right: 2px;
+}
+
+/* ------------------------------------------------ LAYOUT */
+
+.container-resume {
+    width: 100%;
+    overflow: hidden;
+    line-height: 1.5;
+}
+
+main section {
+    margin: 5px;
+}
+
+main section h2 {
+    padding: 1.5rem;
+    border-bottom: 0.5px solid #3333333c;
+}
+
+/* ------------------------------------------------ ABOUT */
+
+.aboutme-resume {
+    padding: 5px 10px;
+    font-size: 20px;
+    text-align: justify;
+    width: 100%;
+}
+
+/* ------------------------------------------------ TIMELINE */
+
+.timeline {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.timeline li {
+    list-style: none;
+    background: #fff;
+    padding: 30px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    font-size: 20px;
+}
+
+.timeline-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.timeline-left {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.timeline-left span {
+    font-size: 14px;
+    color: #555;
+}
+
+.timeline-right {
+    font-size: 28px;
+    margin-left: 20px;
+}
+
+/* ------------------------------------------------ CARD */
+
+.card-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.business-card {
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+    cursor: pointer;
+}
+
+.business-card.flipped {
+    transform: rotateY(180deg);
+}
+
+.front,
+.back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 8px;
+    border: 2px solid #fff;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.front img,
+.back img {
+    width: 100%;
+    height: 100%;
+}
+
+.back {
+    transform: rotateY(180deg);
+}
+
+.business-card .front {
+    filter: blur(2.5px);
+    transition: filter 0.6s ease-in-out;
+}
+
+.business-card.flipped .front {
+    filter: none;
+}
+
+/* ------------------------------------------------ GALLERY */
+
+.gallery-container-resume {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 5rem;
+}
+
+/* ------------------------------------------------ MOBILE */
+
+@media screen and (max-width: 600px) {
+
+    .timeline li {
+        width: 100%;
+        text-align: start;
+    }
+
+    .timeline-right {
+        font-size: 24px;
+    }
+
+    .header-resume h1,
+    .header-resume p {
+        font-size: 15px;
+        text-align: center;
+    }
+
+    .business-card {
+        width: 300px;
+        height: 170px;
+    }
+
+    section {
+        font-size: 12px;
+    }
+}
+
+/* ------------------------------------------------ DESKTOP */
+
+@media screen and (min-width: 601px) {
+
+    .header-resume h1 {
+        font-size: 32px;
+    }
+
+    .business-card {
+        width: 700px;
+        height: 400px;
+    }
+
+    .aboutme-resume {
+        padding: 5px 100px;
+        font-size: 25px;
+        text-align: center;
+    }
+}
