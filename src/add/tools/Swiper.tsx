@@ -45,7 +45,6 @@ const CustomSwiper: React.FC = () => {
           type: "progressbar",
         }}
         scrollbar={{ draggable: true }}
-        grabCursor={true}
         speed={800}
         breakpoints={{
           320: { slidesPerView: 1, spaceBetween: 0 },
