@@ -28,8 +28,11 @@
     margin-left: 0.3rem;
 }
 
+.header-portfolio button svg {
+    color: #67ffd4;
+}
+
 .header-portfolio button {
-    background: #007bff;
     border: none;
     cursor: pointer;
     padding: 0.5rem 0.8rem;
