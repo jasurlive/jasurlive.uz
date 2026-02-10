@@ -60,7 +60,7 @@ const Portfolio = () => {
       <Logo />
       <div className="header-portfolio">
         <h1>
-          Portfolio | Shall we
+          Portfolio 💼🚮🗑️ | Shall we
           <button
             className="icon-party-portfolio"
             onClick={handleConfettiClick}

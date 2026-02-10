@@ -122,7 +122,7 @@ function Awards() {
 
       <div className="header-awards">
         <h1>
-          "Meh" types of Awards 🎓🏆 | Pop
+          Awards 🎓🏆 | Pop
           <button
             className="icon-party"
             id="confettiButton"
