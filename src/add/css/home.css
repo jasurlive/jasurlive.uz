@@ -11,10 +11,11 @@ html {
     "Lucida Sans", Arial, sans-serif;
   background: linear-gradient(185deg, #eef8f4, #f1e9e0);
   width: 100%;
+  height: 100%;
   overflow-x: hidden;
 }
 
-main {
+.home-container {
   height: 100%;
   width: 100%;
   display: flex;

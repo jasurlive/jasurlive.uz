@@ -14,19 +14,17 @@ import Code from "../add/tools/Code";
 
 const Home: React.FC = () => {
   return (
-    <div>
+    <div className="home-container">
       <Logo />
-      <main>
-        <SMS />
-        <HomeSwiper />
-        <Speeches />
+      <SMS />
+      <HomeSwiper />
+      <Speeches />
 
-        <FramedMap />
-        <Projects />
-        <Online />
-        <Social />
-        <FullScreenToggle />
-      </main>
+      <FramedMap />
+      <Projects />
+      <Online />
+      <Social />
+      <FullScreenToggle />
     </div>
   );
 };
