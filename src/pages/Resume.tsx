@@ -19,6 +19,7 @@ import {
 } from "react-icons/fa";
 import { TfiEmail } from "react-icons/tfi";
 import { FaRegAddressCard } from "react-icons/fa";
+import FullScreenToggle from "../add/tools/FullScreen";
 
 function Resume() {
   const [isCardFlipped, setIsCardFlipped] = useState(false);
@@ -171,7 +172,7 @@ function Resume() {
       </main>
 
       <Social />
-      <UpDown />
+      <FullScreenToggle />
     </div>
   );
 }
