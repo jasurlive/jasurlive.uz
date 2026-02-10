@@ -7,6 +7,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Jersey+25+Charted&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap'); */
 
+.logo-container {
+    position: relative;
+    width: max-content;
+    margin: 0 auto;
+}
+
 .logo-jasurlive {
     border-radius: 12px;
     display: flex;
@@ -14,7 +20,7 @@
     justify-content: center;
     text-align: center;
     width: max-content;
-    margin: 5px auto 0;
+    margin: auto 0;
     outline: none;
 }
 
@@ -78,8 +84,8 @@ a.logo-jasurlive {
 .deadpool {
     position: absolute;
     top: 0;
-    rotate: 180deg;
-    vertical-align: middle;
+    left: 50%;
+    transform: translateX(150%) rotate(180deg);
 }
 
 /*------------------------------------------------------------------------ Mobile view */
