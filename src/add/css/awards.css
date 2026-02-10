@@ -124,6 +124,13 @@ html {
 
 .award:hover {
     transform: scale(1.02);
+    cursor: grab;
+}
+
+.award:active {
+    cursor: grabbing;
+    border: 1px solid #17ff7458;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 .award-image-container {
