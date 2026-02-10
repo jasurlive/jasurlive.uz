@@ -33,7 +33,7 @@ function App() {
   if (blocked) return <div />;
 
   return (
-    <BrowserRouter basename="/" future={{ v7_startTransition: true }}>
+    <BrowserRouter basename="/" /* future={{ v7_startTransition: true }} */>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/resume" element={<Resume />} />

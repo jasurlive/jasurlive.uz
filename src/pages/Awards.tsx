@@ -130,7 +130,7 @@ function Awards() {
         </h1>
       </div>
 
-      <main>
+      <div className="awards-container">
         <Swiper
           modules={[Navigation, Pagination, Scrollbar, Autoplay]}
           slidesPerView={3}
@@ -198,7 +198,7 @@ function Awards() {
             </SwiperSlide>
           ))}
         </Swiper>
-      </main>
+      </div>
 
       {modalOpen && (
         <div id="modal-awards" className="modal-awards" onClick={closeModal}>

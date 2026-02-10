@@ -78,7 +78,6 @@ const HomeSwiper: React.FC = () => {
           type: "progressbar",
         }}
         scrollbar={{ draggable: true }}
-        grabCursor={true}
         speed={800}
         breakpoints={{
           320: { slidesPerView: 1, spaceBetween: 0 },
@@ -87,7 +86,7 @@ const HomeSwiper: React.FC = () => {
       >
         {images.map((image, index) => (
           <SwiperSlide key={index}>
-            <div className="swiper-image-wrapper">
+            <div className="my-swiper-img">
               {!loadedMap[image] && (
                 <div className="swiper-image-spinner">
                   <ImSpinner2 className="spinner-icon" />

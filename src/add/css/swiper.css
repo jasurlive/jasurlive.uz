@@ -14,7 +14,7 @@
 .my-swiper-img {
   width: 20rem;
   border-radius: 12px;
-  border: 2px solid #ffffff;
+  border: 1px solid #ffffff;
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   user-select: none;
   display: inline-block;
@@ -29,13 +29,13 @@
   border-radius: 10px;
 }
 
-.my-swiper-img:hover {
+.my-swiper-img img:hover {
   border: 1px solid #fff2ff;
   cursor: grab;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
-.my-swiper-img:active {
+.my-swiper-img img:active {
   border: 1px solid #17ff74;
   cursor: grabbing;
 }
@@ -86,17 +86,12 @@
   transform: scale(1.1);
 }
 
-.swiper-image-wrapper {
-  position: relative;
-  width: 20rem;
-  height: 20rem;
-}
 
 .swiper-image-wrapper img {
   width: 100%;
   height: 100%;
   border-radius: 12px;
-  border: 2px solid #ffffff;
+  border: 1px solid #ffffff;
   object-fit: cover;
   display: block;
 }
