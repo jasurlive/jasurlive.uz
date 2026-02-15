@@ -220,6 +220,29 @@ p {
     }
 }
 
+.portfolio-page-loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.portfolio-page-spinner {
+    font-size: 4rem;
+    color: #0078ff;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 @media (max-width: 600px) {
     .portfolio-item {
         flex: 1 1 100%;

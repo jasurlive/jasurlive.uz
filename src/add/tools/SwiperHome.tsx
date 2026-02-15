@@ -4,7 +4,7 @@ import { Navigation, Pagination, Scrollbar, Autoplay } from "swiper/modules";
 import "../css/swiper.css";
 import "swiper/css";
 import "swiper/css/navigation";
-import { ImSpinner2 } from "react-icons/im";
+import { ImSpinner } from "react-icons/im";
 
 const selectedImageNames = [
   "octconfer",
@@ -86,10 +86,10 @@ const HomeSwiper: React.FC = () => {
       >
         {images.map((image, index) => (
           <SwiperSlide key={index}>
-            <div className="my-swiper-img">
+            <div className="my-swiper-img-wrapper">
               {!loadedMap[image] && (
-                <div className="swiper-image-spinner">
-                  <ImSpinner2 className="spinner-icon" />
+                <div className="swiper-image-spinner-wrapper">
+                  <ImSpinner className="spinner-icon" />
                 </div>
               )}
               <img
@@ -97,7 +97,7 @@ const HomeSwiper: React.FC = () => {
                 alt=""
                 className="my-swiper-img"
                 onLoad={() => handleImageLoad(image)}
-                style={{ display: loadedMap[image] ? "block" : "none" }}
+                style={{ opacity: loadedMap[image] ? 1 : 0 }}
               />
             </div>
           </SwiperSlide>

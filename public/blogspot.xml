@@ -4,114 +4,149 @@
 <head>
   <title><data:blog.title/></title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600" rel="stylesheet"/>
 
   <b:skin><![CDATA[
-    * { margin:0; padding:0; box-sizing:border-box; }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    html { min-height:100%; background:linear-gradient(185deg,#eef8f4,#f1e9e0); }
-    body { font-family:"Trebuchet MS","Lucida Sans Unicode","Lucida Grande","Lucida Sans",Arial,sans-serif; min-height:100%; width:100%; }
+html {
+    min-height: 100%;
+    background: linear-gradient(185deg, #eef8f4, #f1e9e0);
+}
 
-    a { color:#1c4777; text-decoration:none; }
-    a:hover { color:#46a0ff; }
+body {
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+    min-height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+}
 
-    .post-footer, .blog-feeds { display:none !important; }
+a {
+    color: #1c4777;
+    text-decoration: none;
+}
 
-    header {
-      background: rgba(255,255,255,0.2);
-      backdrop-filter: blur(15px) saturate(180%);
-      -webkit-backdrop-filter: blur(15px) saturate(180%);
-      border-bottom:1px solid rgba(255,255,255,0.3);
-      padding:20px;
-      text-align:center;
-      position:sticky;
-      top:0;
-      z-index:10;
-    }
-    header h1 { font-size:1.8rem; color:#1c4777; }
+a:hover {
+    color: #46a0ff;
+}
 
-    .container { max-width:1000px; margin:0 auto 5rem auto; padding:20px; }
+.post-footer,
+.blog-feeds {
+    display: none !important;
+}
 
-    /* Blog posts wrapper as responsive grid */
-    .blog-posts.hfeed {
-      display:grid !important;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important;
-      gap:25px !important;
-      justify-items:center !important;
-      list-style:none !important;
-      padding:0 !important;
-    }
+header {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(15px) saturate(180%);
+    -webkit-backdrop-filter: blur(15px) saturate(180%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 20px;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
 
-    /* Each post card */
-    li.post-outer, div.post-outer {
-      display:flex !important;
-      flex-direction:column !important;
-      align-items:center !important;
-      background: rgba(255,255,255,0.3) !important;
-      backdrop-filter: blur(10px) saturate(180%) !important;
-      border-radius:15px !important;
-      padding:10px !important;
-      width:100% !important;
-      aspect-ratio:1/1 !important;
-      max-width:300px !important;
-      box-sizing:border-box !important;
-    }
+header h1 {
+    font-size: 1.8rem;
+    color: #1c4777;
+}
 
-    /* Images inside post card */
-    li.post-outer img, div.post-outer img {
-      width:90% !important;
-      height:auto !important;
-      object-fit:cover !important;
-      border-radius:10px !important;
-      display:block !important;
-      margin-bottom:10px !important;
-    }
+.container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 10px;
+}
 
-    /* Post title */
-    li.post-outer h2.post-title a,
-    div.post-outer h2.post-title a {
-      font-size:1.3rem !important;
-      color:#1c4777 !important;
-      text-align:center !important;
-      text-decoration:none !important;
-      word-wrap:break-word !important;
-    }
+/* Blog posts wrapper as flex */
+.blog-posts.hfeed {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 25px !important;
+    justify-content: center !important;
+    padding: 0 !important;
+    list-style: none !important;
+}
 
-    /* Post snippet */
-    li.post-outer div.post-body p,
-    div.post-outer div.post-body p {
-      text-align:center !important;
-      color:#333 !important;
-      font-size:0.95rem !important;
-      overflow:hidden !important;
-      display:-webkit-box !important;
-      -webkit-line-clamp:3 !important;
-      -webkit-box-orient:vertical !important;
-    }
+.post-outer {
+    width: 20rem !important;
+}
 
-    /* Date header styling */
-    h2.date-header span { font-size:0.9rem; color:#555; display:block; margin:10px 0; text-align:center; }
+/* Each post card */
+li.post-outer,
+div.post-outer {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    flex: 1 1 20rem !important;
+    width: 100% !important;
+    background: rgba(255, 255, 255, 0.7) !important;
+    backdrop-filter: blur(10px) saturate(180%) !important;
+    border-radius: 15px !important;
+    padding: 10px !important;
+    box-sizing: border-box !important;
+}
 
-    /* Pagination */
-    .blog-pager { text-align:center; margin:20px 0; }
-    .blog-pager a {
-      display:inline-block; 
-      padding:0.5rem 1rem; 
-      margin:0 5px; 
-      background:#1c4777; 
-      color:#fff; 
-      border-radius:5px; 
-      text-decoration:none;
-    }
-    .blog-pager a:hover { background:#145a8c; }
+/* Images inside post card */
+li.post-outer img,
+div.post-outer img {
+    width: 20rem !important;
+    height: 20rem !important;
+    margin: 0 auto;
+    object-fit: cover !important;
+    border-radius: 10px !important;
+    display: block !important;
+    margin-bottom: 10px !important;
+}
 
-    footer { text-align:center; padding:15px 0; font-size:0.9rem; color:#555; border-top:1px solid #ddd; }
-  ]]></b:skin>
+/* Post title */
+li.post-outer h2.post-title a,
+div.post-outer h2.post-title a {
+    font-size: 1.3rem !important;
+    color: #1c4777 !important;
+    text-align: center !important;
+    text-decoration: none !important;
+    word-wrap: break-word !important;
+    margin: 1rem !important;
+}
+
+/* Post snippet */
+li.post-outer div.post-body p,
+div.post-outer div.post-body p {
+    text-align: justify !important;
+    color: #333 !important;
+    font-size: 0.95rem !important;
+    overflow: hidden !important;
+    display: -webkit-box !important;
+    -webkit-box-orient: vertical !important;
+}
+
+/* Date header styling */
+h2.date-header span {
+    font-size: 0.9rem;
+    color: #555;
+    display: block;
+    margin: 10px 0;
+    text-align: center;
+}
+
+footer {
+    text-align: center;
+    padding: 15px 0;
+    font-size: 0.9rem;
+    color: #555;
+    border-top: 1px solid #ddd;
+}
+]]></b:skin>
+
 </head>
 
 <body>
   <header>
-    <h1><data:blog.title/></h1>
+    <h1>jasur's blogs in the attic</h1>
   </header>
 
   <div class="container">
