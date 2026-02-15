@@ -4,7 +4,7 @@ import { Navigation, Pagination, Scrollbar, Autoplay } from "swiper/modules";
 import "../css/swiper.css";
 import "swiper/css";
 import "swiper/css/navigation";
-import { ImSpinner2 } from "react-icons/im";
+import { FaSpinner } from "react-icons/fa";
 
 const importAll = async (): Promise<string[]> => {
   const images = import.meta.glob("../media/img/profile/*.{png,jpg,jpeg}", {
@@ -68,7 +68,7 @@ const SwiperGallery: React.FC = () => {
             <div className="my-swiper-img-wrapper">
               {!loadedMap[image] && (
                 <div className="swiper-image-spinner-wrapper">
-                  <ImSpinner2 className="spinner-icon" />
+                  <FaSpinner className="spinner-icon" />
                 </div>
               )}
               <img
