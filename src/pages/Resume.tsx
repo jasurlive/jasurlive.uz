@@ -4,7 +4,7 @@ import "../add/css/resume.css";
 import BCfront from "../add/media/img/bc/front.png";
 import BCback from "../add/media/img/bc/back.png";
 
-import Swiper from "../add/tools/Swiper";
+import SwiperGallery from "../add/tools/SwiperGallery";
 import Logo from "../add/tools/Logo";
 import Social from "../add/tools/Social";
 import UpDown from "../add/tools/FullScreen";
@@ -165,7 +165,7 @@ function Resume() {
           <section>
             <h2>Gallery 🔽</h2>
             <div className="gallery-container-resume">
-              <Swiper />
+              <SwiperGallery />
             </div>
           </section>
         </div>

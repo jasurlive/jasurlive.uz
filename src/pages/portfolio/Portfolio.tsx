@@ -3,7 +3,7 @@ import * as XLSX from "xlsx";
 import "../../add/css/portfolio.css";
 import Logo from "../../add/tools/Logo";
 import { GiPartyPopper } from "react-icons/gi";
-import { ImSpinner2 } from "react-icons/im";
+import { ImSpinner7, ImSpinner2 } from "react-icons/im";
 import { handleConfettiClick } from "../../add/tools/Confetti";
 import Social from "../../add/tools/Social";
 import UpDown from "../../add/tools/FullScreen";
@@ -13,6 +13,7 @@ const Portfolio = () => {
   const [selectedPost, setSelectedPost] = useState<any | null>(null);
   const [fullscreen, setFullscreen] = useState(false);
   const [imageLoaded, setImageLoaded] = useState<Record<string, boolean>>({});
+  const [pageLoading, setPageLoading] = useState(true); // <-- portfolio content loading
 
   useEffect(() => {
     fetch("data/portfolio/portfolio.xlsx", { cache: "no-store" })
@@ -29,7 +30,8 @@ const Portfolio = () => {
           ),
         );
         setPosts(validPosts);
-      });
+      })
+      .finally(() => setPageLoading(false));
   }, []);
 
   const makeLinksClickable = (text: string) =>
@@ -57,6 +59,7 @@ const Portfolio = () => {
 
   return (
     <div>
+      {/* Header and navbar always visible */}
       <Logo />
       <div className="header-portfolio">
         <h1>
@@ -71,44 +74,52 @@ const Portfolio = () => {
         </h1>
       </div>
 
+      {/* Portfolio container */}
       <div className="portfolio-container">
-        {posts.map((post, i) => (
-          <div
-            key={i}
-            className="portfolio-item"
-            onClick={() => setSelectedPost(post)}
-          >
-            <div className="portfolio-item-image">
-              {!imageLoaded[post["Image Link"]] && (
-                <div className="portfolio-image-loading">
-                  <ImSpinner2 className="portfolio-loading-spinner" />
-                </div>
-              )}
-              <img
-                src={post["Image Link"]}
-                alt={post.Title}
-                style={{
-                  display: imageLoaded[post["Image Link"]] ? "block" : "none",
-                }}
-                onLoad={() =>
-                  setImageLoaded((prev) => ({
-                    ...prev,
-                    [post["Image Link"]]: true,
-                  }))
-                }
-                onError={() =>
-                  setImageLoaded((prev) => ({
-                    ...prev,
-                    [post["Image Link"]]: true,
-                  }))
-                }
-              />
-            </div>
-            <h3>{post.Title}</h3>
-            <p>{truncateText(post.Description, 70)}</p>
+        {pageLoading ? (
+          <div className="portfolio-page-loading">
+            <ImSpinner7 className="portfolio-page-spinner" />
           </div>
-        ))}
+        ) : (
+          posts.map((post, i) => (
+            <div
+              key={i}
+              className="portfolio-item"
+              onClick={() => setSelectedPost(post)}
+            >
+              <div className="portfolio-item-image">
+                {!imageLoaded[post["Image Link"]] && (
+                  <div className="portfolio-image-loading">
+                    <ImSpinner2 className="portfolio-loading-spinner" />
+                  </div>
+                )}
+                <img
+                  src={post["Image Link"]}
+                  alt={post.Title}
+                  style={{
+                    display: imageLoaded[post["Image Link"]] ? "block" : "none",
+                  }}
+                  onLoad={() =>
+                    setImageLoaded((prev) => ({
+                      ...prev,
+                      [post["Image Link"]]: true,
+                    }))
+                  }
+                  onError={() =>
+                    setImageLoaded((prev) => ({
+                      ...prev,
+                      [post["Image Link"]]: true,
+                    }))
+                  }
+                />
+              </div>
+              <h3>{post.Title}</h3>
+              <p>{truncateText(post.Description, 70)}</p>
+            </div>
+          ))
+        )}
 
+        {/* Modal for selected post */}
         {selectedPost && (
           <div
             className="portfolio-modal"
@@ -147,6 +158,7 @@ const Portfolio = () => {
           </div>
         )}
 
+        {/* Fullscreen image */}
         {fullscreen &&
           selectedPost &&
           !getYoutubeEmbed(selectedPost.Description) && (

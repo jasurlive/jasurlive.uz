@@ -4,6 +4,7 @@ import { Navigation, Pagination, Scrollbar, Autoplay } from "swiper/modules";
 import "../css/swiper.css";
 import "swiper/css";
 import "swiper/css/navigation";
+import { ImSpinner2 } from "react-icons/im";
 
 const importAll = async (): Promise<string[]> => {
   const images = import.meta.glob("../media/img/profile/*.{png,jpg,jpeg}", {
@@ -20,13 +21,24 @@ const shuffleArray = <T,>(array: T[]): T[] => {
   return array;
 };
 
-const CustomSwiper: React.FC = () => {
+const SwiperGallery: React.FC = () => {
   const [images, setImages] = useState<string[]>([]);
+  const [loadedMap, setLoadedMap] = useState<Record<string, boolean>>({});
   const slidesPerView = 3;
 
   useEffect(() => {
-    importAll().then((imgs) => setImages(shuffleArray(imgs)));
+    importAll().then((imgs) => {
+      const shuffled = shuffleArray(imgs);
+      setImages(shuffled);
+      const initialLoad: Record<string, boolean> = {};
+      shuffled.forEach((img) => (initialLoad[img] = false));
+      setLoadedMap(initialLoad);
+    });
   }, []);
+
+  const handleImageLoad = (src: string) => {
+    setLoadedMap((prev) => ({ ...prev, [src]: true }));
+  };
 
   const loopEnabled = images.length > slidesPerView;
 
@@ -53,8 +65,19 @@ const CustomSwiper: React.FC = () => {
       >
         {images.map((image, index) => (
           <SwiperSlide key={index}>
-            <div className="my-swiper-img">
-              <img src={image} alt="" />
+            <div className="my-swiper-img-wrapper">
+              {!loadedMap[image] && (
+                <div className="swiper-image-spinner-wrapper">
+                  <ImSpinner2 className="spinner-icon" />
+                </div>
+              )}
+              <img
+                src={image}
+                alt=""
+                className="my-swiper-img"
+                onLoad={() => handleImageLoad(image)}
+                style={{ opacity: loadedMap[image] ? 1 : 0 }}
+              />
             </div>
           </SwiperSlide>
         ))}
@@ -63,4 +86,4 @@ const CustomSwiper: React.FC = () => {
   );
 };
 
-export default CustomSwiper;
+export default SwiperGallery;
