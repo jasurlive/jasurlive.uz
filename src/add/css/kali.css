@@ -1,0 +1,111 @@
+/* ================= TERMINAL ================= */
+
+.terminal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #041021;
+    font-family: "Fira Code", "Consolas", monospace;
+    font-size: 1.5rem;
+    padding: 0.75rem;
+    padding-bottom: 8rem;
+    overflow-y: auto;
+    cursor: text;
+    box-sizing: border-box;
+    -webkit-overflow-scrolling: touch;
+}
+
+.terminal-line {
+    line-height: 1.5;
+    white-space: pre-wrap;
+    color: #4db8ff;
+    text-shadow: 0 0 4px rgba(77, 184, 255, 0.35);
+    word-break: break-word;
+}
+
+.terminal-input {
+    display: flex;
+    align-items: center;
+    line-height: 1.5;
+    margin-top: 4px;
+}
+
+.terminal-input span {
+    margin-right: 6px;
+    color: #00ff88;
+    text-shadow: 0 0 6px rgba(0, 255, 136, 0.6);
+    flex-shrink: 0;
+}
+
+.terminal-input input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #00ff88;
+    font-family: inherit;
+    font-size: inherit;
+    flex: 1;
+    caret-color: #00ff88;
+    min-width: 0;
+}
+
+.terminal-input input::selection {
+    background: #00ff88;
+    color: #041021;
+}
+
+/* ================= OPTIONAL SUBTLE BAR ================= */
+
+.bottom-bar {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #00ff88, transparent);
+    opacity: 0.5;
+}
+
+/* ================= RESPONSIVE / MOBILE OPTIMIZATION ================= */
+
+@media (max-width: 768px) {
+    .terminal-container {
+        font-size: 1rem;
+        padding: 0.5rem;
+        padding-bottom: 6rem;
+    }
+
+    .terminal-line {
+        line-height: 1.4;
+    }
+
+    .terminal-input span {
+        margin-right: 4px;
+        font-size: 0.95rem;
+    }
+
+    .terminal-input input {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .terminal-container {
+        font-size: 0.9rem;
+        padding: 0.4rem;
+        padding-bottom: 5rem;
+    }
+
+    .terminal-line {
+        line-height: 1.3;
+    }
+
+    .terminal-input span {
+        font-size: 0.9rem;
+    }
+
+    .terminal-input input {
+        font-size: 0.9rem;
+    }
+}

@@ -1,0 +1,273 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.header-portfolio {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 4.5rem;
+    background: linear-gradient(135deg, #2c3e50, #34495e);
+    color: #fff;
+    box-shadow: 0 0.3rem 0.3rem rgba(0, 0, 0, 0.2);
+}
+
+.header-portfolio h1 {
+    font-size: 1.2rem;
+    font-weight: normal;
+    display: flex;
+    align-items: center;
+}
+
+.icon-party-portfolio {
+    animation: icon-party 5s infinite;
+    cursor: pointer;
+    margin-left: 0.3rem;
+}
+
+.header-portfolio button svg {
+    color: #67ffd4;
+}
+
+.header-portfolio button {
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem 0.8rem;
+    color: #fff;
+    font-size: 1.5rem;
+    border-radius: 0.3rem;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.portfolio-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    padding: 2rem 1rem;
+    margin-bottom: 4rem;
+}
+
+.portfolio-item {
+    flex: 1 1 18rem;
+    max-width: 20rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: whitesmoke;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.portfolio-item-image {
+    width: 100%;
+    padding-top: 100%;
+    position: relative;
+}
+
+.portfolio-item-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 0.5rem;
+    border: 0.3rem solid #fff;
+    object-fit: cover;
+}
+
+.portfolio-item h3 {
+    margin: 0.5rem 0;
+    font-size: 1rem;
+    text-align: center;
+    color: #001324;
+}
+
+.portfolio-item p {
+    text-align: center;
+    color: rgba(51, 51, 51, 0.75);
+    font-size: 0.9rem;
+    padding: 0.4rem;
+}
+
+.portfolio-modal,
+.portfolio-fullscreen-modal {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 10;
+}
+
+.portfolio-modal h3,
+p {
+    padding: 1rem;
+    text-align: center;
+}
+
+.portfolio-modal-content {
+    position: relative;
+    width: 90%;
+    max-width: 60rem;
+    max-height: 90%;
+    background: rgba(242, 255, 249, 0.75);
+    border-radius: 0.3rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+    animation: slideIn 0.3s ease-in-out;
+}
+
+.portfolio-modal-content img,
+.portfolio-modal-content iframe {
+    width: 40rem;
+    height: 20rem;
+    object-fit: contain;
+    border-radius: 0.3rem;
+}
+
+.portfolio-close {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    font-size: 2.8rem;
+    color: red;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s, color 0.3s;
+}
+
+.portfolio-close:hover {
+    transform: scale(1.1);
+    color: #ff0066;
+}
+
+.portfolio-fullscreen-image {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    border-radius: 0.3rem;
+}
+
+.portfolio-image-loading {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f0f0f0;
+    border-radius: 6px;
+}
+
+.portfolio-loading-spinner {
+    font-size: 3rem;
+    color: #1c4777;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes icon-party {
+
+    0%,
+    100% {
+        transform: scale(1);
+        background-color: rgba(206, 215, 225, 0.5);
+    }
+
+    25% {
+        transform: scale(1.2);
+        background-color: rgba(254, 242, 137, 0.6);
+    }
+
+    50% {
+        transform: scale(1);
+        background-color: rgba(98, 245, 255, 0.57);
+    }
+
+    75% {
+        transform: scale(1.2);
+        background-color: rgba(76, 175, 79, 0.65);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-1rem);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+.portfolio-page-loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.portfolio-page-spinner {
+    font-size: 4rem;
+    color: #0078ff;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@media (max-width: 600px) {
+    .portfolio-item {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+
+    .portfolio-modal-content img,
+    .portfolio-modal-content iframe {
+        width: 100%;
+        height: auto;
+    }
+
+    .header-portfolio h1 {
+        font-size: 0.9rem;
+    }
+
+    .portfolio-modal-content {
+        max-width: 95%;
+        height: 70%;
+        padding: 0.5rem;
+    }
+
+    .portfolio-close {
+        font-size: 2.5rem;
+        top: 0.3rem;
+        right: 0.3rem;
+    }
+}

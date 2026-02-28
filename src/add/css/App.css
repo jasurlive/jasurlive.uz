@@ -1,0 +1,120 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  background: linear-gradient(185deg, #eef8f4, #f1e9e0);
+}
+
+.menu {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 500px;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  backdrop-filter: blur(25px) saturate(200%);
+  -webkit-backdrop-filter: blur(25px) saturate(200%);
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.2);
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px 20px 0 0;
+  z-index: 10;
+}
+
+.menu li {
+  flex: 1;
+  text-align: center;
+  position: relative;
+}
+
+.menu li a {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 0;
+  font-size: 12px;
+  font-weight: 500;
+  text-decoration: none;
+  color: #1c4777;
+  border: #1c477710 solid 1px;
+  transition: all 0.4s ease;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.menu li a::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 15px;
+  background: linear-gradient(to top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.menu li a svg {
+  font-size: 1.5rem;
+  margin-bottom: 0.25rem;
+  transition: transform 0.4s ease, filter 0.4s ease;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.2));
+}
+
+.menu li a:hover,
+.menu li a.active {
+  color: #ffffff;
+  background: linear-gradient(145deg, #3c82f0cc, #46a0ffcc);
+  box-shadow: 0 0 20px rgba(60, 130, 240, 0.5);
+}
+
+.menu li a:hover svg,
+.menu li a.active svg {
+  transform: translateY(-5px) scale(1.2);
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.3));
+}
+
+.menu li a:hover::after,
+.menu li a.active::after {
+  content: "";
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40%;
+  height: 5px;
+  border-radius: 20px;
+  background: linear-gradient(90deg, #598dc7, #7fb0e1);
+  box-shadow: 0 0 8px rgba(95, 140, 200, 0.7);
+}
+
+@media (max-width: 600px) {
+  .menu {
+    width: 100%;
+    left: 0;
+    transform: none;
+    border-radius: 0;
+  }
+
+  .menu li a {
+    font-size: 0;
+    padding: 1.4rem 0;
+  }
+
+  .menu li a svg {
+    font-size: 1.1rem;
+  }
+}

@@ -1,0 +1,25 @@
+.updown-button {
+    position: fixed;
+    bottom: 5rem;
+    right: 5px;
+    cursor: pointer;
+    background: linear-gradient(135deg, #e11cff83, #2574fc98);
+    color: #fff;
+    padding: 12px;
+    border-radius: 15%;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s;
+    z-index: 6;
+}
+
+.updown-button:hover {
+    background-color: #1c4777;
+}
+
+.updown-button:active {
+    transform: scale(0.8);
+}
+
+.updown-icon {
+    font-size: 1.5rem;
+}
