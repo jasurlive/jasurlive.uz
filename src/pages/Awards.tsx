@@ -17,6 +17,7 @@ import mimoTS from "../add/media/img/awards/mimo-TS.png";
 import sololearnPY from "../add/media/img/awards/sololearn-PY.jpg";
 import achievement from "../add/media/img/awards/achievementWoosong.jpg";
 import commendation from "../add/media/img/awards/commendationWoosong.jpg";
+import msc_ws from "../add/media/img/awards/msc_ws.png"
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Scrollbar, Autoplay } from "swiper/modules";
@@ -43,6 +44,12 @@ function Awards() {
   const closeModal = () => setModalOpen(false);
 
   const awards = [
+    {
+      imgSrc: msc_ws,
+      title: "Master of Science in Engineering",
+      description:
+        "Railroad System Engineering, Woosong University in 2024-26. \nFebruary 2026.",
+    },
     {
       imgSrc: commendation,
       title: "Certificate of Commendation (KGSP)",
