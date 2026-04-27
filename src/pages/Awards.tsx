@@ -18,6 +18,7 @@ import sololearnPY from "../add/media/img/awards/sololearn-PY.jpg";
 import achievement from "../add/media/img/awards/achievementWoosong.jpg";
 import commendation from "../add/media/img/awards/commendationWoosong.jpg";
 import msc_ws from "../add/media/img/awards/msc_ws.png"
+import mmis from "../add/media/img/awards/mmis_hyundai.jpg"
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Scrollbar, Autoplay } from "swiper/modules";
@@ -44,6 +45,12 @@ function Awards() {
   const closeModal = () => setModalOpen(false);
 
   const awards = [
+    {
+      imgSrc: mmis,
+      title: "Training Certificate",
+      description:
+        "Certificate from Hyundai Rotem for successful completion of MMIS training (April 21–28, 2026). \nApril 2026.",
+    },
     {
       imgSrc: msc_ws,
       title: "Master of Science in Engineering",
