@@ -19,6 +19,7 @@ const selectedImageNames = [
   "uzb",
   "solbridge2",
   "whitesuit",
+  "solid"
 ];
 
 const importSelectedImages = async (): Promise<string[]> => {
