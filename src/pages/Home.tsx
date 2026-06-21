@@ -1,16 +1,13 @@
 import { useState, useEffect } from "react";
 import Online from "../add/tools/Online";
 import HomeSwiper from "../add/tools/SwiperHome";
-import Skills from "../add/tools/Skills";
 import Projects from "../add/tools/Projects";
 import FullScreenToggle from "../add/tools/FullScreen";
 import SMS from "../add/tools/SMS";
 import FramedMap from "../add/iframe/TravelMap";
-import DJ from "../add/iframe/DJ";
 import Speeches from "../pages/videos/Speeches";
 import Logo from "../add/tools/Logo";
 import Social from "../add/tools/Social";
-import Code from "../add/tools/Code";
 import OrbitDotsLoader from "../add/tools/Spinner";
 import "../add/css/home.css";
 
