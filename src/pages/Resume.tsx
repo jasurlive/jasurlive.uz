@@ -7,15 +7,11 @@ import BCback from "../add/media/img/bc/back.png";
 import SwiperGallery from "../add/tools/SwiperGallery";
 import Logo from "../add/tools/Logo";
 import Social from "../add/tools/Social";
-import UpDown from "../add/tools/FullScreen";
 import Skills from "../add/tools/Skills";
 import Code from "../add/tools/Code";
 
 import {
   FaPhoneSquareAlt,
-  FaTrain,
-  FaUniversity,
-  FaTools,
 } from "react-icons/fa";
 import { TfiEmail } from "react-icons/tfi";
 import { FaRegAddressCard } from "react-icons/fa";

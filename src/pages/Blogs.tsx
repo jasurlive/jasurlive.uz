@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Kali from "./Kali";
+// import Kali from "./Kali";
 import FullScreenToggle from "../add/tools/FullScreen";
 import Social from "../add/tools/Social";
 import OrbitDotsLoader from "../add/tools/Spinner";
@@ -9,11 +9,11 @@ import "../add/css/blogs.css";
 
 export default function Blogs() {
   const [loading, setLoading] = useState(true);
-  const [unlocked, setUnlocked] = useState(false);
+  // const [unlocked, setUnlocked] = useState(false);
 
-  if (!unlocked) {
-    return <Kali onUnlock={() => setUnlocked(true)} />;
-  }
+  // if (!unlocked) {
+  //   return <Kali onUnlock={() => setUnlocked(true)} />;
+  // }
 
   return (
     <div className="blogs-container">

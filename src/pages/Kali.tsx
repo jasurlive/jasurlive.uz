@@ -1,3 +1,4 @@
+
 import { useState, useEffect, useRef, KeyboardEvent } from "react";
 import "../add/css/kali.css";
 
@@ -28,9 +29,10 @@ export default function Kali({ onUnlock }: KaliProps) {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [history, setHistory] = useState<string[]>([]);
-  const [historyIndex, setHistoryIndex] = useState<number | null>(null);
-  const inputRef = useRef<HTMLInputElement | null>(null);
-  const containerRef = useRef<HTMLDivElement | null>(null);
+
+  const historyIndex = useRef<number | null>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const commands: Command[] = [
     {
@@ -41,70 +43,75 @@ export default function Kali({ onUnlock }: KaliProps) {
     {
       name: "--help",
       description: "Show all available commands",
-      action: (_, set) => {
-        const helpLines = commands.map(
-          (cmd) => `\u25B6 ${cmd.name.padEnd(15)} - ${cmd.description}`,
-        );
-        set((prev) => [...prev, "", ...helpLines, ""]);
-      },
+      action: (_, set) =>
+        set((prev) => [
+          ...prev,
+          "",
+          ...commands.map(
+            (cmd) => `▶ ${cmd.name.padEnd(15)} - ${cmd.description}`,
+          ),
+          "",
+        ]),
     },
     {
       name: "unlock --page",
       description: "Unlock the specific page",
-      action: (prev, set, unlock, setLoad) => {
+      action: (prev, set, _, setLoading) => {
         set([...prev, "Access granted."]);
-        setLoad?.(true); // triggers decrypt progress + onUnlock
+        setLoading?.(true);
       },
     },
     {
       name: "sudo apt update",
-      description: "Let it start updating packages",
+      description: "Update packages",
       action: (prev, set) => {
+        const max = 20;
+
         set([
           ...prev,
           "Hit:1 http://archive.ubuntu.com/ubuntu focal InRelease",
           "Reading package lists...",
+          `Downloading: [${"░".repeat(max)}]`,
         ]);
 
         let progress = 0;
-        const maxBlocks = 20;
-        set((prevLines) => [
-          ...prevLines,
-          `Downloading: [${"░".repeat(maxBlocks)}]`,
-        ]);
 
         const interval = setInterval(() => {
-          progress = Math.min(progress + 1, maxBlocks);
-          set((prevLines) => {
-            const copy = [...prevLines];
+          progress++;
+
+          set((lines) => {
+            const copy = [...lines];
             copy[copy.length - 1] =
-              `Downloading: [${"█".repeat(progress)}${"░".repeat(maxBlocks - progress)}]`;
+              `Downloading: [${"█".repeat(progress)}${"░".repeat(max - progress)}]`;
             return copy;
           });
-        }, 100);
 
-        setTimeout(
-          () => {
+          if (progress === max) {
             clearInterval(interval);
-            set((prevLines) => [
-              ...prevLines.slice(0, -1),
-              "Reading package lists... Done!",
-              "Building dependency tree... Done!",
-              "All packages are up to date.",
-            ]);
-          },
-          maxBlocks * 100 + 200,
-        );
+
+            setTimeout(() => {
+              set((lines) => [
+                ...lines.slice(0, -1),
+                "Reading package lists... Done!",
+                "Building dependency tree... Done!",
+                "All packages are up to date.",
+              ]);
+            }, 200);
+          }
+        }, 100);
       },
     },
   ];
 
-  useEffect(() => inputRef.current?.focus(), []);
+  useEffect(() => {
+    inputRef.current?.focus();
+  }, []);
 
   useEffect(() => {
-    const handleFocus = () => inputRef.current?.focus();
-    window.addEventListener("focus", handleFocus);
-    return () => window.removeEventListener("focus", handleFocus);
+    const focus = () => inputRef.current?.focus();
+
+    window.addEventListener("focus", focus);
+    return () => window.removeEventListener("focus", focus);
   }, []);
 
   useEffect(() => {
@@ -117,77 +124,94 @@ export default function Kali({ onUnlock }: KaliProps) {
   useEffect(() => {
     if (!loading) return;
 
+    const max = 30;
     let progress = 0;
-    const maxBlocks = 30;
+
     setLines((prev) => [
       ...prev,
-      `${TEXT.decrypt}: [${"░".repeat(maxBlocks)}]`,
+      `${TEXT.decrypt}: [${"░".repeat(max)}]`,
     ]);
 
     const interval = setInterval(() => {
-      progress = Math.min(progress + 1, maxBlocks);
+      progress++;
+
       setLines((prev) => {
         const copy = [...prev];
         copy[copy.length - 1] =
-          `${TEXT.decrypt}: [${"█".repeat(progress)}${"░".repeat(maxBlocks - progress)}]`;
+          `${TEXT.decrypt}: [${"█".repeat(progress)}${"░".repeat(max - progress)}]`;
         return copy;
       });
+
+      if (progress === max) {
+        clearInterval(interval);
+
+        setTimeout(() => {
+          onUnlock();
+          setLoading(false);
+        }, 500);
+      }
     }, 200);
 
-    const timeout = setTimeout(
-      () => {
-        clearInterval(interval);
-        setLines((prev) => [...prev]);
-        onUnlock();
-        setLoading(false);
-      },
-      maxBlocks * 200 + 500,
-    );
-
-    return () => {
-      clearInterval(interval);
-      clearTimeout(timeout);
-    };
+    return () => clearInterval(interval);
   }, [loading, onUnlock]);
 
   const handleCommand = () => {
     const cmd = input.trim();
+
     if (!cmd) return;
 
     const updated = [...lines, `${TEXT.prompt} ${cmd}`];
     const command = commands.find((c) => c.name === cmd);
 
-    if (command) command.action(updated, setLines, onUnlock, setLoading);
-    else setLines([...updated, TEXT.commandNotFound]);
+    command
+      ? command.action(updated, setLines, onUnlock, setLoading)
+      : setLines([...updated, TEXT.commandNotFound]);
 
     setHistory((prev) => [...prev, cmd]);
-    setHistoryIndex(null);
+    historyIndex.current = null;
     setInput("");
   };
 
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") handleCommand();
-    else if (e.ctrlKey && e.key.toLowerCase() === "l") {
+    if (e.key === "Enter") {
+      handleCommand();
+      return;
+    }
+
+    if (e.ctrlKey && e.key.toLowerCase() === "l") {
       e.preventDefault();
       setLines([]);
-    } else if (e.key === "ArrowUp") {
+      return;
+    }
+
+    if (e.key === "ArrowUp") {
       e.preventDefault();
+
       if (!history.length) return;
-      setHistoryIndex((prev) => {
-        const newIndex =
-          prev === null ? history.length - 1 : Math.max(prev - 1, 0);
-        setInput(history[newIndex]);
-        return newIndex;
-      });
-    } else if (e.key === "ArrowDown") {
+
+      historyIndex.current =
+        historyIndex.current === null
+          ? history.length - 1
+          : Math.max(historyIndex.current - 1, 0);
+
+      setInput(history[historyIndex.current]);
+      return;
+    }
+
+    if (e.key === "ArrowDown") {
       e.preventDefault();
-      if (!history.length) return;
-      setHistoryIndex((prev) => {
-        if (prev === null) return null;
-        const newIndex = Math.min(prev + 1, history.length - 1);
-        setInput(history[newIndex]);
-        return newIndex === history.length - 1 ? null : newIndex;
-      });
+
+      if (!history.length || historyIndex.current === null) return;
+
+      historyIndex.current++;
+
+      if (historyIndex.current >= history.length) {
+        historyIndex.current = null;
+        setInput("");
+        return;
+      }
+
+      setInput(history[historyIndex.current]);
     }
   };
 
@@ -202,15 +226,17 @@ export default function Kali({ onUnlock }: KaliProps) {
           {line}
         </div>
       ))}
+
       {!loading && (
         <div className="terminal-input">
           <span>{TEXT.prompt}</span>
+
           <input
             ref={inputRef}
             value={input}
+            autoComplete="off"
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKeyDown}
-            autoComplete="off"
           />
         </div>
       )}

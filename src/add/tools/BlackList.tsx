@@ -9,23 +9,23 @@ export const blacklistedUsers: {
   device?: string;
   os?: string;
 }[] = [
-  // { country: "Kazakhstan" }, // Block all from Kazakhstan
-  // { country: "North Korea", city: "Pyongyang" }, // Block only New York, USA
-  // { device: "iPhone", os: "ios" },
-  // { browser: "Mobile Safari", os: "ios" },
+  // { country: "Kazakhstan" },
+  // { country: "North Korea", city: "Pyongyang" },
+  // { device: "iPhone", os: "iOS" },
+  // { browser: "Mobile Safari", os: "iOS" },
 ];
 
 const detectBrowserDeviceOs = () => {
   const parser = new UAParser();
-  const uaResult = parser.getResult();
-  const browser = uaResult.browser.name || "unknown";
-  const os = uaResult.os.name || "unknown";
-  // device.model may be undefined for desktop, so fallback
-  const device = uaResult.device.model || "Desktop";
-  return { browser, device, os };
+  const result = parser.getResult();
+
+  return {
+    browser: result.browser.name || "unknown",
+    device: result.device.model || "Desktop",
+    os: result.os.name || "unknown",
+  };
 };
 
-// Block if ALL fields in a blacklist entry match the user (including city)
 export const isUserBlacklisted = (
   country?: string,
   city?: string,
@@ -37,15 +37,20 @@ export const isUserBlacklisted = (
     if (
       (entry.country &&
         entry.country.toLowerCase() !== (country || "").toLowerCase()) ||
-      (entry.city && entry.city.toLowerCase() !== (city || "").toLowerCase()) ||
+      (entry.city &&
+        entry.city.toLowerCase() !== (city || "").toLowerCase()) ||
       (entry.browser &&
         entry.browser.toLowerCase() !== browser.toLowerCase()) ||
-      (entry.device && entry.device.toLowerCase() !== device.toLowerCase()) ||
+      (entry.device &&
+        entry.device.toLowerCase() !== device.toLowerCase()) ||
       (entry.os && entry.os.toLowerCase() !== os.toLowerCase()) ||
-      (entry.ips && ip && !entry.ips.some((prefix) => ip.startsWith(prefix)))
+      (entry.ips &&
+        ip &&
+        !entry.ips.some((prefix) => ip.startsWith(prefix)))
     ) {
       return false;
     }
+
     return true;
   });
 };
@@ -66,84 +71,95 @@ const CountryBlacklist: React.FC<CountryBlacklistProps> = ({
   const [blocked, setBlocked] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [blockedReason, setBlockedReason] = useState<string | null>(null);
-  const [ip, setIp] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchLocation = async () => {
-      let ip: string = localStorage.getItem("userIP") ?? "";
-      let city: string = localStorage.getItem("userCity") ?? "";
-      let country: string = localStorage.getItem("userCountry") ?? "";
+      let ip = localStorage.getItem("userIP") ?? "";
+      let city = localStorage.getItem("userCity") ?? "";
+      let country = localStorage.getItem("userCountry") ?? "";
 
       try {
         if (!ip) {
           const response = await fetch("https://get.geojs.io/v1/ip.json");
-          if (!response.ok)
+
+          if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+
           const data = await response.json();
           ip = data.ip;
+
           localStorage.setItem("userIP", ip);
         }
 
         if (!city || !country) {
-          const geoResponse = await fetch(
+          const response = await fetch(
             `https://get.geojs.io/v1/ip/geo/${ip}.json`
           );
-          if (!geoResponse.ok)
-            throw new Error(`HTTP error! Status: ${geoResponse.status}`);
-          const geoData = await geoResponse.json();
-          city = geoData.city || "Unknown";
-          country = geoData.country || "Unknown";
+
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+
+          const data = await response.json();
+
+          city = data.city || "Unknown";
+          country = data.country || "Unknown";
+
           localStorage.setItem("userCity", city);
           localStorage.setItem("userCountry", country);
         }
 
         setCountry(country);
         setCity(city);
-        setIp(ip);
 
         let isBlocked = false;
-        let reason = "";
+        let reason: string | null = null;
+
         if (isUserBlacklisted(country, city, ip)) {
           const { browser, device, os } = detectBrowserDeviceOs();
+
           isBlocked = true;
           reason = `Blocked by rule (country=${country}, city=${city}, browser=${browser}, device=${device}, os=${os})`;
         }
+
         setBlocked(isBlocked);
-        setBlockedReason(isBlocked ? reason : null);
-        if (onAccessCheck) {
-          onAccessCheck(isBlocked, country, isBlocked ? reason : null);
-        }
+        setBlockedReason(reason);
+
+        onAccessCheck?.(isBlocked, country, reason);
       } catch (err) {
-        console.error("Failed to get country by IP:", err);
+        console.error("Failed to get location:", err);
+
         setError("Unable to detect location");
         setBlocked(false);
         setBlockedReason(null);
-        if (onAccessCheck) {
-          onAccessCheck(false, null, null);
-        }
+
+        onAccessCheck?.(false, null, null);
       }
     };
 
     fetchLocation();
   }, [onAccessCheck]);
 
-  if (onAccessCheck) {
-    return null;
-  }
+  if (onAccessCheck) return null;
 
   if (error) {
     return <p>{error}</p>;
   }
 
-  if (country === null) {
+  if (!country) {
     return <p>Checking location...</p>;
   }
 
-  return blocked ? (
-    <div style={{ color: "red", fontWeight: "bold" }}>
-      Access denied for {blockedReason} 🚫
-    </div>
-  ) : (
+  if (blocked) {
+    return (
+      <div style={{ color: "red", fontWeight: "bold" }}>
+        Access denied for {blockedReason} 🚫
+      </div>
+    );
+  }
+
+  return (
     <div style={{ color: "green", fontWeight: "bold" }}>
       Welcome from {city ? `${city}, ` : ""}
       {country} ✅
