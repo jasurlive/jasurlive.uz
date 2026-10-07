@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "../add/css/awards.css";
-import { handleConfettiClick } from "../add/tools/Confetti";
+// import { handleConfettiClick } from "../add/tools/Confetti";
 import Logo from "../add/tools/Logo";
 import { GiPartyPopper } from "react-icons/gi";
 import { ImSpinner2 } from "react-icons/im";
@@ -140,7 +140,7 @@ function Awards() {
           <button
             className="icon-party"
             id="confettiButton"
-            onClick={handleConfettiClick}
+            // onClick={handleConfettiClick}
           >
             <GiPartyPopper />
           </button>{" "}
