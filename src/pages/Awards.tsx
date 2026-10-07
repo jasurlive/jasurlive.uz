@@ -24,8 +24,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Scrollbar, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
-import Social from "../add/tools/Social";
-import FullScreenToggle from "../add/tools/FullScreen";
+// import Social from "../add/tools/Social";
+// import FullScreenToggle from "../add/tools/FullScreen";
 
 function Awards() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -131,8 +131,8 @@ function Awards() {
   return (
     <div>
       <Logo />
-      <Social />
-      <FullScreenToggle />
+      {/* <Social /> */}
+      {/* <FullScreenToggle /> */}
 
       <div className="header-awards">
         <h1>
