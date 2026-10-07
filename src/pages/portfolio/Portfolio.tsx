@@ -4,7 +4,7 @@ import "../../add/css/portfolio.css";
 import Logo from "../../add/tools/Logo";
 import { GiPartyPopper } from "react-icons/gi";
 import { ImSpinner7, ImSpinner2 } from "react-icons/im";
-import { handleConfettiClick } from "../../add/tools/Confetti";
+// import { handleConfettiClick } from "../../add/tools/Confetti";
 // import Social from "../../add/tools/Social";
 // import UpDown from "../../add/tools/FullScreen";
 
@@ -66,7 +66,7 @@ const Portfolio = () => {
           Portfolio 💼🚮🗑️ | Shall we
           <button
             className="icon-party-portfolio"
-            onClick={handleConfettiClick}
+            // onClick={handleConfettiClick}
           >
             <GiPartyPopper />
           </button>
