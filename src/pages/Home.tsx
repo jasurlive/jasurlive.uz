@@ -4,7 +4,7 @@ import HomeSwiper from "../add/tools/SwiperHome";
 import Projects from "../add/tools/Projects";
 // import FullScreenToggle from "../add/tools/FullScreen";
 import SMS from "../add/tools/SMS";
-import FramedMap from "../add/iframe/TravelMap";
+// import FramedMap from "../add/iframe/TravelMap";
 import Speeches from "../pages/videos/Speeches";
 import Logo from "../add/tools/Logo";
 // import Social from "../add/tools/Social";
