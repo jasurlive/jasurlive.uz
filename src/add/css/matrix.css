@@ -1,0 +1,54 @@
+.matrix {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  
+  .matrix-column {
+    position: absolute;
+    top: -600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font: 18px/1.7 monospace;
+    color: #00ff405a;
+    text-shadow: 0 0 7px #00ff4051;
+    opacity: 0.3;
+    animation: matrix-fall linear infinite;
+  }
+  
+  .matrix-column span:first-child {
+    color: #fff;
+    text-shadow:
+      0 0 5px #fff,
+      0 0 12px #00ff41;
+  }
+  
+  @keyframes matrix-fall {
+    from {
+      transform: translateY(0);
+    }
+  
+    to {
+      transform: translateY(160vh);
+    }
+  }
+  
+  @media (prefers-color-scheme: light) {
+    .matrix-column {
+      color: #00852d;
+      text-shadow: 0 0 5px rgba(0, 133, 45, 0.5);
+      opacity: 0.18;
+    }
+  
+    .matrix-column span:first-child {
+      color: #006d27;
+    }
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+    .matrix-column {
+      animation: none;
+    }
+  }
