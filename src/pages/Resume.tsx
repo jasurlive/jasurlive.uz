@@ -6,7 +6,7 @@ import BCback from "../add/media/img/bc/back.png";
 
 import SwiperGallery from "../add/tools/SwiperGallery";
 import Logo from "../add/tools/Logo";
-import Social from "../add/tools/Social";
+// import Social from "../add/tools/Social";
 import Skills from "../add/tools/Skills";
 import Code from "../add/tools/Code";
 
@@ -15,7 +15,7 @@ import {
 } from "react-icons/fa";
 import { TfiEmail } from "react-icons/tfi";
 import { FaRegAddressCard } from "react-icons/fa";
-import FullScreenToggle from "../add/tools/FullScreen";
+// import FullScreenToggle from "../add/tools/FullScreen";
 
 function Resume() {
   const [isCardFlipped, setIsCardFlipped] = useState(false);
@@ -167,8 +167,8 @@ function Resume() {
         </div>
       </main>
 
-      <Social />
-      <FullScreenToggle />
+      {/* <Social /> */}
+      {/* <FullScreenToggle /> */}
     </div>
   );
 }

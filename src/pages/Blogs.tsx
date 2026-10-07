@@ -1,7 +1,7 @@
 import { useState } from "react";
 // import Kali from "./Kali";
-import FullScreenToggle from "../add/tools/FullScreen";
-import Social from "../add/tools/Social";
+// import FullScreenToggle from "../add/tools/FullScreen";
+// import Social from "../add/tools/Social";
 import OrbitDotsLoader from "../add/tools/Spinner";
 
 import "../add/css/blogs.css";
@@ -30,8 +30,8 @@ export default function Blogs() {
         </div>
       )}
 
-      <Social />
-      <FullScreenToggle />
+      {/* <Social /> */}
+      {/* <FullScreenToggle /> */}
 
       <iframe
         src="https://jasurlive.blogspot.com/"

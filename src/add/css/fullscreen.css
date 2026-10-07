@@ -1,7 +1,7 @@
 .fullscreen-button {
     position: fixed;
-    bottom: 5rem;
-    right: 5px;
+    bottom: 1rem;
+    right: 15px;
     cursor: pointer;
     background: linear-gradient(135deg, #e11cff83, #2574fc98);
     color: #fff;
@@ -22,4 +22,10 @@
 
 .fullscreen-icon {
     font-size: 1.5rem;
+}
+
+@media screen and (max-width: 600px) {
+    .fullscreen-button {
+        bottom: 5rem;
+    }
 }
