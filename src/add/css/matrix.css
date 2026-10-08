@@ -52,3 +52,10 @@
       animation: none;
     }
   }
+
+  @media (max-width: 600px) {
+    .matrix-column:nth-child(3n + 1),
+    .matrix-column:nth-child(3n + 2) {
+      display: none;
+    }
+  }
