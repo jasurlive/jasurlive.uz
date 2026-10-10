@@ -1,28 +1,46 @@
 .matrix {
-    position: fixed;
-    inset: 0;
-    overflow: hidden;
-    pointer-events: none;
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.matrix-column {
+  position: absolute;
+  top: -600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font: 18px/1.7 monospace;
+  color: light-dark(rgba(0, 133, 45, 0.6), #00ff405a);
+  text-shadow: 0 0 7px light-dark(rgba(0, 133, 45, 0.5), #00ff4051);
+  opacity: 0.3;
+  animation: matrix-fall linear infinite;
+}
+
+.matrix-column span:first-child {
+  color: light-dark(#006d27, #fff);
+  text-shadow:
+    0 0 5px light-dark(rgba(0, 133, 45, 0.5), #fff),
+    0 0 12px light-dark(transparent, #00ff41);
+}
+
+@keyframes matrix-fall {
+  to {
+    transform: translateY(160vh);
   }
-  
+}
+
+@media (prefers-reduced-motion: reduce) {
   .matrix-column {
-    position: absolute;
-    top: -600px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font: 18px/1.7 monospace;
-    color: #00ff405a;
-    text-shadow: 0 0 7px #00ff4051;
-    opacity: 0.3;
-    animation: matrix-fall linear infinite;
+    animation: none;
   }
-  
-  .matrix-column span:first-child {
-    color: #fff;
-    text-shadow:
-      0 0 5px #fff,
-      0 0 12px #00ff41;
+}
+
+@media (max-width: 600px) {
+  .matrix-column:nth-child(3n + 1),
+  .matrix-column:nth-child(3n + 2) {
+    display: none;
   }
   
   @keyframes matrix-fall {
