@@ -42,4 +42,38 @@
   .matrix-column:nth-child(3n + 2) {
     display: none;
   }
-}
+  
+  @keyframes matrix-fall {
+    from {
+      transform: translateY(0);
+    }
+  
+    to {
+      transform: translateY(160vh);
+    }
+  }
+  
+  @media (prefers-color-scheme: light) {
+    .matrix-column {
+      color: #00852d;
+      text-shadow: 0 0 5px rgba(0, 133, 45, 0.5);
+      opacity: 0.18;
+    }
+  
+    .matrix-column span:first-child {
+      color: #006d27;
+    }
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+    .matrix-column {
+      animation: none;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .matrix-column:nth-child(3n + 1),
+    .matrix-column:nth-child(3n + 2) {
+      display: none;
+    }
+  }
