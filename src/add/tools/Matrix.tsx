@@ -1,6 +1,6 @@
 import "../css/matrix.css";
 
-const COLUMN_COUNT = 50;
+const COLUMN_COUNT = 30;
 const DIGITS_PER_COLUMN = 28;
 
 const MIN_SPEED = 10;

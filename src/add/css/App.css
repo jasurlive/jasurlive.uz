@@ -1,17 +1,58 @@
+/* ---------- Theme tokens: single source for light (day) / dark (Tokyo Night) ----------
+   light-dark(day, night) follows the OS theme. Force a theme with
+   <html data-theme="light|dark">. */
+:root {
+  color-scheme: light dark;
+
+  --bg-1: light-dark(#eef8f4, #1a1b26);
+  --bg-2: light-dark(#f1e9e0, #16161e);
+  --text: light-dark(#1c4777, #c0caf5);
+  --text-card: light-dark(#1e293b, #c0caf5);
+  --text-muted: light-dark(#555, #9aa5ce);
+  --surface: light-dark(#fff, #1f2335);
+  --surface-alt: light-dark(#f0f0f0, #292e42);
+  --border: light-dark(rgba(92, 92, 92, 0.5), #3b4261);
+  --line: light-dark(rgba(0, 0, 0, 0.09), #3b4261);
+  --shadow: light-dark(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5));
+  --header-1: light-dark(#2c3e50, #24283b);
+  --header-2: light-dark(#34495e, #292e42);
+  --header-text: light-dark(whitesmoke, #c0caf5);
+  --mint: light-dark(#67ffd4, #73daca);
+  --accent-1: light-dark(#598dc7, #7aa2f7);
+  --accent-2: light-dark(#7fb0e1, #7dcfff);
+  --on-accent: light-dark(#fff, #1a1b26);
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+/* ---------- Base ---------- */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-body,
-html {
-  height: 100%;
+html,
+body {
   width: 100%;
-  margin: 0;
+  height: 100%;
+  overflow-x: hidden;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
-  background: linear-gradient(185deg, #eef8f4, #f1e9e0);
+  background: linear-gradient(185deg, var(--bg-1), var(--bg-2));
+  color: var(--text);
+}
+
+/* global on purpose: was `.portfolio-modal h3, p` in portfolio.css */
+p {
+  padding: 1rem;
+  text-align: center;
 }
 
 @property --angle {
@@ -20,39 +61,90 @@ html {
   initial-value: 0deg;
 }
 
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ---------- Floating buttons (shared) ---------- */
+.fullscreen-button,
+.updown-button,
+.social-button {
+  position: fixed;
+  cursor: pointer;
+  background: linear-gradient(135deg, #e11cff83, #2574fc98);
+  color: #fff;
+  padding: 12px;
+  border-radius: 15%;
+  box-shadow: 0 6px 12px var(--shadow);
+  transition: transform 0.3s;
+  z-index: 6;
+}
+
+.fullscreen-button:hover,
+.updown-button:hover,
+.social-button:hover {
+  background-color: light-dark(#1c4777, #3d59a1);
+}
+
+.fullscreen-button:active,
+.updown-button:active,
+.social-button:active {
+  transform: scale(0.8);
+}
+
+.fullscreen-icon,
+.updown-icon {
+  font-size: 1.5rem;
+}
+
+/* ---------- Bottom menu ---------- */
+.menu {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  width: 90%;
+  max-width: 500px;
+  list-style: none;
+  border-radius: 20px;
+  background: light-dark(rgba(255, 255, 255, 0.2), rgba(26, 27, 38, 0.7));
+  backdrop-filter: blur(25px) saturate(200%);
+  -webkit-backdrop-filter: blur(25px) saturate(200%);
+  box-shadow: 0 -10px 30px var(--shadow);
+  border-top: 1px solid light-dark(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
+  z-index: 10;
+  isolation: isolate;
+}
+
 .menu::before {
   content: "";
   position: absolute;
   inset: 0;
-  padding: 2px; 
+  padding: 2px;
   border-radius: inherit;
-
   background: conic-gradient(
     from var(--angle),
     transparent 0deg,
     transparent 300deg,
-    rgba(158, 74, 148, 0.9) 345deg,
-    #60a5fa 355deg,
+    light-dark(rgba(158, 74, 148, 0.9), #bb9af7) 345deg,
+    light-dark(#60a5fa, #7aa2f7) 355deg,
     transparent 360deg
   );
-
   -webkit-mask:
     linear-gradient(#000 0 0) content-box,
     linear-gradient(#000 0 0);
-
   -webkit-mask-composite: xor;
-
   mask:
     linear-gradient(#000 0 0) content-box,
     linear-gradient(#000 0 0);
-
   mask-composite: exclude;
-
   animation: menu-border-run 3s linear infinite;
-
   pointer-events: none;
+  z-index: -1;
 }
-
 
 @keyframes menu-border-run {
   to {
@@ -60,31 +152,11 @@ html {
   }
 }
 
-
-.menu {
-  position: fixed;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90%;
-  max-width: 500px;
-  display: flex;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  backdrop-filter: blur(25px) saturate(200%);
-  -webkit-backdrop-filter: blur(25px) saturate(200%);
-  background: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.2);
-  border-top: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 20px;
-  z-index: 10;
-}
-
 .menu li {
-  flex: 1;
-  text-align: center;
   position: relative;
+  flex: 1;
+  min-width: 0;
+  text-align: center;
 }
 
 .menu li a {
@@ -94,44 +166,52 @@ html {
   align-items: center;
   justify-content: center;
   padding: 1rem 0;
+  border: 1px solid light-dark(rgba(28, 71, 119, 0.06), rgba(192, 202, 245, 0.1));
+  border-radius: 15px;
+  overflow: hidden;
+  color: var(--text);
   font-size: 12px;
   font-weight: 500;
   text-decoration: none;
-  color: #1c4777;
-  border: #1c477710 solid 1px;
-  transition: all 0.4s ease;
-  border-radius: 15px;
-  overflow: hidden;
+  transition: color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
 }
 
 .menu li a::before {
   content: "";
   position: absolute;
   inset: 0;
-  border-radius: 15px;
-  background: linear-gradient(to top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.05));
+  border-radius: inherit;
+  background: linear-gradient(
+    to top,
+    light-dark(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.08)),
+    light-dark(rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01))
+  );
   pointer-events: none;
-  transition: opacity 0.4s ease;
 }
 
 .menu li a svg {
-  font-size: 1.5rem;
+  position: relative;
+  width: 1.5rem;
+  height: 1.5rem;
   margin-bottom: 0.25rem;
-  transition: transform 0.4s ease, filter 0.4s ease;
-  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.2));
+  filter: drop-shadow(0 2px 6px var(--shadow));
+  transition: transform 0.3s ease, filter 0.3s ease;
 }
 
 .menu li a:hover,
 .menu li a.active {
-  color: #ffffff;
-  background: linear-gradient(145deg, #3c82f0cc, #46a0ffcc);
-  box-shadow: 0 0 20px rgba(60, 130, 240, 0.5);
+  color: var(--on-accent);
+  background: linear-gradient(
+    145deg,
+    light-dark(#3c82f0cc, #7aa2f7cc),
+    light-dark(#46a0ffcc, #2ac3decc)
+  );
+  box-shadow: 0 0 20px light-dark(rgba(60, 130, 240, 0.5), rgba(122, 162, 247, 0.4));
 }
 
 .menu li a:hover svg,
 .menu li a.active svg {
   transform: translateY(-5px) scale(1.2);
-  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.3));
 }
 
 .menu li a:hover::after,
@@ -140,28 +220,46 @@ html {
   position: absolute;
   bottom: 8px;
   left: 50%;
-  transform: translateX(-50%);
   width: 40%;
   height: 5px;
+  transform: translateX(-50%);
   border-radius: 20px;
-  background: linear-gradient(90deg, #598dc7, #7fb0e1);
-  box-shadow: 0 0 8px rgba(95, 140, 200, 0.7);
+  background: linear-gradient(
+    90deg,
+    light-dark(#598dc7, #7aa2f7),
+    light-dark(#7fb0e1, #bb9af7)
+  );
+  box-shadow: 0 0 8px light-dark(rgba(95, 140, 200, 0.7), rgba(122, 162, 247, 0.5));
 }
 
 @media (max-width: 600px) {
   .menu {
-    width: 100%;
     left: 0;
+    width: 100%;
+    max-width: none;
     transform: none;
     border-radius: 0;
   }
 
   .menu li a {
-    font-size: 0;
     padding: 1.4rem 0;
+    font-size: 0;
   }
 
   .menu li a svg {
-    font-size: 1.1rem;
+    width: 1.1rem;
+    height: 1.1rem;
+    margin-bottom: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
   }
 }
