@@ -7,8 +7,6 @@
   margin: 0 auto;
   position: relative;
   z-index: 0;
-  background: transparent;
-  box-sizing: border-box;
 }
 
 .my-swiper-img-wrapper {
@@ -18,7 +16,6 @@
   border-radius: 12px;
   overflow: hidden;
   display: inline-block;
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 .my-swiper-img {
@@ -33,7 +30,7 @@
 .my-swiper-img:hover {
   border: 1px solid #fff2ff;
   cursor: grab;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 15px var(--shadow);
 }
 
 .my-swiper-img:active {
@@ -41,21 +38,27 @@
   cursor: grabbing;
 }
 
+.swiper {
+  width: 100%;
+  padding: 1rem 0;
+}
+
 .swiper-slide {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
 }
 
 .swiper-pagination-bullet {
-  background-color: #495057;
+  background-color: light-dark(#495057, #565f89);
   opacity: 0.1;
   transition: background-color 0.3s ease-in-out;
 }
 
 .swiper-pagination-bullet-active {
-  background-color: #212529;
+  background-color: light-dark(#212529, #c0caf5);
   opacity: 0.1;
 }
 
@@ -65,34 +68,29 @@
   font-weight: bold;
   border-radius: 5%;
   opacity: 0.5;
-  transition: color 0.3s ease-in-out,
-    background-color 0.3s ease-in-out,
-    transform 0.3s ease-in-out;
+  transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
 .swiper-button-prev:hover,
 .swiper-button-next:hover {
-  color: #00699d;
+  color: light-dark(#00699d, #7dcfff);
   transform: scale(1.1);
 }
 
 .swiper-scrollbar-drag {
-  background: #495057;
+  background: light-dark(#495057, #565f89);
   border-radius: 10px;
   transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
 .swiper-scrollbar-drag:hover {
-  background: #212529;
+  background: light-dark(#212529, #c0caf5);
   transform: scale(1.1);
 }
 
 .swiper-image-spinner-wrapper {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   border-radius: 12px;
   display: flex;
   justify-content: center;
@@ -101,37 +99,30 @@
   backdrop-filter: blur(6px) brightness(1.2);
   box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.2),
     inset 0 -10px 30px rgba(255, 255, 255, 0.1);
-  background: linear-gradient(270deg, #8bc6ec, #9599e2, #fbc2eb, #a6c1ee);
+  background: linear-gradient(
+    270deg,
+    light-dark(#8bc6ec, #1f2335),
+    light-dark(#9599e2, #292e42),
+    light-dark(#fbc2eb, #3b4261),
+    light-dark(#a6c1ee, #24283b)
+  );
   background-size: 800% 800%;
   animation: gradientShift 10s ease infinite;
 }
 
 @keyframes gradientShift {
-  0% {
+  0%,
+  100% {
     background-position: 0% 50%;
   }
 
   50% {
     background-position: 100% 50%;
   }
-
-  100% {
-    background-position: 0% 50%;
-  }
 }
 
 .swiper-image-spinner-wrapper .spinner-icon {
   font-size: 3rem;
-  color: #1c4777;
+  color: var(--text);
   animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
 }

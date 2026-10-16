@@ -106,7 +106,7 @@ function Online() {
     };
 
     const updateVisitorCount = async () => {
-      const visitorsRef = doc(firestore, "alltimeVisitors", "DJvisitorCount");
+      const visitorsRef = doc(firestore, "alltimeVisitors", "jasurliveCount");
       const visitorDoc = await getDoc(visitorsRef);
       const currentCount = visitorDoc.exists()
         ? visitorDoc.data()?.count || 0
