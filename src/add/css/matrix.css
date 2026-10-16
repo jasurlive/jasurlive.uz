@@ -35,12 +35,12 @@
   .matrix-column {
     animation: none;
   }
-}
-
-@media (max-width: 600px) {
-  .matrix-column:nth-child(3n + 1),
-  .matrix-column:nth-child(3n + 2) {
-    display: none;
+  
+  .matrix-column span:first-child {
+    color: #ffffff;
+    text-shadow:
+      0 0 5px #fff,
+      0 0 12px #00ff41;
   }
   
   @keyframes matrix-fall {
