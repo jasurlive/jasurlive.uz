@@ -1,0 +1,217 @@
+/* ---------- resume timeline ----------
+   phones: one column, spine on the left.
+   desktop: spine in the middle, work on the left, education on the right. */
+
+   .tl-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .tl-filter .chip.is-active {
+    border-color: var(--accent);
+    background: var(--accent);
+    color: var(--bg);
+  }
+  
+  .tl-legend { display: none; }
+  
+  .tl {
+    --spine: 2px;
+    --dot: 2.25rem;
+    --work: #3b82f6;
+    --edu: #f59e0b;
+    position: relative;
+    display: grid;
+    gap: 1rem;
+  }
+  
+  /* the spine */
+  .tl::before {
+    content: '';
+    position: absolute;
+    top: 0.5rem;
+    bottom: 0.5rem;
+    left: calc(var(--dot) / 2 - var(--spine) / 2);
+    width: var(--spine);
+    border-radius: 2px;
+    background: linear-gradient(var(--accent), var(--border) 85%, transparent);
+  }
+  
+  .tl-item {
+    --c: var(--work);
+    position: relative;
+    display: grid;
+    grid-template-columns: var(--dot) 1fr;
+    gap: 0.9rem;
+    align-items: start;
+  }
+  
+  .tl-edu { --c: var(--edu); }
+  
+  .tl-dot {
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    width: var(--dot);
+    height: var(--dot);
+    margin-top: 0.6rem;
+    border: 2px solid var(--c);
+    border-radius: 50%;
+    background: var(--surface);
+    font-size: 1rem;
+    box-shadow: 0 0 0 4px var(--bg);
+  }
+  
+  /* ongoing roles pulse */
+  .is-current .tl-dot::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 50%;
+    border: 2px solid var(--c);
+    animation: tl-pulse 2s ease-out infinite;
+  }
+  
+  .tl-dot { position: relative; }
+  
+  @keyframes tl-pulse {
+    from { opacity: 0.8; transform: scale(1); }
+    to { opacity: 0; transform: scale(1.8); }
+  }
+  
+  .tl-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    padding: 0.85rem 1rem;
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--c);
+    border-radius: 12px;
+    background: var(--surface);
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  }
+  
+  .tl-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgb(0 0 0 / 0.08);
+  }
+  
+  .tl-top {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+  
+  .tl-date {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--c);
+  }
+  
+  .tl-role { font-size: 1rem; line-height: 1.35; }
+  .tl-org { font-size: 0.9rem; color: var(--muted); }
+  .tl-length { font-size: 0.78rem; color: var(--muted); }
+  
+  .tl-badge {
+    padding: 0.1rem 0.55rem;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--c) 18%, transparent);
+    color: var(--c);
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  
+  /* fade/slide in while scrolling (where supported) */
+  @supports (animation-timeline: view()) {
+    .tl-card {
+      animation: tl-in linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 60%;
+    }
+  }
+  
+  @keyframes tl-in {
+    from { opacity: 0; translate: 0 24px; }
+  }
+  
+  /* ---------- desktop: two lanes around a centered spine ---------- */
+  
+  @media (min-width: 769px) {
+    .tl-legend {
+      display: grid;
+      grid-template-columns: 1fr var(--dot, 2.25rem) 1fr;
+      gap: 1.25rem;
+      margin-bottom: 0.75rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .tl-legend span:first-child { text-align: right; }
+    .tl-legend span:last-child { grid-column: 3; }
+    .tl-filter:has(.is-active:not(:first-child)) + .tl-legend { display: none; }
+  
+    .tl:not(.tl-single)::before { left: calc(50% - var(--spine) / 2); }
+  
+    .tl:not(.tl-single) .tl-item {
+      grid-template-columns: 1fr var(--dot) 1fr;
+      gap: 1.25rem;
+    }
+  
+    .tl:not(.tl-single) .tl-dot { grid-column: 2; grid-row: 1; }
+  
+    .tl:not(.tl-single) .tl-work .tl-card {
+      grid-column: 1;
+      grid-row: 1;
+      border-left-width: 1px;
+      border-right: 3px solid var(--c);
+      text-align: right;
+    }
+    .tl:not(.tl-single) .tl-work .tl-top { flex-direction: row-reverse; }
+  
+    .tl:not(.tl-single) .tl-edu .tl-card { grid-column: 3; }
+  
+    /* little arrow from the card to the spine */
+    .tl:not(.tl-single) .tl-card::after {
+      content: '';
+      position: absolute;
+      top: 1.35rem;
+      width: 1.25rem;
+      height: 2px;
+      background: var(--c);
+      opacity: 0.6;
+    }
+    .tl:not(.tl-single) .tl-work .tl-card::after { right: calc(-1.25rem - 3px); }
+    .tl:not(.tl-single) .tl-edu .tl-card::after { left: calc(-1.25rem - 3px); }
+  
+    /* entries overlap in time, so let the lanes interleave a bit */
+    .tl:not(.tl-single) { gap: 0.25rem; }
+    .tl:not(.tl-single) .tl-item + .tl-item { margin-top: 0; }
+  }
+  
+  /* ---------- themes ---------- */
+  
+  [data-theme='matrix'] .tl { --work: #00e05a; --edu: #7dd3fc; }
+  [data-theme='sega'] .tl { --work: #6fd3ff; --edu: #ffd31a; }
+  
+  [data-theme='sega'] .tl-card {
+    border: 2px solid #000;
+    border-radius: 4px;
+    box-shadow: inset 0 0 0 2px var(--c), 4px 4px 0 #000;
+  }
+  [data-theme='sega'] .tl-dot,
+  [data-theme='sega'] .is-current .tl-dot::after { border-radius: 4px; }
+  [data-theme='sega'] .tl-role { font-size: 0.75rem; }
+  [data-theme='sega'] .tl-date,
+  [data-theme='sega'] .tl-badge { font-family: var(--pixel); font-size: 0.6rem; }
+  
