@@ -4,7 +4,8 @@ Lightweight personal site built on [react-template](https://github.com/jasurlive
 (React 19 + Vite + TypeScript, simple and minimal).
 
 Pages: Home · Resume · Portfolio · Awards · Blog · **Terminal** (`/terminal` — type `help`).
-Themes: light · dark · matrix (menu button cycles them, or `theme matrix` in the terminal).
+Themes: light · dark · matrix · sega (menu button / `ctrl+j` cycles them, or `theme sega` in the terminal).
+The terminal opens fullscreen; `exit`, `cd <page>` or the red dot leaves it.
 
 ```bash
 npm install

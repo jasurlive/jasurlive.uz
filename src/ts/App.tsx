@@ -1,4 +1,6 @@
 import { lazy, Suspense } from 'react'
+import '@fontsource/press-start-2p/latin-400.css'
+import '@fontsource/vt323/latin-400.css'
 import '../tools/css/reset.css'
 import '../tools/css/page.css'
 import Menu from '../tools/shared/Menu'
@@ -21,11 +23,13 @@ export default function App() {
   const path = useRoute().replace(/\/+$/, '') || '/'
   const Page = pages[path] ?? Home
   const { theme } = useTheme()
+  // the terminal is a fullscreen app: no menu until you leave it (exit, cd, back)
+  const fullscreen = path === '/terminal'
 
   return (
-    <div className="with-menu">
+    <div className={fullscreen ? 'fullscreen' : 'with-menu'}>
       <Suspense>{theme === 'matrix' && <MatrixRain />}</Suspense>
-      <Menu />
+      {!fullscreen && <Menu />}
       <Suspense fallback={<p className="page-status">Loading…</p>}>
         <Page />
       </Suspense>

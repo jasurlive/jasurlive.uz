@@ -12,6 +12,7 @@ import {
   FiMoon,
   FiCpu,
 } from "react-icons/fi";
+import { IoGameControllerOutline } from "react-icons/io5";
 import "../css/menu.css";
 import { useTheme } from "../hooks/LOCAL/useTheme";
 import { useShortcuts } from "../hooks/LOCAL/useShortcuts";
@@ -35,7 +36,7 @@ const ITEMS: MenuItem[] = [
 ];
 
 // the button shows the theme you'll switch to
-const THEME_ICON = { light: <FiSun />, dark: <FiMoon />, matrix: <FiCpu /> };
+const THEME_ICON = { light: <FiSun />, dark: <FiMoon />, matrix: <FiCpu />, sega: <IoGameControllerOutline /> };
 
 export default function Menu({ items = ITEMS }: { items?: MenuItem[] }) {
   const [collapsed, setCollapsed] = useState(true);

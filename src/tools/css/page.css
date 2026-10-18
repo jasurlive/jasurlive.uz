@@ -294,36 +294,36 @@ a.card:hover {
   border-top: 1px solid var(--border);
 }
 
-/* ---------- image gallery (awards, portfolio) ---------- */
+/* ---------- image gallery (awards, portfolio): cards in a swiper ---------- */
 
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr));
-  gap: 1rem;
-  margin-top: 1.5rem;
+.swiper-cards { --slide: 84cqw; margin-top: 1.5rem; }
+
+.swiper-cards .swiper-slide {
+  aspect-ratio: auto;
+  overflow: visible;
+  background: none;
 }
 
 .gallery-card {
   display: flex;
   flex-direction: column;
+  height: 100%;
   border: 1px solid var(--border);
   border-radius: 14px;
   overflow: hidden;
   background: var(--surface);
-  transition: transform 0.15s, box-shadow 0.15s;
-}
-
-.gallery-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgb(0 0 0 / 0.08);
+  box-shadow: 0 6px 20px rgb(0 0 0 / 0.06);
 }
 
 .gallery-img {
+  display: block;
+  width: 100%;
   aspect-ratio: 4 / 3;
   overflow: hidden;
   background: var(--bg);
-  cursor: zoom-in;
 }
+
+.is-active .gallery-img { cursor: zoom-in; }
 
 .gallery-img img {
   width: 100%;
@@ -333,7 +333,7 @@ a.card:hover {
   transition: transform 0.3s;
 }
 
-.gallery-img:hover img { transform: scale(1.04); }
+.is-active .gallery-img:hover img { transform: scale(1.03); }
 
 .gallery-body {
   display: flex;
@@ -343,7 +343,19 @@ a.card:hover {
   padding: 0.9rem 1rem 1rem;
 }
 
-.gallery-body p { font-size: 0.88rem; }
+.gallery-body b {
+  min-height: 3em; /* 2 lines: every card keeps the same height while swiping */
+}
+
+.gallery-body p {
+  min-height: 4.5em;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  overflow: hidden;
+  font-size: 0.88rem;
+}
 
 .gallery-meta {
   font-size: 0.75rem;
@@ -351,6 +363,10 @@ a.card:hover {
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--muted);
+}
+
+@media (min-width: 769px) {
+  .swiper-cards { --slide: 56cqw; }
 }
 
 /* ---------- lightbox ---------- */

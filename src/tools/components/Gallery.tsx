@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Lightbox from "./Lightbox";
+import Swiper from "./Swiper";
 
 export type GalleryItem = {
   title: string;
@@ -9,18 +10,27 @@ export type GalleryItem = {
   link?: string;
 };
 
-// image cards; tap the picture to see it big
-export default function Gallery({ items }: { items: GalleryItem[] }) {
+// image cards in a swiper; drag/swipe to browse, tap the centered picture to see it big
+export default function Gallery({ items, label }: { items: GalleryItem[]; label?: string }) {
   const [open, setOpen] = useState<GalleryItem | null>(null);
 
   return (
     <>
-      <div className="gallery">
-        {items.map((item) => (
-          <article key={item.title + item.image} className="gallery-card">
+      <Swiper
+        className="swiper-cards"
+        items={items}
+        autoplay={5000}
+        label={label}
+        render={(item, active) => (
+          <article className="gallery-card">
             {item.image && (
-              <button className="gallery-img" onClick={() => setOpen(item)} aria-label={`View ${item.title}`}>
-                <img src={item.image} alt={item.title} loading="lazy" decoding="async" />
+              <button
+                className="gallery-img"
+                onClick={() => active && setOpen(item)}
+                aria-label={`View ${item.title}`}
+                tabIndex={active ? 0 : -1}
+              >
+                <img src={item.image} alt={item.title} loading="lazy" decoding="async" draggable={false} />
               </button>
             )}
             <div className="gallery-body">
@@ -28,14 +38,14 @@ export default function Gallery({ items }: { items: GalleryItem[] }) {
               <b>{item.title}</b>
               <p className="muted">{item.text}</p>
               {item.link && (
-                <a className="link" href={item.link} target="_blank" rel="noreferrer">
+                <a className="link" href={item.link} target="_blank" rel="noreferrer" tabIndex={active ? 0 : -1}>
                   Open →
                 </a>
               )}
             </div>
           </article>
-        ))}
-      </div>
+        )}
+      />
 
       {open && <Lightbox src={open.image} alt={open.title} onClose={() => setOpen(null)} />}
     </>

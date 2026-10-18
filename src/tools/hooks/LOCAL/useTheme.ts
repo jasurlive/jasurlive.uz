@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-export const THEMES = ['light', 'dark', 'matrix'] as const
+export const THEMES = ['light', 'dark', 'matrix', 'sega'] as const
 export type Theme = (typeof THEMES)[number]
 
 // initial value is set in index.html before paint (no flash)

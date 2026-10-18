@@ -103,6 +103,7 @@ const randomQuote = () => quotes[Math.floor(Math.random() * quotes.length)];
 const WELCOME: Line[] = [
   { text: "jsh 1.0 — jasurlive.uz terminal", kind: "ok" },
   { text: "type 'help' to see commands. tab completes, ↑/↓ for history." },
+  { text: "fullscreen mode — 'exit' or the red dot takes you back." },
   { text: "" },
 ];
 
@@ -113,6 +114,38 @@ export default function Terminal() {
   const [pos, setPos] = useState(-1);
   const inputRef = useRef<HTMLInputElement>(null);
   const endRef = useRef<HTMLDivElement>(null);
+  const rootRef = useRef<HTMLElement>(null);
+  const [isFull, setIsFull] = useState(false);
+
+  // real browser fullscreen while you're here (works when you came by a click; esc leaves it).
+  // phones without the fullscreen api (iphone) still get the full-window layout from css.
+  useEffect(() => {
+    const sync = () => setIsFull(!!document.fullscreenElement);
+    document.addEventListener("fullscreenchange", sync);
+    document.documentElement.requestFullscreen?.({ navigationUI: "hide" }).catch(() => {});
+    return () => {
+      document.removeEventListener("fullscreenchange", sync);
+      if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
+    };
+  }, []);
+
+  // keep the input above the on-screen keyboard on phones
+  useEffect(() => {
+    const vv = window.visualViewport;
+    if (!vv) return;
+    const fit = () => {
+      rootRef.current?.style.setProperty("--term-h", `${vv.height}px`);
+      endRef.current?.scrollIntoView({ block: "end" });
+    };
+    fit();
+    vv.addEventListener("resize", fit);
+    return () => vv.removeEventListener("resize", fit);
+  }, []);
+
+  const toggleFullscreen = () => {
+    if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
+    else document.documentElement.requestFullscreen?.().catch(() => {});
+  };
 
   useEffect(() => {
     endRef.current?.scrollIntoView({ block: "end" });
@@ -187,12 +220,21 @@ export default function Terminal() {
   };
 
   return (
-    <main className="term" onClick={() => window.getSelection()?.isCollapsed && inputRef.current?.focus()}>
+    <main className="term" ref={rootRef} onClick={() => window.getSelection()?.isCollapsed && inputRef.current?.focus()}>
       <div className="term-window">
         <div className="term-bar">
-          <span className="dot red" />
+          <button className="dot red" onClick={() => navigate("/")} title="Exit terminal" aria-label="Exit terminal" />
           <span className="dot yellow" />
-          <span className="dot green" />
+          {!document.fullscreenEnabled ? (
+            <span className="dot green" />
+          ) : (
+            <button
+              className="dot green"
+              onClick={toggleFullscreen}
+              title={isFull ? "Exit fullscreen" : "Fullscreen"}
+              aria-label={isFull ? "Exit fullscreen" : "Fullscreen"}
+            />
+          )}
           <span className="term-name">jsh — {PROMPT}</span>
         </div>
 
@@ -229,7 +271,7 @@ export default function Terminal() {
       </div>
 
       <div className="term-keys">
-        {["help", "whoami", "wisdom", "projects", "resume", "social", "clear"].map((k) => (
+        {["help", "whoami", "wisdom", "projects", "resume", "social", "theme", "clear", "exit"].map((k) => (
           <button key={k} onClick={() => run(k)}>{k}</button>
         ))}
       </div>
