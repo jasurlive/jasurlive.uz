@@ -122,7 +122,7 @@ export default function Terminal() {
   useEffect(() => {
     const sync = () => setIsFull(!!document.fullscreenElement);
     document.addEventListener("fullscreenchange", sync);
-    document.documentElement.requestFullscreen?.({ navigationUI: "hide" }).catch(() => {});
+    // document.documentElement.requestFullscreen?.({ navigationUI: "hide" }).catch(() => {}); //not fullscreen for now
     return () => {
       document.removeEventListener("fullscreenchange", sync);
       if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
@@ -173,7 +173,7 @@ export default function Terminal() {
         ? (command.run(args) ?? [])
         : [{ text: `${name}: command not found. type 'help'`, kind: "err" }];
 
-    setLines((l) => [...l, echo, ...result]);
+    setLines((l) => [...l, echo, ...result]); 
   };
 
   // prints text letter by letter
