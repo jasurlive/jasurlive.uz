@@ -25,8 +25,8 @@ export default function Home() {
   return (
     <main className="page">
       <section className="hero">
-        <p className="hero-hi">👋 Hi, welcome!</p>
-        <h1 className="hero-name">{profile.name}</h1>
+        <p className="hero-hi">👋 Hola!</p>
+        <h1 className="hero-name">I'm {profile.name}</h1>
         <p className="status-home">small town boy in a big arcade</p>
 
         <Typewriter words={quotes} />
