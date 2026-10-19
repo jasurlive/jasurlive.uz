@@ -65,6 +65,24 @@
   margin-top: 0.75rem;
 }
 
+.status-home {
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  color: var(--muted);
+  letter-spacing: 0.01em;
+}
+
+.status-home::before {
+  content: "“";
+  margin-right: 0.15em;
+}
+
+.status-home::after {
+  content: "”";
+  margin-left: 0.15em;
+}
+
 /* ---------- typewriter ---------- */
 
 .typewriter {

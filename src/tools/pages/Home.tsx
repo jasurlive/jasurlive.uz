@@ -25,9 +25,9 @@ export default function Home() {
   return (
     <main className="page">
       <section className="hero">
-        <p className="hero-hi">👋 Hola, I'm</p>
+        <p className="hero-hi">👋 Hi, welcome!</p>
         <h1 className="hero-name">{profile.name}</h1>
-        <p className="hero-role">{profile.role}</p>
+        <p className="status-home">small town boy in a big arcade</p>
 
         <Typewriter words={quotes} />
 
@@ -80,7 +80,7 @@ export default function Home() {
             </a>
           ))}
         </div>
-        <p className="muted small">© {YEAR} jasurlive.uz</p>
+        <p className="muted small">© 2019-{YEAR} jasurlive.uz</p>
       </footer>
     </main>
   );
