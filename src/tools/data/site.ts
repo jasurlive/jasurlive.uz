@@ -2,26 +2,25 @@ export const profile = {
   name: 'Jasur',
   role: 'Lead Specialist · Railway Transport',
   about:
-    "Hola! I'm Jasur. A father of two wonderful kids. I enjoy coding, creative editing, photography, podcasts, teaching, chess, and good food. I love traveling, learning languages, and making the most of life while staying grateful to Allah.",
+    "Hi! I'm Jasur. Minimalist and a father of two wonderful kids. I appreciate small things in life while staying grateful to Allah.",
 }
 
 export const social = [
   { name: 'github', url: 'https://github.com/jasurlive' },
   { name: 'linkedin', url: 'https://www.linkedin.com/in/jasurlive/' },
-  { name: 'telegram', url: 'https://t.me/jasurlive_bot' },
+  { name: 'telegram bot', url: 'https://t.me/jasurlive_bot' },
   { name: 'chess', url: 'https://www.chess.com/member/jasurgraduate' },
   { name: 'my blogs', url: 'https://jasurlive.blogspot.com/' },
 ]
 
 export const projects = [
-  { name: 'ieltslive', icon: '💻', title: 'CD IELTS Preparation', url: 'https://ieltslive.vercel.app/' },
-  { name: 'playlistgo', icon: '🎧', title: 'Music Playlist (DJ)', url: 'https://playlistgo.vercel.app/' },
-  { name: 'destinero', icon: '🗺️', title: 'Travel Map', url: 'https://destinero.vercel.app/' },
-  { name: 'uzchess', icon: '♟️', title: 'Play Chess', url: 'https://uzchess.vercel.app' },
-  { name: 'hangul', icon: '📄', title: 'Get a Hangul Certificate', url: 'https://jasurlive.github.io/Hangul/' },
-  { name: 'checklistgo', icon: '✅', title: 'To-Do List', url: 'https://checklistgo.vercel.app/' },
-  { name: 'uzconvert', icon: '🔁', title: 'Latin-Cyrillic Converter', url: 'https://uzconvert.vercel.app' },
-  { name: 'photoframe', icon: '🖼️', title: 'Make Framed Pictures', url: 'https://jasurlive.github.io/photo-frame/' },
+  { name: 'ieltslive', icon: '💻', title: 'CD IELTS Prep', url: 'https://ieltslive.vercel.app/' },
+  { name: 'playlistgo', icon: '🎧', title: 'PlaylistGo (DJ)', url: 'https://playlistgo.vercel.app/' },
+  { name: 'destinero', icon: '🗺️', title: 'Travel map', url: 'https://destinero.vercel.app/' },
+  { name: 'uzchess', icon: '♟️', title: 'Local chess', url: 'https://uzchess.vercel.app' },
+  { name: 'hangul', icon: '📄', title: 'Simple hangul test', url: 'https://jasurlive.github.io/Hangul/' },
+  { name: 'checklistgo', icon: '✅', title: 'To-do list', url: 'https://checklistgo.vercel.app/' },
+  { name: 'uzconvert', icon: '🔁', title: 'Latin-Cyrillic converter', url: 'https://uzconvert.vercel.app' },
 ]
 
 export const experience = [
@@ -44,6 +43,7 @@ export const skills = [
 ]
 
 export const quotes = [
+  'Own less. Live more.',
   "I tried my best, but my best wasn't enough...",
   "If coding was a drug, I would've died from an overdose",
   'I need six months of vacation, twice a year...',
