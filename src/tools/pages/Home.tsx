@@ -39,7 +39,7 @@ export default function Home() {
       </section>
 
       <Swiper
-        items={slides}
+        items={[...slides].sort(() => Math.random() - 0.5)} //shuffle the images
         render={(src) => <img src={src} alt="" width={1000} height={1000} decoding="async" />}
       />
 
