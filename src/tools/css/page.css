@@ -47,13 +47,14 @@
 
 .hero-name {
   font-size: clamp(2.25rem, 8vw, 4rem);
-  font-weight: 800;
+  font-weight: bolder;
   letter-spacing: -0.035em;
   line-height: 1.05;
   background: linear-gradient(120deg, var(--text) 40%, var(--muted));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 .hero-role {
