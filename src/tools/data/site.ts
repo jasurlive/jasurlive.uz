@@ -18,7 +18,6 @@ export const projects = [
   { name: 'playlistgo', icon: '🎧', title: 'PlaylistGo (DJ)', url: 'https://playlistgo.vercel.app/' },
   { name: 'destinero', icon: '🗺️', title: 'Travel map', url: 'https://destinero.vercel.app/' },
   { name: 'uzchess', icon: '♟️', title: 'Local chess', url: 'https://uzchess.vercel.app' },
-  { name: 'hangul', icon: '📄', title: 'Simple hangul test', url: 'https://jasurlive.github.io/Hangul/' },
   { name: 'checklistgo', icon: '✅', title: 'To-do list', url: 'https://checklistgo.vercel.app/' },
   { name: 'uzconvert', icon: '🔁', title: 'Latin-Cyrillic converter', url: 'https://uzconvert.vercel.app' },
 ]
