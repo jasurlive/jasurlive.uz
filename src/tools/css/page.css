@@ -444,7 +444,7 @@ a.card:hover {
   border: 1px solid var(--border);
   border-radius: 14px;
   overflow: hidden;
-  background: #fff;
+  background: var(--bg);
   box-shadow: 0 8px 30px rgb(0 0 0 / 0.08);
 }
 
