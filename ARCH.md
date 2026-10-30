@@ -139,3 +139,18 @@ alias la='command ls -la --color=auto'
 alias memory='df -h'
 alias display='nwg-displays'
 ```
+
+```shell
+---------------
+                                OS: Arch Linux x86_64
+                                Kernel: Linux 7.2.9-arch1-1
+                                Packages: 890 (pacman)
+                                Window Manager: Hyprland 0.56.2 (Wayland)
+                                Cursor: Bibata-Modern-Classic (24px)
+                                Terminal: kitty 0.49.2
+                                Terminal Font: NotoSansMono-Regular (20pt)
+                                CPU: AMD Ryzen 5 PRO 5650U (12) @ 2.30 GHz
+                                GPU: AMD Radeon Vega Series / Radeon Vega Mobile Series [Integrated]
+                                Memory: 4.50 GiB / 14.93 GiB (30%)
+                                Swap: Disabled
+```
