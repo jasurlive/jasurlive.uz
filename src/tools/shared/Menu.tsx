@@ -41,9 +41,19 @@ const ITEMS: MenuItem[] = [
 const THEME_ICON = { light: <FiSun />, dark: <FiMoon />, matrix: <FiCpu />, sega: <IoGameControllerOutline /> };
 
 export default function Menu({ items = ITEMS }: { items?: MenuItem[] }) {
-  const [collapsed, setCollapsed] = useState(true);
   const { nextTheme, toggleTheme } = useTheme();
   const path = useRoute();
+
+  const [collapsed, setCollapsed] = useState(
+    () => localStorage.getItem("menu-collapsed") !== "false"
+  );
+  
+  const toggleMenu = () => {
+    setCollapsed((value) => {
+      localStorage.setItem("menu-collapsed", String(!value));
+      return !value;
+    });
+  };
 
   useShortcuts({ "ctrl+j": toggleTheme });
 
@@ -69,7 +79,7 @@ export default function Menu({ items = ITEMS }: { items?: MenuItem[] }) {
       <button
         type="button"
         className="menu-toggle"
-        onClick={() => setCollapsed((value) => !value)}
+        onClick={toggleMenu}
         aria-label="Toggle sidebar"
       >
         {collapsed ? <FiChevronRight /> : <FiChevronLeft />}
