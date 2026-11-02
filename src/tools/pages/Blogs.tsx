@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { FiExternalLink } from "react-icons/fi";
 
 const BLOG = "https://jasurlive.blogspot.com/";
 
@@ -8,12 +7,12 @@ export default function Blogs() {
 
   return (
     <main className="blog">
-      <div className="blog-bar">
+      {/* <div className="blog-bar">
         <h1>Blog</h1>
         <a className="chip" href={BLOG} target="_blank" rel="noreferrer">
           open in new tab <FiExternalLink />
         </a>
-      </div>
+      </div> */}
 
       <div className="blog-frame">
         {!loaded && <p className="page-status">Loading blog…</p>}

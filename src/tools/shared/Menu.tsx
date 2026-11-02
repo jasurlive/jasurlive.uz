@@ -11,6 +11,7 @@ import {
   FiSun,
   FiMoon,
   FiCpu,
+  FiMapPin,
 } from "react-icons/fi";
 import { IoGameControllerOutline } from "react-icons/io5";
 import "../css/menu.css";
@@ -33,6 +34,7 @@ const ITEMS: MenuItem[] = [
   { label: "Awards", icon: <FiAward />, href: "/awards", mobile: true },
   { label: "Terminal", icon: <FiTerminal />, href: "/terminal", mobile: true },
   { label: "Blog", icon: <FiBookOpen />, href: "/blogs", mobile: false },
+  { label: "Travel map", icon: <FiMapPin />, href: "/map", mobile: false },
 ];
 
 // the button shows the theme you'll switch to

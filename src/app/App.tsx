@@ -17,6 +17,7 @@ const pages: Record<string, ReturnType<typeof lazy>> = {
   '/awards': lazy(() => import('../tools/pages/Awards')),
   '/blogs': lazy(() => import('../tools/pages/Blogs')),
   '/terminal': lazy(() => import('../tools/pages/Terminal')),
+  '/map': lazy(() => import('../tools/pages/Destinero')),
 }
 
 export default function App() {
