@@ -1,7 +1,8 @@
 .page {
-  max-width: 920px;
+  width: 100%;
+  max-width: 1040px;
   margin: 0 auto;
-  padding: 1rem;
+  padding: clamp(0.75rem, 2.5vw, 1.75rem);
 }
 
 .muted { color: var(--muted); }
@@ -16,7 +17,7 @@
 /* ---------- page header (inner pages) ---------- */
 
 .page-header {
-  padding-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
   border-bottom: 1px solid var(--border);
 }
 
@@ -33,6 +34,23 @@
 }
 
 /* ---------- hero ---------- */
+
+.home-top {
+  display: grid;
+  gap: 1rem;
+}
+
+.home-top .swiper { margin-top: 0; }
+
+@media (min-width: 1000px) {
+  .home-top {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .home-top .swiper { --slide: 92cqw; }
+}
 
 .hero {
   display: flex;
@@ -164,10 +182,26 @@
   transition: border-color 0.15s, color 0.15s;
 }
 
-a.chip:hover {
+a.chip:hover,
+button.chip:hover {
   border-color: var(--accent);
   color: var(--accent);
 }
+
+button.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.chip.is-active {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.theme-picker { gap: 0.4rem; }
+.theme-picker .chip { padding: 0.25rem 0.7rem; font-size: 0.82rem; }
 
 /* ---------- stats ---------- */
 
@@ -175,7 +209,7 @@ a.chip:hover {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 0.75rem;
-  margin-top: 2.5rem;
+  margin-top: 1.5rem;
 }
 
 .stat {
@@ -206,7 +240,7 @@ a.chip:hover {
 /* ---------- sections ---------- */
 
 .section {
-  margin-top: 3rem;
+  margin-top: 2rem;
 }
 
 .section-title,
@@ -308,8 +342,8 @@ a.card:hover {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  margin-top: 3rem;
-  padding-top: 1.5rem;
+  margin-top: 2rem;
+  padding-top: 1.25rem;
   border-top: 1px solid var(--border);
 }
 
@@ -385,8 +419,42 @@ a.card:hover {
 }
 
 @media (min-width: 769px) {
-  .swiper-cards { --slide: 56cqw; }
+  .swiper-cards { --slide: min(56cqw, 600px); }
 }
+
+/* ---------- one-screen pages (awards, portfolio): no page scroll ---------- */
+/* the page is exactly the screen tall; the card picture shrinks to whatever is left */
+
+.page-fit {
+  display: flex;
+  flex-direction: column;
+  height: calc(100dvh - var(--bar-space, 0px));
+  min-height: 420px; /* tiny screens: scroll rather than squash */
+}
+
+.page-fit .swiper-cards {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  margin-top: 0.75rem;
+}
+
+.page-fit .swiper-viewport { flex: 1; min-height: 0; }
+.page-fit .swiper-track { height: 100%; grid-template-rows: 100%; }
+.page-fit .swiper-slide { height: 100%; }
+.page-fit .swiper-arrow { top: calc(50% - 2rem); }
+.page-fit .swiper-dots { margin-top: 0.5rem; }
+
+.page-fit .gallery-img {
+  flex: 1;
+  min-height: 0;
+  aspect-ratio: auto;
+}
+
+.page-fit .gallery-body { flex: none; padding: 0.7rem 1rem 0.8rem; }
+.page-fit .gallery-body b { min-height: 0; }
+.page-fit .gallery-body p { min-height: 0; -webkit-line-clamp: 2; line-clamp: 2; }
 
 /* ---------- lightbox ---------- */
 
@@ -422,7 +490,7 @@ a.card:hover {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-  height: 100vh;
+  height: calc(100dvh - var(--bar-space, 0px));
   width: 100%;
   margin: 0 auto;
 }
@@ -461,7 +529,7 @@ a.card:hover {
 .map {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: calc(100dvh - var(--bar-space, 0px));
   width: 100%;
   margin: 0 auto;
 }
@@ -491,8 +559,3 @@ a.card:hover {
   border: 0;
 }
 
-@media (max-width: 768px) {
-  .page {
-    padding: 0.5rem;
-  }
-}

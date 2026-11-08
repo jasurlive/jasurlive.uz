@@ -4,7 +4,7 @@ import { portfolio } from "../data/content";
 
 export default function Portfolio() {
   return (
-    <main className="page">
+    <main className="page page-fit">
       <Header title="Portfolio" sub="Things I designed, built and simulated — swipe or drag" />
       <Gallery
         label="Portfolio"

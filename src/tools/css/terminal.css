@@ -1,13 +1,18 @@
 .term {
-  --t-bg: #0d1117;
-  --t-bar: #161b22;
-  --t-text: #c9d1d9;
-  --t-dim: #8b949e;
-  --t-green: #3fb950;
-  --t-blue: #58a6ff;
-  --t-red: #f85149;
+  /* kitty defaults: black bg, soft white text, PS1 colors from my bashrc */
+  --t-bg: #000000;
+  --t-bar: #1c1c1c; /* quick-key buttons */
+  --t-text: #dddddd;
+  --t-dim: #8a8a8a;
+  --t-green: #87d7ff; /* prompt / ok (bash 117) */
+  --t-path: #87afd7; /* bash 110 */
+  --t-git: #00ff00; /* bash 46 */
+  --t-dir: #1a8fff; /* ls dirs: bold blue (kitty color12) */
+  --t-blue: #5fafff;
+  --t-red: #ff5f5f;
+  --t-opacity: 90%; /* like kitty's background_opacity 0.9: the last page shows through */
 
-  /* fullscreen: covers the whole window (the menu is hidden on this page) */
+  /* covers the whole window, the page you came from stays visible behind */
   position: fixed;
   inset: 0;
   z-index: 20;
@@ -16,9 +21,11 @@
   gap: 0.5rem;
   height: var(--term-h, 100dvh);
   padding: 0 0 calc(0.5rem + env(safe-area-inset-bottom));
-  background: var(--t-bg);
-  font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  background: color-mix(in srgb, var(--t-bg) var(--t-opacity), transparent);
+  color: var(--t-text);
+  font-family: 'JetBrains Mono', 'Fira Code', 'DejaVu Sans Mono', 'Liberation Mono', ui-monospace, monospace;
   font-size: 14px;
+  line-height: 1.45;
 }
 
 .term-window {
@@ -28,39 +35,16 @@
   min-height: 0;
   width: 100%;
   overflow: hidden;
-  background: var(--t-bg);
-  color: var(--t-text);
-}
-
-.term-bar {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 10px 12px;
-  padding-top: max(10px, env(safe-area-inset-top));
-  background: var(--t-bar);
-}
-
-.dot { flex-shrink: 0; width: 12px; height: 12px; border-radius: 50%; }
-button.dot { cursor: pointer; transition: filter 0.15s; }
-button.dot:hover { filter: brightness(0.8); }
-.red { background: #ff5f56; }
-.yellow { background: #ffbd2e; }
-.green { background: #27c93f; }
-
-.term-name {
-  margin-left: 8px;
-  color: var(--t-dim);
-  font-size: 12px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .term-body {
   flex: 1;
   overflow-y: auto;
-  padding: 12px 14px;
+  overscroll-behavior: contain;
+  padding: 6px 8px; /* kitty's small window_padding */
+  padding-top: max(6px, env(safe-area-inset-top));
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--t-text) 25%, transparent) transparent;
 }
 
 .term-line {
@@ -69,7 +53,7 @@ button.dot:hover { filter: brightness(0.8); }
   word-break: break-word;
 }
 
-.term-cmd { color: var(--t-text); font-weight: 600; }
+.term-cmd { color: var(--t-text); }
 .term-err { color: var(--t-red); }
 .term-ok { color: var(--t-green); }
 .term-link { color: var(--t-blue); }
@@ -82,8 +66,12 @@ button.dot:hover { filter: brightness(0.8); }
 
 .term-prompt {
   flex-shrink: 0;
-  color: var(--t-green);
 }
+
+.ps-user { color: var(--t-green); }
+.ps-path { color: var(--t-path); }
+.ps-git { color: var(--t-git); }
+.term-dir { color: var(--t-dir); font-weight: 700; }
 
 .term-input input {
   flex: 1;
@@ -92,7 +80,8 @@ button.dot:hover { filter: brightness(0.8); }
   outline: 0;
   background: transparent;
   color: var(--t-text);
-  caret-color: var(--t-green);
+  caret-color: var(--t-text);
+  caret-shape: block; /* kitty's block cursor (where supported) */
   font-size: 16px; /* 16px+ stops iOS zoom on focus */
   line-height: inherit;
 }
@@ -113,8 +102,8 @@ button.dot:hover { filter: brightness(0.8); }
   flex-shrink: 0;
   padding: 0.35rem 0.8rem;
   border: 1px solid color-mix(in srgb, var(--t-text) 18%, transparent);
-  border-radius: 6px;
-  background: var(--t-bar);
+  border-radius: 4px;
+  background: color-mix(in srgb, var(--t-bar) var(--t-opacity), transparent);
   color: var(--t-text);
   font: inherit;
   font-size: 13px;
@@ -124,8 +113,8 @@ button.dot:hover { filter: brightness(0.8); }
 
 @media (max-width: 768px) {
   .term { font-size: 13px; }
-  .term-prompt { display: none; }
-  .term-input::before { content: '$'; color: var(--t-green); }
+  .term-input .term-prompt { display: none; }
+  .term-input::before { content: '❯'; color: var(--t-green); }
 }
 
 /* ---------- terminal colors per theme ---------- */
@@ -134,6 +123,9 @@ button.dot:hover { filter: brightness(0.8); }
   --t-bg: #000;
   --t-bar: #0a0d0b;
   --t-green: #00ff66;
+  --t-path: #7dd3fc;
+  --t-git: #00ff66;
+  --t-dir: #7dd3fc;
 }
 
 [data-theme='sega'] .term {
@@ -142,11 +134,27 @@ button.dot:hover { filter: brightness(0.8); }
   --t-text: #ffffff;
   --t-dim: #a9c0ff;
   --t-green: #ffd31a;
+  --t-path: #6fd3ff;
+  --t-git: #7cff6b;
+  --t-dir: #6fd3ff;
   --t-blue: #6fd3ff;
   --t-red: #ff4040;
   font-family: 'VT323', ui-monospace, monospace;
   font-size: 19px;
 }
 
-[data-theme='sega'] .term-name { font-family: 'Press Start 2P', monospace; font-size: 9px; }
 [data-theme='sega'] .term-input input { font-size: 19px; }
+
+/* calm themes: the terminal uses the page palette */
+:is([data-theme='linen'], [data-theme='fjord'], [data-theme='moss'], [data-theme='charcoal']) .term {
+  --t-bg: var(--bg);
+  --t-bar: var(--surface);
+  --t-text: var(--text);
+  --t-dim: var(--muted);
+  --t-green: var(--accent);
+  --t-path: var(--muted);
+  --t-git: var(--accent);
+  --t-dir: var(--accent);
+  --t-blue: var(--accent);
+  --t-red: var(--danger);
+}

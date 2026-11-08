@@ -1,31 +1,36 @@
-import { useEffect, useState } from 'react'
+import { useSyncExternalStore } from 'react'
+import { THEMES, isTheme, type Theme } from '../../lib/themes'
 
-export const THEMES = ['light', 'dark', 'matrix', 'sega'] as const
-export type Theme = (typeof THEMES)[number]
-
+// one shared store: menu button, theme picker and the terminal stay in sync
 // initial value is set in index.html before paint (no flash)
+const listeners = new Set<() => void>()
+
 const getTheme = (): Theme => {
-  const t = document.documentElement.dataset.theme as Theme
-  return THEMES.includes(t) ? t : 'light'
+  const current = document.documentElement.dataset.theme
+  return isTheme(current) ? current : 'light'
 }
 
 export function setTheme(theme: Theme) {
   document.documentElement.dataset.theme = theme
-  localStorage.setItem('theme', theme)
+  try {
+    localStorage.setItem('theme', theme)
+  } catch {}
+  listeners.forEach((l) => l())
+}
+
+const subscribe = (listener: () => void) => {
+  listeners.add(listener)
+  return () => {
+    listeners.delete(listener)
+  }
 }
 
 export function useTheme() {
-  const [theme, setState] = useState<Theme>(getTheme)
+  const theme = useSyncExternalStore(subscribe, getTheme)
 
-  // the <html data-theme> attribute is the source of truth (the terminal can change it too)
-  useEffect(() => {
-    const observer = new MutationObserver(() => setState(getTheme()))
-    observer.observe(document.documentElement, { attributeFilter: ['data-theme'] })
-    return () => observer.disconnect()
-  }, [])
-
+  // cycles through every enabled theme (light -> dark -> extras -> light)
   const nextTheme = THEMES[(THEMES.indexOf(theme) + 1) % THEMES.length]
   const toggleTheme = () => setTheme(nextTheme)
 
-  return { theme, nextTheme, toggleTheme }
+  return { theme, setTheme, nextTheme, toggleTheme, themes: THEMES }
 }

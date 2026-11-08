@@ -8,16 +8,14 @@ import {
   FiAward,
   FiTerminal,
   FiBookOpen,
-  FiSun,
-  FiMoon,
-  FiCpu,
   FiMapPin,
 } from "react-icons/fi";
-import { IoGameControllerOutline } from "react-icons/io5";
 import "../css/menu.css";
 import { useTheme } from "../hooks/LOCAL/useTheme";
 import { useShortcuts } from "../hooks/LOCAL/useShortcuts";
 import { navigate, useRoute } from "../hooks/LOCAL/useRoute";
+import { THEME_LABELS } from "../lib/themes";
+import { THEME_ICONS } from "./ThemeIcons";
 
 export type MenuItem = {
   label: string;
@@ -36,9 +34,6 @@ const ITEMS: MenuItem[] = [
   { label: "Blog", icon: <FiBookOpen />, href: "/blogs", mobile: false },
   { label: "Travel map", icon: <FiMapPin />, href: "/map", mobile: false },
 ];
-
-// the button shows the theme you'll switch to
-const THEME_ICON = { light: <FiSun />, dark: <FiMoon />, matrix: <FiCpu />, sega: <IoGameControllerOutline /> };
 
 export default function Menu({ items = ITEMS }: { items?: MenuItem[] }) {
   const { nextTheme, toggleTheme } = useTheme();
@@ -60,8 +55,9 @@ export default function Menu({ items = ITEMS }: { items?: MenuItem[] }) {
   const menuItems: MenuItem[] = [
     ...items,
     {
-      label: `${nextTheme[0].toUpperCase() + nextTheme.slice(1)} theme`,
-      icon: THEME_ICON[nextTheme],
+      // shows the theme you'll switch to (ctrl+j cycles too)
+      label: `${THEME_LABELS[nextTheme]} theme`,
+      icon: THEME_ICONS[nextTheme],
       onClick: toggleTheme,
       mobile: true,
     },

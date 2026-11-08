@@ -4,7 +4,7 @@ import { awards } from "../data/content";
 
 export default function Awards() {
   return (
-    <main className="page">
+    <main className="page page-fit">
       <Header title="Awards & certificates" sub={`${awards.length} pcs — swipe or drag, tap a picture to zoom`} />
       <Gallery
         label="Awards"

@@ -2,12 +2,25 @@ import { useEffect, useRef, useState, type KeyboardEvent } from "react";
 import "../css/terminal.css";
 import { experience, profile, projects, quotes, skills, social } from "../data/site";
 import { awards, portfolio, talks } from "../data/content";
-import { navigate } from "../hooks/LOCAL/useRoute";
-import { setTheme, THEMES, type Theme } from "../hooks/LOCAL/useTheme";
+import { navigate, previousPage } from "../hooks/LOCAL/useRoute";
+import { setTheme } from "../hooks/LOCAL/useTheme";
+import { THEMES, isTheme } from "../lib/themes";
 
-type Line = { text: string; href?: string; kind?: "cmd" | "err" | "ok" };
+type Line = { text: string; href?: string; kind?: "cmd" | "err" | "ok" | "dir" };
 
-const PROMPT = "guest@jasurlive:~$";
+
+// same colors as my bash PS1: user@host, path, ❯
+// same as my bash PS1: \u@\h (117) \w (110) $(git_branch) (46) ❯ (117)
+const Prompt = () => (
+  <span className="term-prompt">
+    <span className="ps-user">guest@jasurlive</span> <span className="ps-path">~</span>
+    <span className="ps-git">(main)</span>
+    <span className="ps-user">❯</span>
+  </span>
+);
+
+// back to the page you opened the terminal from
+const leave = () => navigate(previousPage("/terminal"));
 const PAGES = ["home", "resume", "portfolio", "awards", "blogs"];
 const LINKS = [...projects, ...social];
 
@@ -65,14 +78,15 @@ const commands: Record<string, Command> = {
       navigate(`/${p}`);
     },
   },
-  ls: { desc: "list pages", run: () => out(PAGES.map((p) => p + "/").join("  ")) },
+  // folders in bold blue, like LS_COLORS di=1;34
+  ls: { desc: "list pages", run: () => [{ text: PAGES.join("  "), kind: "dir" }] },
   wisdom: { desc: "random wisdom (typed out)", run: () => [] },
   theme: {
     desc: `switch theme: ${THEMES.join(" | ")}`,
     run: ([name]) => {
-      const current = document.documentElement.dataset.theme as Theme;
-      const next = (name ?? THEMES[(THEMES.indexOf(current) + 1) % THEMES.length]) as Theme;
-      if (!THEMES.includes(next)) return [{ text: `theme: unknown '${name}'. try ${THEMES.join(", ")}`, kind: "err" }];
+      const current = document.documentElement.dataset.theme;
+      const next = name?.toLowerCase() ?? THEMES[(THEMES.indexOf(current as never) + 1) % THEMES.length];
+      if (!isTheme(next)) return [{ text: `theme: unknown '${name}'. try ${THEMES.join(", ")}`, kind: "err" }];
       setTheme(next);
       return [{ text: `theme: ${next}`, kind: "ok" }];
     },
@@ -95,19 +109,25 @@ const commands: Record<string, Command> = {
   history: { desc: "command history", run: () => [] },
   sudo: { desc: "try it", run: () => [{ text: "nice try 😏 guest is not in the sudoers file.", kind: "err" }] },
   clear: { desc: "clear screen (ctrl+l)", run: () => [] },
-  exit: { desc: "back to home", run: () => navigate("/") },
+  exit: { desc: "close the terminal", run: () => leave() },
 };
 
 const NAMES = Object.keys(commands);
 const randomQuote = () => quotes[Math.floor(Math.random() * quotes.length)];
 const WELCOME: Line[] = [
+  { text: `Last login: ${new Date().toString().slice(0, 24)} on pts/0` },
   { text: "jsh 1.0 — jasurlive.uz terminal", kind: "ok" },
   { text: "type 'help' to see commands. tab completes, ↑/↓ for history." },
-  { text: "fullscreen mode — 'exit' or the red dot takes you back." },
   { text: "" },
 ];
 
 export default function Terminal() {
+  useEffect(() => {
+    const onKey = (e: globalThis.KeyboardEvent) => e.key === "Escape" && leave();
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
+
   const [lines, setLines] = useState<Line[]>(WELCOME);
   const [input, setInput] = useState("");
   const [past, setPast] = useState<string[]>([]);
@@ -115,19 +135,6 @@ export default function Terminal() {
   const inputRef = useRef<HTMLInputElement>(null);
   const endRef = useRef<HTMLDivElement>(null);
   const rootRef = useRef<HTMLElement>(null);
-  const [isFull, setIsFull] = useState(false);
-
-  // real browser fullscreen while you're here (works when you came by a click; esc leaves it).
-  // phones without the fullscreen api (iphone) still get the full-window layout from css.
-  useEffect(() => {
-    const sync = () => setIsFull(!!document.fullscreenElement);
-    document.addEventListener("fullscreenchange", sync);
-    // document.documentElement.requestFullscreen?.({ navigationUI: "hide" }).catch(() => {}); //not fullscreen for now
-    return () => {
-      document.removeEventListener("fullscreenchange", sync);
-      if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
-    };
-  }, []);
 
   // keep the input above the on-screen keyboard on phones
   useEffect(() => {
@@ -142,11 +149,6 @@ export default function Terminal() {
     return () => vv.removeEventListener("resize", fit);
   }, []);
 
-  const toggleFullscreen = () => {
-    if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
-    else document.documentElement.requestFullscreen?.().catch(() => {});
-  };
-
   useEffect(() => {
     endRef.current?.scrollIntoView({ block: "end" });
   }, [lines]);
@@ -154,7 +156,7 @@ export default function Terminal() {
   const run = (raw: string) => {
     const cmd = raw.trim();
     const [name = "", ...args] = cmd.split(/\s+/);
-    const echo: Line = { text: `${PROMPT} ${cmd}`, kind: "cmd" };
+    const echo: Line = { text: cmd, kind: "cmd" };
 
     if (cmd) setPast((p) => [...p, cmd]);
     setPos(-1);
@@ -197,7 +199,7 @@ export default function Terminal() {
       const word = second ?? first;
       const hits = pool.filter((n) => n.startsWith(word));
       if (hits.length === 1) setInput(second === undefined ? hits[0] + " " : `${first} ${hits[0]}`);
-      else if (hits.length > 1) setLines((l) => [...l, { text: `${PROMPT} ${input}`, kind: "cmd" }, { text: hits.join("  ") }]);
+      else if (hits.length > 1) setLines((l) => [...l, { text: input, kind: "cmd" }, { text: hits.join("  ") }]);
       return;
     }
 
@@ -222,28 +224,16 @@ export default function Terminal() {
   return (
     <main className="term" ref={rootRef} onClick={() => window.getSelection()?.isCollapsed && inputRef.current?.focus()}>
       <div className="term-window">
-        <div className="term-bar">
-          <button className="dot red" onClick={() => navigate("/")} title="Exit terminal" aria-label="Exit terminal" />
-          <span className="dot yellow" />
-          {!document.fullscreenEnabled ? (
-            <span className="dot green" />
-          ) : (
-            <button
-              className="dot green"
-              onClick={toggleFullscreen}
-              title={isFull ? "Exit fullscreen" : "Fullscreen"}
-              aria-label={isFull ? "Exit fullscreen" : "Fullscreen"}
-            />
-          )}
-          <span className="term-name">jsh — {PROMPT}</span>
-        </div>
-
         <div className="term-body">
           {lines.map((l, i) =>
             l.href ? (
               <a key={i} className="term-line term-link" href={l.href} target="_blank" rel="noreferrer">
                 {l.text}
               </a>
+            ) : l.kind === "cmd" ? (
+              <div key={i} className="term-line term-cmd">
+                <Prompt /> {l.text}
+              </div>
             ) : (
               <div key={i} className={`term-line ${l.kind ? `term-${l.kind}` : ""}`}>
                 {l.text || " "}
@@ -252,7 +242,7 @@ export default function Terminal() {
           )}
 
           <div className="term-input" ref={endRef}>
-            <span className="term-prompt">{PROMPT}</span>
+            <Prompt />
             <input
               ref={inputRef}
               value={input}

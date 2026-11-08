@@ -2,6 +2,11 @@
   --menu-w: 200px;
 }
 
+/* page area next to the navbar */
+.menu-page {
+  min-width: 0;
+}
+
 .with-menu:has(.menu-collapsed) {
   --menu-w: 56px;
 }
@@ -49,6 +54,7 @@
 
 .menu-active {
   color: var(--accent);
+  background: var(--accent-soft);
 }
 
 .menu-icon {
