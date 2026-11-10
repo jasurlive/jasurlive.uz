@@ -569,3 +569,95 @@ a.card:hover {
   border: 0;
 }
 
+
+/* ---------- playlist player: full on /playlist, mini box everywhere else ---------- */
+
+.player {
+  position: fixed;
+  z-index: 5; /* under the navbar (10) and the terminal (20) */
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+}
+
+.player.is-full {
+  top: 0;
+  right: 0;
+  bottom: var(--bar-space, 0px);
+  left: 0;
+}
+
+.player-frame {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+}
+
+.player-frame .page-status { position: absolute; inset: 0; color: #666; }
+
+.player-frame iframe {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* ---------- mini: playlistGo shows only its 64px bar (we post playlistgo:mini) ---------- */
+
+.player.is-full .player-actions { display: none; }
+
+.player.is-mini {
+  --mini-h: 64px; /* playlistGo's .mini height */
+  right: 16px;
+  bottom: calc(var(--bar-space, 0px) + 16px);
+  width: 380px;
+  height: var(--mini-h);
+  background: none;
+}
+
+.player.is-mini .player-frame {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgb(0 0 0 / 0.3);
+  background: var(--surface);
+}
+
+/* small round buttons floating above the strip's top-right corner */
+.player-actions {
+  position: absolute;
+  right: 6px;
+  bottom: calc(100% + 6px);
+  display: flex;
+  gap: 4px;
+}
+
+.player-actions button {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--muted);
+  font-size: 0.8rem;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.2);
+}
+
+.player-actions button:hover { color: var(--accent); }
+
+@media (min-width: 769px) {
+  .player.is-full {
+    left: var(--menu-w);
+    transition: left 0.2s;
+  }
+}
+
+@media (max-width: 768px) {
+  .player.is-mini {
+    left: 10px;
+    right: 10px;
+    width: auto;
+    bottom: calc(var(--bar-space, 0px) + 6px);
+  }
+}

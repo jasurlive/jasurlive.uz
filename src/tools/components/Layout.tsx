@@ -1,6 +1,7 @@
 import { Suspense, type ReactNode } from "react";
 import Menu from "../shared/Menu";
 import ErrorBoundary from "./ErrorBoundary";
+import MiniPlayer from "./MiniPlayer";
 
 // every page renders inside this: navbar + page area
 export default function Layout({ path, children }: { path: string; children: ReactNode }) {
@@ -15,6 +16,9 @@ export default function Layout({ path, children }: { path: string; children: Rea
           <Suspense fallback={<p className="page-status">Loading…</p>}>{children}</Suspense>
         </ErrorBoundary>
       </div>
+
+      {/* outside the page so it survives page changes */}
+      <MiniPlayer path={path} />
     </div>
   );
 }
