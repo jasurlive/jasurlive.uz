@@ -456,6 +456,16 @@ a.card:hover {
 .page-fit .gallery-body b { min-height: 0; }
 .page-fit .gallery-body p { min-height: 0; -webkit-line-clamp: 2; line-clamp: 2; }
 
+/* phones: a full-height card makes the picture tall and narrow; keep the
+   home page's 4:3 picture instead and center the card on the screen */
+@media (max-width: 768px) {
+  .page-fit .swiper-cards { justify-content: center; }
+  .page-fit .swiper-viewport { flex: none; }
+  .page-fit .swiper-track { height: auto; grid-template-rows: auto; }
+  .page-fit .swiper-slide { height: auto; }
+  .page-fit .gallery-img { flex: none; aspect-ratio: 4 / 3; }
+}
+
 /* ---------- lightbox ---------- */
 
 .lightbox {

@@ -21,13 +21,14 @@
 
 :root[data-theme='dark'] {
   color-scheme: dark;
-  --bg: #000000;
-  --surface: #121212;
-  --text: #f2f2f2;
-  --muted: #9a9a9a;
-  --border: #262626;
-  --accent: #ffffff;
-  --danger: #ff6b5b;
+  --bg: #080e1a;
+  --surface: #1a1e3c;
+  --text: #d1d5db;
+  --muted: #9ca3af;
+  --border: rgba(255, 255, 255, 0.1);
+  --accent: #3b82f6;
+  --accent-soft: rgba(59, 130, 246, 0.14);
+  --danger: #f87171;
 }
 
 /* ---------- calm scandinavian palettes ---------- */

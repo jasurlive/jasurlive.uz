@@ -21,7 +21,7 @@ const Prompt = () => (
 
 // back to the page you opened the terminal from
 const leave = () => navigate(previousPage("/terminal"));
-const PAGES = ["home", "resume", "portfolio", "awards", "blogs"];
+const PAGES = ["home", "resume", "portfolio", "awards", "blogs", "playlist"];
 const LINKS = [...projects, ...social];
 
 const out = (...rows: string[]): Line[] => rows.map((text) => ({ text }));
@@ -80,6 +80,13 @@ const commands: Record<string, Command> = {
   },
   // folders in bold blue, like LS_COLORS di=1;34
   ls: { desc: "list pages", run: () => [{ text: PAGES.join("  "), kind: "dir" }] },
+  playlist: {
+    desc: "open my music player (playlistGo)",
+    run: () => {
+      navigate("/playlist");
+      return [{ text: "♫ opening playlist ...", kind: "ok" }];
+    },
+  },
   wisdom: { desc: "random wisdom (typed out)", run: () => [] },
   theme: {
     desc: `switch theme: ${THEMES.join(" | ")}`,
@@ -261,7 +268,7 @@ export default function Terminal() {
       </div>
 
       <div className="term-keys">
-        {["help", "whoami", "wisdom", "projects", "resume", "social", "theme", "clear", "exit"].map((k) => (
+        {["help", "whoami", "playlist", "wisdom", "projects", "resume", "social", "theme", "clear", "exit"].map((k) => (
           <button key={k} onClick={() => run(k)}>{k}</button>
         ))}
       </div>

@@ -9,6 +9,7 @@ import {
   FiTerminal,
   FiBookOpen,
   FiMapPin,
+  FiPlay,
 } from "react-icons/fi";
 import "../css/menu.css";
 import { useTheme } from "../hooks/LOCAL/useTheme";
@@ -30,9 +31,10 @@ const ITEMS: MenuItem[] = [
   { label: "Resume", icon: <FiUser />, href: "/resume", mobile: true },
   { label: "Portfolio", icon: <FiBriefcase />, href: "/portfolio", mobile: false },
   { label: "Awards", icon: <FiAward />, href: "/awards", mobile: true },
-  { label: "Terminal", icon: <FiTerminal />, href: "/terminal", mobile: true },
+  { label: "Terminal", icon: <FiTerminal />, href: "/terminal", mobile: false }, // phones: "playlist" in the terminal instead
   { label: "Blog", icon: <FiBookOpen />, href: "/blogs", mobile: false },
   { label: "Travel map", icon: <FiMapPin />, href: "/map", mobile: false },
+  { label: "My playlist", icon: <FiPlay />, href: "/playlist", mobile: true },
 ];
 
 export default function Menu({ items = ITEMS }: { items?: MenuItem[] }) {
