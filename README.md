@@ -1,35 +1,34 @@
 # jasurlive.uz
 
-Lightweight personal site built on [react-template](https://github.com/jasurlive/react-template)
-(React 19 + Vite + TypeScript, simple and minimal).
-
-Pages: Home · Resume · Portfolio · Awards · Blog · **Terminal** (`/terminal` — type `help`).
-Themes: light · dark · matrix · sega (menu button / `ctrl+j` cycles them, or `theme sega` in the terminal).
-The terminal opens fullscreen; `exit`, `cd <page>` or the red dot leaves it.
+Personal site built on the [django-react](https://github.com/jasurlive/django-react) front template (React 19 + Vite + TypeScript).
 
 ```bash
 npm install
 npm run dev     # http://localhost:1212
-npm run build   # output in dist/
+npm run build   # dist/
 ```
 
-## Adding content (no code needed)
+## Structure
 
-| What                | Where                         |
-| ------------------- | ----------------------------- |
-| Home swiper photos  | drop images in `src/media/slides/` |
-| Awards              | `src/data/awards.csv` (+ images in `public/img/awards/`) |
-| Portfolio           | `src/data/portfolio.csv` (image = URL or `/img/portfolio/x.webp`) |
-| Talks (YouTube)     | `src/data/talks.csv` |
-| Text / projects / resume | `src/tools/data/site.ts` |
-
-Or use the helper (resizes + converts images to WebP if `pip install pillow`):
-
-```bash
-python scripts/add.py award
-python scripts/add.py portfolio
-python scripts/add.py talk
-python scripts/add.py slide photo1.jpg photo2.jpg
+```
+src/
+├── app/          main.tsx, App.tsx (routes)
+├── pages/        one file per route
+├── components/   UI pieces
+├── shared/       Menu, ThemePicker
+├── hooks/LOCAL/  browser-only hooks
+├── lib/          themes, trackVisit
+├── css/          styles
+├── data/         site.ts, content.ts, *.csv
+└── media/        slides/
 ```
 
-`vercel.json` rewrites all paths to `index.html` so `/resume`, `/terminal` etc. work on refresh.
+## Content
+
+| What | Where |
+| --- | --- |
+| Text, projects, resume | `src/data/site.ts` |
+| Awards / portfolio / talks | `src/data/*.csv` |
+| Home slides | `src/media/slides/` |
+
+Or run `python scripts/add.py award|portfolio|talk|slide <files>`.

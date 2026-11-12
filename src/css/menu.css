@@ -1,9 +1,15 @@
 .with-menu {
   --menu-w: 200px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
 }
 
-/* page area next to the navbar */
+/* page area next to the navbar: put backgrounds / centered content here */
 .menu-page {
+  position: relative;
+  display: grid; /* lets a page stretch to full height (e.g. centered 404) */
+  flex: 1;
   min-width: 0;
 }
 
@@ -49,12 +55,14 @@
 
 .menu-item:hover,
 .menu-toggle:hover {
-  background: color-mix(in srgb, currentColor 10%, transparent);
+  background: var(--hover);
+  color: var(--text-strong, var(--text));
 }
 
-.menu-active {
+.menu-item.active {
   color: var(--accent);
   background: var(--accent-soft);
+  box-shadow: inset 3px 0 var(--accent);
 }
 
 .menu-icon {
@@ -77,6 +85,7 @@
   padding: 0;
 }
 
+/* attached sidebar with a glowing accent bar on desktop */
 @media (min-width: 769px) {
   .with-menu {
     padding-left: var(--menu-w);
@@ -91,6 +100,34 @@
     width: var(--menu-w);
     border-width: 0 1px 0 0;
     transition: width 0.2s;
+  }
+
+  .menu-item {
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  /* first .menu-bottom item pushes itself and the rest to the bottom */
+  .menu-item:not(.menu-bottom) + .menu-bottom {
+    margin-top: auto;
+  }
+
+  .menu-item.active {
+    background: color-mix(in srgb, var(--accent) 10%, transparent);
+    box-shadow: none;
+  }
+
+  /* rounded accent bar with a soft glow */
+  .menu-item.active::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 10px;
+    bottom: 10px;
+    width: 4px;
+    border-radius: 0 4px 4px 0;
+    background: var(--accent);
+    box-shadow: 0 0 12px var(--accent);
   }
 }
 
@@ -122,8 +159,9 @@
     font-size: 21px;
   }
 
-  .menu-active {
+  .menu-item.active {
     background: color-mix(in srgb, var(--accent) 14%, transparent);
+    box-shadow: none;
   }
 
   .menu-label,

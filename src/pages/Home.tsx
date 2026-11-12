@@ -3,7 +3,6 @@ import { FiTerminal } from "react-icons/fi";
 import Swiper from "../components/Swiper";
 import Speeches from "../components/Speeches";
 import Typewriter from "../components/Typewriter";
-import ThemePicker from "../shared/ThemePicker";
 import { profile, projects, quotes, social } from "../data/site";
 import { awards, slides } from "../data/content";
 import { navigate } from "../hooks/LOCAL/useRoute";
@@ -102,7 +101,6 @@ export default function Home() {
             </a>
           ))}
         </div>
-        <ThemePicker />
         <p className="muted small">© 2019-{YEAR} jasurlive.uz</p>
       </footer>
     </main>

@@ -21,7 +21,7 @@ const Prompt = () => (
 
 // back to the page you opened the terminal from
 const leave = () => navigate(previousPage("/terminal"));
-const PAGES = ["home", "resume", "portfolio", "awards", "blogs", "playlist"];
+const PAGES = ["home", "resume", "portfolio", "awards", "blogs", "playlist", "settings"];
 const LINKS = [...projects, ...social];
 
 const out = (...rows: string[]): Line[] => rows.map((text) => ({ text }));

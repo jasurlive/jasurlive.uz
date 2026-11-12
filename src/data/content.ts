@@ -1,6 +1,6 @@
-import awardsCsv from '../../data/awards.csv?raw'
-import portfolioCsv from '../../data/portfolio.csv?raw'
-import talksCsv from '../../data/talks.csv?raw'
+import awardsCsv from './awards.csv?raw'
+import portfolioCsv from './portfolio.csv?raw'
+import talksCsv from './talks.csv?raw'
 
 // minimal csv reader: header row + quoted fields ("a, b" and "" escapes)
 function parseCsv<T>(text: string): T[] {
@@ -48,7 +48,7 @@ export const talks = parseCsv<Talk>(talksCsv)
 
 // every image dropped into src/media/slides shows up in the home swiper
 export const slides = Object.values(
-  import.meta.glob<string>('../../media/slides/*.{webp,jpg,jpeg,png,avif}', {
+  import.meta.glob<string>('../media/slides/*.{webp,jpg,jpeg,png,avif}', {
     eager: true,
     import: 'default',
   }),

@@ -10,20 +10,19 @@ import {
   FiBookOpen,
   FiMapPin,
   FiPlay,
+  FiSettings,
 } from "react-icons/fi";
 import "../css/menu.css";
 import { useTheme } from "../hooks/LOCAL/useTheme";
 import { useShortcuts } from "../hooks/LOCAL/useShortcuts";
 import { navigate, useRoute } from "../hooks/LOCAL/useRoute";
-import { THEME_LABELS } from "../lib/themes";
-import { THEME_ICONS } from "./ThemeIcons";
 
 export type MenuItem = {
   label: string;
   icon: ReactNode;
-  href?: string;
-  onClick?: () => void;
+  href: string;
   mobile?: boolean;
+  bottom?: boolean;
 };
 
 const ITEMS: MenuItem[] = [
@@ -35,10 +34,12 @@ const ITEMS: MenuItem[] = [
   { label: "Blog", icon: <FiBookOpen />, href: "/blogs", mobile: false },
   { label: "Travel map", icon: <FiMapPin />, href: "/map", mobile: false },
   { label: "My playlist", icon: <FiPlay />, href: "/playlist", mobile: true },
+  // bottom: pinned to the bottom of the sidebar on desktop, keep these last
+  { label: "Settings", icon: <FiSettings />, href: "/settings", mobile: true, bottom: true },
 ];
 
 export default function Menu({ items = ITEMS }: { items?: MenuItem[] }) {
-  const { nextTheme, toggleTheme } = useTheme();
+  const { toggleTheme } = useTheme();
   const path = useRoute();
 
   const [collapsed, setCollapsed] = useState(
@@ -52,18 +53,8 @@ export default function Menu({ items = ITEMS }: { items?: MenuItem[] }) {
     });
   };
 
-  useShortcuts({ "ctrl+j": toggleTheme });
-
-  const menuItems: MenuItem[] = [
-    ...items,
-    {
-      // shows the theme you'll switch to (ctrl+j cycles too)
-      label: `${THEME_LABELS[nextTheme]} theme`,
-      icon: THEME_ICONS[nextTheme],
-      onClick: toggleTheme,
-      mobile: true,
-    },
-  ];
+  // global shortcuts: ctrl+j cycles themes, ` (backtick) collapses the sidebar
+  useShortcuts({ "ctrl+j": toggleTheme, "`": toggleMenu });
 
   // internal links go through the router, external ones open normally
   const go = (e: MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -78,44 +69,29 @@ export default function Menu({ items = ITEMS }: { items?: MenuItem[] }) {
         type="button"
         className="menu-toggle"
         onClick={toggleMenu}
-        aria-label="Toggle sidebar"
+        aria-label="Toggle sidebar (`)"
+        title="Toggle sidebar (`)"
       >
         {collapsed ? <FiChevronRight /> : <FiChevronLeft />}
       </button>
 
-      {menuItems.map((item) => {
+      {items.map((item) => {
         const className = `menu-item ${
           item.mobile ? "menu-mobile-visible" : "menu-desktop-only"
-        } ${item.href === path ? "menu-active" : ""}`;
+        } ${item.bottom ? "menu-bottom" : ""} ${item.href === path ? "active" : ""}`;
 
-        const content = (
-          <>
-            <span className="menu-icon">{item.icon}</span>
-            <span className="menu-label">{item.label}</span>
-          </>
-        );
-
-        return item.onClick ? (
-          <button
-            key={item.label}
-            type="button"
-            className={className}
-            onClick={item.onClick}
-            title={item.label}
-          >
-            {content}
-          </button>
-        ) : item.href ? (
+        return (
           <a
             key={item.href}
             href={item.href}
             className={className}
             title={item.label}
-            onClick={(e) => go(e, item.href!)}
+            onClick={(e) => go(e, item.href)}
           >
-            {content}
+            <span className="menu-icon">{item.icon}</span>
+            <span className="menu-label">{item.label}</span>
           </a>
-        ) : null;
+        );
       })}
     </nav>
   );

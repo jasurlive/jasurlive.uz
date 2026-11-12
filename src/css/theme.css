@@ -102,7 +102,7 @@
 }
 
 [data-theme='matrix'] .stat b,
-[data-theme='matrix'] .menu-active,
+[data-theme='matrix'] .menu-item.active,
 [data-theme='matrix'] .typewriter-prompt {
   text-shadow: 0 0 8px rgb(0 224 90 / 0.45);
 }
