@@ -5,7 +5,7 @@ import { portfolio } from "../data/content";
 export default function Portfolio() {
   return (
     <main className="page page-fit">
-      <Header title="Portfolio" sub="Things I designed, built and simulated — swipe or drag" />
+      <Header title="Portfolio" sub="Designed, built and simulated — swipe or drag" />
       <Gallery
         label="Portfolio"
         items={portfolio.map((p) => ({ title: p.title, text: p.description, image: p.image, link: p.link }))}

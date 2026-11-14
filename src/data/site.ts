@@ -1,3 +1,7 @@
+import type { IconType } from 'react-icons'
+import { FiBox, FiCheckSquare, FiHeadphones, FiMap, FiMonitor, FiRepeat } from 'react-icons/fi'
+import { FaChessKnight } from 'react-icons/fa6'
+
 export const profile = {
   name: 'Jasur',
   role: 'Lead Specialist · Railway Transport',
@@ -5,21 +9,23 @@ export const profile = {
     "Hi! I'm Jasur. Minimalist and a father of two wonderful kids. I appreciate small things in life while staying grateful to Allah.",
 }
 
-export const social = [
+// page: open this inside the site instead of a new tab
+export const social: { name: string; url: string; page?: string }[] = [
   { name: 'github', url: 'https://github.com/jasurlive' },
   { name: 'linkedin', url: 'https://www.linkedin.com/in/jasurlive/' },
   { name: 'telegram bot', url: 'https://t.me/jasurlive_bot' },
   { name: 'chess', url: 'https://www.chess.com/member/jasurgraduate' },
-  { name: 'my blogs', url: 'https://jasurlive.blogspot.com/' },
+  { name: 'my blogs', url: 'https://jasurlive.blogspot.com/', page: '/blogs' },
 ]
 
-export const projects = [
-  { name: 'ieltslive', icon: '💻', title: 'CD IELTS Prep', url: 'https://ieltslive.vercel.app/' },
-  { name: 'playlistgo', icon: '🎧', title: 'PlaylistGo (DJ)', url: 'https://playlistgo.vercel.app/' },
-  { name: 'destinero', icon: '🗺️', title: 'Travel map', url: 'https://destinero.vercel.app/' },
-  { name: 'uzchess', icon: '♟️', title: 'Local chess', url: 'https://uzchess.vercel.app' },
-  { name: 'checklistgo', icon: '✅', title: 'To-do list', url: 'https://checklistgo.vercel.app/' },
-  { name: 'uzconvert', icon: '🔁', title: 'Latin-Cyrillic converter', url: 'https://uzconvert.vercel.app' },
+export const projects: { name: string; icon: IconType; title: string; url: string }[] = [
+  { name: 'ieltslive', icon: FiMonitor, title: 'CD-IELTS prep', url: 'https://ieltslive.vercel.app/' },
+  { name: 'playlistgo', icon: FiHeadphones, title: 'playlistGo', url: 'https://playlistgo.vercel.app/' },
+  { name: 'destinero', icon: FiMap, title: 'Travel map', url: 'https://destinero.vercel.app/' },
+  { name: 'elite', icon: FiBox, title: 'Elite house (3D home)', url: 'https://elite-ali.vercel.app' },
+  { name: 'uzchess', icon: FaChessKnight, title: 'Play chess', url: 'https://uzchess.vercel.app' },
+  { name: 'checklistgo', icon: FiCheckSquare, title: 'To-do list', url: 'https://checklistgo.vercel.app/' },
+  { name: 'uzconvert', icon: FiRepeat, title: 'Latin-Cyrillic converter', url: 'https://uzconvert.vercel.app' },
 ]
 
 export const experience = [

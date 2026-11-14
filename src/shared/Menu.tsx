@@ -1,4 +1,4 @@
-import { useState, type MouseEvent, type ReactNode } from "react";
+import { useEffect, useState, type MouseEvent, type ReactNode } from "react";
 import {
   FiChevronLeft,
   FiChevronRight,
@@ -7,11 +7,11 @@ import {
   FiBriefcase,
   FiAward,
   FiTerminal,
-  FiBookOpen,
   FiMapPin,
   FiPlay,
   FiSettings,
 } from "react-icons/fi";
+import { BsVectorPen } from "react-icons/bs";
 import "../css/menu.css";
 import { useTheme } from "../hooks/LOCAL/useTheme";
 import { useShortcuts } from "../hooks/LOCAL/useShortcuts";
@@ -22,6 +22,7 @@ export type MenuItem = {
   icon: ReactNode;
   href: string;
   mobile?: boolean;
+  shuffle?: boolean; // phones: one of these is picked at random per visit
   bottom?: boolean;
 };
 
@@ -31,16 +32,41 @@ const ITEMS: MenuItem[] = [
   { label: "Portfolio", icon: <FiBriefcase />, href: "/portfolio", mobile: false },
   { label: "Awards", icon: <FiAward />, href: "/awards", mobile: true },
   { label: "Terminal", icon: <FiTerminal />, href: "/terminal", mobile: false }, // phones: "playlist" in the terminal instead
-  { label: "Blog", icon: <FiBookOpen />, href: "/blogs", mobile: false },
-  { label: "Travel map", icon: <FiMapPin />, href: "/map", mobile: false },
-  { label: "My playlist", icon: <FiPlay />, href: "/playlist", mobile: true },
+  { label: "Blog", icon: <BsVectorPen />, href: "/blogs", shuffle: true },
+  { label: "Travel map", icon: <FiMapPin />, href: "/map", shuffle: true },
+  { label: "My playlist", icon: <FiPlay />, href: "/playlist", shuffle: true },
   // bottom: pinned to the bottom of the sidebar on desktop, keep these last
   { label: "Settings", icon: <FiSettings />, href: "/settings", mobile: true, bottom: true },
 ];
 
+// phones: the shuffle items share one slot that rolls to the next one every few seconds
+// (starts on a random one, or on the page you landed on)
+const shuffled = ITEMS.filter((i) => i.shuffle).map((i) => i.href);
+const FLIP_MS = 5000;
+const PHONE = "(max-width: 768px)";
+const firstSlot = () => {
+  const landed = shuffled.indexOf(location.pathname);
+  return landed >= 0 ? landed : Math.floor(Math.random() * shuffled.length);
+};
+
 export default function Menu({ items = ITEMS }: { items?: MenuItem[] }) {
   const { toggleTheme } = useTheme();
   const path = useRoute();
+  const [slot, setSlot] = useState(firstSlot);
+
+  // on a shuffled page already? hold that one so the active tab stays visible
+  const onShuffled = shuffled.includes(path);
+
+  useEffect(() => {
+    if (onShuffled) return;
+    const id = setInterval(() => {
+      if (document.hidden || !matchMedia(PHONE).matches) return;
+      setSlot((n) => (n + 1) % shuffled.length);
+    }, FLIP_MS);
+    return () => clearInterval(id);
+  }, [onShuffled]);
+
+  const showing = onShuffled ? path : shuffled[slot];
 
   const [collapsed, setCollapsed] = useState(
     () => localStorage.getItem("menu-collapsed") !== "false"
@@ -76,9 +102,10 @@ export default function Menu({ items = ITEMS }: { items?: MenuItem[] }) {
       </button>
 
       {items.map((item) => {
+        const mobile = item.shuffle ? item.href === showing : item.mobile;
         const className = `menu-item ${
-          item.mobile ? "menu-mobile-visible" : "menu-desktop-only"
-        } ${item.bottom ? "menu-bottom" : ""} ${item.href === path ? "active" : ""}`;
+          mobile ? "menu-mobile-visible" : "menu-desktop-only"
+        } ${item.shuffle ? "menu-flip" : ""} ${item.bottom ? "menu-bottom" : ""} ${item.href === path ? "active" : ""}`;
 
         return (
           <a

@@ -77,7 +77,9 @@ export default function Home() {
               target="_blank"
               rel="noreferrer"
             >
-              <span className="card-icon">{p.icon}</span>
+              <span className="card-icon" aria-hidden="true">
+                <p.icon />
+              </span>
               <span className="card-body">
                 <b>{p.title}</b>
                 <span className="muted small">{new URL(p.url).host}</span>
@@ -89,17 +91,17 @@ export default function Home() {
 
       <footer className="footer">
         <div className="row">
-          {social.map((s) => (
-            <a
-              key={s.url}
-              className="chip"
-              href={s.url}
-              target="_blank"
-              rel="noreferrer"
-            >
-              {s.name}
-            </a>
-          ))}
+          {social.map((s) =>
+            s.page ? (
+              <a key={s.url} className="chip" href={s.page} onClick={internal(s.page)}>
+                {s.name}
+              </a>
+            ) : (
+              <a key={s.url} className="chip" href={s.url} target="_blank" rel="noreferrer">
+                {s.name}
+              </a>
+            )
+          )}
         </div>
         <p className="muted small">© 2019-{YEAR} jasurlive.uz</p>
       </footer>
