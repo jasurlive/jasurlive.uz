@@ -174,10 +174,30 @@
   .menu-flip {
     overflow: hidden;
     perspective: 200px;
+    touch-action: none; /* vertical swipes flip the slot instead of scrolling */
   }
 
   .menu-flip .menu-icon {
     animation: menu-roll 0.55s cubic-bezier(0.2, 0.9, 0.25, 1.25) both;
+  }
+
+  /* swiped down: the previous icon drops in from above */
+  .menu-flip-down .menu-icon {
+    animation-name: menu-roll-down;
+  }
+}
+
+@keyframes menu-roll-down {
+  0% {
+    opacity: 0;
+    transform: translateY(-110%) rotateX(80deg);
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
   }
 }
 
