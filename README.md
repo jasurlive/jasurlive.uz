@@ -1,5 +1,9 @@
 # jasurlive.uz
 
+<img width="60%" alt="image" src="https://github.com/user-attachments/assets/a308be95-18ca-4ba4-a7ee-fdb58e3ba961" />
+<img width="30%" alt="image" src="https://github.com/user-attachments/assets/29511947-12ef-4539-b61a-0febf6b7e671" />
+
+
 Personal site built on the [django-react](https://github.com/jasurlive/django-react) front template (React 19 + Vite + TypeScript).
 
 ```bash
