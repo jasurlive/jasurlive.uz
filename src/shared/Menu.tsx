@@ -1,4 +1,4 @@
-import { useEffect, useState, type MouseEvent, type ReactNode } from "react";
+import { useEffect, useRef, useState, type MouseEvent, type ReactNode, type TouchEvent } from "react";
 import {
   FiChevronLeft,
   FiChevronRight,
@@ -53,20 +53,47 @@ export default function Menu({ items = ITEMS }: { items?: MenuItem[] }) {
   const { toggleTheme } = useTheme();
   const path = useRoute();
   const [slot, setSlot] = useState(firstSlot);
+  const [dir, setDir] = useState<"up" | "down">("up");
+  // page the user swiped on: lets them flip away from a held shuffled page
+  const [swipedOn, setSwipedOn] = useState<string | null>(null);
 
   // on a shuffled page already? hold that one so the active tab stays visible
-  const onShuffled = shuffled.includes(path);
+  const held = shuffled.includes(path) && swipedOn !== path;
 
+  // restarts on every flip, so a manual swipe gets the full FLIP_MS before the next roll
   useEffect(() => {
-    if (onShuffled) return;
+    if (held) return;
     const id = setInterval(() => {
       if (document.hidden || !matchMedia(PHONE).matches) return;
+      setDir("up");
       setSlot((n) => (n + 1) % shuffled.length);
     }, FLIP_MS);
     return () => clearInterval(id);
-  }, [onShuffled]);
+  }, [held, slot]);
 
-  const showing = onShuffled ? path : shuffled[slot];
+  const showing = held ? path : shuffled[slot];
+
+  // phones: swipe up on the rotating slot for the next item, down for the previous one
+  const touch = useRef<{ x: number; y: number } | null>(null);
+  const onTouchStart = (e: TouchEvent) => {
+    const t = e.touches[0];
+    touch.current = { x: t.clientX, y: t.clientY };
+  };
+  const onTouchEnd = (e: TouchEvent) => {
+    const start = touch.current;
+    touch.current = null;
+    if (!start) return;
+    const t = e.changedTouches[0];
+    const dx = t.clientX - start.x;
+    const dy = t.clientY - start.y;
+    if (Math.abs(dy) < 24 || Math.abs(dy) < Math.abs(dx)) return; // a tap or sideways drag
+    e.preventDefault(); // swallow the click so a swipe never navigates
+    const step = dy < 0 ? 1 : -1;
+    const from = shuffled.indexOf(showing);
+    setDir(dy < 0 ? "up" : "down");
+    setSlot((from + step + shuffled.length) % shuffled.length);
+    setSwipedOn(path);
+  };
 
   const [collapsed, setCollapsed] = useState(
     () => localStorage.getItem("menu-collapsed") !== "false"
@@ -105,7 +132,7 @@ export default function Menu({ items = ITEMS }: { items?: MenuItem[] }) {
         const mobile = item.shuffle ? item.href === showing : item.mobile;
         const className = `menu-item ${
           mobile ? "menu-mobile-visible" : "menu-desktop-only"
-        } ${item.shuffle ? "menu-flip" : ""} ${item.bottom ? "menu-bottom" : ""} ${item.href === path ? "active" : ""}`;
+        } ${item.shuffle ? `menu-flip menu-flip-${dir}` : ""} ${item.bottom ? "menu-bottom" : ""} ${item.href === path ? "active" : ""}`;
 
         return (
           <a
@@ -114,6 +141,7 @@ export default function Menu({ items = ITEMS }: { items?: MenuItem[] }) {
             className={className}
             title={item.label}
             onClick={(e) => go(e, item.href)}
+            {...(item.shuffle && { onTouchStart, onTouchEnd })}
           >
             <span className="menu-icon">{item.icon}</span>
             <span className="menu-label">{item.label}</span>
