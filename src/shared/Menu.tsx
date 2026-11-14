@@ -57,6 +57,8 @@ export default function Menu({ items = ITEMS }: { items?: MenuItem[] }) {
   // page the user swiped on: lets them flip away from a held shuffled page
   const [swipedOn, setSwipedOn] = useState<string | null>(null);
 
+  useEffect(() => setSwipedOn(null), [path]);
+
   // on a shuffled page already? hold that one so the active tab stays visible
   const held = shuffled.includes(path) && swipedOn !== path;
 
@@ -79,14 +81,24 @@ export default function Menu({ items = ITEMS }: { items?: MenuItem[] }) {
     const t = e.touches[0];
     touch.current = { x: t.clientX, y: t.clientY };
   };
-  const onTouchEnd = (e: TouchEvent) => {
+  const onTouchCancel = () => {
+    touch.current = null;
+  };
+  const onTouchEnd = (e: TouchEvent, href: string) => {
     const start = touch.current;
     touch.current = null;
     if (!start) return;
     const t = e.changedTouches[0];
     const dx = t.clientX - start.x;
     const dy = t.clientY - start.y;
-    if (Math.abs(dy) < 24 || Math.abs(dy) < Math.abs(dx)) return; // a tap or sideways drag
+    // a tap: navigate right here instead of waiting for the synthetic click, which
+    // phones drop when the slot flips under the finger (preventDefault skips that click)
+    if (Math.abs(dx) < 12 && Math.abs(dy) < 12) {
+      e.preventDefault();
+      navigate(href);
+      return;
+    }
+    if (Math.abs(dy) < 24 || Math.abs(dy) < Math.abs(dx)) return; // a sideways drag
     e.preventDefault(); // swallow the click so a swipe never navigates
     const step = dy < 0 ? 1 : -1;
     const from = shuffled.indexOf(showing);
@@ -141,7 +153,11 @@ export default function Menu({ items = ITEMS }: { items?: MenuItem[] }) {
             className={className}
             title={item.label}
             onClick={(e) => go(e, item.href)}
-            {...(item.shuffle && { onTouchStart, onTouchEnd })}
+            {...(item.shuffle && {
+              onTouchStart,
+              onTouchCancel,
+              onTouchEnd: (e: TouchEvent) => onTouchEnd(e, item.href),
+            })}
           >
             <span className="menu-icon">{item.icon}</span>
             <span className="menu-label">{item.label}</span>
