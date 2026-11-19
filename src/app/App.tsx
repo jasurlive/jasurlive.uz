@@ -16,7 +16,6 @@ const Terminal = lazy(() => import('../pages/Terminal'))
 // everything except Home is split so the first load stays tiny
 const pages: Record<string, ReturnType<typeof lazy>> = {
   '/resume': lazy(() => import('../pages/Resume')),
-  '/portfolio': lazy(() => import('../pages/Portfolio')),
   '/awards': lazy(() => import('../pages/Awards')),
   '/blogs': lazy(() => import('../pages/Blogs')),
   '/map': lazy(() => import('../pages/Destinero')),

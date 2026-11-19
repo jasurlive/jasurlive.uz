@@ -1,7 +1,6 @@
 """Add content to the site without touching code.
 
     python scripts/add.py award         # asks date, title, description, image
-    python scripts/add.py portfolio     # asks title, description, link, image
     python scripts/add.py talk          # asks date, title, youtube url
     python scripts/add.py slide a.jpg   # adds photo(s) to the home swiper
 
@@ -19,7 +18,6 @@ DATA = ROOT / "src" / "data"
 
 TABLES = {
     "award": ("awards.csv", ["date", "title", "description", "image"], ROOT / "public" / "img" / "awards"),
-    "portfolio": ("portfolio.csv", ["title", "description", "link", "image"], ROOT / "public" / "img" / "portfolio"),
     "talk": ("talks.csv", ["date", "title", "url"], None),
 }
 SLIDES = ROOT / "src" / "media" / "slides"

@@ -3,36 +3,63 @@ import Header from "../components/Header";
 import ThemePicker from "../shared/ThemePicker";
 import { useFullscreen } from "../hooks/LOCAL/useFullscreen";
 
+const SHORTCUTS = [
+  { keys: ["Ctrl", "J"], label: "Next theme" },
+  { keys: ["`"], label: "Collapse the sidebar" },
+  { keys: ["Esc"], label: "Leave fullscreen" },
+];
+
 export default function Settings() {
   const { fullscreen, toggleFullscreen, supported } = useFullscreen();
 
   return (
-    <main className="page">
+    <main className="page settings">
       <Header title="Settings" />
 
       <section className="section">
         <h2 className="section-title">Theme</h2>
         <ThemePicker />
-        <p className="muted small">Tip: ctrl+j cycles themes, or type `theme sega` in the terminal.</p>
+        <p className="settings-note muted small">
+          Or type <code>theme sega</code> in the terminal.
+        </p>
       </section>
 
       <section className="section">
         <h2 className="section-title">Display</h2>
         {supported ? (
-          <div className="row">
-            <button
-              type="button"
-              aria-pressed={fullscreen}
-              className={`chip ${fullscreen ? "is-active" : ""}`}
-              onClick={toggleFullscreen}
-            >
-              {fullscreen ? <FiMinimize /> : <FiMaximize />} {fullscreen ? "Exit fullscreen" : "Fullscreen"}
-            </button>
-          </div>
+          <button
+            type="button"
+            role="switch"
+            aria-checked={fullscreen}
+            className="settings-switch"
+            onClick={toggleFullscreen}
+          >
+            <span className="settings-switch-icon">{fullscreen ? <FiMinimize /> : <FiMaximize />}</span>
+            <span className="settings-switch-text">
+              <span className="settings-switch-label">Fullscreen</span>
+              <span className="muted small">Hide the browser bars for a cleaner view</span>
+            </span>
+            <span className="settings-knob" aria-hidden="true" />
+          </button>
         ) : (
           <p className="muted small">Fullscreen isn't supported in this browser.</p>
         )}
-        <p className="muted small">Tip: ` (backtick) collapses the sidebar.</p>
+      </section>
+
+      <section className="section">
+        <h2 className="section-title">Shortcuts</h2>
+        <ul className="settings-keys">
+          {SHORTCUTS.map(({ keys, label }) => (
+            <li key={label}>
+              <span>{label}</span>
+              <span className="settings-combo">
+                {keys.map((k) => (
+                  <kbd key={k}>{k}</kbd>
+                ))}
+              </span>
+            </li>
+          ))}
+        </ul>
       </section>
     </main>
   );

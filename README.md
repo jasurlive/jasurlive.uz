@@ -32,7 +32,7 @@ src/
 | What | Where |
 | --- | --- |
 | Text, projects, resume | `src/data/site.ts` |
-| Awards / portfolio / talks | `src/data/*.csv` |
+| Awards / talks | `src/data/*.csv` |
 | Home slides | `src/media/slides/` |
 
-Or run `python scripts/add.py award|portfolio|talk|slide <files>`.
+Or run `python scripts/add.py award|talk|slide <files>`.
