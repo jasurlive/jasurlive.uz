@@ -214,3 +214,8 @@
     transform: translateY(0) rotateX(0);
   }
 }
+
+/* plain .svg icons, inlined: style the file with currentColor and 1em to match react-icons */
+.svg-icon {
+  display: inline-flex;
+}
