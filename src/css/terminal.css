@@ -146,7 +146,7 @@
 [data-theme='sega'] .term-input input { font-size: 19px; }
 
 /* calm themes: the terminal uses the page palette */
-:is([data-theme='linen'], [data-theme='fjord'], [data-theme='moss'], [data-theme='charcoal']) .term {
+:is([data-theme='linen'], [data-theme='matte'], [data-theme='sage'], [data-theme='hygge'], [data-theme='spruce'], [data-theme='fjord']) .term {
   --t-bg: var(--bg);
   --t-bar: var(--surface);
   --t-text: var(--text);
