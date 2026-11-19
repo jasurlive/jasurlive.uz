@@ -12,7 +12,6 @@ export default function Blogs() {
 
         <iframe
           src={BLOG}
-          title="Jasur's travel map"
           allow="geolocation; clipboard-read; clipboard-write"
           onLoad={() => setLoaded(true)}
         />

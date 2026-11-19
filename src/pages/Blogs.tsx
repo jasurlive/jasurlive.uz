@@ -16,7 +16,7 @@ export default function Blogs() {
 
       <div className="blog-frame">
         {!loaded && <p className="page-status">Loading blog…</p>}
-        <iframe src={BLOG} title="Jasur's blog" onLoad={() => setLoaded(true)} />
+        <iframe src={BLOG} onLoad={() => setLoaded(true)} />
       </div>
     </main>
   );

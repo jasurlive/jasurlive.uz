@@ -53,7 +53,6 @@ export default function MiniPlayer({ path }: { path: string }) {
         <iframe
           ref={frame}
           src={PLAYER}
-          title="Jasur's playlist"
           allow="autoplay; encrypted-media; fullscreen; picture-in-picture; clipboard-write"
           onLoad={() => setLoaded(true)}
         />
