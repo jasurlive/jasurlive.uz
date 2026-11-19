@@ -10,15 +10,39 @@ import {
   FiPlay,
   FiSettings,
 } from "react-icons/fi";
-import { BsVectorPen } from "react-icons/bs";
+import blogsSVG from "./svg/blog.svg?raw";
 import "../css/menu.css";
 import { useTheme } from "../hooks/LOCAL/useTheme";
 import { useShortcuts } from "../hooks/LOCAL/useShortcuts";
 import { navigate, useRoute } from "../hooks/LOCAL/useRoute";
 
+// plain .svg file inlined so currentColor and its <animate> tags work. Mounting it
+// rewinds the animation to 0 (the menu remounts it each time it comes into view);
+// `frozen` (its page is open) parks it on the finished drawing instead.
+const SvgIcon = ({ src, frozen = false }: { src: string; frozen?: boolean }) => {
+  const ref = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    const svg = ref.current?.querySelector("svg");
+    if (!svg) return;
+    if (frozen) {
+      // last moment of the first loop = the completed drawing
+      const anims = svg.querySelectorAll<SVGAnimationElement>("animate, animateMotion");
+      const end = Math.max(0, ...Array.from(anims, (a) => a.getSimpleDuration()));
+      svg.pauseAnimations();
+      svg.setCurrentTime(Math.max(0, end - 0.01));
+    } else {
+      svg.setCurrentTime(0);
+      svg.unpauseAnimations();
+    }
+  }, [frozen]);
+
+  return <span ref={ref} className="svg-icon" aria-hidden="true" dangerouslySetInnerHTML={{ __html: src }} />;
+};
+
 export type MenuItem = {
   label: string;
-  icon: ReactNode;
+  icon: ReactNode | ((active: boolean) => ReactNode); // function form: icon reacts to its page being open
   href: string;
   mobile?: boolean;
   shuffle?: boolean; // phones: one of these is picked at random per visit
@@ -30,7 +54,7 @@ const ITEMS: MenuItem[] = [
   { label: "Resume", icon: <FiUser />, href: "/resume", mobile: true },
   { label: "Awards", icon: <FiAward />, href: "/awards", mobile: true },
   { label: "Terminal", icon: <FiTerminal />, href: "/terminal", mobile: false }, // phones: "playlist" in the terminal instead
-  { label: "Blog", icon: <BsVectorPen />, href: "/blogs", shuffle: true },
+  { label: "Blog", icon: (active) => <SvgIcon src={blogsSVG} frozen={active} />, href: "/blogs", shuffle: true },
   { label: "Travel map", icon: <FiMapPin />, href: "/map", shuffle: true },
   { label: "My playlist", icon: <FiPlay />, href: "/playlist", shuffle: true },
   // bottom: pinned to the bottom of the sidebar on desktop, keep these last
@@ -40,6 +64,7 @@ const ITEMS: MenuItem[] = [
 // phones: the shuffle items share one slot that rolls to the next one every few seconds
 // (starts on a random one, or on the page you landed on)
 const shuffled = ITEMS.filter((i) => i.shuffle).map((i) => i.href);
+// keep below the blog.svg loop (5.5s) so a drawing never restarts before the slot flips
 const FLIP_MS = 5000;
 const PHONE = "(max-width: 768px)";
 const firstSlot = () => {
@@ -140,9 +165,10 @@ export default function Menu({ items = ITEMS }: { items?: MenuItem[] }) {
 
       {items.map((item) => {
         const mobile = item.shuffle ? item.href === showing : item.mobile;
+        const active = item.href === path;
         const className = `menu-item ${
           mobile ? "menu-mobile-visible" : "menu-desktop-only"
-        } ${item.shuffle ? `menu-flip menu-flip-${dir}` : ""} ${item.bottom ? "menu-bottom" : ""} ${item.href === path ? "active" : ""}`;
+        } ${item.shuffle ? `menu-flip menu-flip-${dir}` : ""} ${item.bottom ? "menu-bottom" : ""} ${active ? "active" : ""}`;
 
         return (
           <a
@@ -157,7 +183,11 @@ export default function Menu({ items = ITEMS }: { items?: MenuItem[] }) {
               onTouchEnd: (e: TouchEvent) => onTouchEnd(e, item.href),
             })}
           >
-            <span className="menu-icon">{item.icon}</span>
+            {/* key flips when a shuffle item comes into view, remounting the icon so
+                animated svgs start drawing from the beginning */}
+            <span className="menu-icon" key={mobile ? "shown" : "hidden"}>
+              {typeof item.icon === "function" ? item.icon(active) : item.icon}
+            </span>
             <span className="menu-label">{item.label}</span>
           </a>
         );
