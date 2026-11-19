@@ -664,29 +664,46 @@ a.card:hover {
 
 .settings .section { max-width: 40rem; }
 
-/* theme picker: a grid of tiles, icon on top */
-.theme-picker {
+/* theme picker: light themes in the left column, dark in the right */
+.theme-columns {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(6.5rem, 1fr));
-  gap: 0.6rem;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  max-width: 30rem;
 }
 
-.theme-picker .chip {
+.theme-picker {
+  display: flex;
   flex-direction: column;
+  gap: 0.5rem;
+}
+
+.theme-column-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* big, easy to tap tiles that lift a little on hover */
+.theme-picker .chip {
   justify-content: center;
-  gap: 0.45rem;
-  padding: 0.9rem 0.5rem 0.75rem;
-  border-radius: 14px;
-  font-size: 0.9rem;
+  gap: 0.5rem;
+  min-height: 48px;
+  padding: 0.6rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.95rem;
   transition: border-color 0.15s, color 0.15s, background-color 0.15s, transform 0.15s;
 }
 
 .theme-picker .chip svg {
-  width: 1.6rem;
-  height: 1.6rem;
+  width: 1.15rem;
+  height: 1.15rem;
 }
 
 .theme-picker .chip:hover { transform: translateY(-2px); }
+.theme-picker .chip:active { transform: translateY(0) scale(0.98); }
 .theme-picker .chip.is-active { box-shadow: inset 0 0 0 1px var(--accent); }
 
 .settings-note { margin-top: 0.75rem; }

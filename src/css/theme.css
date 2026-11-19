@@ -1,34 +1,41 @@
 /* ---------- theme tokens ---------- */
 /* set via <html data-theme="..."> (see lib/themes.ts, useTheme + index.html) */
-/* every theme defines the same 7 colors; soft/hover tints are derived from them */
+/* every theme defines the same colors; soft/hover tints fall back to ones derived from them */
 
 :root {
   --accent-soft: color-mix(in srgb, var(--accent) 12%, transparent);
   --hover: color-mix(in srgb, var(--text) 7%, transparent);
 }
 
+/* birch: soft snowy white, light-wood surfaces, dusty blue accent */
 :root,
 :root[data-theme='light'] {
   color-scheme: light;
-  --bg: #fafafa;
-  --surface: #ffffff;
-  --text: #111111;
-  --muted: #6b6b6b;
-  --border: #e4e4e4;
-  --accent: #111111;
-  --danger: #c0392b;
+  --bg: #f3f2ef;
+  --surface: #fbfaf8;
+  --text: #34383c;
+  --text-strong: #1f2326;
+  --muted: #73777b;
+  --border: rgba(52, 56, 60, 0.11);
+  --accent: #5d7a91;
+  --accent-soft: rgba(93, 122, 145, 0.12);
+  --hover: rgba(52, 56, 60, 0.05);
+  --danger: #b4534b;
 }
 
+/* charcoal: neutral matte grey, soft grey accent */
 :root[data-theme='dark'] {
   color-scheme: dark;
-  --bg: #080e1a;
-  --surface: #1a1e3c;
-  --text: #d1d5db;
-  --muted: #9ca3af;
-  --border: rgba(255, 255, 255, 0.1);
-  --accent: #3b82f6;
-  --accent-soft: rgba(59, 130, 246, 0.14);
-  --danger: #f87171;
+  --bg: #181818;
+  --surface: #202020;
+  --text: #d4d4d4;
+  --text-strong: #f5f5f5;
+  --muted: #999999;
+  --border: rgba(255, 255, 255, 0.09);
+  --accent: #a3a3a3;
+  --accent-soft: rgba(163, 163, 163, 0.12);
+  --hover: rgba(255, 255, 255, 0.06);
+  --danger: #ef7777;
 }
 
 /* ---------- calm scandinavian palettes ---------- */
@@ -39,46 +46,88 @@
   --bg: #f4f1ec;
   --surface: #fbfaf7;
   --text: #3a3835;
+  --text-strong: #23211f;
   --muted: #77726a;
-  --border: #e2ddd4;
+  --border: rgba(58, 56, 53, 0.12);
   --accent: #7a6a56;
+  --accent-soft: rgba(122, 106, 86, 0.12);
+  --hover: rgba(58, 56, 53, 0.05);
   --danger: #b4534b;
 }
 
-/* cool misty grey, muted slate-blue accent */
-:root[data-theme='fjord'] {
+/* soft stone grey, low-glare, muted clay accent */
+:root[data-theme='matte'] {
   color-scheme: light;
-  --bg: #eef1f3;
-  --surface: #f8fafb;
-  --text: #2f3a42;
-  --muted: #6b7781;
-  --border: #d6dde2;
-  --accent: #4f6d7a;
+  --bg: #e8e6e3;
+  --surface: #f0eeeb;
+  --text: #3b3936;
+  --text-strong: #262422;
+  --muted: #75716b;
+  --border: rgba(59, 57, 54, 0.12);
+  --accent: #8a6f5e;
+  --accent-soft: rgba(138, 111, 94, 0.12);
+  --hover: rgba(59, 57, 54, 0.05);
   --danger: #b0504a;
 }
 
-/* soft forest charcoal, sage accent */
-:root[data-theme='moss'] {
-  color-scheme: dark;
-  --bg: #1b1e1c;
-  --surface: #222624;
-  --text: #d4d8d3;
-  --muted: #949b94;
-  --border: #323733;
-  --accent: #9fb5a0;
-  --danger: #d98a80;
+/* soft oat white, muted sage-green accent, like dried eucalyptus */
+:root[data-theme='sage'] {
+  color-scheme: light;
+  --bg: #f1f1ec;
+  --surface: #f9f9f5;
+  --text: #353a35;
+  --text-strong: #212521;
+  --muted: #737a72;
+  --border: rgba(53, 58, 53, 0.11);
+  --accent: #6f8a6f;
+  --accent-soft: rgba(111, 138, 111, 0.12);
+  --hover: rgba(53, 58, 53, 0.05);
+  --danger: #b0504a;
 }
 
-/* neutral charcoal, silver accent */
-:root[data-theme='charcoal'] {
+/* scandinavian dark: matte slate walls, linen text, smoked-oak accent */
+:root[data-theme='hygge'] {
   color-scheme: dark;
-  --bg: #181818;
-  --surface: #202020;
-  --text: #d4d4d4;
-  --muted: #999999;
-  --border: #303030;
-  --accent: #c4c4c4;
-  --danger: #ef7777;
+  --bg: #1d2023;
+  --surface: #23272a;
+  --text: #d6d0c6;
+  --text-strong: #eee9e1;
+  --muted: #8f8a82;
+  --border: rgba(230, 221, 208, 0.09);
+  --accent: #c4a57c;
+  --accent-soft: rgba(196, 165, 124, 0.12);
+  --hover: rgba(230, 221, 208, 0.05);
+  --danger: #d08a80;
+}
+
+/* nordic forest at dusk: deep pine-grey, soft moss accent */
+:root[data-theme='spruce'] {
+  color-scheme: dark;
+  --bg: #1a1f1d;
+  --surface: #202624;
+  --text: #cfd5cd;
+  --text-strong: #e9eee6;
+  --muted: #869087;
+  --border: rgba(207, 222, 205, 0.09);
+  --accent: #9db59a;
+  --accent-soft: rgba(157, 181, 154, 0.12);
+  --hover: rgba(207, 222, 205, 0.05);
+  --danger: #d08a80;
+}
+
+/* nordic fjord at night: deep slate-blue water, misty blue accent */
+:root[data-theme='fjord'] {
+  color-scheme: dark;
+  --bg: #191e24;
+  --surface: #1f252c;
+  --text: #cdd4dc;
+  --text-strong: #e8edf2;
+  --muted: #858f9a;
+  --border: rgba(200, 214, 228, 0.09);
+  --accent: #93abc2;
+  --accent-soft: rgba(147, 171, 194, 0.12);
+  --hover: rgba(200, 214, 228, 0.05);
+  --danger: #d08a80;
 }
 
 /* ---------- fun themes ---------- */
