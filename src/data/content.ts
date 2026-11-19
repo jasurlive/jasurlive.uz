@@ -1,5 +1,4 @@
 import awardsCsv from './awards.csv?raw'
-import portfolioCsv from './portfolio.csv?raw'
 import talksCsv from './talks.csv?raw'
 
 // minimal csv reader: header row + quoted fields ("a, b" and "" escapes)
@@ -39,11 +38,9 @@ function parseCsv<T>(text: string): T[] {
 }
 
 export type Award = { date: string; title: string; description: string; image: string }
-export type Work = { title: string; description: string; link: string; image: string }
 export type Talk = { date: string; title: string; url: string }
 
 export const awards = parseCsv<Award>(awardsCsv)
-export const portfolio = parseCsv<Work>(portfolioCsv)
 export const talks = parseCsv<Talk>(talksCsv)
 
 // every image dropped into src/media/slides shows up in the home swiper

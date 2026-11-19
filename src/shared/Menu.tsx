@@ -4,7 +4,6 @@ import {
   FiChevronRight,
   FiHome,
   FiUser,
-  FiBriefcase,
   FiAward,
   FiTerminal,
   FiMapPin,
@@ -29,7 +28,6 @@ export type MenuItem = {
 const ITEMS: MenuItem[] = [
   { label: "Home", icon: <FiHome />, href: "/", mobile: true },
   { label: "Resume", icon: <FiUser />, href: "/resume", mobile: true },
-  { label: "Portfolio", icon: <FiBriefcase />, href: "/portfolio", mobile: false },
   { label: "Awards", icon: <FiAward />, href: "/awards", mobile: true },
   { label: "Terminal", icon: <FiTerminal />, href: "/terminal", mobile: false }, // phones: "playlist" in the terminal instead
   { label: "Blog", icon: <BsVectorPen />, href: "/blogs", shuffle: true },

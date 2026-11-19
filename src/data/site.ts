@@ -14,7 +14,6 @@ export const social: { name: string; url: string; page?: string }[] = [
   { name: 'github', url: 'https://github.com/jasurlive' },
   { name: 'linkedin', url: 'https://www.linkedin.com/in/jasurlive/' },
   { name: 'telegram bot', url: 'https://t.me/jasurlive_bot' },
-  { name: 'chess', url: 'https://www.chess.com/member/jasurgraduate' },
   { name: 'my blogs', url: 'https://jasurlive.blogspot.com/', page: '/blogs' },
 ]
 

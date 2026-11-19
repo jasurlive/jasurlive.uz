@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, type KeyboardEvent } from "react";
 import "../css/terminal.css";
 import { experience, profile, projects, quotes, skills, social } from "../data/site";
-import { awards, portfolio, talks } from "../data/content";
+import { awards, talks } from "../data/content";
 import { navigate, previousPage } from "../hooks/LOCAL/useRoute";
 import { setTheme } from "../hooks/LOCAL/useTheme";
 import { THEMES, isTheme } from "../lib/themes";
@@ -21,7 +21,7 @@ const Prompt = () => (
 
 // back to the page you opened the terminal from
 const leave = () => navigate(previousPage("/terminal"));
-const PAGES = ["home", "resume", "portfolio", "awards", "blogs", "playlist", "settings"];
+const PAGES = ["home", "resume", "awards", "blogs", "playlist", "settings"];
 const LINKS = [...projects, ...social];
 
 const out = (...rows: string[]): Line[] => rows.map((text) => ({ text }));
@@ -49,10 +49,6 @@ const commands: Record<string, Command> = {
       ...projects.map((p) => link(`  ${p.name.padEnd(12)} ${p.title}`, p.url)),
       { text: "tip: open <name>", kind: "ok" },
     ],
-  },
-  portfolio: {
-    desc: "design & engineering work",
-    run: () => portfolio.map((p) => (p.link ? link(`• ${p.title}`, p.link) : { text: `• ${p.title}` })),
   },
   awards: { desc: "certificates", run: () => awards.map((a) => ({ text: `🏅 ${a.date.padEnd(9)} ${a.title}` })) },
   talks: { desc: "speeches & interviews", run: () => talks.map((t) => link(`🎤 ${t.date.padEnd(9)} ${t.title}`, t.url)) },
